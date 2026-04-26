@@ -1,50 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-  <title>DSSSB Mock Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSSSB Mock Test Series</title>
+
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
+      background: #f3f6fb;
       color: #222;
     }
-    .test-box {
-      background: white;
-      padding: 20px;
-      margin: 15px auto;
-      max-width: 400px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    }
-    a {
-      display: block;
-      text-decoration: none;
+
+    .header {
       background: #0b5ed7;
       color: white;
-      padding: 14px;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .header p {
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 25px auto;
+      padding: 15px;
+    }
+
+    .notice {
+      background: #fff3cd;
+      padding: 12px;
       border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .test-card {
+      background: white;
+      padding: 18px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .test-title {
       font-size: 18px;
-      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .start-btn {
+      background: #198754;
+      color: white;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .start-btn:hover {
+      background: #146c43;
+    }
+
+    .loading {
+      text-align: center;
+      font-size: 17px;
+      margin-top: 30px;
+    }
+
+    .error {
+      background: white;
+      color: #b00020;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
 
-  <h1>DSSSB Mock Test Series</h1>
-
-  <div class="test-box">
-    <h2>Test 1</h2>
-    <a href="index1.html">Start test 1</a>
+  <div class="header">
+    <h1>DSSSB Mock Test Series</h1>
+    <p>All tests at one place</p>
   </div>
 
-  <div class="test-box">
-    <h2>Test 2</h2>
-    <a href="test2.html">Start Test 2</a>
+  <div class="container">
+    <div class="notice">
+      नया test add करने के लिए बस file बनाएं: test1.html, test2.html, test3.html
+    </div>
+
+    <div id="testList" class="loading">
+      Tests loading...
+    </div>
   </div>
+
+  <script>
+    const username = "techinprem";
+    const repo = "dsssb-mock-test";
+
+    const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/`;
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(files => {
+        const testList = document.getElementById("testList");
+
+        const testFiles = files
+          .filter(file => /^test\d+\.html$/i.test(file.name))
+          .sort((a, b) => {
+            const numA = parseInt(a.name.match(/\d+/)[0]);
+            const numB = parseInt(b.name.match(/\d+/)[0]);
+            return numA - numB;
+          });
+
+        if (testFiles.length === 0) {
+          testList.innerHTML = `
+            <div class="error">
+              अभी कोई test file नहीं मिली।<br><br>
+              कृपया test1.html नाम से पहली test file बनाएं।
+            </div>
+          `;
+          return;
+        }
+
+        testList.className = "";
+
+        testList.innerHTML = testFiles.map(file => {
+          const testNumber = file.name.match(/\d+/)[0];
+
+          return `
+            <div class="test-card">
+              <div class="test-title">DSSSB Mock Test ${testNumber}</div>
+              <a class="start-btn" href="${file.name}">Start Test</a>
+            </div>
+          `;
+        }).join("");
+      })
+      .catch(error => {
+        document.getElementById("testList").innerHTML = `
+          <div class="error">
+            Tests load नहीं हो पाए। कृपया internet या GitHub Pages setting check करें।
+          </div>
+        `;
+      });
+  </script>
 
 </body>
 </html>
