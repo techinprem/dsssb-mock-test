@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech In Prem Mock Test Series</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
+      background: #f3f6fb;
+      color: #111827;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: white;
+      padding: 28px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      font-size: 15px;
+      opacity: 0.95;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 14px;
+    }
+
+    .search-box {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      margin-bottom: 18px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+    }
+
+    .category-section {
+      margin-bottom: 16px;
+      background: white;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+
+    .category-title {
+      margin: 0;
+      padding: 16px;
+      background: #0f172a;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      user-select: none;
+    }
+
+    .category-title:hover {
+      background: #1e293b;
+    }
+
+    .category-count {
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 5px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .category-arrow {
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+
+    .category-section.open .category-arrow {
+      transform: rotate(180deg);
+    }
+
+    .category-content {
+      display: none;
+      padding: 16px;
+    }
+
+    .category-section.open .category-content {
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
+    }
+
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #0f172a;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #1d4ed8;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: #1e40af;
+    }
+
+    .status {
+      text-align: center;
+      padding: 22px;
+      background: white;
+      border-radius: 12px;
+      color: #475569;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 12px;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Tech In Prem Mock Test Series</h1>
+    <p>Click category to view tests</p>
+  </header>
+
+  <main class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search test name..." onkeyup="filterTests()" />
+    </div>
+
+    <div id="status" class="status">Loading tests...</div>
+    <div id="testGrid"></div>
+  </main>
+
+  <footer>
+    © Tech In Prem | Online Mock Test Portal
+  </footer>
+
+  <script>
+    const GITHUB_USERNAME = "techinprem";
+    const REPOSITORY_NAME = "dsssb-mock-test";
+
+    const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPOSITORY_NAME}/contents/`;
+
+    let allTests = [];
+
+    function titleCase(text) {
+      return text.replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    function getCategory(fileName) {
+      const name = fileName.toLowerCase();
+
+      if (
+        name.includes("dsssb") ||
+        name.includes("part-1") ||
+        name.includes("part1") ||
+        name.includes("part-i") ||
+        name.includes("general-awareness") ||
+        name.includes("general-intelligence") ||
+        name.includes("reasoning") ||
+        name.includes("math") ||
+        name.includes("arithmetic") ||
+        name.includes("english") ||
+        name.includes("hindi")
+      ) {
+        return "DSSSB Part 1 Papers";
+      }
+
+      return "Sanitary Inspector Papers";
+    }
+
+    function shortTestName(fileName) {
+      let name = fileName
+        .replace(".html", "")
+        .replace(/\[.*?\]/g, "")
+        .toLowerCase();
+
+      const specialNames = {
+        "aiims-jodhpur-sanitary-inspector-200q": "AIIMS Jodhpur",
+        "aiims-raipur-sanitary-inspector": "AIIMS Raipur",
+        "health-family-welfare-sts-21-april-2018": "Health Welfare STS",
+        "municipal-corporation-chhattisgarh-sanitary-inspector-2018": "Chhattisgarh Municipal",
+        "nhm-rajasthan-2015-senior-sanitary-inspector": "NHM Rajasthan 2015",
+        "nhm-rajasthan-2016-senior-sanitary-inspector": "NHM Rajasthan 2016",
+        "rajasthan-sts-senior-treatment-supervisor": "Rajasthan STS"
+      };
+
+      if (specialNames[name]) {
+        return specialNames[name];
+      }
+
+      name = name
+        .replace(/assistant/g, "")
+        .replace(/sanitary/g, "")
+        .replace(/inspector/g, "")
+        .replace(/senior/g, "")
+        .replace(/treatment/g, "")
+        .replace(/supervisor/g, "")
+        .replace(/paper/g, "")
+        .replace(/test/g, "")
+        .replace(/mock/g, "")
+        .replace(/afternoon/g, "Afternoon")
+        .replace(/morning/g, "Morning")
+        .replace(/evening/g, "Evening")
+        .replace(/-/g, " ")
+        .replace(/_/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      let words = titleCase(name).split(" ").filter(Boolean);
+
+      words = words.map(word => {
+        if (word.toLowerCase() === "hssc") return "HSSC";
+        if (word.toLowerCase() === "aiims") return "AIIMS";
+        if (word.toLowerCase() === "nhm") return "NHM";
+        if (word.toLowerCase() === "sts") return "STS";
+        if (word.toLowerCase() === "dsssb") return "DSSSB";
+        return word;
+      });
+
+      return words.slice(0, 4).join(" ");
+    }
+
+    async function loadTests() {
+      const status = document.getElementById("status");
+
+      try {
+        const response = await fetch(apiUrl);
+        const files = await response.json();
+
+        allTests = files
+          .filter(file =>
+            file.type === "file" &&
+            file.name.endsWith(".html") &&
+            file.name !== "index.html"
+          )
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map(file => ({
+            fileName: file.name,
+            category: getCategory(file.name),
+            shortName: shortTestName(file.name),
+            url: file.name
+          }));
+
+        assignTestNumbers();
+
+        if (allTests.length === 0) {
+          status.innerHTML = "Abhi koi test file upload nahi hai.";
+          return;
+        }
+
+        status.style.display = "none";
+        renderTests(allTests);
+
+      } catch (error) {
+        status.innerHTML = "Tests load nahi ho pa rahe. Repository public honi chahiye.";
+      }
+    }
+
+    function assignTestNumbers() {
+      const categoryCount = {};
+
+      allTests.forEach(test => {
+        if (!categoryCount[test.category]) {
+          categoryCount[test.category] = 0;
+        }
+
+        categoryCount[test.category]++;
+        test.title = `Test ${categoryCount[test.category]} - ${test.shortName}`;
+      });
+    }
+
+    function toggleCategory(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.classList.toggle("open");
+    }
+
+    function renderTests(tests) {
+      const grid = document.getElementById("testGrid");
+      const searchValue = document.getElementById("searchInput").value.trim();
+      grid.innerHTML = "";
+
+      const categories = [
+        "DSSSB Part 1 Papers",
+        "Sanitary Inspector Papers"
+      ];
+
+      categories.forEach((category, index) => {
+        const categoryTests = tests.filter(test => test.category === category);
+
+        if (categoryTests.length === 0) {
+          return;
+        }
+
+        const sectionId = "category_" + index;
+        const section = document.createElement("section");
+
+        // Search karne par category automatically open hogi, normal view me closed rahegi.
+        section.className = searchValue ? "category-section open" : "category-section";
+        section.id = sectionId;
+
+        section.innerHTML = `
+          <h2 class="category-title" onclick="toggleCategory('${sectionId}')">
+            <span>${category}</span>
+            <span>
+              <span class="category-count">${categoryTests.length} Tests</span>
+              <span class="category-arrow">▼</span>
+            </span>
+          </h2>
+          <div class="category-content">
+            <div class="grid"></div>
+          </div>
+        `;
+
+        const cardsGrid = section.querySelector(".grid");
+
+        categoryTests.forEach(test => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          card.innerHTML = `
+            <h2>${test.title}</h2>
+            <a class="btn" href="${test.url}">Start Test</a>
+          `;
+
+          cardsGrid.appendChild(card);
+        });
+
+        grid.appendChild(section);
+      });
+
+      if (grid.innerHTML.trim() === "") {
+        grid.innerHTML = `<div class="status">Search ke according koi test nahi mila.</div>`;
+      }
+    }
+
+    function filterTests() {
+      const keyword = document.getElementById("searchInput").value.toLowerCase();
+
+      const filtered = allTests.filter(test =>
+        test.title.toLowerCase().includes(keyword) ||
+        test.shortName.toLowerCase().includes(keyword) ||
+        test.category.toLowerCase().includes(keyword) ||
+        test.fileName.toLowerCase().includes(keyword)
+      );
+
+      renderTests(filtered);
+    }
+
+    loadTests();
+  </script>
+</body>
+</html>
