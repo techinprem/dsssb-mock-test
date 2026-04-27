@@ -43,4 +43,30 @@ function clearHistory(){localStorage.removeItem('history_'+TEST_ID); loadHistory
 loadHistory(); render();
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</body></html>
+<style>
+.palette-scroll{
+  max-height:360px;
+  overflow-y:auto;
+  padding:8px 4px 8px 8px;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  background:#fafafa;
+}
+@media(max-width:850px){
+  .palette-scroll{
+    max-height:230px;
+  }
+}
+</style>
+
+<script>
+(function(){
+  const palette = document.getElementById("palette");
+  if(palette && !palette.parentElement.classList.contains("palette-scroll")){
+    const wrapper = document.createElement("div");
+    wrapper.className = "palette-scroll";
+    palette.parentNode.insertBefore(wrapper, palette);
+    wrapper.appendChild(palette);
+  }
+})();
+</script></body></html>
