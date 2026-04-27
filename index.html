@@ -228,50 +228,5 @@
 
     loadTests();
   </script>
-<script>
-const renameTests = {
-  "aiims-jodhpur-sanitary-inspector-200q.html": "Test 1 - AIIMS Jodhpur",
-  "aiims-raipur-sanitary-inspector.html": "Test 2 - AIIMS Raipur",
-  "health-family-welfare-sts-21-april-2018.html": "Test 3 - Health Family Welfare STS",
-  "hssc-2017-24nov-sanitary-inspector-evening[1].html": "Test 4 - HSSC Sanitary Inspector Evening",
-  "hssc-2017-24nov-sanitary-inspector-morning[1].html": "Test 5 - HSSC Sanitary Inspector Morning",
-  "hssc-2017-25nov-assistant-sanitary-inspector-evening[1].html": "Test 6 - HSSC Assistant Sanitary Inspector Evening",
-  "hssc-2017-25nov-sanitary-inspector-afternoon[1].html": "Test 7 - HSSC Sanitary Inspector Afternoon",
-  "hssc-2017-25nov-sanitary-inspector[1].html": "Test 8 - HSSC Sanitary Inspector",
-  "hssc-2017-28oct-sanitary-inspector-morning[1].html": "Test 9 - HSSC Sanitary Inspector Morning",
-  "hssc-2017-assistant-sanitary-inspector-evening[1].html": "Test 10 - HSSC Assistant Sanitary Inspector Evening",
-  "municipal-corporation-chhattisgarh-sanitary-inspector-2018.html": "Test 11 - Chhattisgarh Sanitary Inspector",
-  "nhm-rajasthan-2015-senior-sanitary-inspector.html": "Test 12 - NHM Rajasthan Senior Sanitary Inspector 2015",
-  "nhm-rajasthan-2016-senior-sanitary-inspector.html": "Test 13 - NHM Rajasthan Senior Sanitary Inspector 2016",
-  "rajasthan-sts-senior-treatment-supervisor.html": "Test 14 - Rajasthan STS"
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("a[href$='.html']").forEach(link => {
-    const href = link.getAttribute("href");
-    const fileName = decodeURIComponent(href.split("/").pop());
-
-    if (renameTests[fileName]) {
-      link.textContent = renameTests[fileName];
-    }
-  });
-
-  document.querySelectorAll("p, div, span, small").forEach(el => {
-    const text = el.textContent.trim();
-
-    if (
-      text.startsWith("File:") ||
-      text.startsWith("file:") ||
-      text.includes("File: aiims-") ||
-      text.includes("File: hssc-") ||
-      text.includes("File: health-") ||
-      text.includes("File: municipal-") ||
-      text.includes("File: nhm-") ||
-      text.includes("File: rajasthan-")
-    ) {
-      el.style.display = "none";
-    }
-  });
-});
-</script></body>
+</body>
 </html>
