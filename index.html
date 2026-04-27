@@ -1,164 +1,232 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DSSSB Mock Test Series</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech In Prem Mock Test Series</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f6fb;
-      color: #222;
+    * {
+      box-sizing: border-box;
     }
 
-    .header {
-      background: #0b5ed7;
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
+      background: #f3f6fb;
+      color: #111827;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
       color: white;
-      padding: 25px 15px;
+      padding: 28px 16px;
       text-align: center;
     }
 
-    .header h1 {
+    header h1 {
       margin: 0;
-      font-size: 26px;
+      font-size: 28px;
     }
 
-    .header p {
-      margin-top: 8px;
+    header p {
+      margin: 8px 0 0;
       font-size: 15px;
+      opacity: 0.95;
     }
 
     .container {
-      max-width: 600px;
-      margin: 25px auto;
-      padding: 15px;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 14px;
     }
 
-    .notice {
-      background: #fff3cd;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    .test-card {
+    .search-box {
       background: white;
-      padding: 18px;
-      margin-bottom: 14px;
+      padding: 16px;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      margin-bottom: 18px;
     }
 
-    .test-title {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .start-btn {
-      background: #198754;
-      color: white;
-      text-decoration: none;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .start-btn:hover {
-      background: #146c43;
-    }
-
-    .loading {
-      text-align: center;
-      font-size: 17px;
-      margin-top: 30px;
-    }
-
-    .error {
-      background: white;
-      color: #b00020;
-      padding: 15px;
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cbd5e1;
       border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #0f172a;
+    }
+
+    .card p {
+      margin: 0 0 14px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #1d4ed8;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: #1e40af;
+    }
+
+    .status {
       text-align: center;
+      padding: 22px;
+      background: white;
+      border-radius: 12px;
+      color: #475569;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 12px;
+      color: #64748b;
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <h1>Tech In Prem Mock Test Series</h1>
+    <p>All uploaded mock tests will appear here automatically</p>
+  </header>
 
-  <div class="header">
-    <h1>DSSSB Mock Test Series</h1>
-    <p>All tests at one place</p>
-  </div>
-
-  <div class="container">
-    <div class="notice">
-      नया test add करने के लिए बस file बनाएं: test1.html, test2.html, test3.html
+  <main class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search test name..." onkeyup="filterTests()" />
     </div>
 
-    <div id="testList" class="loading">
-      Tests loading...
-    </div>
-  </div>
+    <div id="status" class="status">Loading tests...</div>
+    <div id="testGrid" class="grid"></div>
+  </main>
+
+  <footer>
+    © Tech In Prem | Online Mock Test Portal
+  </footer>
 
   <script>
-    const username = "techinprem";
-    const repo = "dsssb-mock-test";
+    const GITHUB_USERNAME = "techinprem";
+    const REPOSITORY_NAME = "dsssb-mock-test";
 
-    const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/`;
+    const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPOSITORY_NAME}/contents/`;
 
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(files => {
-        const testList = document.getElementById("testList");
+    let allTests = [];
 
-        const testFiles = files
-          .filter(file => /^test\d+\.html$/i.test(file.name))
-          .sort((a, b) => {
-            const numA = parseInt(a.name.match(/\d+/)[0]);
-            const numB = parseInt(b.name.match(/\d+/)[0]);
-            return numA - numB;
-          });
+    function cleanTestName(fileName) {
+      return fileName
+        .replace(".html", "")
+        .replace(/-/g, " ")
+        .replace(/_/g, " ")
+        .replace(/\b\w/g, char => char.toUpperCase());
+    }
 
-        if (testFiles.length === 0) {
-          testList.innerHTML = `
-            <div class="error">
-              अभी कोई test file नहीं मिली।<br><br>
-              कृपया test1.html नाम से पहली test file बनाएं।
-            </div>
-          `;
+    async function loadTests() {
+      const status = document.getElementById("status");
+      const grid = document.getElementById("testGrid");
+
+      try {
+        const response = await fetch(apiUrl);
+        const files = await response.json();
+
+        allTests = files
+          .filter(file =>
+            file.type === "file" &&
+            file.name.endsWith(".html") &&
+            file.name !== "index.html"
+          )
+          .map(file => ({
+            fileName: file.name,
+            title: cleanTestName(file.name),
+            url: file.name
+          }))
+          .sort((a, b) => a.title.localeCompare(b.title));
+
+        if (allTests.length === 0) {
+          status.innerHTML = "Abhi koi test file upload nahi hai.";
           return;
         }
 
-        testList.className = "";
+        status.style.display = "none";
+        renderTests(allTests);
 
-        testList.innerHTML = testFiles.map(file => {
-          const testNumber = file.name.match(/\d+/)[0];
+      } catch (error) {
+        status.innerHTML = "Tests load nahi ho pa rahe. Repository public honi chahiye.";
+      }
+    }
 
-          return `
-            <div class="test-card">
-              <div class="test-title">DSSSB Mock Test ${testNumber}</div>
-              <a class="start-btn" href="${file.name}">Start Test</a>
-            </div>
-          `;
-        }).join("");
-      })
-      .catch(error => {
-        document.getElementById("testList").innerHTML = `
-          <div class="error">
-            Tests load नहीं हो पाए। कृपया internet या GitHub Pages setting check करें।
-          </div>
+    function renderTests(tests) {
+      const grid = document.getElementById("testGrid");
+      grid.innerHTML = "";
+
+      tests.forEach(test => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+          <h2>${test.title}</h2>
+          <p>File: ${test.fileName}</p>
+          <a class="btn" href="${test.url}">Start Test</a>
         `;
-      });
-  </script>
 
+        grid.appendChild(card);
+      });
+    }
+
+    function filterTests() {
+      const keyword = document.getElementById("searchInput").value.toLowerCase();
+
+      const filtered = allTests.filter(test =>
+        test.title.toLowerCase().includes(keyword) ||
+        test.fileName.toLowerCase().includes(keyword)
+      );
+
+      renderTests(filtered);
+    }
+
+    loadTests();
+  </script>
 </body>
 </html>
