@@ -25,4 +25,4 @@ function tick(){if(submitted)return;let m=Math.floor(totalSeconds/60),s=totalSec
 function saveState(){localStorage.setItem(TEST_ID+"_state",JSON.stringify({current,answers,review,totalSeconds}));}function loadState(){const raw=localStorage.getItem(TEST_ID+"_state");if(raw){try{const st=JSON.parse(raw);current=st.current??0;answers=st.answers??answers;review=st.review??review;totalSeconds=st.totalSeconds??totalSeconds;}catch(e){}}}
 function saveHistory(item){const key=TEST_ID+"_history";let h=JSON.parse(localStorage.getItem(key)||"[]");h.unshift(item);h=h.slice(0,10);localStorage.setItem(key,JSON.stringify(h));}function loadHistory(){const h=JSON.parse(localStorage.getItem(TEST_ID+"_history")||"[]");document.getElementById("history").innerHTML=h.length?h.map(x=>`<div class="history-item"><b>${x.date}</b><br>Score: ${x.marks} | Correct: ${x.correct} | Wrong: ${x.wrong}</div>`).join(""):"<p class='small'>No attempt yet.</p>";}
 loadState();render();loadHistory();setInterval(tick,1000);
-</script></body></html>
+</script></body><script src="result-saver.js"></script></html>
