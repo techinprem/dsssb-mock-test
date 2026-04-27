@@ -3,125 +3,71 @@
     return window.location.pathname.split("/").pop();
   }
 
-  function toNumber(v) {
-    const n = Number(v);
-    return isNaN(n) ? 0 : n;
+  function toNumber(value) {
+    const num = Number(value);
+    return isNaN(num) ? 0 : num;
   }
 
-  function getGlobal(names) {
-    for (const name of names) {
-      if (typeof window[name] !== "undefined") return window[name];
-    }
-    return undefined;
-  }
-
-  function countAttempted() {
-    const possibleAnswers = getGlobal(["userAnswers", "selectedAnswers", "answers", "markedAnswers"]);
-
-    if (Array.isArray(possibleAnswers)) {
-      return possibleAnswers.filter(v => v !== null && v !== undefined && v !== "").length;
-    }
-
-    if (possibleAnswers && typeof possibleAnswers === "object") {
-      return Object.values(possibleAnswers).filter(v => v !== null && v !== undefined && v !== "").length;
-    }
-
-    return document.querySelectorAll("input[type='radio']:checked").length || 0;
-  }
-
-  function getTotalQuestions() {
-    const questions = getGlobal(["questions", "quizData", "questionData", "allQuestions"]);
-
-    if (Array.isArray(questions)) return questions.length;
-
-    return (
-      document.querySelectorAll(".question").length ||
-      document.querySelectorAll(".question-box").length ||
-      document.querySelectorAll("[data-question]").length ||
-      0
-    );
-  }
-
-  function saveDetectedResult() {
+  function saveHomePageResult(score, correct, wrong, un) {
     const fileName = getFileName();
+    const totalQuestions = Array.isArray(window.QUESTIONS) ? window.QUESTIONS.length : 100;
 
-    const totalQuestions = toNumber(
-      getGlobal(["totalQuestions", "totalQ", "total"]) || getTotalQuestions()
-    );
-
-    const attempted = toNumber(
-      getGlobal(["attempted", "attemptedQuestions", "attemptedCount"]) || countAttempted()
-    );
-
-    const correct = toNumber(
-      getGlobal(["correct", "correctAnswers", "correctCount"])
-    );
-
-    const wrong = toNumber(
-      getGlobal(["wrong", "incorrect", "wrongAnswers", "wrongCount"])
-    );
-
-    const negative = toNumber(
-      getGlobal(["negative", "negativeMarks", "minusMarks"]) || wrong * 0.25
-    );
-
-    const marks = toNumber(
-      getGlobal(["finalMarks", "score", "marks", "totalScore", "obtainedMarks"])
-    );
-
-    const notAttempted = Math.max(totalQuestions - attempted, 0);
+    const finalMarks = toNumber(score);
+    const correctCount = toNumber(correct);
+    const wrongCount = toNumber(wrong);
+    const unattempted = toNumber(un);
+    const attempted = Math.max(totalQuestions - unattempted, 0);
+    const negativeMarks = wrongCount * 0.25;
 
     const resultData = {
       fileName: fileName,
       totalQuestions: totalQuestions,
       attempted: attempted,
-      correct: correct,
-      wrong: wrong,
-      notAttempted: notAttempted,
-      negative: negative,
-      marks: marks,
+      correct: correctCount,
+      wrong: wrongCount,
+      notAttempted: unattempted,
+      negative: negativeMarks.toFixed(2),
+      marks: finalMarks.toFixed(2),
       maxMarks: totalQuestions,
-      percentage: totalQuestions > 0 ? ((marks / totalQuestions) * 100).toFixed(2) + "%" : "0%",
+      percentage: totalQuestions > 0 ? ((finalMarks / totalQuestions) * 100).toFixed(2) + "%" : "0%",
       date: new Date().toLocaleString()
     };
 
-    if (totalQuestions > 0 || attempted > 0 || marks !== 0) {
-      localStorage.setItem("mock_result_" + fileName, JSON.stringify(resultData));
-    }
+    localStorage.setItem("mock_result_" + fileName, JSON.stringify(resultData));
   }
 
-  function attachAutoSave() {
-    const oldSubmit = window.submitTest;
+  function attachToSaveHistory() {
+    if (typeof window.saveHistory === "function" && !window.saveHistory.__homeResultAttached) {
+      const oldSaveHistory = window.saveHistory;
 
-    if (typeof oldSubmit === "function" && !oldSubmit.__resultSaverAttached) {
-      window.submitTest = function () {
-        const output = oldSubmit.apply(this, arguments);
-        setTimeout(saveDetectedResult, 500);
-        setTimeout(saveDetectedResult, 1500);
+      window.saveHistory = function (score, correct, wrong, un) {
+        const output = oldSaveHistory.apply(this, arguments);
+        saveHomePageResult(score, correct, wrong, un);
         return output;
       };
 
-      window.submitTest.__resultSaverAttached = true;
+      window.saveHistory.__homeResultAttached = true;
     }
+  }
 
+  function attachToSubmitButton() {
     document.addEventListener("click", function (e) {
       const text = (e.target.innerText || e.target.value || "").toLowerCase();
 
       if (
         text.includes("submit") ||
         text.includes("result") ||
-        text.includes("finish") ||
-        text.includes("score") ||
-        text.includes("test submit")
+        text.includes("finish")
       ) {
-        setTimeout(saveDetectedResult, 700);
-        setTimeout(saveDetectedResult, 1800);
+        setTimeout(attachToSaveHistory, 100);
       }
     });
   }
 
-  window.saveDetectedResult = saveDetectedResult;
+  attachToSaveHistory();
+  attachToSubmitButton();
 
-  attachAutoSave();
-  window.addEventListener("beforeunload", saveDetectedResult);
+  setTimeout(attachToSaveHistory, 500);
+  setTimeout(attachToSaveHistory, 1500);
+  setTimeout(attachToSaveHistory, 3000);
 })();
