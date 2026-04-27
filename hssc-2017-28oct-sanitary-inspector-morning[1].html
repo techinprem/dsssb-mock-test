@@ -25,4 +25,26 @@ function tick(){if(submitted)return;let m=Math.floor(totalSeconds/60),s=totalSec
 function saveState(){localStorage.setItem(TEST_ID+"_state",JSON.stringify({current,answers,review,totalSeconds}));}function loadState(){const raw=localStorage.getItem(TEST_ID+"_state");if(raw){try{const st=JSON.parse(raw);current=st.current??0;answers=st.answers??answers;review=st.review??review;totalSeconds=st.totalSeconds??totalSeconds;}catch(e){}}}
 function saveHistory(item){const key=TEST_ID+"_history";let h=JSON.parse(localStorage.getItem(key)||"[]");h.unshift(item);h=h.slice(0,10);localStorage.setItem(key,JSON.stringify(h));}function loadHistory(){const h=JSON.parse(localStorage.getItem(TEST_ID+"_history")||"[]");document.getElementById("history").innerHTML=h.length?h.map(x=>`<div class="history-item"><b>${x.date}</b><br>Score: ${x.marks} | Correct: ${x.correct} | Wrong: ${x.wrong}</div>`).join(""):"<p class='small'>No attempt yet.</p>";}
 loadState();render();loadHistory();setInterval(tick,1000);
+</script><style>
+.qimg{max-width:100%;height:auto;display:block;margin:12px 0;border:1px solid #d6dde8;border-radius:8px}
+</style>
+<script>
+(function(){
+  const images = {
+    87: "images/hssc-28oct-morning/q87.png" 
+  };
+
+  const oldRender = render;
+  render = function(){
+    oldRender();
+    const qNo = current + 1;
+    if(images[qNo]){
+      const q = document.getElementById("question");
+      if(q && !q.querySelector(".qimg")){
+        q.insertAdjacentHTML("beforeend", '<br><img class="qimg" src="'+images[qNo]+'">');
+      }
+    }
+  };
+  render();
+})();
 </script></body></html>
