@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajasthan STS Senior Treatment Supervisor Bilingual Mock Test</title>
+<style>
+:root {
+  --primary:#0f4c81; --primary2:#0b3a63; --bg:#eef2f7; --card:#fff; --text:#111827;
+  --border:#d6dde8; --right:#15803d; --wrong:#b91c1c; --review:#f59e0b;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans Devanagari",Mangal,sans-serif;background:var(--bg);color:var(--text)}
+.exam-header{background:#153e75;color:white;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:20}
+.exam-title{font-size:17px;font-weight:800}
+.langbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.langbtn{background:#fff;color:#153e75;border:1px solid #fff;border-radius:5px;padding:8px 12px;font-weight:800;cursor:pointer}
+.langbtn.active{background:#ffe082;color:#111827}
+.container{max-width:1250px;margin:0 auto;padding:14px;display:grid;grid-template-columns:1fr 315px;gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:0 1px 8px rgba(0,0,0,.08)}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#f8fafc;border-bottom:1px solid var(--border);padding:12px 14px}
+.qno{font-weight:900;color:#0f4c81}
+.timer{font-size:18px;font-weight:900;color:#b91c1c;background:#fff;border:1px solid var(--border);border-radius:6px;padding:7px 10px}
+.qbody{padding:18px}
+.subject{font-size:13px;font-weight:800;color:#475569;margin-bottom:8px;text-transform:uppercase}
+.qtext{font-size:19px;line-height:1.65;font-weight:800;white-space:pre-line;margin-bottom:14px}
+.qtext .en{font-weight:700;color:#374151;border-top:1px dashed #cbd5e1;margin-top:10px;padding-top:10px}
+.opt{width:100%;display:block;text-align:left;background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 13px;margin:10px 0;cursor:pointer;font-size:16px;line-height:1.5}
+.opt:hover{background:#f8fafc}
+.opt.selected{border:2px solid var(--primary);background:#e6f0ff}
+.controls{padding:14px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
+.left-controls,.right-controls{display:flex;gap:10px;flex-wrap:wrap}
+button{border:none;border-radius:7px;padding:10px 14px;font-weight:800;cursor:pointer}
+.primary{background:var(--primary);color:#fff}
+.secondary{background:#e5e7eb;color:#111827}
+.warn{background:#f59e0b;color:#111827}
+.danger{background:#dc2626;color:#fff}
+.side{padding:13px;height:max-content;position:sticky;top:62px}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.num{padding:8px 0;border-radius:5px;text-align:center;font-weight:800;cursor:pointer;background:#e5e7eb;border:1px solid #cbd5e1}
+.num.active{outline:3px solid #0f4c81}
+.num.answered{background:#93c5fd}
+.num.review{background:#fde68a}
+.num.answered.review{background:linear-gradient(135deg,#93c5fd 50%,#fde68a 50%)}
+.legend{font-size:13px;color:#475569;display:grid;gap:4px;margin-top:12px}
+.dot{display:inline-block;width:13px;height:13px;border-radius:3px;margin-right:5px;vertical-align:-2px;border:1px solid #cbd5e1}
+.result{display:none;padding:18px}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0}
+.score-box{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
+.score-box b{display:block;font-size:23px;color:#0f4c81}
+.review-card{border:1px solid var(--border);border-radius:8px;padding:12px;margin:10px 0;background:#fff}
+.small{font-size:12px;color:#64748b}
+.history-item{font-size:13px;border-bottom:1px solid #e5e7eb;padding:7px 0}
+@media(max-width:850px){
+  .container{grid-template-columns:1fr}
+  .side{position:static}
+  .exam-header{align-items:flex-start;flex-direction:column}
+  .qtext{font-size:17px}
+  .score-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="exam-header">
+  <div class="exam-title">Rajasthan STS Senior Treatment Supervisor — Bilingual Mock Test</div>
+  <div class="langbar">
+    <span style="font-weight:700">Language:</span>
+    <button class="langbtn active" id="btn-hi" onclick="setLang('hi')">Hindi</button>
+    <button class="langbtn" id="btn-en" onclick="setLang('en')">English</button>
+    <button class="langbtn" id="btn-bi" onclick="setLang('bi')">Bilingual</button>
+  </div>
+</div>
+<div class="container">
+  <main class="card">
+    <section id="testArea">
+      <div class="qtop">
+        <div>
+          <div class="qno" id="qCount">Question 1/60</div>
+          <div class="small">Marking: +1 correct, -0.25 wrong</div>
+        </div>
+        <div class="timer" id="timer">60:00</div>
+      </div>
+      <div class="qbody">
+        <div class="subject" id="subjectLabel">Subject</div>
+        <div class="qtext" id="question"></div>
+        <div id="options"></div>
+      </div>
+      <div class="controls">
+        <div class="left-controls">
+          <button class="secondary" onclick="prevQ()">Previous</button>
+          <button class="secondary" onclick="clearAns()">Clear Response</button>
+          <button class="warn" onclick="toggleReview()">Mark for Review</button>
+        </div>
+        <div class="right-controls">
+          <button class="primary" onclick="saveNext()">Save & Next</button>
+          <button class="danger" onclick="submitTest()">Submit</button>
+        </div>
+      </div>
+    </section>
+    <section id="resultArea" class="result">
+      <h2>Result</h2>
+      <div id="scoreBox" class="score-grid"></div>
+      <button class="primary" onclick="showReview()">Show Answer Review</button>
+      <button class="secondary" onclick="restartTest()">Restart Test</button>
+      <div id="reviewArea"></div>
+    </section>
+  </main>
+  <aside class="card side">
+    <h3>Question Palette</h3>
+    <div class="palette" id="palette"></div>
+    <div class="legend">
+      <div><span class="dot" style="background:#93c5fd"></span>Answered</div>
+      <div><span class="dot" style="background:#fde68a"></span>Marked for Review</div>
+      <div><span class="dot" style="background:#e5e7eb"></span>Not Answered</div>
+    </div>
+    <hr>
+    <h3>Attempt History</h3>
+    <div class="small">Only this test history will show here.</div>
+    <div id="history"></div>
+  </aside>
+</div>
+<script>
+const TEST_ID = "rajasthan_sts_senior_treatment_supervisor_bilingual_v1";
+const questions = [{"id": 1, "hi": "राजस्थान की कुल स्थलीय सीमा की लंबाई है -", "en": "The total land boundary length of Rajasthan is -", "opts_hi": ["5091 किमी.", "5920 किमी.", "5290 किमी.", "5090 किमी."], "opts_en": ["5091 km", "5920 km", "5290 km", "5090 km"], "ans": 2}, {"id": 2, "hi": "निम्न में से कौनसा शहर पाकिस्तानी सीमा के निकट है-", "en": "Which of the following cities is near the Pakistani border?", "opts_hi": ["बीकानेर", "जैसलमेर", "गंगानगर", "हनुमानगढ़"], "opts_en": ["Bikaner", "Jaisalmer", "Ganganagar", "Hanumangarh"], "ans": 3}, {"id": 3, "hi": "2016 एसआरएस के अनुसार राजस्थान का शिशु मृत्यु दर कितना आंका गया है -", "en": "According to SRS 2016, what was the estimated infant mortality rate of Rajasthan?", "opts_hi": ["41", "43", "45", "47"], "opts_en": ["41", "43", "45", "47"], "ans": 1}, {"id": 4, "hi": "निम्न में से कौनसा कार्यक्रम राष्ट्रीय स्वास्थ्य मिशन का हिस्सा नहीं है -", "en": "Which of the following programmes is not a part of the National Health Mission?", "opts_hi": ["जननी सुरक्षा योजना", "108 एम्बूलेंस सेवा", "आदर्श विद्यालय योजना", "मिशन इन्द्रधनुष"], "opts_en": ["Janani Suraksha Yojana", "108 Ambulance Service", "Adarsh Vidyalaya Yojana", "Mission Indradhanush"], "ans": 3}, {"id": 5, "hi": "भामाशाह स्वास्थ्य बीमा योजना में परिवार को कितना बीमा कवर (रुपये) दिया जाता है -", "en": "How much insurance cover is given to a family under Bhamashah Swasthya Bima Yojana?", "opts_hi": ["30,000 - 3,00,000", "30,000 - 5,00,000", "20,000 - 3,00,000", "20,000 - 5,00,000"], "opts_en": ["30,000 - 3,00,000", "30,000 - 5,00,000", "20,000 - 3,00,000", "20,000 - 5,00,000"], "ans": 1}, {"id": 6, "hi": "एनटीसीपी कार्यक्रम प्रमुखता से किस गतिविधि से जुड़ा हुआ है -", "en": "The NTCP programme is mainly related to which activity?", "opts_hi": ["टी.बी. कंट्रोल", "टोबेको कंट्रोल", "टिटनस कंट्रोल", "अन्धता कार्यक्रम"], "opts_en": ["TB control", "Tobacco control", "Tetanus control", "Blindness programme"], "ans": 2}, {"id": 7, "hi": "एक लेबर रूम में आम तौर पर निम्न में से क्या उपलब्ध होगा-", "en": "Which of the following is generally available in a labour room?", "opts_hi": ["एल्बेन्डाजॉल", "टेमिफ्लू", "ऑक्सीटॉसिन", "फैक्टर 8/9"], "opts_en": ["Albendazole", "Tamiflu", "Oxytocin", "Factor 8/9"], "ans": 3}, {"id": 8, "hi": "निम्न में से कौनसी बीमारी रक्त से संबंधित है -", "en": "Which of the following diseases is related to blood?", "opts_hi": ["थैलेसिमिया", "टी.बी.", "चिकनगुनिया", "अन्धता"], "opts_en": ["Thalassemia", "TB", "Chikungunya", "Blindness"], "ans": 1}, {"id": 9, "hi": "किमोथैरेपी का संबंध कौनसी बीमारी से है -", "en": "Chemotherapy is related to which disease?", "opts_hi": ["टी.बी.", "कैंसर", "दिल की बीमारी", "डायबिटीज"], "opts_en": ["TB", "Cancer", "Heart disease", "Diabetes"], "ans": 2}, {"id": 10, "hi": "तपेदिक (टीबी) रोग में डॉट्स (DOTS) का क्या अर्थ है-", "en": "What does DOTS mean in tuberculosis (TB) disease?", "opts_hi": ["डायरेक्ट ऑब्जर्व्ड ट्रीटमेंट सिस्टम", "डिजीज ऑब्जर्व्ड ट्रीटमेंट सिस्टम", "डिजीज ऑब्जर्व्ड टेलीमेडिसन सिस्टम", "डायरेक्ट ऑब्जर्व्ड टेलीमेडिसन सिस्टम"], "opts_en": ["Direct Observed Treatment System", "Disease Observed Treatment System", "Disease Observed Telemedicine System", "Direct Observed Telemedicine System"], "ans": 1}, {"id": 11, "hi": "यूनिसेफ का पूरा नाम बताइये-", "en": "What is the full form of UNICEF?", "opts_hi": ["यूनाईटेड नेशन्स चिल्ड्रन्स फण्ड", "यूनाईटेड नेशन्स फण्ड फॉर केलिमिटी", "यूनाईटेड न्यूज फॉर चिल्ड्रन इन केलिमिटी", "इनमें से कोई नहीं"], "opts_en": ["United Nations Children's Fund", "United Nations Fund for Calamity", "United News for Children in Calamity", "None of these"], "ans": 1}, {"id": 12, "hi": "आशा सहयोगिनी का संबंध निम्न में से किस विभाग से नहीं है -", "en": "ASHA Sahyogini is not related to which department?", "opts_hi": ["पंचायती राज", "स्वास्थ्य विभाग", "पेयजल विभाग", "महिला एवं बाल विकास"], "opts_en": ["Panchayati Raj", "Health Department", "Drinking Water Department", "Women and Child Development"], "ans": 3}, {"id": 13, "hi": "यूरिनरी केथेटर उपकरण का प्रयोग किस कार्य के लिए किया जाता है-", "en": "For what purpose is a urinary catheter used?", "opts_hi": ["नवजात को श्वसन हेतु", "नवजात को उचित तापमान देने के लिए", "रोगी के मूत्र को एकत्रित करने को सुलभ करने के लिए", "उपरोक्त में से कोई नहीं"], "opts_en": ["For respiration of a newborn", "To provide proper temperature to a newborn", "To facilitate collection of the patient's urine", "None of the above"], "ans": 3}, {"id": 14, "hi": "विटामिन बी-1 की कमी के कारण कौनसा रोग हो सकता है-", "en": "Deficiency of Vitamin B1 may cause which disease?", "opts_hi": ["रतौंधी", "बेरी-बेरी", "स्कर्वी", "रिकेट्स"], "opts_en": ["Night blindness", "Beri-beri", "Scurvy", "Rickets"], "ans": 2}, {"id": 15, "hi": "विडाल टेस्ट किस बीमारी की पहचान के लिए करवाया जाता है -", "en": "Widal test is done to identify which disease?", "opts_hi": ["टायफाइड", "मलेरिया", "स्वाईन फ्लू", "टी.बी."], "opts_en": ["Typhoid", "Malaria", "Swine flu", "TB"], "ans": 1}, {"id": 16, "hi": "MTP अधिनियम किस प्रकार का नियंत्रण करता है -", "en": "What does the MTP Act regulate?", "opts_hi": ["लिंग प्रतिषेध तकनीक कन्या भ्रूण जाँच/हत्या रोकने हेतु", "गर्भपात के गैर कानूनी निपटारे के विरुद्ध", "निजी क्षेत्र के चिकित्सा संस्थानों/विधियों द्वारा रोगों का इलाज करना", "अनाधिकृत दवाइयों/टोटकों/विधियों द्वारा रोगों का इलाज करना"], "opts_en": ["Sex selection techniques to prevent female foetus testing/killing", "Against illegal disposal/termination of pregnancy", "Treatment by private medical institutions/methods", "Treatment by unauthorised medicines/quack methods"], "ans": 2}, {"id": 17, "hi": "स्वास्थ्य के क्षेत्र में एमडीटी पद्धति का उपयोग कौनसे रोग के संदर्भ में होता है -", "en": "In health, MDT method is used in reference to which disease?", "opts_hi": ["कुष्ट रोग", "तपेदिक", "चर्म रोग", "डायबिटीज"], "opts_en": ["Leprosy", "Tuberculosis", "Skin disease", "Diabetes"], "ans": 1}, {"id": 18, "hi": "WIFS के लिये राजस्थान के आंगनबाड़ी केन्द्रों में कौनसा दिन निश्चित है -", "en": "Which day is fixed for WIFS in Rajasthan Anganwadi centres?", "opts_hi": ["सोमवार", "मंगलवार", "गुरुवार", "शुक्रवार"], "opts_en": ["Monday", "Tuesday", "Thursday", "Friday"], "ans": 3}, {"id": 19, "hi": "एमयूएसी टेप से क्या पता लगता है -", "en": "What is detected/measured by MUAC tape?", "opts_hi": ["बच्चे का वजन", "बच्चे की ऊँचाई", "बच्चे का हिमोग्लोबिन", "बाजू की मोटाई"], "opts_en": ["Child's weight", "Child's height", "Child's haemoglobin", "Thickness of the arm"], "ans": 4}, {"id": 20, "hi": "विफ्स (WIFS) का पूरा नाम क्या है -", "en": "What is the full form of WIFS?", "opts_hi": ["Weekly Intensive Fire System", "World Intensive Folic Society", "Weekly Iron Folic Supplementation", "इनमें से कोई नहीं"], "opts_en": ["Weekly Intensive Fire System", "World Intensive Folic Society", "Weekly Iron Folic Supplementation", "None of these"], "ans": 3}, {"id": 21, "hi": "आशा सहयोगिनियों को स्वास्थ्य विभाग द्वारा मोबाइल सिम के जरिये जोड़ने की योजना को किस नाम से जाना जाता है-", "en": "The scheme to connect ASHA Sahyoginis with the Health Department through mobile SIM is known as -", "opts_hi": ["आशा सॉफ्ट", "आशा ज्योति", "आशा किरण", "आशा संचार"], "opts_en": ["ASHA Soft", "ASHA Jyoti", "ASHA Kiran", "ASHA Sanchar"], "ans": 1}, {"id": 22, "hi": "एच.आई.वी. एक व्यक्ति से दूसरे व्यक्ति में कैसे संचारित होता है-", "en": "How is HIV transmitted from one person to another?", "opts_hi": ["हाथ मिलाने से", "एच.आई.वी. संक्रमित खून चढ़ाने से", "एक साथ रहने से", "इनमें से कोई नहीं"], "opts_en": ["By shaking hands", "By transfusion of HIV infected blood", "By living together", "None of these"], "ans": 2}, {"id": 23, "hi": "डी-वॉर्मिंग (कृमि मुक्ति) कार्यक्रम में किस दवा का उपयोग किया जाता है -", "en": "Which medicine is used in the deworming programme?", "opts_hi": ["आयरन फोलिक", "पैरासिटामोल", "एल्बेन्डाजोल", "विटामिन K"], "opts_en": ["Iron folic", "Paracetamol", "Albendazole", "Vitamin K"], "ans": 3}, {"id": 24, "hi": "भारत में निम्नलिखित में से किस बीमारी से सबसे अधिक लोग मरते हैं -", "en": "In India, most people die due to which of the following diseases?", "opts_hi": ["तपेदिक", "कैंसर", "काला अजार", "जापानी एन्सेफलाइटिस"], "opts_en": ["Tuberculosis", "Cancer", "Kala-azar", "Japanese encephalitis"], "ans": 1}, {"id": 25, "hi": "आर एन टी सी पी के अन्तर्गत क्षय रोग के लिए रोग ज्ञात करने का विधिमान्य उपाय क्या है -", "en": "Under RNTCP, what is the valid method for diagnosis of tuberculosis?", "opts_hi": ["ट्यूबरक्युलिन टेस्ट", "चेस्ट एक्स-रे", "बलगम परीक्षा", "मास मिनिएचर रेडियोग्राफी"], "opts_en": ["Tuberculin test", "Chest X-ray", "Sputum examination", "Mass miniature radiography"], "ans": 3}, {"id": 26, "hi": "भारत में महिलाओं में सर्वाधिक सामान्य कैंसर किस अंग से संबंधित है -", "en": "The most common cancer among women in India is related to which organ?", "opts_hi": ["फेफड़े", "कोलोन", "सर्विक्स", "उदर"], "opts_en": ["Lungs", "Colon", "Cervix", "Abdomen"], "ans": 3}, {"id": 27, "hi": "कुपोषण प्रबन्धन के लिए पोषण संबंधी हस्तक्षेप में शामिल है-", "en": "Nutritional intervention for malnutrition management includes -", "opts_hi": ["6 माह पर अनुपूरक एवं पूरक आहार", "6 माह के बाद भी स्तनपान जारी रखना", "पूर्ण शिशुकाल में केवल स्तनपान", "6 माह पर स्तनपान एवं अनुपूरक आहार"], "opts_en": ["Complementary and supplementary food at 6 months", "Continuing breastfeeding after 6 months", "Exclusive breastfeeding throughout infancy", "Breastfeeding and complementary food at 6 months"], "ans": 4}, {"id": 28, "hi": "महिला नसबन्दी के बाद कितने दिनों के आराम की आवश्यकता होती है -", "en": "How many days of rest are required after female sterilization?", "opts_hi": ["15 दिनों का", "1 महीने का", "3 महीने का", "6 महीने का"], "opts_en": ["15 days", "1 month", "3 months", "6 months"], "ans": 1}, {"id": 29, "hi": "निम्नलिखित में से कौनसे गर्भ निरोधक साधन के इस्तेमाल से पहले लिखित सहमति की आवश्यकता होती है -", "en": "For which contraceptive method is written consent required before use?", "opts_hi": ["नसबन्दी (महिला और पुरुष)", "आई.यू.सी.डी. निवेशन", "गर्भ निरोधक सुई लगवाने के लिए", "उपरोक्त सभी"], "opts_en": ["Sterilization (female and male)", "IUCD insertion", "Contraceptive injection", "All of the above"], "ans": 4}, {"id": 30, "hi": "महिला नसबन्दी कब-कब की जा सकती है -", "en": "When can female sterilization be done?", "opts_hi": ["महावारी के पहले से सात दिनों के भीतर", "कभी भी जब पूर्णतया सुनिश्चित हो कि महिला गर्भवती नहीं है", "गर्भपात के साथ या 7 दिनों के अन्दर", "प्रसव के सात दिनों के अन्दर", "उपरोक्त सभी"], "opts_en": ["Within seven days before menstruation", "Any time when it is fully certain that the woman is not pregnant", "With abortion or within 7 days", "Within seven days after delivery", "All of the above"], "ans": 5}, {"id": 31, "hi": "निम्नलिखित गर्भनिरोधक साधनों में से कौनसा साधन यौन जनित रोगों से बचाता है -", "en": "Which contraceptive method protects from sexually transmitted diseases?", "opts_hi": ["ओरल पिल्स", "आईयूसीडी", "कंडोम", "कोई भी नहीं"], "opts_en": ["Oral pills", "IUCD", "Condom", "None"], "ans": 3}, {"id": 32, "hi": "सरदार पटेल पुलिस सुरक्षा और दांडिक न्याय विश्वविद्यालय की स्थापना कहाँ की जा रही है -", "en": "Where is Sardar Patel University of Police, Security and Criminal Justice being established?", "opts_hi": ["भरतपुर", "अजमेर", "अलवर", "जोधपुर"], "opts_en": ["Bharatpur", "Ajmer", "Alwar", "Jodhpur"], "ans": 4}, {"id": 33, "hi": "राजस्थान के किन शहरों में पुलिस कमिश्नर प्रणाली लागू की गई है -", "en": "In which cities of Rajasthan has the Police Commissioner system been implemented?", "opts_hi": ["जयपुर और जोधपुर", "जयपुर और उदयपुर", "जयपुर और अजमेर", "जयपुर और कोटा"], "opts_en": ["Jaipur and Jodhpur", "Jaipur and Udaipur", "Jaipur and Ajmer", "Jaipur and Kota"], "ans": 1}, {"id": 34, "hi": "राजस्थान में क्रिकेट का सबसे बड़ा पुरस्कार कौनसा है-", "en": "Which is the biggest cricket award in Rajasthan?", "opts_hi": ["गुरु वशिष्ठ अवार्ड", "महाराणा प्रताप पुरस्कार", "मथुरादास माथुर क्रिकेट अवार्ड", "अर्जुन पुरस्कार"], "opts_en": ["Guru Vashishtha Award", "Maharana Pratap Award", "Mathuradas Mathur Cricket Award", "Arjuna Award"], "ans": 3}, {"id": 35, "hi": "महाराणा मेवाड़ फाउंडेशन द्वारा प्रदान किये जाने वाले पुरस्कारों में सर्वोच्च सम्मान हैं -", "en": "Which is the highest honour among the awards given by Maharana Mewar Foundation?", "opts_hi": ["हकीम खाँ सूर", "कर्नल जेम्स टॉड अलंकरण", "हल्दी घाटी", "पन्नाधाय"], "opts_en": ["Hakim Khan Sur", "Colonel James Tod Award", "Haldighati", "Pannadhay"], "ans": 2}, {"id": 36, "hi": "हाल ही में राजस्थान का कौनसा मंदिर राष्ट्रीय धरोहर बनाया गया है -", "en": "Which temple of Rajasthan was recently made a national heritage site?", "opts_hi": ["केसरियानाथ मंदिर", "नाथद्वारा मंदिर", "पुष्कर ब्रह्मा मंदिर", "सालासर मंदिर"], "opts_en": ["Kesariyanath Temple", "Nathdwara Temple", "Pushkar Brahma Temple", "Salasar Temple"], "ans": 3}, {"id": 37, "hi": "घाट की गूणी सुरंग परियोजना का संबंध किस जिले से है-", "en": "Ghat Ki Guni tunnel project is related to which district?", "opts_hi": ["जयपुर", "अजमेर", "अलवर", "भरतपुर"], "opts_en": ["Jaipur", "Ajmer", "Alwar", "Bharatpur"], "ans": 1}, {"id": 38, "hi": "राजस्थान राज्य का कुल क्षेत्रफल है, लगभग-", "en": "The total area of Rajasthan state is approximately -", "opts_hi": ["2 लाख 24 हजार वर्ग किमी.", "3 लाख 42 हजार वर्ग किमी.", "4 लाख 24 हजार वर्ग किमी.", "5 लाख 42 हजार वर्ग किमी."], "opts_en": ["2 lakh 24 thousand sq km", "3 lakh 42 thousand sq km", "4 lakh 24 thousand sq km", "5 lakh 42 thousand sq km"], "ans": 2}, {"id": 39, "hi": "कर्क रेखा राजस्थान के किन जिलों से होकर गुजरती है-", "en": "The Tropic of Cancer passes through which districts of Rajasthan?", "opts_hi": ["बारां व झालवाड़", "बाड़मेर व चूरू", "बाँसवाड़ा व डूंगरपुर", "बूंदी व झालावाड़"], "opts_en": ["Baran and Jhalawar", "Barmer and Churu", "Banswara and Dungarpur", "Bundi and Jhalawar"], "ans": 3}, {"id": 40, "hi": "जैसलमेर, राजस्थान का सबसे बड़ा जिला धौलपुर जिले से बड़ा है-", "en": "Jaisalmer, the largest district of Rajasthan, is how many times larger than Dholpur district?", "opts_hi": ["12.66 गुणा", "15.22 गुणा", "11.22 गुणा", "16.66 गुणा"], "opts_en": ["12.66 times", "15.22 times", "11.22 times", "16.66 times"], "ans": 1}, {"id": 41, "hi": "मई, 2018 में किस राज्य में चुनाव सम्पन्न हुए-", "en": "In May 2018, elections were held in which state?", "opts_hi": ["कर्नाटक", "ओडिशा", "गुजरात", "हरियाणा"], "opts_en": ["Karnataka", "Odisha", "Gujarat", "Haryana"], "ans": 1}, {"id": 42, "hi": "जली-कडू खेल का संबंध किस राज्य से है -", "en": "Jallikattu game is related to which state?", "opts_hi": ["हरियाणा", "गुजरात", "तमिलनाडू", "राजस्थान"], "opts_en": ["Haryana", "Gujarat", "Tamil Nadu", "Rajasthan"], "ans": 3}, {"id": 43, "hi": "निम्नलिखित में से किस राज्य में वर्तमान में कांग्रेस पार्टी की सरकार है -", "en": "In which of the following states was there a Congress party government at that time?", "opts_hi": ["हरियाणा", "दिल्ली", "पंजाब", "बिहार"], "opts_en": ["Haryana", "Delhi", "Punjab", "Bihar"], "ans": 3}, {"id": 44, "hi": "भारत के वर्तमान उपराष्ट्रपति कौन है", "en": "Who was the Vice President of India at that time?", "opts_hi": ["रामनाथ कोविंद", "वेंकैया नायडू", "एम.एम. जोशी", "हामिद अंसारी"], "opts_en": ["Ramnath Kovind", "Venkaiah Naidu", "M. M. Joshi", "Hamid Ansari"], "ans": 2}, {"id": 45, "hi": "निम्नलिखित में से कौन भारत के राष्ट्रपति नहीं रहे हैं-", "en": "Which of the following has not been the President of India?", "opts_hi": ["ज्ञानी जैलसिंह", "हामिद अंसारी", "ए.पी.जे. कलाम", "प्रणव मुखर्जी"], "opts_en": ["Giani Zail Singh", "Hamid Ansari", "A. P. J. Kalam", "Pranab Mukherjee"], "ans": 2}, {"id": 46, "hi": "हाल ही में किस स्थान को लेकर भारत व चीन की सेना आमने-सामने हो गयी थी-", "en": "Recently, at which place did the armies of India and China face each other?", "opts_hi": ["डोकलाम", "लद्दाख", "आईजोल", "शिलोंग"], "opts_en": ["Doklam", "Ladakh", "Aizawl", "Shillong"], "ans": 1}, {"id": 47, "hi": "अमेरिका के राष्ट्रपति बनने के लिए डोनाल्ड ट्रम्प ने कितने मत प्राप्त किये थे-", "en": "How many electoral votes did Donald Trump get to become the President of the USA?", "opts_hi": ["3000", "232", "40000", "306"], "opts_en": ["3000", "232", "40000", "306"], "ans": 4}, {"id": 48, "hi": "भारत देश के वर्तमान केन्द्रीय स्वास्थ्य मंत्री कौन है -", "en": "Who was the then Union Health Minister of India?", "opts_hi": ["काली चरण सर्राफ", "राजेन्द्र राठौड़", "डॉ. हर्ष वर्धन", "जे.पी. नड्डा"], "opts_en": ["Kali Charan Saraf", "Rajendra Rathore", "Dr. Harsh Vardhan", "J. P. Nadda"], "ans": 4}, {"id": 49, "hi": "विश्व के वण्डर्स में शामिल पिरामिड देखने के लिए आपको कौनसे देश जाना होगा -", "en": "To see the pyramids included among the wonders of the world, which country would you visit?", "opts_hi": ["मिस्र", "कुवैत", "यूनान", "इटली"], "opts_en": ["Egypt", "Kuwait", "Greece", "Italy"], "ans": 1}, {"id": 50, "hi": "निमोनिया बीमारी से बचाने के लिए हाल ही में कौनसा टीका शुरू किया गया है -", "en": "Which vaccine was recently introduced to protect against pneumonia?", "opts_hi": ["पीसीवी", "एम.आर.", "मिजल्स", "पेंटावेलेंट"], "opts_en": ["PCV", "MR", "Measles", "Pentavalent"], "ans": 1}, {"id": 51, "hi": "मिशन परिवार विकास योजना में जिलों के चयन का आधार क्या है -", "en": "What is the basis for selection of districts under Mission Parivar Vikas?", "opts_hi": ["जनसंख्या 10 लाख से ज्यादा होना", "टीएफआर 3 या 3 से ज्यादा होना", "मातृ मृत्यु दर 200 से अधिक", "शिशु मृत्यु दर 60 से ज्यादा"], "opts_en": ["Population more than 10 lakh", "TFR 3 or more", "Maternal mortality rate above 200", "Infant mortality rate above 60"], "ans": 2}, {"id": 52, "hi": "निम्न में से कौनसी बीमारी जन्मजात बीमारी की श्रेणी में नहीं आती हैं -", "en": "Which of the following diseases does not fall under the category of congenital disease?", "opts_hi": ["क्लेफ्ट लिप", "क्लब फुट", "डायरिया", "न्यूरल ट्यूब डिफेक्ट"], "opts_en": ["Cleft lip", "Club foot", "Diarrhoea", "Neural tube defect"], "ans": 3}, {"id": 53, "hi": "एड्स विषाणु के लिए सबसे आजमाई गई दवा निम्नलिखित हैं-", "en": "Which of the following is the most tried drug for AIDS virus?", "opts_hi": ["जीडोवुडीन (एजीडोथाइमिडीन)", "माइकोनोजोल", "नोनॉक्सिनॉल 9", "विराजोल"], "opts_en": ["Zidovudine (Azidothymidine)", "Miconazole", "Nonoxynol-9", "Virazole"], "ans": 1}, {"id": 54, "hi": "एक पौधा जो वन्य अवस्था में नहीं पाया जाता है और जो पालतू बनाने की प्रक्रिया (डोमेस्टिकेशन) द्वारा उत्पन्न हुआ है, उसे कहा जाता है -", "en": "A plant not found in the wild state and produced by the process of domestication is called -", "opts_hi": ["कृषिज (कल्टीजन)", "कल्टीवार", "क्लोन", "सांकुरक"], "opts_en": ["Cultigen", "Cultivar", "Clone", "Seedling"], "ans": 1}, {"id": 55, "hi": "परागकण है -", "en": "Pollen grain is -", "opts_hi": ["अपूर्ण विकसित भ्रूण", "अपूर्ण विकसित नर युग्मकोद्भिद्", "बीजाणु मातृ कोशिका", "एक नर शुक्राणु कोशिका"], "opts_en": ["Incompletely developed embryo", "Incompletely developed male gametophyte", "Spore mother cell", "A male sperm cell"], "ans": 2}, {"id": 56, "hi": "जिस पादप में नर और मादा दोनों पुष्प उपस्थित हों, उसे कहते हैं-", "en": "A plant in which both male and female flowers are present is called -", "opts_hi": ["द्विलैंगिक", "पृथकलिंगी", "उभयलिंगाश्रयी", "एकसंगमनी"], "opts_en": ["Bisexual", "Dioecious", "Monoecious", "Monogamous"], "ans": 3}, {"id": 57, "hi": "पोलियो का पहला प्रभावशाली टीका निम्नलिखित ने तैयार किया था-", "en": "The first effective polio vaccine was prepared by -", "opts_hi": ["जॉन हेनशैम गिब्बन", "जेम्स सिम्पसन", "जोनास ई-साल्क", "रॉबर्ट एडवर्ड्स"], "opts_en": ["John Heysham Gibbon", "James Simpson", "Jonas E. Salk", "Robert Edwards"], "ans": 3}, {"id": 58, "hi": "अम्ल वर्षा किनके द्वारा होने वाले पर्यावरण प्रदूषण के कारण होती है -", "en": "Acid rain is caused by environmental pollution due to -", "opts_hi": ["कार्बन डाइऑक्साइड और नाइट्रोजन", "कार्बन मोनो ऑक्साइड और कार्बन डाइऑक्साइड", "ओजोन और कार्बन डाइऑक्साइड", "नाइट्रस ऑक्साइड और सल्फर डाइऑक्साइड"], "opts_en": ["Carbon dioxide and nitrogen", "Carbon monoxide and carbon dioxide", "Ozone and carbon dioxide", "Nitrous oxide and sulphur dioxide"], "ans": 4}, {"id": 59, "hi": "विरप्पन, चेजिंग द ब्रिगैंड नामक पुस्तक के लेखक कौन है-", "en": "Who is the author of the book 'Veerappan: Chasing the Brigand'?", "opts_hi": ["जयराम रमेश", "विजय कुमार", "यासीर उस्मान", "सुमित्रा महाजन"], "opts_en": ["Jairam Ramesh", "Vijay Kumar", "Yasir Usman", "Sumitra Mahajan"], "ans": 2}, {"id": 60, "hi": "अब तक राजस्थान रॉयल्स ने आईपीएल फाईनल में कितनी बार जीत हासिल की है -", "en": "How many times had Rajasthan Royals won the IPL final till then?", "opts_hi": ["1", "2", "3", "4"], "opts_en": ["1", "2", "3", "4"], "ans": 1}];
+let current = 0;
+let lang = localStorage.getItem(TEST_ID + "_lang") || "hi";
+let answers = Array(questions.length).fill(null);
+let review = Array(questions.length).fill(false);
+let submitted = false;
+let totalSeconds = 60 * 60;
+
+function esc(s) {
+  return String(s ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>");
+}
+function getSubject(q) {
+  if (q.id >= 1 && q.id <= 31) return lang === "en" ? "Health / Medical Programmes" : "स्वास्थ्य / चिकित्सा कार्यक्रम";
+  if (q.id >= 32 && q.id <= 51) return lang === "en" ? "Rajasthan GK / Current Affairs" : "राजस्थान GK / करंट अफेयर्स";
+  return lang === "en" ? "Science / Health" : "विज्ञान / स्वास्थ्य";
+}
+function textFor(q) {
+  if (lang === "hi") return esc(q.hi);
+  if (lang === "en") return esc(q.en);
+  return `<div>${esc(q.hi)}</div><div class="en">${esc(q.en)}</div>`;
+}
+function optFor(q, i) {
+  if (lang === "hi") return esc(q.opts_hi[i] || "");
+  if (lang === "en") return esc(q.opts_en[i] || "");
+  return `<b>HI:</b> ${esc(q.opts_hi[i] || "")}<br><b>EN:</b> ${esc(q.opts_en[i] || "")}`;
+}
+function render() {
+  const q = questions[current];
+  document.getElementById("qCount").textContent = `Question ${current+1}/${questions.length}`;
+  document.getElementById("subjectLabel").textContent = getSubject(q);
+  document.getElementById("question").innerHTML = (current+1) + ". " + textFor(q);
+  const optDiv = document.getElementById("options");
+  optDiv.innerHTML = "";
+  q.opts_hi.forEach((_, i) => {
+    const btn = document.createElement("button");
+    btn.className = "opt" + (answers[current] === i+1 ? " selected" : "");
+    btn.innerHTML = `(${i+1}) ${optFor(q,i)}`;
+    btn.onclick = () => {
+      if (!submitted) {
+        answers[current] = i+1;
+        saveState();
+        render();
+      }
+    };
+    optDiv.appendChild(btn);
+  });
+  renderPalette();
+  updateLangButtons();
+}
+function updateLangButtons() {
+  ["hi","en","bi"].forEach(x => document.getElementById("btn-"+x).classList.toggle("active", lang===x));
+}
+function setLang(x) {
+  lang = x;
+  localStorage.setItem(TEST_ID + "_lang", lang);
+  render();
+}
+function renderPalette() {
+  const p = document.getElementById("palette");
+  p.innerHTML = "";
+  questions.forEach((q,i) => {
+    const d = document.createElement("div");
+    d.className = "num" + (i===current ? " active" : "") + (answers[i] ? " answered" : "") + (review[i] ? " review" : "");
+    d.textContent = i+1;
+    d.onclick = () => { current=i; saveState(); render(); };
+    p.appendChild(d);
+  });
+}
+function prevQ() { if (current>0) { current--; saveState(); render(); } }
+function saveNext() { if (current < questions.length-1) { current++; saveState(); render(); } }
+function clearAns() { answers[current] = null; saveState(); render(); }
+function toggleReview() { review[current] = !review[current]; saveState(); render(); }
+function submitTest() {
+  if (!confirm("Submit this test?")) return;
+  submitted = true;
+  let correct=0, wrong=0, attempted=0;
+  questions.forEach((q,i) => {
+    if (answers[i]) {
+      attempted++;
+      if (answers[i] === q.ans) correct++; else wrong++;
+    }
+  });
+  const skipped = questions.length - attempted;
+  const marks = correct - wrong * 0.25;
+  document.getElementById("testArea").style.display = "none";
+  document.getElementById("resultArea").style.display = "block";
+  document.getElementById("scoreBox").innerHTML = `
+    <div class="score-box"><b>${attempted}</b>Attempted</div>
+    <div class="score-box"><b>${correct}</b>Correct</div>
+    <div class="score-box"><b>${wrong}</b>Wrong</div>
+    <div class="score-box"><b>${marks.toFixed(2)}</b>Score</div>
+  `;
+  saveHistory({date:new Date().toLocaleString(), attempted, correct, wrong, skipped, marks:marks.toFixed(2)});
+  localStorage.removeItem(TEST_ID + "_state");
+  loadHistory();
+}
+function showReview() {
+  let out = "<h3>Answer Review</h3>";
+  questions.forEach((q,i) => {
+    const status = !answers[i] ? "Skipped" : (answers[i] === q.ans ? "Correct" : "Wrong");
+    out += `<div class="review-card">
+      <b>Q${i+1}.</b> ${textFor(q)}<br>
+      <span class="small">Your answer: ${answers[i] || "-"} | Correct answer: ${q.ans} | Status: ${status}</span>
+    </div>`;
+  });
+  document.getElementById("reviewArea").innerHTML = out;
+}
+function restartTest() {
+  if (!confirm("Restart this test?")) return;
+  current=0; answers=Array(questions.length).fill(null); review=Array(questions.length).fill(false);
+  totalSeconds = 60*60; submitted=false;
+  localStorage.removeItem(TEST_ID + "_state");
+  document.getElementById("resultArea").style.display = "none";
+  document.getElementById("testArea").style.display = "block";
+  render();
+}
+function tick() {
+  if (submitted) return;
+  let m = Math.floor(totalSeconds/60), s = totalSeconds % 60;
+  document.getElementById("timer").textContent = String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+  if (totalSeconds <= 0) {
+    submitted = true;
+    alert("Time is over. Test will be submitted.");
+    submitted = false;
+    submitTest();
+  } else totalSeconds--;
+  saveState();
+}
+function saveState() {
+  localStorage.setItem(TEST_ID + "_state", JSON.stringify({current, answers, review, totalSeconds}));
+}
+function loadState() {
+  const raw = localStorage.getItem(TEST_ID + "_state");
+  if (raw) {
+    try {
+      const st = JSON.parse(raw);
+      current = st.current ?? 0;
+      answers = st.answers ?? answers;
+      review = st.review ?? review;
+      totalSeconds = st.totalSeconds ?? totalSeconds;
+    } catch(e) {}
+  }
+}
+function saveHistory(item) {
+  const key = TEST_ID + "_history";
+  let h = JSON.parse(localStorage.getItem(key) || "[]");
+  h.unshift(item);
+  h = h.slice(0,10);
+  localStorage.setItem(key, JSON.stringify(h));
+}
+function loadHistory() {
+  const h = JSON.parse(localStorage.getItem(TEST_ID + "_history") || "[]");
+  document.getElementById("history").innerHTML = h.length ? h.map(x =>
+    `<div class="history-item"><b>${x.date}</b><br>Score: ${x.marks} | Correct: ${x.correct} | Wrong: ${x.wrong}</div>`
+  ).join("") : "<p class='small'>No attempt yet.</p>";
+}
+loadState();
+render();
+loadHistory();
+setInterval(tick, 1000);
+</script>
+</body>
+</html>
