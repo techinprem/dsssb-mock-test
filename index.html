@@ -289,6 +289,40 @@
 </head>
 
 <body>
+  <body>
+
+<a href="index.html" class="site-logo" aria-label="Go to homepage">
+  <img src="images/logo.png" alt="Sanitary Inspector Mock Test">
+</a>
+
+<style>
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  max-width: 100%;
+}
+
+.site-logo img {
+  width: clamp(170px, 26vw, 360px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .site-logo img {
+    width: clamp(150px, 55vw, 260px);
+  }
+}
+
+@media (max-width: 420px) {
+  .site-logo img {
+    width: clamp(135px, 70vw, 230px);
+  }
+}
+</style>
   <header>
     <h1>Tech In Prem Mock Test Series</h1>
     <p>Click category to view tests</p>
