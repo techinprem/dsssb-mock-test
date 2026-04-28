@@ -59,8 +59,100 @@ button{border:none;border-radius:7px;padding:10px 14px;font-weight:800;cursor:po
   .score-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
+
+<style id="auto-common-mock-style">
+.math {
+  white-space: nowrap;
+  font-family: "Times New Roman", serif;
+}
+
+.frac {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0 4px;
+}
+
+.frac .top {
+  display: block;
+  padding: 0 4px 2px;
+  border-bottom: 1.5px solid currentColor;
+}
+
+.frac .bottom {
+  display: block;
+  padding: 2px 4px 0;
+}
+
+sup, sub {
+  line-height: 0;
+}
+
+.question-palette,
+.palette-buttons,
+#paletteButtons,
+#questionPalette,
+.palette-grid,
+.question-buttons {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  .exam-container,
+  .main-container,
+  .test-container,
+  .quiz-container,
+  .content-wrapper {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .side-panel,
+  .question-palette,
+  .palette-panel,
+  .right-panel {
+    width: 100% !important;
+    max-height: 260px;
+    overflow-y: auto;
+    margin-top: 10px;
+  }
+
+  button {
+    min-height: 38px;
+    font-size: 14px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+</style>
+
 </head>
 <body>
+
+<a href="index.html" data-auto-home-button style="
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 99999;
+  background: #0b5ed7;
+  color: #ffffff;
+  padding: 8px 13px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+">Home</a>
+
 <div class="exam-header">
   <div class="exam-title">Rajasthan STS Senior Treatment Supervisor — Bilingual Mock Test</div>
   <div class="langbar">
@@ -140,16 +232,16 @@ function getSubject(q) {
 function textFor(q) {
   if (lang === "hi") return esc(q.hi);
   if (lang === "en") return esc(q.en);
-  return `<div>${esc(q.hi)}</div><div class="en">${esc(q.en)}</div>`;
+  return `<div><span class="math">{esc(q.hi)}</div><div class="en"></span>{esc(q.en)}</div>`;
 }
 function optFor(q, i) {
   if (lang === "hi") return esc(q.opts_hi[i] || "");
   if (lang === "en") return esc(q.opts_en[i] || "");
-  return `<b>HI:</b> ${esc(q.opts_hi[i] || "")}<br><b>EN:</b> ${esc(q.opts_en[i] || "")}`;
+  return `<b>HI:</b> <span class="math">{esc(q.opts_hi[i] || "")}<br><b>EN:</b> </span>{esc(q.opts_en[i] || "")}`;
 }
 function render() {
   const q = questions[current];
-  document.getElementById("qCount").textContent = `Question ${current+1}/${questions.length}`;
+  document.getElementById("qCount").textContent = `Question <span class="math">{current+1}/</span>{questions.length}`;
   document.getElementById("subjectLabel").textContent = getSubject(q);
   document.getElementById("question").innerHTML = (current+1) + ". " + textFor(q);
   const optDiv = document.getElementById("options");
@@ -157,7 +249,7 @@ function render() {
   q.opts_hi.forEach((_, i) => {
     const btn = document.createElement("button");
     btn.className = "opt" + (answers[current] === i+1 ? " selected" : "");
-    btn.innerHTML = `(${i+1}) ${optFor(q,i)}`;
+    btn.innerHTML = `(<span class="math">{i+1}) </span>{optFor(q,i)}`;
     btn.onclick = () => {
       if (!submitted) {
         answers[current] = i+1;
@@ -208,10 +300,10 @@ function submitTest() {
   document.getElementById("testArea").style.display = "none";
   document.getElementById("resultArea").style.display = "block";
   document.getElementById("scoreBox").innerHTML = `
-    <div class="score-box"><b>${attempted}</b>Attempted</div>
-    <div class="score-box"><b>${correct}</b>Correct</div>
-    <div class="score-box"><b>${wrong}</b>Wrong</div>
-    <div class="score-box"><b>${marks.toFixed(2)}</b>Score</div>
+    <div class="score-box"><b><span class="math">{attempted}</b>Attempted</div>
+    <div class="score-box"><b></span>{correct}</b>Correct</div>
+    <div class="score-box"><b><span class="math">{wrong}</b>Wrong</div>
+    <div class="score-box"><b></span>{marks.toFixed(2)}</b>Score</div>
   `;
   saveHistory({date:new Date().toLocaleString(), attempted, correct, wrong, skipped, marks:marks.toFixed(2)});
   localStorage.removeItem(TEST_ID + "_state");
@@ -222,8 +314,8 @@ function showReview() {
   questions.forEach((q,i) => {
     const status = !answers[i] ? "Skipped" : (answers[i] === q.ans ? "Correct" : "Wrong");
     out += `<div class="review-card">
-      <b>Q${i+1}.</b> ${textFor(q)}<br>
-      <span class="small">Your answer: ${answers[i] || "-"} | Correct answer: ${q.ans} | Status: ${status}</span>
+      <b>Q<span class="math">{i+1}.</b> </span>{textFor(q)}<br>
+      <span class="small">Your answer: <span class="math">{answers[i] || "-"} | Correct answer: </span>{q.ans} | Status: <span class="math">{status}</span>
     </div>`;
   });
   document.getElementById("reviewArea").innerHTML = out;
@@ -274,7 +366,7 @@ function saveHistory(item) {
 function loadHistory() {
   const h = JSON.parse(localStorage.getItem(TEST_ID + "_history") || "[]");
   document.getElementById("history").innerHTML = h.length ? h.map(x =>
-    `<div class="history-item"><b>${x.date}</b><br>Score: ${x.marks} | Correct: ${x.correct} | Wrong: ${x.wrong}</div>`
+    `<div class="history-item"><b></span>{x.date}</b><br>Score: <span class="math">{x.marks} | Correct: </span>{x.correct} | Wrong: ${x.wrong}</div>`
   ).join("") : "<p class='small'>No attempt yet.</p>";
 }
 loadState();

@@ -90,8 +90,100 @@ button { cursor:pointer; border:none; border-radius:8px; padding:10px 14px; font
   .actions button { flex:1 1 100%; }
 }
 </style>
+
+<style id="auto-common-mock-style">
+.math {
+  white-space: nowrap;
+  font-family: "Times New Roman", serif;
+}
+
+.frac {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0 4px;
+}
+
+.frac .top {
+  display: block;
+  padding: 0 4px 2px;
+  border-bottom: 1.5px solid currentColor;
+}
+
+.frac .bottom {
+  display: block;
+  padding: 2px 4px 0;
+}
+
+sup, sub {
+  line-height: 0;
+}
+
+.question-palette,
+.palette-buttons,
+#paletteButtons,
+#questionPalette,
+.palette-grid,
+.question-buttons {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  .exam-container,
+  .main-container,
+  .test-container,
+  .quiz-container,
+  .content-wrapper {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .side-panel,
+  .question-palette,
+  .palette-panel,
+  .right-panel {
+    width: 100% !important;
+    max-height: 260px;
+    overflow-y: auto;
+    margin-top: 10px;
+  }
+
+  button {
+    min-height: 38px;
+    font-size: 14px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+</style>
+
 </head>
 <body>
+
+<a href="index.html" data-auto-home-button style="
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 99999;
+  background: #0b5ed7;
+  color: #ffffff;
+  padding: 8px 13px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+">Home</a>
+
 <div class="topbar">
   <div class="logo">Dr. Hari Singh Gour University Sanitary Inspector Mock Test</div>
   <div id="timer" class="timer hidden">02:00:00</div>
@@ -2490,7 +2582,7 @@ function formatTime(sec) {
   const h = String(Math.floor(sec/3600)).padStart(2,'0');
   const m = String(Math.floor((sec%3600)/60)).padStart(2,'0');
   const s = String(sec%60).padStart(2,'0');
-  return `${h}:${m}:${s}`;
+  return `<span class="math">{h}:</span>{m}:<span class="math">{s}`;
 }
 
 function startTest() {
@@ -2524,11 +2616,11 @@ function setLanguage(lang) {
 }
 
 function bilingualText(hi, en, type) {
-  if (type === 'hindi_only') return `<div class="hi">${escapeHtml(hi || en)}</div>`;
-  if (type === 'english_only') return `<div class="en">${escapeHtml(en || hi)}</div>`;
-  if (language === 'hi') return `<div class="hi">${escapeHtml(hi || en)}</div>`;
-  if (language === 'en') return `<div class="en">${escapeHtml(en || hi)}</div>`;
-  return `<div class="bilingual-block"><div class="hi">${escapeHtml(hi || en)}</div><div class="en">${escapeHtml(en || hi)}</div></div>`;
+  if (type === 'hindi_only') return `<div class="hi"></span>{escapeHtml(hi || en)}</div>`;
+  if (type === 'english_only') return `<div class="en"><span class="math">{escapeHtml(en || hi)}</div>`;
+  if (language === 'hi') return `<div class="hi"></span>{escapeHtml(hi || en)}</div>`;
+  if (language === 'en') return `<div class="en"><span class="math">{escapeHtml(en || hi)}</div>`;
+  return `<div class="bilingual-block"><div class="hi"></span>{escapeHtml(hi || en)}</div><div class="en"><span class="math">{escapeHtml(en || hi)}</div></div>`;
 }
 
 function getStatus(i) {
@@ -2550,18 +2642,18 @@ function statusClass(i) {
 function renderQuestion() {
   const q = questions[current];
   visited[current] = true;
-  document.getElementById('questionNumber').textContent = `Question ${current+1} of ${questions.length}`;
+  document.getElementById('questionNumber').textContent = `Question </span>{current+1} of <span class="math">{questions.length}`;
   document.getElementById('statusText').textContent = getStatus(current);
-  let imageHtml = q.image ? `<div style="margin:10px 0"><img src="${escapeHtml(q.image)}" alt="Question image" style="max-width:100%;border:1px solid #ddd;border-radius:10px"></div>` : "";
+  let imageHtml = q.image ? `<div style="margin:10px 0"><img src="</span>{escapeHtml(q.image)}" alt="Question image" style="max-width:100%;border:1px solid #ddd;border-radius:10px"></div>` : "";
   document.getElementById('questionText').innerHTML = bilingualText(q.question_hi, q.question_en, q.type) + imageHtml;
   const opts = q.options_en.map((opt, idx) => {
     const checked = answers[current] === idx ? 'checked' : '';
     const selected = answers[current] === idx ? 'selected' : '';
     const optText = bilingualText(q.options_hi[idx], q.options_en[idx], q.type);
-    return `<label class="option ${selected}">
-      <input type="radio" name="option" value="${idx}" ${checked} onchange="selectOption(${idx})">
-      <span class="option-label">${String.fromCharCode(65+idx)}.</span>
-      <span>${optText}</span>
+    return `<label class="option <span class="math">{selected}">
+      <input type="radio" name="option" value="</span>{idx}" <span class="math">{checked} onchange="selectOption(</span>{idx})">
+      <span class="option-label"><span class="math">{String.fromCharCode(65+idx)}.</span>
+      <span></span>{optText}</span>
     </label>`;
   }).join('');
   document.getElementById('optionsBox').innerHTML = opts;
@@ -2571,7 +2663,7 @@ function renderQuestion() {
 function renderPalette() {
   const grid = document.getElementById('paletteGrid');
   grid.innerHTML = questions.map((_, i) => 
-    `<button class="palette-btn ${statusClass(i)} ${i===current?'current':''}" onclick="goToQuestion(${i})">${i+1}</button>`
+    `<button class="palette-btn <span class="math">{statusClass(i)} </span>{i===current?'current':''}" onclick="goToQuestion(<span class="math">{i})"></span>{i+1}</button>`
   ).join('');
 }
 
@@ -2648,7 +2740,7 @@ function showResult(result) {
     ['Maximum Marks', result.maxMarks], ['Percentage', result.percentage + '%'], ['Time Taken', result.timeTaken],
     ['Marking Scheme', '+1 / -0.25']
   ];
-  document.getElementById('resultSummary').innerHTML = boxes.map(b => `<div class="score-box">${b[0]}<b>${b[1]}</b></div>`).join('');
+  document.getElementById('resultSummary').innerHTML = boxes.map(b => `<div class="score-box"><span class="math">{b[0]}<b></span>{b[1]}</b></div>`).join('');
   renderAnswerKey();
   renderHistory('historyResult');
 }
@@ -2656,13 +2748,13 @@ function showResult(result) {
 function renderAnswerKey() {
   document.getElementById('answerKey').innerHTML = questions.map((q,i) => {
     const user = answers[i];
-    const userText = user === null ? 'Not attempted' : `${String.fromCharCode(65+user)}. ${q.options_en[user]}`;
-    const corrText = `${String.fromCharCode(65+q.correct)}. ${q.options_en[q.correct]}`;
+    const userText = user === null ? 'Not attempted' : `<span class="math">{String.fromCharCode(65+user)}. </span>{q.options_en[user]}`;
+    const corrText = `<span class="math">{String.fromCharCode(65+q.correct)}. </span>{q.options_en[q.correct]}`;
     const cls = user === null ? '' : (user === q.correct ? 'correct' : 'wrong');
     return `<div class="answer-item">
-      <b>Q${i+1}.</b> ${escapeHtml(q.question_en)}<br>
-      <span class="correct">Correct Answer: ${escapeHtml(corrText)}</span><br>
-      <span class="${cls}">Your Answer: ${escapeHtml(userText)}</span><br>
+      <b>Q<span class="math">{i+1}.</b> </span>{escapeHtml(q.question_en)}<br>
+      <span class="correct">Correct Answer: <span class="math">{escapeHtml(corrText)}</span><br>
+      <span class="</span>{cls}">Your Answer: <span class="math">{escapeHtml(userText)}</span><br>
       <small>Explanation: Explanation not provided.</small>
     </div>`;
   }).join('');
@@ -2686,7 +2778,7 @@ function renderHistory(targetId) {
   }
   document.getElementById(targetId).innerHTML = `<table class="history-table">
     <thead><tr><th>Date</th><th>Score</th><th>Correct</th><th>Wrong</th><th>Attempted</th><th>Time</th></tr></thead>
-    <tbody>${list.map(r => `<tr><td>${r.date}</td><td>${r.score}/${r.maxMarks}</td><td>${r.correct}</td><td>${r.wrong}</td><td>${r.attempted}</td><td>${r.timeTaken}</td></tr>`).join('')}</tbody>
+    <tbody></span>{list.map(r => `<tr><td><span class="math">{r.date}</td><td></span>{r.score}/<span class="math">{r.maxMarks}</td><td></span>{r.correct}</td><td><span class="math">{r.wrong}</td><td></span>{r.attempted}</td><td>${r.timeTaken}</td></tr>`).join('')}</tbody>
   </table>`;
 }
 

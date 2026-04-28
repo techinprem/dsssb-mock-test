@@ -7,8 +7,100 @@
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,'Noto Sans Devanagari','Nirmala UI',sans-serif;background:#eef3f9;color:#111827}.header{background:#073763;color:white;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:50}.header h1{font-size:17px;margin:0;line-height:1.35}.timer{background:white;color:#b91c1c;border-radius:8px;padding:8px 12px;font-weight:800;white-space:nowrap}.container{max-width:1280px;margin:16px auto;padding:0 12px}.card{background:white;border-radius:12px;border:1px solid #d8e2ef;box-shadow:0 2px 8px rgba(15,23,42,.06);padding:18px}.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}.info{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px}.btn{padding:9px 13px;border-radius:8px;border:1px solid #cbd5e1;background:#f8fafc;color:#111827;font-weight:700;cursor:pointer;margin:3px}.btn.primary{background:#1d4ed8;color:white}.btn.success{background:#15803d;color:white}.btn.warn{background:#fff7ed;color:#9a3412}.btn.danger{background:#dc2626;color:white}.btn.active{background:#1d4ed8;color:white}.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 305px;gap:16px}.langbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;border-radius:999px;padding:5px 10px;font-weight:700;display:inline-block;margin:3px}.qtext{font-size:18px;line-height:1.65;white-space:pre-wrap;font-weight:650;margin:12px 0 14px;padding:12px;background:#f8fafc;border-left:4px solid #1d4ed8;border-radius:8px}.option{display:flex;gap:10px;width:100%;border:1px solid #d1d5db;border-radius:10px;margin:10px 0;padding:12px;cursor:pointer;line-height:1.45;background:white;text-align:left;font-size:16px}.option:hover{background:#eff6ff}.option.selected{border-color:#2563eb;background:#eff6ff;font-weight:700}.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:12px;border-top:1px solid #d8e2ef}.side{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 90px);display:flex;flex-direction:column}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.stat{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:10px;text-align:center}.stat b{display:block;font-size:20px}.palette-scroll{overflow-y:auto;border:1px solid #d8e2ef;border-radius:10px;padding:10px;background:#f8fafc;max-height:390px}.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.pbtn{height:38px;border-radius:8px;border:1px solid #cbd5e1;background:white;font-weight:800;cursor:pointer}.pbtn.current{outline:3px solid #2563eb}.pbtn.not-visited{background:white}.pbtn.not-answered{background:#fee2e2;border-color:#ef4444}.pbtn.answered{background:#dcfce7;border-color:#16a34a}.pbtn.review{background:#fef3c7;border-color:#f59e0b}.pbtn.answered-review{background:#ddd6fe;border-color:#7c3aed}.legend{display:grid;grid-template-columns:1fr;gap:5px;font-size:13px;margin:8px 0}.dot{width:16px;height:16px;border-radius:4px;border:1px solid #94a3b8;display:inline-block;vertical-align:middle;margin-right:6px}.result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.result-box{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px;text-align:center}.result-box strong{display:block;font-size:22px;color:#073763}.answer-row{border:1px solid #dbe3ef;border-radius:10px;padding:12px;margin:10px 0;background:white;line-height:1.5}.correct{color:#15803d;font-weight:800}.wrong{color:#b91c1c;font-weight:800}.muted,.small{font-size:13px;color:#64748b}.hidden{display:none!important}table{border-collapse:collapse;width:100%;background:white}th,td{border:1px solid #cbd5e1;padding:8px;text-align:left}th{background:#e2e8f0}@media(max-width:980px){.exam-layout{grid-template-columns:1fr}.side{position:static;max-height:none}.palette-scroll{max-height:210px}.palette{grid-template-columns:repeat(10,1fr)}}@media(max-width:520px){.header{flex-direction:column;align-items:flex-start}.start-grid,.result-grid{grid-template-columns:1fr}.palette{grid-template-columns:repeat(5,1fr)}.btn{width:100%;margin:4px 0}.nav{display:block}}
 </style>
+
+<style id="auto-common-mock-style">
+.math {
+  white-space: nowrap;
+  font-family: "Times New Roman", serif;
+}
+
+.frac {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0 4px;
+}
+
+.frac .top {
+  display: block;
+  padding: 0 4px 2px;
+  border-bottom: 1.5px solid currentColor;
+}
+
+.frac .bottom {
+  display: block;
+  padding: 2px 4px 0;
+}
+
+sup, sub {
+  line-height: 0;
+}
+
+.question-palette,
+.palette-buttons,
+#paletteButtons,
+#questionPalette,
+.palette-grid,
+.question-buttons {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  .exam-container,
+  .main-container,
+  .test-container,
+  .quiz-container,
+  .content-wrapper {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .side-panel,
+  .question-palette,
+  .palette-panel,
+  .right-panel {
+    width: 100% !important;
+    max-height: 260px;
+    overflow-y: auto;
+    margin-top: 10px;
+  }
+
+  button {
+    min-height: 38px;
+    font-size: 14px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+</style>
+
 </head>
 <body>
+
+<a href="index.html" data-auto-home-button style="
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 99999;
+  background: #0b5ed7;
+  color: #ffffff;
+  padding: 8px 13px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+">Home</a>
+
 <div class="header"><h1>RRB Paramedical Health Inspector Questions<br><span class="small" style="color:#dbeafe">+1 correct, -0.25 wrong | Bilingual CBT Mock Test</span></h1><div class="timer" id="timer">Time: 90:00</div></div>
 <div class="container">
 <section id="startScreen" class="card"><h2>Online Mock Test</h2><div class="start-grid"><div class="info"><b>Test Name:</b><br>RRB Paramedical Health Inspector Questions</div><div class="info"><b>Total Questions:</b><br>100</div><div class="info"><b>Total Marks:</b><br>100</div><div class="info"><b>Time Duration:</b><br>90 Minutes</div><div class="info"><b>Marking Scheme:</b><br>+1 Correct, -0.25 Wrong</div><div class="info"><b>Language:</b><br>Hindi / English / Bilingual</div></div><button class="btn success" onclick="startTest()">Start Test</button><div id="historyBox"></div></section>
@@ -2318,6 +2410,6 @@ const TEST_ID="rrb_paramedical_health_inspector_questions";const storageKey="moc
     "image": ""
   }
 ];let current=0,lang="bi",answers=Array(questions.length).fill(null),marked=Array(questions.length).fill(false),visited=Array(questions.length).fill(false),remaining=totalSeconds,timerInterval=null;
-function startTest(){document.getElementById("startScreen").classList.add("hidden");document.getElementById("examScreen").classList.remove("hidden");visited[0]=true;buildPalette();renderQuestion();timerInterval=setInterval(tick,1000);}function tick(){remaining--;updateTimer();if(remaining<=0)submitTest(true);}function updateTimer(){const m=String(Math.floor(remaining/60)).padStart(2,"0"),s=String(remaining%60).padStart(2,"0");document.getElementById("timer").textContent="Time: "+m+":"+s;}function setLang(v){lang=v;["btnHi","btnEn","btnBi"].forEach(id=>document.getElementById(id).classList.remove("active"));document.getElementById(v==="hi"?"btnHi":v==="en"?"btnEn":"btnBi").classList.add("active");renderQuestion();}function showQuestion(q){if(lang==="hi")return q.question_hi;if(lang==="en")return q.question_en;return "<b>Hindi:</b> "+q.question_hi+"<br><br><b>English:</b> "+q.question_en;}function showOption(q,i){if(lang==="hi")return q.options_hi[i];if(lang==="en")return q.options_en[i];return "<b>Hindi:</b> "+q.options_hi[i]+"<br><span class='muted'><b>English:</b> "+q.options_en[i]+"</span>";}function renderQuestion(){const q=questions[current];visited[current]=true;document.getElementById("sectionName").textContent=q.subject||"Section";document.getElementById("qNo").textContent="Question "+(current+1)+" / "+questions.length;document.getElementById("questionText").innerHTML=showQuestion(q);const optBox=document.getElementById("options");optBox.innerHTML="";q.options_hi.forEach((_,i)=>{const div=document.createElement("button");div.className="option"+(answers[current]===i?" selected":"");div.innerHTML="<b>("+(i+1)+")</b> <span>"+showOption(q,i)+"</span>";div.onclick=()=>{answers[current]=i;marked[current]=false;updateStats();buildPalette();renderQuestion();};optBox.appendChild(div);});updateStats();buildPalette();}function nextQ(){if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}function prevQ(){if(current>0)current--;visited[current]=true;renderQuestion();}function clearResponse(){answers[current]=null;marked[current]=false;renderQuestion();}function markReview(){marked[current]=true;if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}function statusClass(i){if(answers[i]!==null&&marked[i])return"answered-review";if(marked[i])return"review";if(answers[i]!==null)return"answered";if(visited[i])return"not-answered";return"not-visited";}function buildPalette(){const pal=document.getElementById("palette");pal.innerHTML="";questions.forEach((q,i)=>{const b=document.createElement("button");b.className="pbtn "+statusClass(i)+(i===current?" current":"");b.textContent=i+1;b.onclick=()=>{current=i;visited[current]=true;renderQuestion();};pal.appendChild(b);});}function updateStats(){const attempted=answers.filter(x=>x!==null).length;document.getElementById("attempted").textContent=attempted;document.getElementById("notAttempted").textContent=questions.length-attempted;}function submitTest(auto){if(!auto&&!confirm("Are you sure you want to submit the test?"))return;clearInterval(timerInterval);let attempted=0,notAttempted=0,correct=0,wrong=0;questions.forEach((q,i)=>{if(answers[i]===null)notAttempted++;else{attempted++;if(answers[i]===q.correct)correct++;else wrong++;}});const score=(correct*marksPerQuestion)-(wrong*negativeMarking),maxMarks=questions.length*marksPerQuestion,percentage=(score/maxMarks)*100,timeTaken=totalSeconds-remaining,result={date:new Date().toLocaleString(),attempted,notAttempted,correct,wrong,score:Number(score.toFixed(2)),maxMarks,percentage:Number(percentage.toFixed(2)),timeTaken:formatTime(timeTaken)};saveHistory(result);showResult(result);}function formatTime(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");}function saveHistory(result){const old=JSON.parse(localStorage.getItem(storageKey)||"[]");old.unshift(result);localStorage.setItem(storageKey,JSON.stringify(old.slice(0,10)));}function loadHistory(){const old=JSON.parse(localStorage.getItem(storageKey)||"[]");if(!old.length)return;let rows=old.map((h,i)=>`<tr><td>${i+1}</td><td>${h.date}</td><td>${h.score}</td><td>${h.percentage}%</td><td>${h.timeTaken}</td></tr>`).join("");document.getElementById("historyBox").innerHTML=`<h3>Attempt History - This Test Only</h3><table><tr><th>#</th><th>Date</th><th>Marks</th><th>%</th><th>Time</th></tr>${rows}</table>`;}function showResult(r){document.getElementById("examScreen").classList.add("hidden");document.getElementById("resultScreen").classList.remove("hidden");document.getElementById("timer").textContent="Submitted";document.getElementById("resultSummary").innerHTML=`<div class="result-grid"><div class="result-box"><span>Total Questions</span><strong>${questions.length}</strong></div><div class="result-box"><span>Attempted</span><strong>${r.attempted}</strong></div><div class="result-box"><span>Not Attempted</span><strong>${r.notAttempted}</strong></div><div class="result-box"><span>Correct</span><strong>${r.correct}</strong></div><div class="result-box"><span>Wrong</span><strong>${r.wrong}</strong></div><div class="result-box"><span>Marks Obtained</span><strong>${r.score}</strong></div><div class="result-box"><span>Maximum Marks</span><strong>${r.maxMarks}</strong></div><div class="result-box"><span>Percentage</span><strong>${r.percentage}%</strong></div><div class="result-box"><span>Time Taken</span><strong>${r.timeTaken}</strong></div><div class="result-box"><span>Marking Scheme</span><strong>+1 / -0.25</strong></div></div>`;let html="";questions.forEach((q,i)=>{const user=answers[i],ok=user===q.correct,correctText=q.options_en[q.correct]+" / "+q.options_hi[q.correct],userText=user===null?"Not Attempted":q.options_en[user]+" / "+q.options_hi[user];html+=`<div class="answer-row"><b>Q${i+1}.</b> ${q.question_en}<br><span class="muted">${q.question_hi}</span><div>Correct Answer: <span class="correct">${correctText}</span></div><div>Your Answer: <span class="${user===null?'muted':ok?'correct':'wrong'}">${userText}</span></div><div class="muted">Explanation: Explanation not provided.</div></div>`;});document.getElementById("answerKey").innerHTML=html;}loadHistory();updateTimer();
+function startTest(){document.getElementById("startScreen").classList.add("hidden");document.getElementById("examScreen").classList.remove("hidden");visited[0]=true;buildPalette();renderQuestion();timerInterval=setInterval(tick,1000);}function tick(){remaining--;updateTimer();if(remaining<=0)submitTest(true);}function updateTimer(){const m=String(Math.floor(remaining/60)).padStart(2,"0"),s=String(remaining%60).padStart(2,"0");document.getElementById("timer").textContent="Time: "+m+":"+s;}function setLang(v){lang=v;["btnHi","btnEn","btnBi"].forEach(id=>document.getElementById(id).classList.remove("active"));document.getElementById(v==="hi"?"btnHi":v==="en"?"btnEn":"btnBi").classList.add("active");renderQuestion();}function showQuestion(q){if(lang==="hi")return q.question_hi;if(lang==="en")return q.question_en;return "<b>Hindi:</b> "+q.question_hi+"<br><br><b>English:</b> "+q.question_en;}function showOption(q,i){if(lang==="hi")return q.options_hi[i];if(lang==="en")return q.options_en[i];return "<b>Hindi:</b> "+q.options_hi[i]+"<br><span class='muted'><b>English:</b> "+q.options_en[i]+"</span>";}function renderQuestion(){const q=questions[current];visited[current]=true;document.getElementById("sectionName").textContent=q.subject||"Section";document.getElementById("qNo").textContent="Question "+(current+1)+" / "+questions.length;document.getElementById("questionText").innerHTML=showQuestion(q);const optBox=document.getElementById("options");optBox.innerHTML="";q.options_hi.forEach((_,i)=>{const div=document.createElement("button");div.className="option"+(answers[current]===i?" selected":"");div.innerHTML="<b>("+(i+1)+")</b> <span>"+showOption(q,i)+"</span>";div.onclick=()=>{answers[current]=i;marked[current]=false;updateStats();buildPalette();renderQuestion();};optBox.appendChild(div);});updateStats();buildPalette();}function nextQ(){if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}function prevQ(){if(current>0)current--;visited[current]=true;renderQuestion();}function clearResponse(){answers[current]=null;marked[current]=false;renderQuestion();}function markReview(){marked[current]=true;if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}function statusClass(i){if(answers[i]!==null&&marked[i])return"answered-review";if(marked[i])return"review";if(answers[i]!==null)return"answered";if(visited[i])return"not-answered";return"not-visited";}function buildPalette(){const pal=document.getElementById("palette");pal.innerHTML="";questions.forEach((q,i)=>{const b=document.createElement("button");b.className="pbtn "+statusClass(i)+(i===current?" current":"");b.textContent=i+1;b.onclick=()=>{current=i;visited[current]=true;renderQuestion();};pal.appendChild(b);});}function updateStats(){const attempted=answers.filter(x=>x!==null).length;document.getElementById("attempted").textContent=attempted;document.getElementById("notAttempted").textContent=questions.length-attempted;}function submitTest(auto){if(!auto&&!confirm("Are you sure you want to submit the test?"))return;clearInterval(timerInterval);let attempted=0,notAttempted=0,correct=0,wrong=0;questions.forEach((q,i)=>{if(answers[i]===null)notAttempted++;else{attempted++;if(answers[i]===q.correct)correct++;else wrong++;}});const score=(correct*marksPerQuestion)-(wrong*negativeMarking),maxMarks=questions.length*marksPerQuestion,percentage=(score/maxMarks)*100,timeTaken=totalSeconds-remaining,result={date:new Date().toLocaleString(),attempted,notAttempted,correct,wrong,score:Number(score.toFixed(2)),maxMarks,percentage:Number(percentage.toFixed(2)),timeTaken:formatTime(timeTaken)};saveHistory(result);showResult(result);}function formatTime(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");}function saveHistory(result){const old=JSON.parse(localStorage.getItem(storageKey)||"[]");old.unshift(result);localStorage.setItem(storageKey,JSON.stringify(old.slice(0,10)));}function loadHistory(){const old=JSON.parse(localStorage.getItem(storageKey)||"[]");if(!old.length)return;let rows=old.map((h,i)=>`<tr><td><span class="math">{i+1}</td><td></span>{h.date}</td><td><span class="math">{h.score}</td><td></span>{h.percentage}%</td><td><span class="math">{h.timeTaken}</td></tr>`).join("");document.getElementById("historyBox").innerHTML=`<h3>Attempt History - This Test Only</h3><table><tr><th>#</th><th>Date</th><th>Marks</th><th>%</th><th>Time</th></tr></span>{rows}</table>`;}function showResult(r){document.getElementById("examScreen").classList.add("hidden");document.getElementById("resultScreen").classList.remove("hidden");document.getElementById("timer").textContent="Submitted";document.getElementById("resultSummary").innerHTML=`<div class="result-grid"><div class="result-box"><span>Total Questions</span><strong><span class="math">{questions.length}</strong></div><div class="result-box"><span>Attempted</span><strong></span>{r.attempted}</strong></div><div class="result-box"><span>Not Attempted</span><strong><span class="math">{r.notAttempted}</strong></div><div class="result-box"><span>Correct</span><strong></span>{r.correct}</strong></div><div class="result-box"><span>Wrong</span><strong><span class="math">{r.wrong}</strong></div><div class="result-box"><span>Marks Obtained</span><strong></span>{r.score}</strong></div><div class="result-box"><span>Maximum Marks</span><strong><span class="math">{r.maxMarks}</strong></div><div class="result-box"><span>Percentage</span><strong></span>{r.percentage}%</strong></div><div class="result-box"><span>Time Taken</span><strong><span class="math">{r.timeTaken}</strong></div><div class="result-box"><span>Marking Scheme</span><strong>+1 / -0.25</strong></div></div>`;let html="";questions.forEach((q,i)=>{const user=answers[i],ok=user===q.correct,correctText=q.options_en[q.correct]+" / "+q.options_hi[q.correct],userText=user===null?"Not Attempted":q.options_en[user]+" / "+q.options_hi[user];html+=`<div class="answer-row"><b>Q</span>{i+1}.</b> <span class="math">{q.question_en}<br><span class="muted"></span>{q.question_hi}</span><div>Correct Answer: <span class="correct"><span class="math">{correctText}</span></div><div>Your Answer: <span class="</span>{user===null?'muted':ok?'correct':'wrong'}">${userText}</span></div><div class="muted">Explanation: Explanation not provided.</div></div>`;});document.getElementById("answerKey").innerHTML=html;}loadHistory();updateTimer();
 </script>
 </body></html>
