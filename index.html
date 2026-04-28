@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tech In Prem Mock Test Series</title>
+  <title>Sanitary Inspector Mock Test</title>
 
   <style>
     * {
@@ -20,19 +20,23 @@
     header {
       background: linear-gradient(135deg, #0f172a, #1d4ed8);
       color: white;
-      padding: 28px 16px;
+      padding: 18px 16px;
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 28px;
+    .site-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      max-width: 100%;
     }
 
-    header p {
-      margin: 8px 0 0;
-      font-size: 15px;
-      opacity: 0.95;
+    .site-logo img {
+      width: clamp(180px, 32vw, 390px);
+      height: auto;
+      display: block;
+      object-fit: contain;
     }
 
     .container {
@@ -276,56 +280,39 @@
       font-size: 13px;
     }
 
+    @media (max-width: 768px) {
+      .site-logo img {
+        width: clamp(160px, 65vw, 280px);
+      }
+
+      header {
+        padding: 14px 10px;
+      }
+    }
+
     @media (max-width: 520px) {
       .result-grid {
         grid-template-columns: 1fr;
       }
 
-      header h1 {
-        font-size: 24px;
+      .category-title {
+        font-size: 17px;
+        padding: 14px;
+      }
+
+      .card h2 {
+        font-size: 16px;
       }
     }
   </style>
 </head>
 
 <body>
-  <body>
 
-<a href="index.html" class="site-logo" aria-label="Go to homepage">
-  <img src="images/logo.png" alt="Sanitary Inspector Mock Test">
-</a>
-
-<style>
-.site-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  max-width: 100%;
-}
-
-.site-logo img {
-  width: clamp(170px, 26vw, 360px);
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-@media (max-width: 768px) {
-  .site-logo img {
-    width: clamp(150px, 55vw, 260px);
-  }
-}
-
-@media (max-width: 420px) {
-  .site-logo img {
-    width: clamp(135px, 70vw, 230px);
-  }
-}
-</style>
   <header>
-    <h1>Tech In Prem Mock Test Series</h1>
-    <p>Click category to view tests</p>
+    <a href="index.html" class="site-logo" aria-label="Go to homepage">
+      <img src="images/logo.png" alt="Sanitary Inspector Mock Test Logo">
+    </a>
   </header>
 
   <main class="container">
