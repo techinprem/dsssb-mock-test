@@ -1,0 +1,2662 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Hari Singh Gour University Sanitary Supervisor Mock Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,'Noto Sans Devanagari','Mangal',sans-serif;background:#eef2f7;color:#111827}
+.header{background:#0f3b63;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
+.header h1{font-size:18px;margin:0}
+.timer{background:#fff;color:#b91c1c;padding:8px 12px;border-radius:8px;font-weight:bold}
+.container{max-width:1200px;margin:16px auto;padding:0 12px}
+.card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08);padding:20px}
+.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.info{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:12px}
+.btn{border:0;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer;background:#2563eb;color:white;margin:4px}
+.btn:hover{filter:brightness(.95)}
+.btn.secondary{background:#64748b}
+.btn.danger{background:#dc2626}
+.btn.warn{background:#f59e0b;color:#111827}
+.btn.success{background:#16a34a}
+.btn.light{background:#e5e7eb;color:#111827}
+.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:14px}
+.question-card{min-height:500px}
+.topbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;margin-bottom:12px}
+.langs .btn.active{background:#111827;color:#fff}
+.q-meta{font-weight:700;color:#334155}
+.question-text{font-size:18px;line-height:1.65;margin:12px 0;padding:12px;background:#f8fafc;border-left:4px solid #2563eb;border-radius:8px}
+.option{display:block;width:100%;text-align:left;background:#fff;border:1px solid #cbd5e1;border-radius:10px;margin:10px 0;padding:12px;cursor:pointer;font-size:16px;line-height:1.5}
+.option:hover{background:#eff6ff}
+.option.selected{background:#dbeafe;border-color:#2563eb;font-weight:700}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.palette-card{height:calc(100vh - 105px);display:flex;flex-direction:column}
+.palette-legend{display:grid;grid-template-columns:1fr;gap:6px;font-size:13px;margin:8px 0}
+.legend-item{display:flex;align-items:center;gap:8px}
+.dot{width:18px;height:18px;border-radius:4px;display:inline-block;border:1px solid #94a3b8}
+.palette-scroll{overflow-y:auto;border:1px solid #e5e7eb;border-radius:10px;padding:10px;max-height:420px;background:#f8fafc}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.qbtn{border:1px solid #94a3b8;border-radius:8px;padding:9px 0;cursor:pointer;font-weight:700;background:#e5e7eb;color:#111827}
+.qbtn.current{outline:3px solid #111827}
+.not-visited{background:#e5e7eb;color:#111827}
+.not-answered{background:#ef4444;color:#fff}
+.answered{background:#22c55e;color:#fff}
+.review{background:#a855f7;color:#fff}
+.answered-review{background:#7c3aed;color:#fff;position:relative}
+.result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.result-box{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:12px;text-align:center}
+.result-box strong{display:block;font-size:22px;color:#0f3b63}
+.answer-row{border:1px solid #e5e7eb;border-radius:10px;padding:12px;margin:10px 0;background:#fff}
+.correct{color:#15803d;font-weight:bold}
+.wrong{color:#b91c1c;font-weight:bold}
+.muted{color:#64748b}
+.image-box{border:2px dashed #94a3b8;border-radius:10px;padding:14px;margin:10px 0;background:#fff7ed;color:#9a3412;font-weight:700}
+table{border-collapse:collapse;width:100%;margin-top:12px}
+th,td{border:1px solid #cbd5e1;padding:8px;text-align:left}
+th{background:#e2e8f0}
+.hidden{display:none!important}
+@media(max-width:850px){
+  .exam-layout{grid-template-columns:1fr}
+  .palette-card{height:auto}
+  .palette-scroll{max-height:190px}
+  .palette{grid-template-columns:repeat(8,1fr)}
+  .result-grid,.start-grid{grid-template-columns:repeat(2,1fr)}
+  .header{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .palette{grid-template-columns:repeat(5,1fr)}
+  .result-grid,.start-grid{grid-template-columns:1fr}
+  .btn{width:100%;margin:3px 0}
+  .actions{display:block}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Dr. Hari Singh Gour University - Sanitary Supervisor</h1>
+  <div class="timer" id="timerBox">Time: 120:00</div>
+</div>
+
+<div class="container">
+  <section id="startScreen" class="card">
+    <h2>Online Mock Test</h2>
+    <div class="start-grid">
+      <div class="info"><b>Test Name:</b><br>Dr. Hari Singh Gour University Sanitary Supervisor</div>
+      <div class="info"><b>Total Questions:</b><br>100</div>
+      <div class="info"><b>Total Marks:</b><br>100</div>
+      <div class="info"><b>Time Duration:</b><br>120 Minutes</div>
+      <div class="info"><b>Marking Scheme:</b><br>+1 Correct, -0.25 Wrong</div>
+      <div class="info"><b>Languages:</b><br>Hindi / English / Bilingual</div>
+    </div>
+    <p class="muted">Hindi Grammar questions will remain Hindi-only and English Grammar questions will remain English-only. Image placeholders are included for Q36 and Q38.</p>
+    <button class="btn success" onclick="startTest()">Start Test</button>
+    <div id="historyBox"></div>
+  </section>
+
+  <section id="examScreen" class="hidden">
+    <div class="exam-layout">
+      <div class="card question-card">
+        <div class="topbar">
+          <div class="q-meta" id="qMeta"></div>
+          <div class="langs">
+            <button class="btn light" id="langHi" onclick="setLanguage('hi')">Hindi</button>
+            <button class="btn light" id="langEn" onclick="setLanguage('en')">English</button>
+            <button class="btn light active" id="langBi" onclick="setLanguage('bi')">Bilingual</button>
+          </div>
+        </div>
+        <div id="questionText" class="question-text"></div>
+        <div id="imageBox"></div>
+        <div id="optionsBox"></div>
+        <div class="actions">
+          <button class="btn secondary" onclick="prevQuestion()">Previous</button>
+          <button class="btn success" onclick="saveNext()">Save & Next</button>
+          <button class="btn warn" onclick="markReview()">Mark for Review</button>
+          <button class="btn light" onclick="clearResponse()">Clear Response</button>
+          <button class="btn danger" onclick="submitTest()">Submit Test</button>
+        </div>
+      </div>
+
+      <aside class="card palette-card">
+        <h3>Question Palette</h3>
+        <div class="palette-legend">
+          <div class="legend-item"><span class="dot not-visited"></span> Not Visited</div>
+          <div class="legend-item"><span class="dot not-answered"></span> Not Answered</div>
+          <div class="legend-item"><span class="dot answered"></span> Answered</div>
+          <div class="legend-item"><span class="dot review"></span> Marked for Review</div>
+          <div class="legend-item"><span class="dot answered-review"></span> Answered & Marked</div>
+        </div>
+        <div class="palette-scroll"><div class="palette" id="palette"></div></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="card hidden">
+    <h2>Result</h2>
+    <div id="resultSummary"></div>
+    <h3>Answer Key</h3>
+    <div id="answerKey"></div>
+  </section>
+</div>
+
+<script>
+const testId = "dr-hari-singh-gour-university-sanitary-supervisor";
+const storageKey = "mock_attempt_history_" + testId;
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const totalSeconds = 120 * 60;
+
+const questions = [
+  {
+    "id": 1,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "हिन्दी वर्णमाला में स्वरों की संख्या है-",
+    "question_en": "",
+    "options_hi": [
+      "आठ",
+      "नौ",
+      "ग्यारह",
+      "चौदह"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "कौन-सा शब्द बहुव्रीहि समास का सही उदाहरण है-",
+    "question_en": "",
+    "options_hi": [
+      "निशिदिन",
+      "त्रिभुवन",
+      "पंचानन",
+      "पुरुषासिंह"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "हिन्दी में शब्दों का लिंग निर्धारण किसके आधार पर होता है-",
+    "question_en": "",
+    "options_hi": [
+      "संज्ञा",
+      "सर्वनाम",
+      "क्रिया",
+      "प्रत्यय"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "इनमें से कौन-सा विपरीतार्थक शब्द 'पतझड़' का अर्थ है-",
+    "question_en": "",
+    "options_hi": [
+      "वसंत",
+      "विस्तार",
+      "सर्दी",
+      "शीतल"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "कौनसा शब्द बहुवचन है -",
+    "question_en": "",
+    "options_hi": [
+      "माता",
+      "प्राण",
+      "लड़का",
+      "किताब"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "'कृदन्त' प्रत्यय किन शब्दों के साथ जुड़ते हैं -",
+    "question_en": "",
+    "options_hi": [
+      "संज्ञा",
+      "सर्वनाम",
+      "विशेषण",
+      "क्रिया"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "'अ + ई = ए' स्वर संधि के किस भेद को व्यक्त करता है-",
+    "question_en": "",
+    "options_hi": [
+      "दीर्घ संधि",
+      "गुण संधि",
+      "वृद्धि संधि",
+      "यण संधि"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "कौनसा शब्द गुणवाचक विशेषण है -",
+    "question_en": "",
+    "options_hi": [
+      "लाल फूल",
+      "पाँच लड़के",
+      "दस हाथी",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "निम्नलिखित में कौनसा शब्द 'देशज' है -",
+    "question_en": "",
+    "options_hi": [
+      "अग्नि",
+      "प्रार्थना",
+      "खेत",
+      "लोटा"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "मन: + भाव = ?",
+    "question_en": "",
+    "options_hi": [
+      "मन्भाव",
+      "मनह्याव",
+      "मनोभाव",
+      "मनभाव"
+    ],
+    "options_en": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "शब्दकोष : परिभाषा :: मानचित्र : ?",
+    "question_en": "Dictionary : Definition :: Map : ?",
+    "options_hi": [
+      "एटलस",
+      "दक्षिण",
+      "दिशा",
+      "देशान्तर"
+    ],
+    "options_en": [
+      "Atlas",
+      "South",
+      "Direction",
+      "Longitude"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "मैकेनिक : गैराज :: प्रोफेसर : ?",
+    "question_en": "Mechanic : Garage :: Professor : ?",
+    "options_hi": [
+      "दुकान",
+      "कॉलेज",
+      "स्टेशन",
+      "अस्पताल"
+    ],
+    "options_en": [
+      "Shop",
+      "College",
+      "Station",
+      "Hospital"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "अपने पति से एक व्यक्ति के बारे में बात करते हुए औरत कहती है, \"उसके भाई का पिता मेरे दादा का एकमात्र पुत्र है।\" उस औरत का उस व्यक्ति से क्या संबंध है -",
+    "question_en": "While talking to her husband about a man, a woman says, \"The father of his brother is the only son of my grandfather.\" What is the woman’s relation to that man?",
+    "options_hi": [
+      "माँ",
+      "बुआ",
+      "बहन",
+      "पुत्री"
+    ],
+    "options_en": [
+      "Mother",
+      "Aunt",
+      "Sister",
+      "Daughter"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक लड़की एक लड़के की ओर इशारा करते हुए कहती है कि वह उसके चाचा के पिता की बेटी का पुत्र है। उस लड़के का उस लड़की से क्या संबंध है -",
+    "question_en": "Pointing to a boy, a girl says that he is the son of the daughter of the father of her uncle. What is the boy’s relation to the girl?",
+    "options_hi": [
+      "फुफेरा भाई",
+      "पुत्र",
+      "चाचा",
+      "भतीजा"
+    ],
+    "options_en": [
+      "Cousin",
+      "Son",
+      "Uncle",
+      "Nephew"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि कमल कहता है कि \"रवि की माँ की एकमात्र पुत्री है।\" तो कमल का रवि से क्या सम्बन्ध है -",
+    "question_en": "If Kamal says, \"Ravi’s mother has only one daughter.\" What is Kamal’s relation to Ravi?",
+    "options_hi": [
+      "दादा",
+      "मामा",
+      "पिता",
+      "भाई"
+    ],
+    "options_en": [
+      "Grandfather",
+      "Maternal uncle",
+      "Father",
+      "Brother"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "निम्न में से भिन्न शब्द चुनिये-",
+    "question_en": "Choose the odd word out.",
+    "options_hi": [
+      "Semicircle",
+      "Semi-final",
+      "Seminar",
+      "Semicolon"
+    ],
+    "options_en": [
+      "Semicircle",
+      "Semi-final",
+      "Seminar",
+      "Semicolon"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "निम्न से भिन्न शब्द चुनिये -",
+    "question_en": "Choose the odd word out.",
+    "options_hi": [
+      "मच्छर",
+      "तितली",
+      "मकड़ी",
+      "मक्खी"
+    ],
+    "options_en": [
+      "Mosquito",
+      "Butterfly",
+      "Spider",
+      "Housefly"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक कूट भाषा में यदि SWITCH को TVJSDG लिखा जाता है तो उसी कूट भाषा में CQFZE को कैसे लिखा जायेगा-",
+    "question_en": "In a code language, if SWITCH is written as TVJSDG, how will CQFZE be written in the same code language?",
+    "options_hi": [
+      "BARED",
+      "BRAED",
+      "BREAD",
+      "BRADE"
+    ],
+    "options_en": [
+      "BARED",
+      "BRAED",
+      "BREAD",
+      "BRADE"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक कूट भाषा में MIND को KGLB लिखा जाता है तथा ARGUE को YPESC लिखा जाता है तो उसी कूट भाषा में DIAGRAM को कैसे लिखा जायेगा-",
+    "question_en": "In a code language, MIND is written as KGLB and ARGUE is written as YPESC. How will DIAGRAM be written in the same code language?",
+    "options_hi": [
+      "BGYEPYK",
+      "BGYPYEK",
+      "GLPEYKB",
+      "LKBGYPK"
+    ],
+    "options_en": [
+      "BGYEPYK",
+      "BGYPYEK",
+      "GLPEYKB",
+      "LKBGYPK"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि एक निश्चित कोड भाषा में LUTE को MUTE लिखा जाता है तथा FATE को GATE लिखा जाता है तो उसी कोड भाषा में BLUE को कैसे लिखा जायेगा-",
+    "question_en": "If in a certain code language LUTE is written as MUTE and FATE is written as GATE, how will BLUE be written in that code language?",
+    "options_hi": [
+      "CLUE",
+      "GLUE",
+      "FLUE",
+      "SLUE"
+    ],
+    "options_en": [
+      "CLUE",
+      "GLUE",
+      "FLUE",
+      "SLUE"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "198, 194, 185, 169, ..... ?",
+    "question_en": "198, 194, 185, 169, ..... ?",
+    "options_hi": [
+      "144",
+      "128",
+      "96",
+      "116"
+    ],
+    "options_en": [
+      "144",
+      "128",
+      "96",
+      "116"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "34, 33, 49, 74, ...................",
+    "question_en": "34, 33, 49, 74, ...................",
+    "options_hi": [
+      "108",
+      "110",
+      "96",
+      "98"
+    ],
+    "options_en": [
+      "108",
+      "110",
+      "96",
+      "98"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "A, B, C, D, E, F, G, H तथा K एक गोल मेज के चारों तरफ केन्द्र की ओर मुँह करके बैठे हैं। B, G के बाएं चौथा है जो C के दायें दूसरा है। F, C के दायें चौथा है तथा K के बाएं दूसरा है। A, K के दायें चौथा है। D ना तो K का पड़ोसी है और ना ही B का। H, E के दायें तीसरा है। E के बाएं चौथा कौन है -",
+    "question_en": "A, B, C, D, E, F, G, H and K are sitting around a circular table facing the centre. B is fourth to the left of G, who is second to the right of C. F is fourth to the right of C and second to the left of K. A is fourth to the right of K. D is neither a neighbour of K nor of B. H is third to the right of E. Who is fourth to the left of E?",
+    "options_hi": [
+      "A",
+      "C",
+      "G",
+      "K"
+    ],
+    "options_en": [
+      "A",
+      "C",
+      "G",
+      "K"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "उपरोक्त व्यवस्था के अनुसार K के दायें दूसरा कौन है -",
+    "question_en": "According to the above arrangement, who is second to the right of K?",
+    "options_hi": [
+      "C",
+      "H",
+      "F",
+      "E"
+    ],
+    "options_en": [
+      "C",
+      "H",
+      "F",
+      "E"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दिये गये शब्दों को एक सार्थक क्रम में व्यवस्थित करें: 1. वितरण 2. लिफाफा 3. पत्र 4. पोस्ट 5. निकासी",
+    "question_en": "Arrange the following words in a meaningful order: 1. Distribution 2. Envelope 3. Letter 4. Post 5. Dispatch/Withdrawal",
+    "options_hi": [
+      "4,1,3,2,5",
+      "2,3,4,5,1",
+      "3,2,4,5,1",
+      "4,2,3,1,5"
+    ],
+    "options_en": [
+      "4,1,3,2,5",
+      "2,3,4,5,1",
+      "3,2,4,5,1",
+      "4,2,3,1,5"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "$14+6\\sqrt{5}$ का धनात्मक वर्गमूल का मान क्या है -",
+    "question_en": "What is the positive square root of $14+6\\sqrt{5}$?",
+    "options_hi": [
+      "$3+\\sqrt{5}$",
+      "$3-\\sqrt{5}$",
+      "$5+\\sqrt{5}$",
+      "$5-\\sqrt{5}$"
+    ],
+    "options_en": [
+      "$3+\\sqrt{5}$",
+      "$3-\\sqrt{5}$",
+      "$5+\\sqrt{5}$",
+      "$5-\\sqrt{5}$"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "एक निश्चित तारीख पर दो देशों के बीच खेले गए सभी एक दिवसीय मैचों में पाकिस्तान की भारत के मुकाबले सफलता दर 60% है। वे भारत से अगले 30 एक दिवसीय मैचों में लगातार हार गए और उनकी सफलता दर गिरकर 30% रह गई। दोनों देशों के बीच खेले गए एक दिवसीय मैचों की कुल संख्या बताइए-",
+    "question_en": "On a certain date, Pakistan’s success rate against India in all ODI matches played between the two countries was 60%. They lost the next 30 consecutive ODIs against India and their success rate fell to 30%. Find the total number of ODI matches played between the two countries.",
+    "options_hi": [
+      "50",
+      "45",
+      "60",
+      "30"
+    ],
+    "options_en": [
+      "50",
+      "45",
+      "60",
+      "30"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "किसी व्यापारी की आय एक वर्ष में 25% बढ़ जाती है और अगले वर्ष 4% घट जाती है। इस प्रकार पाँच वर्ष पश्चात् उसकी कुल आय 72000 रुपये होगी। उसकी वर्तमान आय कितनी है?",
+    "question_en": "A trader’s income increases by 25% in one year and decreases by 4% in the next year. In this way, after five years his total income will be Rs. 72,000. What is his present income?",
+    "options_hi": [
+      "10000",
+      "80000",
+      "40000",
+      "54000"
+    ],
+    "options_en": [
+      "10000",
+      "80000",
+      "40000",
+      "54000"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "5 अंकों की छोटी से छोटी संख्या ज्ञात करें जो 476 से विभाजित हो-",
+    "question_en": "Find the smallest five-digit number which is divisible by 476.",
+    "options_hi": [
+      "47600",
+      "10000",
+      "10476",
+      "10472"
+    ],
+    "options_en": [
+      "47600",
+      "10000",
+      "10476",
+      "10472"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "कितने प्रकार से एक समिति तीन अलग-अलग बैठकों के लिए तीन स्पीकरों को शेड्यूल कर सकती है, यदि वे सभी 5 संभावित तारीखों पर उपलब्ध हैं-",
+    "question_en": "In how many ways can a committee schedule three speakers for three different meetings, if all of them are available on 5 possible dates?",
+    "options_hi": [
+      "10",
+      "36",
+      "60",
+      "120"
+    ],
+    "options_en": [
+      "10",
+      "36",
+      "60",
+      "120"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "A, B तथा C एक काम को क्रमशः 10, 12 तथा 15 दिनों में पूरा कर सकते हैं। उन्होंने एक साथ काम करना आरंभ किया। A काम खत्म होने के 5 दिन पहले काम छोड़ देता है। A के काम छोड़ने के 2 दिन बाद B भी काम छोड़ देता है, तो काम कितने दिनों में समाप्त होगा-",
+    "question_en": "A, B and C can complete a work in 10, 12 and 15 days respectively. They started working together. A leaves the work 5 days before completion. Two days after A leaves, B also leaves. In how many days will the work be completed?",
+    "options_hi": [
+      "4 दिन",
+      "5 दिन",
+      "7 दिन",
+      "8 दिन"
+    ],
+    "options_en": [
+      "4 days",
+      "5 days",
+      "7 days",
+      "8 days"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "कोई दुकानदार किस अनुपात में 12 रु. प्रति किग्रा. वाली और 7 रु. प्रति किग्रा. वाली चीनी को मिश्रित करे कि मिश्रण का मूल्य 8 रुपये प्रति किग्रा. बन जाए-",
+    "question_en": "In what ratio should a shopkeeper mix sugar costing Rs. 12 per kg and Rs. 7 per kg so that the mixture costs Rs. 8 per kg?",
+    "options_hi": [
+      "$7:12$",
+      "$1:4$",
+      "$2:3$",
+      "$12:7$"
+    ],
+    "options_en": [
+      "$7:12$",
+      "$1:4$",
+      "$2:3$",
+      "$12:7$"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "टंकी की तली में छेद होने के कारण एक नल किसी टंकी को भरने में 36 घंटे का अतिरिक्त समय लेता है जबकि छेद की क्षमता नल से आधी है। नल द्वारा टंकी को भरने का सही समय कितना है -",
+    "question_en": "Due to a hole at the bottom of a tank, a tap takes 36 hours extra to fill the tank, while the capacity of the hole is half that of the tap. What is the actual time taken by the tap to fill the tank?",
+    "options_hi": [
+      "36 घंटे",
+      "24 घंटे",
+      "30 घंटे",
+      "18 घंटे"
+    ],
+    "options_en": [
+      "36 hours",
+      "24 hours",
+      "30 hours",
+      "18 hours"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "12 पंप प्रतिदिन 6 घंटे काम करते हुए एक पूरे भरे हुए जलाशय को 15 दिन में खाली कर देते हैं। कितने पंप 9 घंटे प्रतिदिन काम करते हुए उसी जलाशय को 12 दिन में खाली कर देंगे -",
+    "question_en": "12 pumps working 6 hours per day empty a completely filled reservoir in 15 days. How many pumps working 9 hours per day will empty the same reservoir in 12 days?",
+    "options_hi": [
+      "15",
+      "9",
+      "10",
+      "12"
+    ],
+    "options_en": [
+      "15",
+      "9",
+      "10",
+      "12"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "एक नदी के किनारे खड़ा व्यक्ति देखता है कि नदी के किनारे पर लगे वृक्ष द्वारा अंतरित कोण 60 डिग्री है। जब वह किनारे से 36 मीटर पीछे आता है, तो वह देखता है कि कोण 30 डिग्री है। नदी की चौड़ाई कितनी है -",
+    "question_en": "A person standing on the bank of a river observes that the angle subtended by a tree on the bank is 60°. When he moves 36 metres back from the bank, he observes the angle as 30°. What is the width of the river?",
+    "options_hi": [
+      "15 मी.",
+      "18 मी.",
+      "16 मी.",
+      "11 मी."
+    ],
+    "options_en": [
+      "15 m",
+      "18 m",
+      "16 m",
+      "11 m"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "दिए गए वृत्त में PQ जीवा की लम्बाई 18 सेमी. है। AB एक लंब समद्विभाजक है, जो PQ को M बिन्दु पर काटता है। यदि MB = 3 सेमी. है तो AB की लम्बाई ज्ञात करो -",
+    "question_en": "In the given circle, the length of chord PQ is 18 cm. AB is a perpendicular bisector which cuts PQ at point M. If MB = 3 cm, find the length of AB.",
+    "options_hi": [
+      "25 सेमी.",
+      "30 सेमी.",
+      "28 सेमी.",
+      "27 सेमी."
+    ],
+    "options_en": [
+      "25 cm",
+      "30 cm",
+      "28 cm",
+      "27 cm"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": "images/q36.png"
+  },
+  {
+    "id": 37,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "△ABC में G केन्द्रक है। AD तथा BE माध्यिकाएँ एक-दूसरे को समकोण पर काटती हैं। यदि AD तथा BE की लंबाई क्रमशः 9 सेमी. तथा 12 सेमी. है तो AB की लम्बाई ज्ञात करें -",
+    "question_en": "In △ABC, G is the centroid. Medians AD and BE intersect each other at right angles. If the lengths of AD and BE are 9 cm and 12 cm respectively, find the length of AB.",
+    "options_hi": [
+      "11",
+      "10",
+      "10.5",
+      "9.5"
+    ],
+    "options_en": [
+      "11",
+      "10",
+      "10.5",
+      "9.5"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "यदि पुस्तक के एक संस्करण के लिए, कागज की लागत 56250 रु. है, तो इस संस्करण के लिए प्रचार लागत ज्ञात करें-",
+    "question_en": "If for one edition of a book the cost of paper is Rs. 56,250, then find the publicity cost for this edition.",
+    "options_hi": [
+      "20000 रु.",
+      "22500 रु.",
+      "25500 रु.",
+      "28125 रु."
+    ],
+    "options_en": [
+      "Rs. 20,000",
+      "Rs. 22,500",
+      "Rs. 25,500",
+      "Rs. 28,125"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": "images/q38.png"
+  },
+  {
+    "id": 39,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "एक अर्द्ध गोलाकार कप जिसकी त्रिज्या 4 सेमी. है कॉफी से पूर्ण भरा है। कॉफी को 8 सेमी. त्रिज्या तथा 16 सेमी. ऊँचे शंक्वाकार कप में उलट दिया गया। शंकु के खाली भाग का प्रतिशत ज्ञात करो -",
+    "question_en": "A hemispherical cup of radius 4 cm is completely filled with coffee. The coffee is poured into a conical cup of radius 8 cm and height 16 cm. Find the percentage of the empty part of the cone.",
+    "options_hi": [
+      "87.5%",
+      "80.5%",
+      "81.6%",
+      "88.2%"
+    ],
+    "options_en": [
+      "87.5%",
+      "80.5%",
+      "81.6%",
+      "88.2%"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "subject": "Maths",
+    "type": "bilingual",
+    "question_hi": "किसी बेलन का सम्पूर्ण पृष्ठ क्षेत्रफल, गोले के पृष्ठ क्षेत्रफल से दोगुना है। यदि उनकी त्रिज्याएँ समान हों, बेलन तथा गोले के आयतन का अनुपात ज्ञात करें -",
+    "question_en": "The total surface area of a cylinder is twice the surface area of a sphere. If their radii are the same, find the ratio of the volume of the cylinder to the volume of the sphere.",
+    "options_hi": [
+      "$9:4$",
+      "$2:1$",
+      "$3:4$",
+      "$4:9$"
+    ],
+    "options_en": [
+      "$9:4$",
+      "$2:1$",
+      "$3:4$",
+      "$4:9$"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "शौचालय के पीछे कौनसी टंकी होती है-",
+    "question_en": "Which tank is present behind a toilet?",
+    "options_hi": [
+      "साबुन की टंकी",
+      "विषाक्त (सेप्टिक) टंकी",
+      "फ्लश टंकी",
+      "उपर्युक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "Soap tank",
+      "Septic tank",
+      "Flush tank",
+      "None of the above"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "नाले में पाए जाने वाला कौनसा प्राणी पानी की खराब गुणवत्ता का सूचक है -",
+    "question_en": "Which organism found in drains is an indicator of poor water quality?",
+    "options_hi": [
+      "काली मक्खी का कीटडिंभ (लार्वा)",
+      "कैडिस मक्खी का कीटडिंभ (लार्वा)",
+      "मेव मक्खी का कीटडिंभ (लार्वा)",
+      "रिफल बीटल"
+    ],
+    "options_en": [
+      "Black fly larva",
+      "Caddis fly larva",
+      "Mayfly larva",
+      "Riffle beetle"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "जलस्त्रोतों में सामान्यतः संख्या के आधार पर निम्नलिखित में से कौनसा कूड़ा-कचरा पाया जाता है -",
+    "question_en": "Which of the following waste items is commonly found in water sources in terms of number?",
+    "options_hi": [
+      "प्लास्टिक थैला",
+      "प्लास्टिक बोतलें",
+      "एल्युमिनियम कैन",
+      "उपर्युक्त सभी"
+    ],
+    "options_en": [
+      "Plastic bag",
+      "Plastic bottles",
+      "Aluminium cans",
+      "All of the above"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "यदि सभी कवक और अन्य डिकंपोजर नष्ट हो जाएं तो क्या होगा-",
+    "question_en": "What will happen if all fungi and other decomposers are destroyed?",
+    "options_hi": [
+      "कोई परिणाम नहीं होगा",
+      "हवा साफ होगी।",
+      "मृत वनस्पति और प्राणियों के शव का संचय होगा।",
+      "मिट्टी में अधिक पोषण तत्त्व होंगे।"
+    ],
+    "options_en": [
+      "There will be no effect",
+      "The air will become clean",
+      "Dead plants and animal bodies will accumulate",
+      "The soil will have more nutrients"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "विश्व में कितने लोगों को शौचालय की सुविधा का अभिगम नहीं है -",
+    "question_en": "How many people in the world do not have access to toilet facilities?",
+    "options_hi": [
+      "लगभग 10 मिलियन",
+      "लगभग 1 मिलियन",
+      "लगभग 100 मिलियन",
+      "लगभग 1 अरब"
+    ],
+    "options_en": [
+      "About 10 million",
+      "About 1 million",
+      "About 100 million",
+      "About 1 billion"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "जल अपशिष्ट क्या है -",
+    "question_en": "What is wastewater?",
+    "options_hi": [
+      "टंकी, शौचालय और सिंक में उपयोग किया हुआ पानी।",
+      "मैलायुक्त पानी",
+      "उपर्युक्त दोनों",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Water used in tank, toilet and sink",
+      "Dirty/contaminated water",
+      "Both of the above",
+      "None of these"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "घरों द्वारा निर्मुक्त जल अपशिष्ट को क्या कहा जाता है-",
+    "question_en": "What is wastewater released from houses called?",
+    "options_hi": [
+      "मैला",
+      "कीचड़",
+      "उपर्युक्त दोनों",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Sewage",
+      "Sludge",
+      "Both of the above",
+      "None of these"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "सूखे का उपयोग खाद के रूप में किया जाता है -",
+    "question_en": "After drying, which is used as manure?",
+    "options_hi": [
+      "मैला",
+      "कीचड़",
+      "उपर्युक्त दोनों",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Sewage",
+      "Sludge",
+      "Both of the above",
+      "None of these"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "मैला मुख्यतः निम्नलिखित से उत्पन्न होता है -",
+    "question_en": "Sewage is mainly generated from which of the following?",
+    "options_hi": [
+      "घर",
+      "कारखाना",
+      "दफ्तर",
+      "अस्पताल"
+    ],
+    "options_en": [
+      "House",
+      "Factory",
+      "Office",
+      "Hospital"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "रिसाव (इफ्ल्युएंट) मुख्यतः निम्नलिखित द्वारा उत्पन्न होता है-",
+    "question_en": "Effluent is mainly generated by which of the following?",
+    "options_hi": [
+      "घर",
+      "कारखाना",
+      "दफ्तर",
+      "अस्पताल"
+    ],
+    "options_en": [
+      "House",
+      "Factory",
+      "Office",
+      "Hospital"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "जल अपशिष्ट से गंदगी और रेत हटाने के लिए किस प्रक्रिया का उपयोग किया जाता है?",
+    "question_en": "Which process is used to remove dirt and sand from wastewater?",
+    "options_hi": [
+      "वायु-संचारण (एरिऐशन)",
+      "क्लोरिनेशन",
+      "अवसादन (सेडिमेंटेशन)",
+      "फ्लॉक्युलेशन"
+    ],
+    "options_en": [
+      "Aeration",
+      "Chlorination",
+      "Sedimentation",
+      "Flocculation"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "जल-अपशिष्ट वायु-संचरण (एरिऐशन) प्रक्रिया के दौरान निम्नलिखित निकल जाता है -",
+    "question_en": "During the aeration process of wastewater, which of the following is removed?",
+    "options_hi": [
+      "अविलेय घटक",
+      "मानवी मल",
+      "जीवाणु",
+      "रोगाणु"
+    ],
+    "options_en": [
+      "Insoluble components",
+      "Human excreta",
+      "Bacteria",
+      "Pathogens"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "जल-अपशिष्ट प्रक्रिया के दौरान रोगाणु नष्ट करने के लिए कौनसी प्रक्रिया उपयुक्त है-",
+    "question_en": "Which process is suitable for destroying pathogens during wastewater treatment?",
+    "options_hi": [
+      "वायु-संचारण (एरिऐशन)",
+      "क्लोरिनेशन",
+      "अवसादन (सेडिमेंटेशन)",
+      "फ्लॉक्युलेशन"
+    ],
+    "options_en": [
+      "Aeration",
+      "Chlorination",
+      "Sedimentation",
+      "Flocculation"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "इनमें कौनसी बीमारी दूषित पानी पीने के कारण हो सकती है-",
+    "question_en": "Which of these diseases can occur due to drinking contaminated water?",
+    "options_hi": [
+      "न्यूमोनिया",
+      "चेचक",
+      "विषमज्वर",
+      "हैजा (कॉलरा)"
+    ],
+    "options_en": [
+      "Pneumonia",
+      "Smallpox",
+      "Typhoid",
+      "Cholera"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "पीलिया (जाँडिस) के कारण शरीर का कौनसा अंग प्रभावित होता है-",
+    "question_en": "Which organ of the body is affected in jaundice?",
+    "options_hi": [
+      "फुफ्फुस",
+      "हृदय",
+      "यकृत",
+      "जठर"
+    ],
+    "options_en": [
+      "Lungs",
+      "Heart",
+      "Liver",
+      "Stomach"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौनसा जल-अपशिष्ट का प्रकार नहीं है-",
+    "question_en": "Which of the following is not a type of wastewater?",
+    "options_hi": [
+      "सड़क पर बटोरा हुआ कूड़ा",
+      "मैला पानी",
+      "गंदा पानी",
+      "काला पानी"
+    ],
+    "options_en": [
+      "Street-collected waste",
+      "Sewage water",
+      "Dirty water",
+      "Black water"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "subject": "General Knowledge",
+    "type": "bilingual",
+    "question_hi": "भारत का सर्वाधिक स्वच्छ शहर है -",
+    "question_en": "The cleanest city of India is -",
+    "options_hi": [
+      "मैसूर",
+      "सूरत",
+      "दिल्ली",
+      "चंडीगढ़"
+    ],
+    "options_en": [
+      "Mysuru",
+      "Surat",
+      "Delhi",
+      "Chandigarh"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "subject": "General Knowledge",
+    "type": "bilingual",
+    "question_hi": "भारत का सर्वाधिक स्वच्छ गाँव है-",
+    "question_en": "The cleanest village of India is -",
+    "options_hi": [
+      "मॉलिनाँग",
+      "पुनसारी",
+      "घरनाई",
+      "बल्लियाँ"
+    ],
+    "options_en": [
+      "Mawlynnong",
+      "Punsari",
+      "Gharnai",
+      "Ballian"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "subject": "General Knowledge",
+    "type": "bilingual",
+    "question_hi": "विश्व का सर्वाधिक स्वच्छ देश है -",
+    "question_en": "The cleanest country in the world is -",
+    "options_hi": [
+      "सिंगापुर",
+      "क्यूबा",
+      "ऑस्ट्रिया",
+      "फ्रान्स"
+    ],
+    "options_en": [
+      "Singapore",
+      "Cuba",
+      "Austria",
+      "France"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "subject": "General Knowledge",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौनसी जगह अधिकांश लोग सुरक्षित जल के उपयोग के बिना रहते हैं -",
+    "question_en": "In which of the following places do most people live without access to safe water?",
+    "options_hi": [
+      "एशिया",
+      "ओशनिया (पैसिफिक बेल्ट)",
+      "अफ्रीका",
+      "उपर्युक्त सभी"
+    ],
+    "options_en": [
+      "Asia",
+      "Oceania (Pacific belt)",
+      "Africa",
+      "All of the above"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "In the following sentence, a word or phrase is underlined. Choose the word nearest in meaning to the underlined part. Ritu asked Rashmi not to meddle in her affairs.",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "Intercede",
+      "Impose",
+      "Cross",
+      "Interfere"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Select the word that is most similar in meaning. Flutter",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "Soar",
+      "Agitate",
+      "Change",
+      "Float"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the correct alternative: I do my work .......... carefully to make mistakes.",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "so",
+      "very",
+      "too",
+      "more"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the word opposite in meaning to the given word: Prevent",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "Protect",
+      "Block",
+      "Hinder",
+      "Induce"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "In the following question, some parts have been jumbled up. Rearrange P, Q, R and S to produce the correct sentence: Each culture, flourishes when it comes/(P), own tradition and yet/(Q), draws strength from its/(R), into contact with others/(S)",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "RQPS",
+      "SPQR",
+      "RPQS",
+      "SQPR"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Pick out the most effective word to fill in the blank: He applied for and was .......... legal aid by the Labour Ministry.",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "Offered",
+      "Granted",
+      "Allowed",
+      "Awarded"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Select the option which contains the correct sentence.",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "My sister had left for America las week",
+      "My sister has been left for America last week",
+      "My sister has left America week",
+      "My sister left for America last week"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the correctly spelt word.",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "Acomodation",
+      "Accomodation",
+      "Acommodation",
+      "Accommodation"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "We cannot .......... such a/an .......... act of violence.",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "Tolerate, insipid",
+      "Consider, important",
+      "Commit, magnificent",
+      "Pardon, egregious"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Write the correct Direct/Indirect form: The boy said, \"Why dare call you a thief?\"",
+    "options_hi": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options_en": [
+      "The boy enquired who dared call him a thief",
+      "The boy asked who called him a thief.",
+      "The boy told that who dared call him a thief.",
+      "The boy wondered who dared call a thief."
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "एम. मुकेश गौड का हाल ही में निधन हो गया है, वह ........ थे-",
+    "question_en": "M. Mukesh Goud passed away recently. He was a/an ........",
+    "options_hi": [
+      "अभिनेता",
+      "कवि",
+      "लेखक",
+      "राजनेता"
+    ],
+    "options_en": [
+      "Actor",
+      "Poet",
+      "Writer",
+      "Politician"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसने मध्य प्रदेश के राज्यपाल के रूप में शपथ ली -",
+    "question_en": "Who took oath as the Governor of Madhya Pradesh?",
+    "options_hi": [
+      "पी. गोपी कृष्ण",
+      "एम. मुकेश गौड",
+      "लालजी टंडन",
+      "रमेश बैस"
+    ],
+    "options_en": [
+      "P. Gopi Krishna",
+      "M. Mukesh Goud",
+      "Lalji Tandon",
+      "Ramesh Bais"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किस शहर में 5वां धर्म धम्म सम्मेलन आयोजित किया गया था-",
+    "question_en": "In which city was the 5th Dharma-Dhamma Conference held?",
+    "options_hi": [
+      "नई दिल्ली",
+      "गुरुग्राम",
+      "लखनऊ",
+      "राजगीर"
+    ],
+    "options_en": [
+      "New Delhi",
+      "Gurugram",
+      "Lucknow",
+      "Rajgir"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 74,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "इंडियन नेवी का कौनसा शिप तीन दिवसीय यात्रा के लिए हेलसिंकी, फिनलैण्ड पहुँचा था-",
+    "question_en": "Which Indian Navy ship reached Helsinki, Finland for a three-day visit?",
+    "options_hi": [
+      "आईएनएस कोलकाता",
+      "आईएनएस तरकश",
+      "आईएनएस विक्रांत",
+      "आईएनएस विराट"
+    ],
+    "options_en": [
+      "INS Kolkata",
+      "INS Tarkash",
+      "INS Vikrant",
+      "INS Virat"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 75,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किस देश ने 1000 वर्षीय शावला तेज सिंह मंदिर खोला है-",
+    "question_en": "Which country opened the 1000-year-old Shawala Teja Singh Temple?",
+    "options_hi": [
+      "बांग्लादेश",
+      "नेपाल",
+      "पाकिस्तान",
+      "भूटान"
+    ],
+    "options_en": [
+      "Bangladesh",
+      "Nepal",
+      "Pakistan",
+      "Bhutan"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 76,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "चार राज्यों में पायलट आधार पर वन नेशन-वन राशन कार्ड योजना लागू की गई है। निम्नलिखित में से कौनसा राज्य इसका हिस्सा नहीं है -",
+    "question_en": "The One Nation-One Ration Card scheme was implemented on a pilot basis in four states. Which of the following states is not a part of it?",
+    "options_hi": [
+      "तेलंगाना",
+      "केरल",
+      "आंध्र प्रदेश",
+      "महाराष्ट्र"
+    ],
+    "options_en": [
+      "Telangana",
+      "Kerala",
+      "Andhra Pradesh",
+      "Maharashtra"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 77,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसने लेखा महानियंत्रक (CGA) के रूप में पदभार संभाला है-",
+    "question_en": "Who assumed charge as the Controller General of Accounts (CGA)?",
+    "options_hi": [
+      "गिर्राज प्रसाद गुप्ता",
+      "एस.एस. देशवाल",
+      "के. नटराजन",
+      "सामंत गोयल"
+    ],
+    "options_en": [
+      "Girraj Prasad Gupta",
+      "S. S. Deswal",
+      "K. Natarajan",
+      "Samant Goel"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 78,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसने विप्रो के अध्यक्ष के रूप में पदभार संभाला -",
+    "question_en": "Who took charge as the Chairman of Wipro?",
+    "options_hi": [
+      "अंशु प्रकाश",
+      "ई.एल.एस.एन. बाला प्रसाद",
+      "प्रहलाद सिंह पटेल",
+      "ऋषद प्रेमजी"
+    ],
+    "options_en": [
+      "Anshu Prakash",
+      "E. L. S. N. Bala Prasad",
+      "Prahlad Singh Patel",
+      "Rishad Premji"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 79,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसने नए दूरसंचार सचिव का पदभार संभाला -",
+    "question_en": "Who took charge as the new Telecom Secretary?",
+    "options_hi": [
+      "अंशु प्रकाश",
+      "ई.एल.एस.एन. बाला प्रसाद",
+      "प्रहलाद सिंह पटेल",
+      "एस. एस. देशवाल"
+    ],
+    "options_en": [
+      "Anshu Prakash",
+      "E. L. S. N. Bala Prasad",
+      "Prahlad Singh Patel",
+      "S. S. Deswal"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 80,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसको राष्ट्रपति रामनाथ कोविंद के विशेष सचिव के रूप में नियुक्त किया गया है -",
+    "question_en": "Who was appointed as Special Secretary to President Ram Nath Kovind?",
+    "options_hi": [
+      "अंशु प्रकाश",
+      "ई.एल.एस.एन. बाला प्रसाद",
+      "प्रहलाद सिंह पटेल",
+      "एस. एस. देशवाल"
+    ],
+    "options_en": [
+      "Anshu Prakash",
+      "E. L. S. N. Bala Prasad",
+      "Prahlad Singh Patel",
+      "S. S. Deswal"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 81,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "कौनसा देश भारत के लिए प्रवेश वीजा शुल्क माफ करेगा-",
+    "question_en": "Which country will waive entry visa fees for India?",
+    "options_hi": [
+      "श्रीलंका",
+      "भूटान",
+      "नेपाल",
+      "मालदीव"
+    ],
+    "options_en": [
+      "Sri Lanka",
+      "Bhutan",
+      "Nepal",
+      "Maldives"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 82,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसको आतंकवाद रोधी बल NSG का अतिरिक्त प्रभार दिया गया है -",
+    "question_en": "Who was given the additional charge of the anti-terror force NSG?",
+    "options_hi": [
+      "एस.एस. देशवाल",
+      "ऋषी कुमार शुक्ला",
+      "के. नटराजन",
+      "सामंत गोयल"
+    ],
+    "options_en": [
+      "S. S. Deswal",
+      "Rishi Kumar Shukla",
+      "K. Natarajan",
+      "Samant Goel"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 83,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसने सोफिया में विश्व कैडेट कुश्ती प्रतियोगिता में 65 किलोग्राम भार वर्ग में स्वर्ण पदक जीता है -",
+    "question_en": "Who won the gold medal in the 65 kg weight category at the World Cadet Wrestling Championship in Sofia?",
+    "options_hi": [
+      "विनेश फोगाट",
+      "सोनम मलिक",
+      "बबीता कुमारी",
+      "साक्षी मलिक"
+    ],
+    "options_en": [
+      "Vinesh Phogat",
+      "Sonam Malik",
+      "Babita Kumari",
+      "Sakshi Malik"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 84,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसने नागालैण्ड के राज्यपाल के रूप में शपथ ली -",
+    "question_en": "Who took oath as the Governor of Nagaland?",
+    "options_hi": [
+      "आर.एन. रवि",
+      "आचार्य देव व्रत",
+      "सत्यदेव नारायण आर्य",
+      "कलराज मिश्रा"
+    ],
+    "options_en": [
+      "R. N. Ravi",
+      "Acharya Dev Vrat",
+      "Satyadev Narayan Arya",
+      "Kalraj Mishra"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 85,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसको RBI के केन्द्रीय बोर्ड में नामित किया गया है-",
+    "question_en": "Who was nominated to the Central Board of RBI?",
+    "options_hi": [
+      "अतनु चक्रवर्ती",
+      "संजय मित्रा",
+      "विजय केशव गोखले",
+      "अजय भूषण पांडे"
+    ],
+    "options_en": [
+      "Atanu Chakraborty",
+      "Sanjay Mitra",
+      "Vijay Keshav Gokhale",
+      "Ajay Bhushan Pandey"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 86,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसके साथ नीति आयोग ने महिला उद्यमियों को बढ़ावा देने के लिए भागीदारी की है -",
+    "question_en": "With whom did NITI Aayog partner to promote women entrepreneurs?",
+    "options_hi": [
+      "गूगल",
+      "टिक-टॉक",
+      "फेसबुक",
+      "व्हाट्सएप"
+    ],
+    "options_en": [
+      "Google",
+      "TikTok",
+      "Facebook",
+      "WhatsApp"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 87,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "RBI के पूर्व डिप्टी गवर्नर का नाम क्या है जिनका हाल ही में निधन हो गया-",
+    "question_en": "What is the name of the former Deputy Governor of RBI who passed away recently?",
+    "options_hi": [
+      "एन.एस. विश्वनाथन",
+      "सुबरी विठ्ठल गोकर्ण",
+      "बी.पी. कानूनगो",
+      "एम. के. जैन"
+    ],
+    "options_en": [
+      "N. S. Vishwanathan",
+      "Subir Vithal Gokarn",
+      "B. P. Kanungo",
+      "M. K. Jain"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 88,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसको वित्त सचिव के रूप में नियुक्त किया गया है-",
+    "question_en": "Who was appointed as Finance Secretary?",
+    "options_hi": [
+      "राजीव कुमार",
+      "संजय कोठारी",
+      "नृपेन्द्र मिश्रा",
+      "प्रमोद कुमार मिश्रा"
+    ],
+    "options_en": [
+      "Rajiv Kumar",
+      "Sanjay Kothari",
+      "Nripendra Misra",
+      "Pramod Kumar Mishra"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 89,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारतीय रेलवे के किस जोन ने महिला यात्रियों के लिए नए 'गुलाबी कोच' शुरू किए हैं -",
+    "question_en": "Which zone of Indian Railways launched new 'Pink Coaches' for women passengers?",
+    "options_hi": [
+      "पूर्वोत्तर सीमान्त रेलवे जोन",
+      "पूर्वी रेलवे जोन",
+      "उत्तर रेलवे जोन",
+      "मध्य रेलवे जोन"
+    ],
+    "options_en": [
+      "Northeast Frontier Railway Zone",
+      "Eastern Railway Zone",
+      "Northern Railway Zone",
+      "Central Railway Zone"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 90,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किसको भारतीय क्रिकेट कंट्रोल बोर्ड (BCCI) ने 15 नवम्बर, 2019 तक के लिए निलंबित कर दिया है -",
+    "question_en": "Who was suspended by the Board of Control for Cricket in India (BCCI) until 15 November 2019?",
+    "options_hi": [
+      "विराट कोहली",
+      "रोहित शर्मा",
+      "पृथ्वी शॉ",
+      "इरफान पठान"
+    ],
+    "options_en": [
+      "Virat Kohli",
+      "Rohit Sharma",
+      "Prithvi Shaw",
+      "Irfan Pathan"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 91,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "2019 COTIF कप वेलेंसिया, स्पेन में आयोजित हुआ था। COTIF कप किस खेल से संबंधित है -",
+    "question_en": "The 2019 COTIF Cup was held in Valencia, Spain. COTIF Cup is related to which sport?",
+    "options_hi": [
+      "हॉकी",
+      "फुटबॉल",
+      "वॉलीबॉल",
+      "बेसबॉल"
+    ],
+    "options_en": [
+      "Hockey",
+      "Football",
+      "Volleyball",
+      "Baseball"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 92,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "रवीश कुमार को 2019 रेमन मैग्सेसे पुरस्कार से सम्मानित किया गया है। रेमन मैग्सेसे पुरस्कार किस वर्ष में स्थापित किया गया था-",
+    "question_en": "Ravish Kumar was awarded the 2019 Ramon Magsaysay Award. In which year was the Ramon Magsaysay Award established?",
+    "options_hi": [
+      "1959",
+      "1958",
+      "1957",
+      "1960"
+    ],
+    "options_en": [
+      "1959",
+      "1958",
+      "1957",
+      "1960"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 93,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "कौनसा मंत्रालय स्तनपान के संरक्षण, संवर्धन और समर्थन पर ध्यान आकृष्ट कराने के लिए विश्व स्तनपान सप्ताह मना रहा है-",
+    "question_en": "Which ministry is observing World Breastfeeding Week to draw attention to the protection, promotion and support of breastfeeding?",
+    "options_hi": [
+      "कानून और न्याय मंत्रालय",
+      "किसान कल्याण मंत्रालय",
+      "कृषि मंत्रालय",
+      "महिला और बाल विकास मंत्रालय"
+    ],
+    "options_en": [
+      "Ministry of Law and Justice",
+      "Ministry of Farmers Welfare",
+      "Ministry of Agriculture",
+      "Ministry of Women and Child Development"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 94,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "कौनसी राज्य सरकार ने हरियाली के संरक्षण और पर्यावरण को स्वच्छ रखने के लिए 'सेव ग्रीन स्टे क्लीन' अभियान शुरू किया है -",
+    "question_en": "Which state government launched the 'Save Green, Stay Clean' campaign to protect greenery and keep the environment clean?",
+    "options_hi": [
+      "पश्चिम बंगाल",
+      "उत्तर प्रदेश",
+      "मध्य प्रदेश",
+      "आंध्र प्रदेश"
+    ],
+    "options_en": [
+      "West Bengal",
+      "Uttar Pradesh",
+      "Madhya Pradesh",
+      "Andhra Pradesh"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 95,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किस राज्य ने 'ह्वाली दीकरी योजना' लाँच की है -",
+    "question_en": "Which state launched the 'Vhali Dikri Yojana'?",
+    "options_hi": [
+      "आंध्र प्रदेश",
+      "उत्तर प्रदेश",
+      "केरल",
+      "गुजरात"
+    ],
+    "options_en": [
+      "Andhra Pradesh",
+      "Uttar Pradesh",
+      "Kerala",
+      "Gujarat"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 96,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किस शहर में भारत-अमेरिका रक्षा नीति समूह (DPG) की 15वीं बैठक आयोजित की गई -",
+    "question_en": "In which city was the 15th meeting of the India-US Defence Policy Group (DPG) held?",
+    "options_hi": [
+      "मुम्बई",
+      "न्यूयॉर्क",
+      "नई दिल्ली",
+      "वॉशिंगटन"
+    ],
+    "options_en": [
+      "Mumbai",
+      "New York",
+      "New Delhi",
+      "Washington"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 97,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "2017 में हुई जनगणना के अनुसार देश में हाथी की आबादी ...... है-",
+    "question_en": "According to the 2017 census, the elephant population in the country is ......",
+    "options_hi": [
+      "29961",
+      "29960",
+      "29964",
+      "29969"
+    ],
+    "options_en": [
+      "29961",
+      "29960",
+      "29964",
+      "29969"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 98,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किस राज्य में 'आदि पेरुकु' त्योहार मनाया गया -",
+    "question_en": "In which state was the 'Aadi Perukku' festival celebrated?",
+    "options_hi": [
+      "केरल",
+      "तमिलनाडु",
+      "आंध्र प्रदेश",
+      "तेलंगाना"
+    ],
+    "options_en": [
+      "Kerala",
+      "Tamil Nadu",
+      "Andhra Pradesh",
+      "Telangana"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 99,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किस दिन को ललित कला अकादमी ने नई दिल्ली में अपना 65वां स्थापना दिवस मनाया -",
+    "question_en": "On which day did Lalit Kala Akademi celebrate its 65th Foundation Day in New Delhi?",
+    "options_hi": [
+      "3 अगस्त",
+      "5 अगस्त",
+      "2 अगस्त",
+      "6 अगस्त"
+    ],
+    "options_en": [
+      "3 August",
+      "5 August",
+      "2 August",
+      "6 August"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 100,
+    "subject": "Current Affairs",
+    "type": "bilingual",
+    "question_hi": "किस देश को संयुक्त राज्य अमेरिका ने 'करेंसी मैनीपुलेटर' नामित किया है -",
+    "question_en": "Which country was designated as a 'currency manipulator' by the United States of America?",
+    "options_hi": [
+      "ताइवान",
+      "उत्तर कोरिया",
+      "जापान",
+      "चीन"
+    ],
+    "options_en": [
+      "Taiwan",
+      "North Korea",
+      "Japan",
+      "China"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+
+let current = 0;
+let language = "bi";
+let answers = Array(questions.length).fill(null);
+let marked = Array(questions.length).fill(false);
+let visited = Array(questions.length).fill(false);
+let remaining = totalSeconds;
+let timer = null;
+let startedAt = null;
+
+function startTest(){
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("examScreen").classList.remove("hidden");
+  startedAt = Date.now();
+  visited[0] = true;
+  buildPalette();
+  renderQuestion();
+  timer = setInterval(tick, 1000);
+}
+
+function tick(){
+  remaining--;
+  updateTimer();
+  if(remaining <= 0){
+    clearInterval(timer);
+    submitTest(true);
+  }
+}
+
+function updateTimer(){
+  const m = Math.floor(remaining/60).toString().padStart(2,"0");
+  const s = (remaining%60).toString().padStart(2,"0");
+  document.getElementById("timerBox").textContent = "Time: " + m + ":" + s;
+}
+
+function setLanguage(lang){
+  language = lang;
+  document.querySelectorAll(".langs .btn").forEach(b=>b.classList.remove("active"));
+  document.getElementById(lang==="hi"?"langHi":lang==="en"?"langEn":"langBi").classList.add("active");
+  renderQuestion();
+}
+
+function showText(q){
+  if(q.type === "hindi_only") return q.question_hi;
+  if(q.type === "english_only") return q.question_en;
+  if(language === "hi") return q.question_hi;
+  if(language === "en") return q.question_en;
+  return "<b>Hindi:</b> " + q.question_hi + "<br><br><b>English:</b> " + q.question_en;
+}
+
+function optionText(q, i){
+  if(q.type === "hindi_only") return q.options_hi[i];
+  if(q.type === "english_only") return q.options_en[i];
+  if(language === "hi") return q.options_hi[i];
+  if(language === "en") return q.options_en[i];
+  return "<b>Hindi:</b> " + q.options_hi[i] + "<br><span class='muted'><b>English:</b> " + q.options_en[i] + "</span>";
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  visited[current] = true;
+  document.getElementById("qMeta").textContent = "Question " + q.id + " / " + questions.length + " | " + q.subject;
+  document.getElementById("questionText").innerHTML = showText(q);
+  const imgBox = document.getElementById("imageBox");
+  if(q.image){
+    imgBox.innerHTML = `<div class="image-box">IMAGE REQUIRED FOR QUESTION<br>Expected file: ${q.image}<br><img src="${q.image}" alt="Question ${q.id} image" style="max-width:100%;margin-top:10px;border-radius:8px;" onerror="this.style.display='none'"></div>`;
+  } else {
+    imgBox.innerHTML = "";
+  }
+  const optionsBox = document.getElementById("optionsBox");
+  optionsBox.innerHTML = "";
+  for(let i=0;i<4;i++){
+    const btn = document.createElement("button");
+    btn.className = "option" + (answers[current]===i ? " selected" : "");
+    btn.innerHTML = "<b>(" + (i+1) + ")</b> " + optionText(q,i);
+    btn.onclick = () => { answers[current]=i; marked[current]=false; renderQuestion(); buildPalette(); };
+    optionsBox.appendChild(btn);
+  }
+  buildPalette();
+}
+
+function buildPalette(){
+  const pal = document.getElementById("palette");
+  pal.innerHTML = "";
+  questions.forEach((q,idx)=>{
+    const b = document.createElement("button");
+    b.textContent = q.id;
+    b.className = "qbtn " + statusClass(idx) + (idx===current ? " current" : "");
+    b.onclick = () => { current=idx; visited[current]=true; renderQuestion(); };
+    pal.appendChild(b);
+  });
+}
+
+function statusClass(i){
+  if(answers[i] !== null && marked[i]) return "answered-review";
+  if(marked[i]) return "review";
+  if(answers[i] !== null) return "answered";
+  if(visited[i]) return "not-answered";
+  return "not-visited";
+}
+
+function saveNext(){
+  if(current < questions.length-1) current++;
+  visited[current]=true;
+  renderQuestion();
+}
+
+function prevQuestion(){
+  if(current > 0) current--;
+  visited[current]=true;
+  renderQuestion();
+}
+
+function markReview(){
+  marked[current] = true;
+  if(current < questions.length-1) current++;
+  visited[current]=true;
+  renderQuestion();
+}
+
+function clearResponse(){
+  answers[current] = null;
+  marked[current] = false;
+  renderQuestion();
+}
+
+function submitTest(auto=false){
+  if(!auto && !confirm("Are you sure you want to submit the test?")) return;
+  clearInterval(timer);
+  const timeTaken = totalSeconds - remaining;
+  let attempted=0, notAttempted=0, correct=0, wrong=0;
+  questions.forEach((q,i)=>{
+    if(answers[i] === null) notAttempted++;
+    else {
+      attempted++;
+      if(answers[i] === q.correct) correct++;
+      else wrong++;
+    }
+  });
+  const score = (correct * marksPerQuestion) - (wrong * negativeMarking);
+  const maxMarks = questions.length * marksPerQuestion;
+  const percent = (score / maxMarks) * 100;
+  const result = {
+    date: new Date().toLocaleString(),
+    attempted, notAttempted, correct, wrong,
+    score: Number(score.toFixed(2)),
+    percentage: Number(percent.toFixed(2)),
+    timeTaken: formatTime(timeTaken)
+  };
+  saveHistory(result);
+  showResult(result);
+}
+
+function formatTime(sec){
+  const m = Math.floor(sec/60).toString().padStart(2,"0");
+  const s = (sec%60).toString().padStart(2,"0");
+  return m + ":" + s;
+}
+
+function saveHistory(result){
+  const old = JSON.parse(localStorage.getItem(storageKey) || "[]");
+  old.unshift(result);
+  localStorage.setItem(storageKey, JSON.stringify(old.slice(0,10)));
+}
+
+function loadHistory(){
+  const old = JSON.parse(localStorage.getItem(storageKey) || "[]");
+  const box = document.getElementById("historyBox");
+  if(!old.length){ box.innerHTML = ""; return; }
+  let rows = old.map((h,i)=>`<tr><td>${i+1}</td><td>${h.date}</td><td>${h.score}</td><td>${h.percentage}%</td><td>${h.timeTaken}</td></tr>`).join("");
+  box.innerHTML = `<h3>Attempt History - This Test Only</h3><table><tr><th>#</th><th>Date</th><th>Marks</th><th>%</th><th>Time</th></tr>${rows}</table>`;
+}
+
+function showResult(result){
+  document.getElementById("examScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.remove("hidden");
+  document.getElementById("timerBox").textContent = "Submitted";
+  document.getElementById("resultSummary").innerHTML = `
+    <div class="result-grid">
+      <div class="result-box"><span>Total Questions</span><strong>${questions.length}</strong></div>
+      <div class="result-box"><span>Attempted</span><strong>${result.attempted}</strong></div>
+      <div class="result-box"><span>Not Attempted</span><strong>${result.notAttempted}</strong></div>
+      <div class="result-box"><span>Correct</span><strong>${result.correct}</strong></div>
+      <div class="result-box"><span>Wrong</span><strong>${result.wrong}</strong></div>
+      <div class="result-box"><span>Marks Obtained</span><strong>${result.score}</strong></div>
+      <div class="result-box"><span>Maximum Marks</span><strong>${questions.length}</strong></div>
+      <div class="result-box"><span>Percentage</span><strong>${result.percentage}%</strong></div>
+      <div class="result-box"><span>Time Taken</span><strong>${result.timeTaken}</strong></div>
+      <div class="result-box"><span>Marking</span><strong>+1 / -0.25</strong></div>
+    </div>`;
+  let keyHtml = "";
+  questions.forEach((q,i)=>{
+    const user = answers[i];
+    const ok = user === q.correct;
+    const qText = q.type === "english_only" ? q.question_en : q.type === "hindi_only" ? q.question_hi : q.question_hi + "<br><span class='muted'>" + q.question_en + "</span>";
+    const correctText = q.type === "english_only" ? q.options_en[q.correct] : q.type === "hindi_only" ? q.options_hi[q.correct] : q.options_hi[q.correct] + " / " + q.options_en[q.correct];
+    const userText = user===null ? "Not Attempted" : (q.type === "english_only" ? q.options_en[user] : q.type === "hindi_only" ? q.options_hi[user] : q.options_hi[user] + " / " + q.options_en[user]);
+    keyHtml += `<div class="answer-row">
+      <b>Q${q.id}.</b> ${qText}
+      <div>Correct Answer: <span class="correct">${correctText}</span></div>
+      <div>Your Answer: <span class="${user===null?'muted':ok?'correct':'wrong'}">${userText}</span></div>
+      <div class="muted">Explanation: Explanation not provided.</div>
+    </div>`;
+  });
+  document.getElementById("answerKey").innerHTML = keyHtml;
+}
+
+loadHistory();
+updateTimer();
+</script>
+</body>
+</html>
