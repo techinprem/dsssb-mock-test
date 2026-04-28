@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health and Malaria Inspector Grade III Mock Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,'Noto Sans Devanagari','Nirmala UI',sans-serif;background:#eef3f9;color:#111827}
+.header{background:#073763;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:50}
+.header h1{font-size:17px;margin:0;line-height:1.35}
+.timer{background:#fff;color:#b91c1c;border-radius:8px;padding:8px 12px;font-weight:800;white-space:nowrap}
+.container{max-width:1280px;margin:16px auto;padding:0 12px}
+.card{background:#fff;border-radius:12px;border:1px solid #d8e2ef;box-shadow:0 2px 8px rgba(15,23,42,.06);padding:18px}
+.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.info{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px}
+.btn{padding:9px 13px;border-radius:8px;border:1px solid #cbd5e1;background:#f8fafc;color:#111827;font-weight:700;cursor:pointer;margin:3px}
+.btn.primary{background:#1d4ed8;color:#fff}
+.btn.success{background:#15803d;color:#fff}
+.btn.warn{background:#fff7ed;color:#9a3412}
+.btn.danger{background:#dc2626;color:#fff}
+.btn.active{background:#1d4ed8;color:#fff}
+.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 305px;gap:16px}
+.langbar,.sectionJump{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.badge{background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;border-radius:999px;padding:5px 10px;font-weight:700;display:inline-block;margin:3px}
+.qtext{font-size:18px;line-height:1.65;white-space:pre-wrap;font-weight:650;margin:12px 0 14px;padding:12px;background:#f8fafc;border-left:4px solid #1d4ed8;border-radius:8px}
+.option{display:flex;gap:10px;width:100%;border:1px solid #d1d5db;border-radius:10px;margin:10px 0;padding:12px;cursor:pointer;line-height:1.45;background:#fff;text-align:left;font-size:16px}
+.option:hover{background:#eff6ff}
+.option.selected{border-color:#2563eb;background:#eff6ff;font-weight:700}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:12px;border-top:1px solid #d8e2ef}
+.side{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 90px);display:flex;flex-direction:column}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.stat{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:10px;text-align:center}
+.stat b{display:block;font-size:20px}
+.palette-scroll{overflow-y:auto;border:1px solid #d8e2ef;border-radius:10px;padding:10px;background:#f8fafc;max-height:390px}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.pbtn{height:38px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;font-weight:800;cursor:pointer}
+.pbtn.current{outline:3px solid #2563eb}
+.pbtn.not-visited{background:#fff}
+.pbtn.not-answered{background:#fee2e2;border-color:#ef4444}
+.pbtn.answered{background:#dcfce7;border-color:#16a34a}
+.pbtn.review{background:#fef3c7;border-color:#f59e0b}
+.pbtn.answered-review{background:#ddd6fe;border-color:#7c3aed}
+.legend{display:grid;grid-template-columns:1fr;gap:5px;font-size:13px;margin:8px 0}
+.dot{width:16px;height:16px;border-radius:4px;border:1px solid #94a3b8;display:inline-block;vertical-align:middle;margin-right:6px}
+.result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.result-box{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px;text-align:center}
+.result-box strong{display:block;font-size:22px;color:#073763}
+.answer-row{border:1px solid #dbe3ef;border-radius:10px;padding:12px;margin:10px 0;background:#fff;line-height:1.5}
+.correct{color:#15803d;font-weight:800}
+.wrong{color:#b91c1c;font-weight:800}
+.muted,.small{font-size:13px;color:#64748b}
+.hidden{display:none!important}
+table{border-collapse:collapse;width:100%;background:#fff}th,td{border:1px solid #cbd5e1;padding:8px;text-align:left}th{background:#e2e8f0}
+@media(max-width:980px){
+  .exam-layout{grid-template-columns:1fr}
+  .side{position:static;max-height:none}
+  .palette-scroll{max-height:210px}
+  .palette{grid-template-columns:repeat(10,1fr)}
+}
+@media(max-width:520px){
+  .header{flex-direction:column;align-items:flex-start}
+  .start-grid,.result-grid{grid-template-columns:1fr}
+  .palette{grid-template-columns:repeat(5,1fr)}
+  .btn{width:100%;margin:4px 0}
+  .nav{display:block}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Health and Malaria Inspector Grade III Mock Test<br><span class="small" style="color:#dbeafe">Exam Date: 19-Jul-2019 | Time: 12:30-14:00 | +1 / -0.25</span></h1>
+  <div class="timer" id="timer">Time: 90:00</div>
+</div>
+
+<div class="container">
+  <section id="startScreen" class="card">
+    <h2>Online Mock Test</h2>
+    <div class="start-grid">
+      <div class="info"><b>Post Name:</b><br>Health and Malaria Inspector Grade III</div>
+      <div class="info"><b>Total Questions:</b><br>100</div>
+      <div class="info"><b>Total Marks:</b><br>100</div>
+      <div class="info"><b>Time Duration:</b><br>90 Minutes</div>
+      <div class="info"><b>Marking Scheme:</b><br>+1 Correct, -0.25 Wrong</div>
+      <div class="info"><b>Language:</b><br>Hindi / English / Bilingual</div>
+    </div>
+    <button class="btn success" onclick="startTest()">Start Test</button>
+    <div id="historyBox"></div>
+  </section>
+
+  <section id="examScreen" class="hidden">
+    <div class="exam-layout">
+      <div class="card">
+        <div class="langbar">
+          <b>Language view:</b>
+          <button class="btn" id="btnHi" onclick="setLang('hi')">हिंदी</button>
+          <button class="btn" id="btnEn" onclick="setLang('en')">English</button>
+          <button class="btn active" id="btnBi" onclick="setLang('bi')">Bilingual</button>
+        </div>
+        <div class="sectionJump" id="sectionJump"></div>
+        <div><span class="badge" id="sectionName"></span><span class="badge" id="qNo"></span></div>
+        <div class="qtext" id="questionText"></div>
+        <div id="options"></div>
+        <div class="nav">
+          <button class="btn" onclick="prevQ()">Previous</button>
+          <button class="btn primary" onclick="nextQ()">Save & Next</button>
+          <button class="btn" onclick="clearResponse()">Clear Response</button>
+          <button class="btn warn" onclick="markReview()">Mark for Review</button>
+          <button class="btn danger" onclick="submitTest(false)">Submit Test</button>
+        </div>
+      </div>
+      <aside class="card side">
+        <div class="stats"><div class="stat"><b id="attempted">0</b>Attempted</div><div class="stat"><b id="notAttempted">100</b>Not Attempted</div></div>
+        <h3>Question Palette</h3>
+        <div class="legend">
+          <div><span class="dot not-visited"></span>Not Visited</div><div><span class="dot not-answered"></span>Not Answered</div><div><span class="dot answered"></span>Answered</div><div><span class="dot review"></span>Marked for Review</div><div><span class="dot answered-review"></span>Answered & Marked</div>
+        </div>
+        <div class="palette-scroll"><div class="palette" id="palette"></div></div>
+      </aside>
+    </div>
+  </section>
+  <section id="resultScreen" class="card hidden"><h2>Result</h2><div id="resultSummary"></div><h3>Answer Key</h3><div id="answerKey"></div></section>
+</div>
+
+<script>
+const TEST_ID = "health_and_malaria_inspector_grade_iii_19_jul_2019";
+const storageKey = "mock_attempt_history_" + TEST_ID;
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const totalSeconds = 90 * 60;
+const questions = [
+  {
+    "id": 1,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "लोध जलप्रपात किस राज्य में है?",
+    "question_en": "The Lodh Waterfalls is located in which of the following States?",
+    "options_hi": [
+      "उत्तराखंड",
+      "ओडिशा",
+      "झारखंड",
+      "छत्तीसगढ़"
+    ],
+    "options_en": [
+      "Uttarakhand",
+      "Odisha",
+      "Jharkhand",
+      "Chhattisgarh"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "40 $kg/m^{2}$ से ऊपर बीएमआई (BMI) क्या इंगित करता है?",
+    "question_en": "Above 40 $kg/m^{2}$ of BMI indicates",
+    "options_hi": [
+      "अल्प-भार (Underweight)",
+      "अधि-भार (Overweight)",
+      "रुग्ण रोगिष्ठ मोटापा (Morbid obesity)",
+      "दर्जा 1 का मोटापा (Class 1 Obesity)"
+    ],
+    "options_en": [
+      "Underweight",
+      "Overweight",
+      "Morbid obesity",
+      "Class 1 Obesity"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "कैल्शियम अवशोषण के लिए कौन सा विटामिन आवश्यक है?",
+    "question_en": "Which vitamin is essential for Calcium Absorption?",
+    "options_hi": [
+      "विटामिन D",
+      "विटामिन A",
+      "विटामिन K",
+      "विटामिन B12"
+    ],
+    "options_en": [
+      "Vitamin D",
+      "Vitamin A",
+      "Vitamin K",
+      "Vitamin B12"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "भारतीय नागरिकों के मौलिक अधिकारों को सुनिश्चित करने वाला कौन है?",
+    "question_en": "Who is the guarantor of the fundamental rights of the Indian citizens?",
+    "options_hi": [
+      "राज्यपाल",
+      "प्रधानमंत्री",
+      "उच्चतम न्यायालय",
+      "राष्ट्रपति"
+    ],
+    "options_en": [
+      "The Governor",
+      "The Prime Minister",
+      "The Supreme Court",
+      "The President"
+    ],
+    "correct": 2,
+    "explanation_hi": "Under Article 32, the Supreme Court is the guarantor of fundamental rights.",
+    "explanation_en": "Under Article 32, the Supreme Court is the guarantor of fundamental rights.",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "दो घंटियाँ 57 सेकंड और 68 सेकंड के अंतराल पर एक साथ बजना शुरू हुईं। यदि वे दोनों सुबह 10 बजे एक साथ बजती हैं, तो वे दोबारा कितने सेकंड बाद एक साथ बजेंगी?",
+    "question_en": "Two bells ring at intervals of 57 seconds and 68 seconds. If they both ring at 10 O'clock in the morning together, after how many seconds will they ring together again?",
+    "options_hi": [
+      "3776",
+      "3976",
+      "3676",
+      "3876"
+    ],
+    "options_en": [
+      "3776",
+      "3976",
+      "3676",
+      "3876"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "रेशेयुक्त (fiber-rich) खाद्य समूह की पहचान करें।",
+    "question_en": "Identify the fiber-rich food group.",
+    "options_hi": [
+      "सब्जियां और हरी पत्तेदार सब्जियां",
+      "तेल और वसा",
+      "मांस और मछली",
+      "चीनी और शहद"
+    ],
+    "options_en": [
+      "Vegetables and green leafy vegetables",
+      "Oils and fats",
+      "Meat and fish",
+      "Sugar and honey"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "विश्व स्वास्थ्य दिवस ________ को मनाया जाता है।",
+    "question_en": "World Health Day falls on ________",
+    "options_hi": [
+      "7 जुलाई",
+      "31 मई",
+      "7 अप्रैल",
+      "27 मार्च"
+    ],
+    "options_en": [
+      "July 7th",
+      "May 31st",
+      "April 7th",
+      "March 27th"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "अपर्याप्त / खराब आवास के कारण होने वाली एक प्रमुख स्वास्थ्य समस्या क्या है?",
+    "question_en": "What is a major health problem that occurs due to inadequate / poor housing?",
+    "options_hi": [
+      "गुर्दे संबंधी रोग",
+      "श्वसन संबंधी रोग",
+      "हृदय संबंधी रोग",
+      "त्वचा कैंसर"
+    ],
+    "options_en": [
+      "Kidney disease",
+      "Respiratory disease",
+      "Heart disease",
+      "Skin cancer"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "किस खाद्य सामग्री में संतृप्त वसा होता है?",
+    "question_en": "Which food stuff contains saturated fat?",
+    "options_hi": [
+      "आलू",
+      "नारियल",
+      "गेहूँ",
+      "सेब"
+    ],
+    "options_en": [
+      "Potatoes",
+      "Coconuts",
+      "Wheat",
+      "Apples"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "'एनवायर्नमेंटल सैनीटेशन' शब्द को अब ________ द्वारा प्रतिस्थापित किया जा रहा है।",
+    "question_en": "The term 'Environmental Sanitation' is now being replaced by ________",
+    "options_hi": [
+      "पब्लिक हेल्थ",
+      "एनवायर्नमेंटल हेल्थ",
+      "| और ।। दोनों",
+      "इनमें से कोई भी नहीं"
+    ],
+    "options_en": [
+      "Public Health",
+      "Environmental Health",
+      "Both I and II",
+      "None of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "अधिक मात्रा में पानी के साथ खाना पकाने से भोजन ________ से वंचित हो जाता है।",
+    "question_en": "Cooking with excess quantities of water causes food to be deprived of ________",
+    "options_hi": [
+      "विटामिन K",
+      "विटामिन A",
+      "विटामिन C",
+      "विटामिन E"
+    ],
+    "options_en": [
+      "Vitamin K",
+      "Vitamin A",
+      "Vitamin C",
+      "Vitamin E"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा स्ट्रोक के लिए जोखिमकारक नहीं है?",
+    "question_en": "Which of the following is NOT a risk factor for stroke?",
+    "options_hi": [
+      "शराब और धूम्रपान",
+      "आहार नियमन",
+      "मौखिक गर्भनिरोधक गोलियों का सेवन",
+      "मधुमेह और उच्च रक्तचाप"
+    ],
+    "options_en": [
+      "Alcohol and smoking",
+      "Diet regulation",
+      "Intake of oral contraceptive pills",
+      "Diabetes and Hypertension"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "एक कूटभाषा (कोडबद्ध) में यदि BASIC को CDUEK लिखा जाता है, तो FORCE को कैसे लिखा जाएगा?",
+    "question_en": "In a certain code language, if BASIC is coded as CDUEK, then how is FORCE coded in that language?",
+    "options_hi": [
+      "HFURI",
+      "QHTGE",
+      "ULIXV",
+      "HQTEG"
+    ],
+    "options_en": [
+      "HFURI",
+      "QHTGE",
+      "ULIXV",
+      "HQTEG"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "हड़प्पा शहर किस नदी के तट पर है?",
+    "question_en": "The City of Harappa is situated on the banks of which river?",
+    "options_hi": [
+      "सिंधु",
+      "सरस्वती",
+      "लूनी",
+      "रावी"
+    ],
+    "options_en": [
+      "Indus",
+      "Saraswati",
+      "Luni",
+      "Ravi"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "ओलम्पिक खेलों का आदर्श वाक्य क्या है?",
+    "question_en": "What is the motto of Olympic Games?",
+    "options_hi": [
+      "अखंडता - भाईचारा - चुस्ती",
+      "करो या मरो",
+      "तेज- उंचा- मजबूत",
+      "प्रतिस्पर्धा की मनोवृति को बढ़ावा"
+    ],
+    "options_en": [
+      "Integrity - Fraternity - Agility",
+      "Do or Die",
+      "Faster - Higher - Stronger",
+      "Promote fighting spirit"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "जब एक महामारी पहले से ही फैल चुकी है, तो चिकनगुनिया बुखार के नियंत्रण में निम्नलिखित में से क्या सबसे महत्वपूर्ण है?",
+    "question_en": "When an epidemic has already broken out, which of the following is most important in Chikungunya fever control?",
+    "options_hi": [
+      "पानी का भंडारण पात्र मच्छरों के पनपने से मुक्त रखना।",
+      "स्रोत में कमी",
+      "लार्वा को मारना",
+      "मच्छरों से बचने का उपाय (Anti adult measures)"
+    ],
+    "options_en": [
+      "Keeping water storage container free of mosquito breeding.",
+      "Sources reduction",
+      "Larvicide",
+      "Anti adult measures"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "हवा में मौजूद ऑक्सीजन की सांद्रता क्या है?",
+    "question_en": "What is the concentration of oxygen present in air?",
+    "options_hi": [
+      "20.9%",
+      "27.8%",
+      "25%",
+      "24%"
+    ],
+    "options_en": [
+      "20.9%",
+      "27.8%",
+      "25%",
+      "24%"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से किसे कलीचूना (Quick lime) भी कहा जाता है?",
+    "question_en": "Which of the following is also called Quick lime?",
+    "options_hi": [
+      "कैल्शियम ऑक्साइड",
+      "सोडियम ऑक्साइड",
+      "कैल्शियम बाइकार्बोनेट",
+      "नाइट्रस ऑक्साइड"
+    ],
+    "options_en": [
+      "Calcium oxide",
+      "Sodium oxide",
+      "Calcium bicarbonate",
+      "Nitrous oxide"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "कौन सा खाद्य समूह अधिक प्रोटीन देता है?",
+    "question_en": "Which food group yields more protein?",
+    "options_hi": [
+      "अनाज और बाजरा",
+      "सब्जियां",
+      "मांस और मछली",
+      "फल"
+    ],
+    "options_en": [
+      "Cereals and millets",
+      "Vegetables",
+      "Meat and fish",
+      "Fruits"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौनसा उच्च रक्तचाप का निवारक और नियंत्रण उपाय नहीं है?",
+    "question_en": "Which of the following is NOT a preventive and control measure against hypertension?",
+    "options_hi": [
+      "एंटी-हाइपरटेंसिव दवाओं के साथ इलाज",
+      "वजन में कमी और व्यायाम",
+      "वसायुक्त भोजन से परहेज",
+      "भोजन का सेवन कम करना"
+    ],
+    "options_en": [
+      "Treatment with anti-hypertensive drugs",
+      "Weight reduction and exercise",
+      "Avoiding fatty foods",
+      "Reducing intake of food"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "एक लड़के ने चलना आरंभ किया और पूर्व दिशा की ओर 3 km चला। फिर वह दाएं मुड़ा और 4 km चला और फिर बाएँ मुड़ कर 3 km चला। वह दाएँ मुडकर 6 km चलने से पहले एक बार दाएं मुड़ा और 3 km चला। इस यात्रा के समापन बिंदु से आरंभिक बिंदु किस दिशा में है?",
+    "question_en": "A boy started to walk 3 km in East direction. He then took a right turn and walked 4 km and took a left turn and walked 3 km. He took a right turn and walked 3 km before taking another right turn to cover 6 km. In which direction is the starting point from the ending point?",
+    "options_hi": [
+      "पूर्व",
+      "दक्षिण",
+      "पश्चिम",
+      "उत्तर"
+    ],
+    "options_en": [
+      "East",
+      "South",
+      "West",
+      "North"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से क्या 'स्वच्छता अवरोध' का अर्थ है?",
+    "question_en": "Which of the following is the meaning of 'Sanitation Barrier'?",
+    "options_hi": [
+      "मल का पृथक्करण",
+      "व्यक्तिगत स्वच्छता",
+      "जल प्रदूषण",
+      "मक्खियों का उन्मूलन"
+    ],
+    "options_en": [
+      "Segregation of faeces",
+      "Personal hygiene",
+      "Water pollution",
+      "Elimination of flies"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "आंवला जैसे फल ________ से भरपूर होते हैं।",
+    "question_en": "Fruits like amla are rich in ________",
+    "options_hi": [
+      "विटामिन C",
+      "विटामिन D",
+      "विटामिन फोलिक अम्ल",
+      "विटामिन K"
+    ],
+    "options_en": [
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin folic acid",
+      "Vitamin K"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "subject": "General Science",
+    "type": "bilingual",
+    "question_hi": "ऊर्जा का मुख्य स्रोत क्या है?",
+    "question_en": "What is the main source of energy?",
+    "options_hi": [
+      "विटामिन",
+      "लौह",
+      "पानी",
+      "वसा"
+    ],
+    "options_en": [
+      "Vitamins",
+      "Iron",
+      "Water",
+      "Fats"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "मधुमेह के कारण होनेवाली विकलांगता क्या है?",
+    "question_en": "What is the disability caused by diabetes?",
+    "options_hi": [
+      "अंधापन",
+      "मनोभ्रंश",
+      "बहरापन",
+      "पक्षाघात"
+    ],
+    "options_en": [
+      "Blindness",
+      "Dementia",
+      "Deafness",
+      "Paralysis"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "किस प्रकार के पोषक खाद्य पदार्थों से टाइप 2 मधुमेह कम होगा?",
+    "question_en": "What kind of nutritive foodstuff will reduce Type 2 Diabetes?",
+    "options_hi": [
+      "विटामिन सामग्री",
+      "खनिज सामग्री",
+      "प्रोटीन सामग्री",
+      "फाइबर सामग्री"
+    ],
+    "options_en": [
+      "Vitamin content",
+      "Mineral content",
+      "Protein content",
+      "Fibre content"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "subject": "General Science",
+    "type": "bilingual",
+    "question_hi": "गर्भवती महिलाओं को प्रति दिन कितनी ऊर्जा की आवश्यकता होती है?",
+    "question_en": "How much energy does a pregnant women need per day?",
+    "options_hi": [
+      "3200 कैलोरी",
+      "2000 कैलोरी",
+      "1500 कैलोरी",
+      "2500 कैलोरी"
+    ],
+    "options_en": [
+      "3200 Calories",
+      "2000 Calories",
+      "1500 Calories",
+      "2500 Calories"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "इनमें से कौन सा सुरक्षित पानी की खपत का मापदंड नहीं है?",
+    "question_en": "Which one of these is NOT a criterion for the consumption of safe water?",
+    "options_hi": [
+      "हानिकारक रासायनिक पदार्थों से मुक्त",
+      "गंध और रंग से मुक्त",
+      "रोगजनकों से मुक्त",
+      "अतिरिक्त स्वाद के लिए एजेंट को डालना"
+    ],
+    "options_en": [
+      "Free from harmful chemical substances",
+      "Free from odour and colour",
+      "Free from pathogens",
+      "Adding agents for extra taste"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "ट्रेनों में प्रयुक्त होने वाला जैव-शौचालय निम्नलिखित में से किस सिद्धांत पर आधारित होता है?",
+    "question_en": "The bio-toilet used in trains function based on which of the following principles?",
+    "options_hi": [
+      "अवायवीय प्रक्रिया",
+      "वायवीय प्रक्रिया",
+      "। और ।। दोनों",
+      "इनमें से कोई भी नहीं"
+    ],
+    "options_en": [
+      "Anaerobic process",
+      "Aerobic process",
+      "Both I and II",
+      "None of the above"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा दहनशील अपशिष्ट का एक प्रकार है?",
+    "question_en": "Which one of the following is a type of combustible rubbish?",
+    "options_hi": [
+      "चीनी मिट्टी के बर्तन",
+      "डिब्बे",
+      "गत्ते",
+      "धातु"
+    ],
+    "options_en": [
+      "Crockery",
+      "Cans",
+      "Cardboards",
+      "Metal"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "बढ़े हुए बॉडी मास इंडेक्स (BMI) के कारण ________ नहीं हो सकता है।",
+    "question_en": "Raised Body Mass Index (BMI) will not lead to ________",
+    "options_hi": [
+      "स्ट्रोक",
+      "हृदयरोग",
+      "पीलिया",
+      "मधुमेह"
+    ],
+    "options_en": [
+      "Stroke",
+      "Heart disease",
+      "Jaundice",
+      "Diabetes"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "वायरल हेपेटाइटिस 'बी' के लिए कौन से नियंत्रण उपाय नहीं है?",
+    "question_en": "Which one of the following is NOT the control measures for viral hepatitis 'B'?",
+    "options_hi": [
+      "हेपेटाइटिस 'बी' से प्रतिरक्षण",
+      "संक्रमित व्यक्ति को छूने से बचना",
+      "रक्त और शरीर के तरल पदार्थ के साथ सावधानियां",
+      "कंडोम का उपयोग करना"
+    ],
+    "options_en": [
+      "Immunization against Hepatitis 'B'",
+      "Avoiding touching the infected person",
+      "Precautions with blood and body fluids",
+      "Using condoms"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा पोलियो माइलाइटिस का लक्षण या संकेत नहीं है?",
+    "question_en": "Which of the following is NOT a symptom or sign of poliomyelitis?",
+    "options_hi": [
+      "पक्षाघात",
+      "सीने में गंभीर दर्द",
+      "गर्दन और पीठ में दर्द",
+      "दस्त और उल्टी"
+    ],
+    "options_en": [
+      "Paralysis",
+      "Severe chest pain",
+      "Pain in the neck & back",
+      "Diarrhoea and vomiting"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "घरेलू जल निकासों में, निम्नलिखित में से कौन सा पदार्थ निलंबित ठोस (सस्पेंडेड सॉलिड) का भाग नहीं होता है?",
+    "question_en": "In domestic water sewage, which of the following things is/are not a part of 'Suspended solids'?",
+    "options_hi": [
+      "मिट्टी",
+      "रेत",
+      "गाद",
+      "कागज के रेशे"
+    ],
+    "options_en": [
+      "Clay",
+      "Sand",
+      "Silt",
+      "Paper Fibres"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "रतौंधी ________ की कमी के कारण होती है।",
+    "question_en": "Night blindness is caused by the deficiency of ________",
+    "options_hi": [
+      "जिंक",
+      "विटामिन K",
+      "विटामिन A",
+      "फोलिक अम्ल"
+    ],
+    "options_en": [
+      "Zinc",
+      "Vitamin K",
+      "Vitamin A",
+      "Folic Acids"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "'ग्रेट सेनेटरी अवेकनिंग' ________ में हुई।",
+    "question_en": "The 'Great Sanitary Awakening' took place in:",
+    "options_hi": [
+      "इंडिया",
+      "इंगलैंड",
+      "अमेरिका",
+      "जर्मनी"
+    ],
+    "options_en": [
+      "India",
+      "England",
+      "USA",
+      "Germany"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "किसे धूप विटामिन (sunshine vitamin) के रूप में जाना जाता है?",
+    "question_en": "Which is known as the sunshine vitamin?",
+    "options_hi": [
+      "विटामिन D",
+      "विटामिन K",
+      "विटामिन A",
+      "विटामिन C"
+    ],
+    "options_en": [
+      "Vitamin D",
+      "Vitamin K",
+      "Vitamin A",
+      "Vitamin C"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा एक शुद्ध तरल आहार है?",
+    "question_en": "Which of the following is a clear liquid diet?",
+    "options_hi": [
+      "दूध",
+      "लस्सी",
+      "कच्चे नारियल का पानी",
+      "सब्जी का गाढ़ा सूप"
+    ],
+    "options_en": [
+      "Milk",
+      "Lassi",
+      "Tender coconut water",
+      "Thick vegetable soup"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "श्रृंखला में अगली संख्या ज्ञात करें। 6, 7, 9, 13, 21, ?",
+    "question_en": "Find the next number in the series. 6, 7, 9, 13, 21, ?",
+    "options_hi": [
+      "43",
+      "29",
+      "37",
+      "35"
+    ],
+    "options_en": [
+      "43",
+      "29",
+      "37",
+      "35"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "एड्स (AIDS) के निदान (diagnosis) के लिए प्रमुख संकेत ________ हैं।",
+    "question_en": "The major signs for diagnosis of AIDS are ________",
+    "options_hi": [
+      "शरीर के वजन का 10% से अधिक या उसके बराबर वजन कम होना",
+      "एक महीने से अधिक समय तक लगातार दस्त होना",
+      "एक महीने से अधिक समय तक बुखार रहना",
+      "उपरोक्त सभी"
+    ],
+    "options_en": [
+      "Weight loss more than or equal to 10% of the body weight",
+      "Chronic diarrhoea for more than one month",
+      "Prolonged fever for more than one month",
+      "All of the above"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा संधिपाद जनित रोग नहीं है?",
+    "question_en": "Which of the following is NOT an arthropod-borne disease?",
+    "options_hi": [
+      "हुकवर्म",
+      "मलेरिया",
+      "प्लेग",
+      "फाइलेरिया"
+    ],
+    "options_en": [
+      "Hookworm",
+      "Malaria",
+      "Plague",
+      "Filaria"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "वह पदार्थ जो प्राकृतिक प्रकिया से विघटित हो जाता है, उसे ________ कहा जाता है।",
+    "question_en": "A material which gets decomposed through natural processes is called ________",
+    "options_hi": [
+      "जैव अवक्रमणशील पदार्थ",
+      "गैर जैवअवक्रमणशील पदार्थ",
+      "ऊष्मीय पदार्थ",
+      "खंडनीय पदार्थ"
+    ],
+    "options_en": [
+      "biodegradable material",
+      "non-biodegradable material",
+      "thermal material",
+      "fissile material"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से किसे मिलेट कहा जाता है?",
+    "question_en": "Which of the following is called a millet?",
+    "options_hi": [
+      "चावल",
+      "मक्का",
+      "गेहूँ",
+      "बाजरा"
+    ],
+    "options_en": [
+      "Rice",
+      "Corn",
+      "Wheat",
+      "Bajra"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "17 D वैक्सीन का उपयोग ________ को नियंत्रित करने के लिए किया जाता है।",
+    "question_en": "17 D vaccine is used to control ________",
+    "options_hi": [
+      "चिकनगुनिया बुखार",
+      "पीत ज्वर",
+      "टॉयफायड बुखार",
+      "क्यू (Q) बुखार"
+    ],
+    "options_en": [
+      "Chikungunya fever",
+      "Yellow fever",
+      "Typhoid fever",
+      "Q fever"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "19वें एशियाई खेलों का आयोजन किस देश में किया जाएगा?",
+    "question_en": "The 19th Asian Games will be held in which of the following countries?",
+    "options_hi": [
+      "ऑस्ट्रेलिया",
+      "भारत",
+      "ब्राजील",
+      "चीन"
+    ],
+    "options_en": [
+      "Australia",
+      "India",
+      "Brazil",
+      "China"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा यौन संक्रमण के खिलाफ रोकथाम और नियंत्रण का उपाय नहीं है?",
+    "question_en": "Which of the following is NOT a prevention and control measure against Sexually Transmitted Infections?",
+    "options_hi": [
+      "डिस्पोजेबल सिरिंज और सुइयों का उपयोग करना",
+      "रक्त और अंग दाताओं की स्क्रीनिंग",
+      "कंडोम का उपयोग करना",
+      "कामोत्तेजक यौन क्रिया को प्रोत्साहित करना"
+    ],
+    "options_en": [
+      "Using disposable syringes and needles",
+      "Screening of blood and organ donors",
+      "Using condoms",
+      "Encouraging promiscuous sexual act"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "एक CPU को Rs.7705 में बेचने पर एक व्यक्ति 15% का लाभ प्राप्त करता है। 25% लाभ प्राप्त करने के लिए इसे किस मूल्य पर बेचा जाना चाहिए? (रु. में)",
+    "question_en": "By selling a CPU for Rs.7705, a man makes a profit of 15%. At what price should he sell it to make a profit of 25%?(in Rs.)",
+    "options_hi": [
+      "8375",
+      "8275",
+      "8575",
+      "8475"
+    ],
+    "options_en": [
+      "8375",
+      "8275",
+      "8575",
+      "8475"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा रोग एडीस (aedes) मच्छरों द्वारा नहीं फैलता है?",
+    "question_en": "Which one of the following is NOT spread by aedes mosquitos?",
+    "options_hi": [
+      "चिकनगुनिया",
+      "डेंगू",
+      "पीत ज्वर",
+      "जापानी मस्तिष्ककोप"
+    ],
+    "options_en": [
+      "Chickungunya",
+      "Dengue",
+      "Yellow fever",
+      "Japanese encephalitis"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा रक्त में मौजूद ऑक्सीजन का सामान्य स्तर है?",
+    "question_en": "Of the following which one is the normal level of oxygen present in the blood?",
+    "options_hi": [
+      "70 से 74 mmHg",
+      "75 से 100 mmHg",
+      "60 से 72 mmHg",
+      "55 से 60 mmHg"
+    ],
+    "options_en": [
+      "70 to 74 mmHg",
+      "75 to 100 mmHg",
+      "60 to 72 mmHg",
+      "55 to 60 mmHg"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "लेप्टोस्पायरोसिस का पर्यावरण नियंत्रण उपाय ________",
+    "question_en": "The enviornmental control measure of Leptospirosis ________",
+    "options_hi": [
+      "संभावित रूप से दूषित पानी के संपर्क में आने से रोकना",
+      "सब सही हैं",
+      "कृतक नियंत्रण के उपाय",
+      "अपशिष्ट और स्वास्थ्य शिक्षा का उचित निपटान"
+    ],
+    "options_en": [
+      "Preventing exposure to potentially contaminated water",
+      "All are correct",
+      "Rodent control measures",
+      "Proper disposal of waste and health education"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "राज्यसभा में सीटों का आवंटन प्रत्येक राज्य / केंद्र शासित प्रदेश के ________ के आधार पर होता है।",
+    "question_en": "The allocation of seats in Rajya Sabha is made on the basis of ________ of each State/Union Territory.",
+    "options_hi": [
+      "जनसंख्या",
+      "क्षेत्र",
+      "जीडीपी",
+      "निर्वाचन क्षेत्रों की संख्या"
+    ],
+    "options_en": [
+      "Population",
+      "Area",
+      "GDP",
+      "Number of constituencies"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा रोग क्यूलेक्स (culex) मच्छरों के कारण होता है?",
+    "question_en": "Which one of the following diseases is caused by culex mosquitos?",
+    "options_hi": [
+      "मलेरिया",
+      "हैज़ा",
+      "प्लेग",
+      "फाइलेरिया"
+    ],
+    "options_en": [
+      "Malaria",
+      "Cholera",
+      "Plague",
+      "Filaria"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "मध्यम स्तर का काम करने वाले पुरुष श्रमिकों की दैनिक प्रोटीन आवश्यकता क्या है?",
+    "question_en": "What is the daily protein requirement of male workers doing moderate work?",
+    "options_hi": [
+      "55 ग्राम",
+      "65 ग्राम",
+      "40 ग्राम",
+      "30 ग्राम"
+    ],
+    "options_en": [
+      "55 gm",
+      "65 gm",
+      "40 gm",
+      "30 gm"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "समय-पूर्व जन्मे बच्चे (Preterm babies) वे होते हैं, जिनकी गर्भावधि आयु ________ के बीच होती है।",
+    "question_en": "Preterm babies are those whose gestational age is between ________",
+    "options_hi": [
+      "38 से 40 सप्ताह",
+      "40 से 42 सप्ताह",
+      "39 से 42 सप्ताह",
+      "34 से 37 सप्ताह"
+    ],
+    "options_en": [
+      "38 to 40 weeks",
+      "40 to 42 weeks",
+      "39 to 42 weeks",
+      "34 to 37 weeks"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "2350 लड़के और 1400 लड़कियों की एक परीक्षा ली गई; 42% लड़के और 36% लड़कियों ने परीक्षा उत्तीर्ण की। परीक्षा में अनुत्तीर्ण होने वाले छात्रों की कुल संख्या का प्रतिशत ज्ञात करें।",
+    "question_en": "2350 boys and 1400 girls are examined in a test; 42% of the boys and 36% of the girls pass the test. The percentage of the total who failed is",
+    "options_hi": [
+      "60.24",
+      "63.24",
+      "62.24",
+      "61.24"
+    ],
+    "options_en": [
+      "60.24",
+      "63.24",
+      "62.24",
+      "61.24"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "मुद्रास्फीति के आकलन के लिए प्रयोग किए जाने वाले CPI का पूर्ण रूप क्या है?",
+    "question_en": "What is CPI, which is used to measure inflation?",
+    "options_hi": [
+      "कंज्यूमर पे इंडेक्स",
+      "कॉलर प्राइस इंडेक्स",
+      "कंज्यूमर प्राइस इंडेक्स",
+      "कॉलर पे इंडेक्स"
+    ],
+    "options_en": [
+      "Consumer Pay Index",
+      "Caller Price Index",
+      "Consumer Price Index",
+      "Caller Pay Index"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "ORS का पूर्ण रूप क्या है?",
+    "question_en": "What is the full form of ORS?",
+    "options_hi": [
+      "ओरल रिजूविनेट सॉल्यूशन",
+      "ओरल रिहाइड्रेशन सॉल्ट",
+      "ओरल रिजूविनेट सॉल्ट",
+      "ओरल रिपेयर सॉल्यूशन"
+    ],
+    "options_en": [
+      "Oral Rejuvenate Solution",
+      "Oral Rehydration Salt",
+      "Oral Rejuvenate Salt",
+      "Oral Repair Solution"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "कौन सा अल्पशर्करारक्तता (hypoglycemia) का संकेत और लक्षण नहीं है?",
+    "question_en": "Which one is NOT a sign and symptom of hypoglycemia?",
+    "options_hi": [
+      "उलझन",
+      "पसीना आना",
+      "कंपकपाहट",
+      "सिहरन"
+    ],
+    "options_en": [
+      "Confusion",
+      "Sweating",
+      "Shivering",
+      "Trembling"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "किसी संख्या को 469 से विभाजित करने पर हमें शेषफल 66 प्राप्त होता है। उसी संख्या को 67 से विभाजित करने पर शेषफल क्या होगा?",
+    "question_en": "On dividing a number by 469, we get 66 as remainder. On dividing the same number by 67, what will be the remainder?",
+    "options_hi": [
+      "36",
+      "56",
+      "66",
+      "46"
+    ],
+    "options_en": [
+      "36",
+      "56",
+      "66",
+      "46"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "subject": "General Science",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा उपकरण विद्युत धारा के तापीय प्रभाव के सिद्धांत के अनुसार कार्य करता है?",
+    "question_en": "Which of the following appliances works according to the principle of heating effect of electric current?",
+    "options_hi": [
+      "विद्युत हीटर",
+      "रेफ्रिजरेटर",
+      "पंखा",
+      "टेलीविजन"
+    ],
+    "options_en": [
+      "Electric heater",
+      "Refrigerator",
+      "Fan",
+      "Television"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "बिजली के उत्पादन में किस अपशिष्ट पदार्थ का उपयोग किया जाता है?",
+    "question_en": "Which waste material is utilized in the production of electricity?",
+    "options_hi": [
+      "जूट अपशिष्ट",
+      "कचरा",
+      "गन्ने का अपशिष्ट",
+      "प्लास्टिक"
+    ],
+    "options_en": [
+      "Jute waste",
+      "Garbage",
+      "Sugarcane waste",
+      "Plastic"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से किस विधि का उपयोग पानी की क्लोरीन मांग के अनुमान के लिए किया जाता है?",
+    "question_en": "Which of the following methods is used for the estimation of chlorine demand of water?",
+    "options_hi": [
+      "क्लोरोमीटर",
+      "बर्कफेल्ड फ़िल्टर",
+      "होरॉक का उपकरण",
+      "डबल पोट विधि"
+    ],
+    "options_en": [
+      "Chlorometer",
+      "Berkefeld Filter",
+      "Horrock's Apparatus",
+      "Double Pot Method"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा क्यूलेक्स मच्छर में माइक्रोफ़िलारिया की वृद्धि (propogation) का एक प्रकार है?",
+    "question_en": "Which one of the following is a type of propagation of microfilaria in culex mosquito?",
+    "options_hi": [
+      "प्रोपागेटिव",
+      "साइकलोडेवलपमेंटल",
+      "साइकलीकल",
+      "साइकलोप्रोपागेटिव"
+    ],
+    "options_en": [
+      "Propagative",
+      "Cyclodevelopmental",
+      "Cyclical",
+      "Cyclopropagative"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "किस तेल में अधिक असंतृप्त वसा अम्ल होते हैं?",
+    "question_en": "Which oil contains more unsaturated fatty acids?",
+    "options_hi": [
+      "मूँगफली का तेल",
+      "नारियल का तेल",
+      "सूरजमुखी का तेल",
+      "ताड़ का तेल"
+    ],
+    "options_en": [
+      "Groundnut oil",
+      "Coconut oil",
+      "Sunflower oil",
+      "Palm oil"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "subject": "General Science",
+    "type": "bilingual",
+    "question_hi": "किसी प्रकाशीय माध्यम की बंकन क्षमता (bending ability) को उसके ________ द्वारा मापा जाता है।",
+    "question_en": "The bending ability of an optical medium is measured by its ________",
+    "options_hi": [
+      "विसरण सूचकांक",
+      "अपवर्तन सूचकांक",
+      "विक्षेपण सूचकांक",
+      "संपीडन सूचकांक"
+    ],
+    "options_en": [
+      "diffusion index",
+      "refractive index",
+      "dispersion index",
+      "compression index"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "कहानियों के प्रसिद्ध संग्रह 'पंचतंत्र' के लेखक कौन हैं?",
+    "question_en": "Who among the following is the author of the famous story book 'Panchatantra'?",
+    "options_hi": [
+      "महावस्तु",
+      "नलादियार",
+      "विष्णु शर्मा",
+      "दीपवंश"
+    ],
+    "options_en": [
+      "Mahavastu",
+      "Naladiyar",
+      "Vishnu Sharma",
+      "Dipavamsa"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "लैक्टोज असह्यता के मामले में दूध का विकल्प क्या है?",
+    "question_en": "What is the substitute for milk in case of lactose intolerance?",
+    "options_hi": [
+      "गाय का दूध",
+      "सोया दूध",
+      "भैंस का दूध",
+      "दही"
+    ],
+    "options_en": [
+      "Cow milk",
+      "Soy milk",
+      "Buffalo milk",
+      "Curd"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "मलेरिया एक ________ बीमारी है, जो मच्छर के काटने से होती है।",
+    "question_en": "Malaria is a ________ disease caused by mosquito bite.",
+    "options_hi": [
+      "प्रजीवगण संबंधी (Protozoal)",
+      "जीवाणु संबंधी (Bacterial)",
+      "विषाणु संबंधी (Viral)",
+      "कृमि संबंधी (Worms)"
+    ],
+    "options_en": [
+      "Protozoal",
+      "Bacterial",
+      "Viral",
+      "Worms"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "4320 विद्यार्थियों वाले एक विद्यालय में लड़कियों की संख्या का लड़कों की संख्या से अनुपात 47:49 है। कितनी और लड़कियों को दाखिल किया जाना चाहिए जिससे यह अनुपात बदल कर 1:1 हो जाए?",
+    "question_en": "The ratio of number of girls to boys in a school of 4320 students is 47:49. How many more girls should be admitted to make the ratio 1:1?",
+    "options_hi": [
+      "86",
+      "92",
+      "90",
+      "88"
+    ],
+    "options_en": [
+      "86",
+      "92",
+      "90",
+      "88"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "इनमें से कौन सा भोजन स्वच्छता सर्वोत्तम अभ्यासों में से एक नहीं है?",
+    "question_en": "Which of these is NOT among the food sanitation best practices?",
+    "options_hi": [
+      "रसोइयों और भोजन संचालकों की व्यक्तिगत स्वच्छता",
+      "खाद्य संचालकों की नियमित जांच",
+      "रेफ्रिजरेटर में रखे हुए भोजन का पुनः उपयोग करना",
+      "दूध का पाश्चरीकरण"
+    ],
+    "options_en": [
+      "Personal hygiene of cooks and food handlers",
+      "Regular examination of food handlers",
+      "Reusing food kept in a refrigerator",
+      "Pasteurisation of milk"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "इस प्रश्न में दिए गए कथन में दो भिन्न तत्वों के बीच संबंध दर्शाया गया है। कथन के बाद तीन निष्कर्ष दिए गए हैं। दिए गए कथन को सत्य मानें और दिए गए विकल्पों में से उत्तर चुनें: Statement: $W=O>R\\ge I>E<D$ कथन: $W=O>R\\ge I>E<D$ Conclusions: / निष्कर्ष: i) $R>D$ ii) $D>O$ iii) $W>R$",
+    "question_en": "In this question, relationship between different elements is shown in the statement. This statement is followed by three conclusions. Assume the given statement to be true and choose the answer from the given options:",
+    "options_hi": [
+      "केवल i) और ii) तर्कसंगत हैं",
+      "केवल iii) तर्कसंगत है",
+      "केवल ii) और iii) तर्कसंगत हैं",
+      "सभी तर्कसंगत हैं"
+    ],
+    "options_en": [
+      "Only i) and ii) follow",
+      "Only iii) follows",
+      "Only ii) and iii) follow",
+      "All follow"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "एक स्लो सैंड फिल्टर के केंद्र में क्या है?",
+    "question_en": "Which is at the heart of a slow sand filter?",
+    "options_hi": [
+      "महत्वपूर्ण परत",
+      "ईंट की परत",
+      "जल स्तर",
+      "रेत का तह"
+    ],
+    "options_en": [
+      "Vital layer",
+      "Brick layer",
+      "Water level",
+      "Sand bed"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "अपशिष्ट जल जिसमें मानव मल-मूत्र नहीं होता है, उसे ________ कहा जाता है।",
+    "question_en": "The waste water which does not contain human excreta is called ________",
+    "options_hi": [
+      "मलजल (Sewage)",
+      "मलमार्ग (Sewer)",
+      "मैला पानी (Sullage)",
+      "उपरोक्त सभी"
+    ],
+    "options_en": [
+      "Sewage",
+      "Sewer",
+      "Sullage",
+      "All of the above"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 74,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "दूध में मौजूद डाईसैकराइड (disaccharide) कौन सा है?",
+    "question_en": "Which is the disaccharide present in milk?",
+    "options_hi": [
+      "माल्टोस",
+      "स्टार्च",
+      "सुक्रोज",
+      "लैक्टोज"
+    ],
+    "options_en": [
+      "Maltose",
+      "Starch",
+      "Sucrose",
+      "Lactose"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 75,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "आहार प्रोटीन का मुख्य कार्य क्या है?",
+    "question_en": "What is the main function of dietary protein?",
+    "options_hi": [
+      "हड्डी के विकास को बढ़ावा देना",
+      "शरीर सौष्ठव (Body building)",
+      "मलोत्सर्ग में वृद्धि",
+      "लौह अवशोषण को बढ़ावा देना"
+    ],
+    "options_en": [
+      "Promoting bone growth",
+      "Body building",
+      "Increasing bowel movements",
+      "Promoting iron absorption"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 76,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "शहरी कुष्ठ नियंत्रण कार्यक्रम में, जनसंख्या का आकार ________ से अधिक होना चाहिए।",
+    "question_en": "In Urban Leprosy control programme, the population size should be more than ________",
+    "options_hi": [
+      "50000",
+      "100000",
+      "70000",
+      "75000"
+    ],
+    "options_en": [
+      "50000",
+      "100000",
+      "70000",
+      "75000"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 77,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "एक वस्तु को जल में डुबोने पर वह किस बल का अनुभव करेगी?",
+    "question_en": "Which force will be experienced by an object when it is immersed in water?",
+    "options_hi": [
+      "प्रतिकर्षण बल",
+      "आकर्षण बल",
+      "उत्प्लावन बल",
+      "गुरुत्वाकर्षण बल"
+    ],
+    "options_en": [
+      "Force of repulsion",
+      "Force of attraction",
+      "Force of Buoyancy",
+      "Force of gravity"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 78,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "डेंगू सिंड्रोम ________ संक्रमण का एक प्रकार है।",
+    "question_en": "Dengue syndrome is a/an ________ kind of infection.",
+    "options_hi": [
+      "श्वसन संबंधी",
+      "आंतों संबंधी",
+      "संधिपाद जनित",
+      "इनमें से कोई भी नहीं"
+    ],
+    "options_en": [
+      "Respiratory",
+      "Intestinal",
+      "Arthropod-borne",
+      "None of the above"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 79,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सी एक जलीय आपदा है?",
+    "question_en": "Which one of the following is an aquatic disaster?",
+    "options_hi": [
+      "हिमस्खलन",
+      "हिमझंझावत",
+      "ओला-वृष्टि",
+      "तूफानी लहरें"
+    ],
+    "options_en": [
+      "Avalanches",
+      "Blizzards",
+      "Hailstorm",
+      "Storm Surge"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 80,
+    "subject": "Reasoning and Maths",
+    "type": "bilingual",
+    "question_hi": "एक रेलगाड़ी एक स्टेशन प्लेटफार्म को पार करने में 63 सेकंड और प्लेटफार्म पर खड़े व्यक्ति को पार करने में 47 सेकंड का समय लेती है। यदि रेलगाड़ी की गति $29~m/s$ है, तो प्लेटफार्म की लंबाई कितनी है? (मीटर में)",
+    "question_en": "A train passes a station platform in 63 seconds and a man standing on the platform in 47 seconds. If the speed of the train is $29~m/s,$ what is the length of the platform?(meter)",
+    "options_hi": [
+      "474",
+      "484",
+      "494",
+      "464"
+    ],
+    "options_en": [
+      "474",
+      "484",
+      "494",
+      "464"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 81,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "किस पोषक तत्व की कमी से 'पेलैग्रा' रोग होता है?",
+    "question_en": "Which nutrient deficiency causes the disease 'Pellagra'?",
+    "options_hi": [
+      "निकोटिनिक एसिड",
+      "कैल्शियम",
+      "लौह",
+      "विटामिन K"
+    ],
+    "options_en": [
+      "Nicotinic acid",
+      "Calcium",
+      "Iron",
+      "Vitamin K"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 82,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सी स्तन कैंसर की जाँच की एक विधि नहीं है?",
+    "question_en": "Which of the following is not a method of screening for breast cancer?",
+    "options_hi": [
+      "अल्ट्रासोनोग्राम",
+      "स्तन की जांच खुद करना",
+      "मैमोग्राफी",
+      "नैदानिक स्तन जांच"
+    ],
+    "options_en": [
+      "Ultrasonogram",
+      "Breast self-examination",
+      "Mammography",
+      "Clinical breast examination"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 83,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "इलेक्ट्रॉन की खोज किसने की थी?",
+    "question_en": "Who discovered electrons?",
+    "options_hi": [
+      "जेम्स चैडविक",
+      "यूजेन गोल्डस्टीन",
+      "फिलिप वॉरेन एंडरसन",
+      "जे.जे. थॉमसन"
+    ],
+    "options_en": [
+      "James Chadwick",
+      "Eugen Goldstein",
+      "Philip Warren Anderson",
+      "J. J. Thomson"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 84,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "स्क्रब टाइफस ________ द्वारा फैलता है।",
+    "question_en": "Scrub typhus is transmitted by:",
+    "options_hi": [
+      "पिस्सू (Flea)",
+      "जूं (Louse)",
+      "किलनी (Tick)",
+      "डिंभक घुन (Larval mite)"
+    ],
+    "options_en": [
+      "Flea",
+      "Louse",
+      "Tick",
+      "Larval mite"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 85,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "एक पांच लोगों वाले घर में कितने कमरे आवश्यक हैं?",
+    "question_en": "How many rooms are required for a house with five people?",
+    "options_hi": [
+      "3",
+      "2",
+      "5",
+      "4"
+    ],
+    "options_en": [
+      "3",
+      "2",
+      "5",
+      "4"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 86,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "मानव शरीर में नाइट्रोजनयुक्त अपशिष्ट जैसे यूरिया अथवा यूरिक अम्ल कहाँ निष्कासित होते हैं?",
+    "question_en": "Where are the nitrogenous wastes in humans such as urea or uric acid removed?",
+    "options_hi": [
+      "फेफड़े",
+      "महाधमनी",
+      "वृक्क",
+      "रक्त वाहिकाएं"
+    ],
+    "options_en": [
+      "Lungs",
+      "Aorta",
+      "Kidney",
+      "Blood vessels"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 87,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "1 ग्राम वसा कितनी ऊर्जा प्रदान करता है?",
+    "question_en": "How much energy does 1 gram of fat provide?",
+    "options_hi": [
+      "9 कैलोरी",
+      "5 कैलोरी",
+      "12 कैलोरी",
+      "7 कैलोरी"
+    ],
+    "options_en": [
+      "9 cal",
+      "5 cal",
+      "12 cal",
+      "7 cal"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 88,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "रेबीज की मुख्य नैदानिक अभिव्यक्ति क्या है?",
+    "question_en": "What is the main clinical manifestation of rabies?",
+    "options_hi": [
+      "फोटोफ़ोबिया",
+      "हाईड्रोफ़ोबिया",
+      "क्लौस्ट्रोफ़ोबिया",
+      "अगेरोफ़ोबिया"
+    ],
+    "options_en": [
+      "Photophobia",
+      "Hydrophobia",
+      "Claustrophobia",
+      "Agarophobia"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 89,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "पीयूषिका-ग्रंथि ________ से जुड़ी होती है।",
+    "question_en": "Pituitary gland is attached to ________",
+    "options_hi": [
+      "थायरॉयड ग्रंथि",
+      "फेफड़े",
+      "अग्न्याशय",
+      "मस्तिष्क"
+    ],
+    "options_en": [
+      "thyroid glands",
+      "lungs",
+      "pancreas",
+      "brain"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 90,
+    "subject": "General Science",
+    "type": "bilingual",
+    "question_hi": "ऊर्जा की इकाई को क्या कहा जाता है?",
+    "question_en": "What is the unit of energy called?",
+    "options_hi": [
+      "पौंड",
+      "कैलोरी",
+      "ग्राम",
+      "MI (मिलीलीटर)"
+    ],
+    "options_en": [
+      "Pound",
+      "Calorie",
+      "Gram",
+      "MI"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 91,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "पोलियो माइलाइटिस का रोगोद्भवन काल (incubation period) क्या है?",
+    "question_en": "What is the incubation period for polio myelitis?",
+    "options_hi": [
+      "7 से 14 दिन",
+      "4 से 5 दिन",
+      "1 से 3 दिन",
+      "20 से 30 दिन"
+    ],
+    "options_en": [
+      "7 to 14 days",
+      "4 to 5 days",
+      "1 to 3 days",
+      "20 to 30 days"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 92,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "कैंडिडा अल्बिकन्स किस प्रकार का जीव है?",
+    "question_en": "What type of organism is Candida Albicans?",
+    "options_hi": [
+      "बाह्यपरजीवी (Ectoparasites)",
+      "फफूंद एजेंट (Fungal agent)",
+      "वायरल एजेंट (Viral agent)",
+      "प्रोटोजोअल एजेंट (Protozoal agent)"
+    ],
+    "options_en": [
+      "Ectoparasites",
+      "Fungal agent",
+      "Viral agent",
+      "Protozoal agent"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 93,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से किसकी कमी माइक्रोसाइटिक एनीमिया का प्रेरक कारक है?",
+    "question_en": "The deficiency of which of the following is the causative factor for microcytic anemia?",
+    "options_hi": [
+      "फास्फोरस",
+      "आयोडीन",
+      "लौह",
+      "कैल्शियम"
+    ],
+    "options_en": [
+      "Phosphorus",
+      "lodine",
+      "Iron",
+      "Calcium"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 94,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा रोग जीवाणू द्वारा जनित रोग नहीं है?",
+    "question_en": "Which of the following diseases is not caused by bacteria?",
+    "options_hi": [
+      "क्षय रोग (Tuberculosis)",
+      "हेपेटाइटिस-ए (Hepatitis-A)",
+      "हैज़ा (Cholera)",
+      "आंत्र ज्वर (Typhoid)"
+    ],
+    "options_en": [
+      "Tuberculosis",
+      "Hepatitis-A",
+      "Cholera",
+      "Typhoid"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 95,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से कौन सा मच्छरों के नियंत्रण का उपाय नहीं है?",
+    "question_en": "Which of the following is NOT a mosquito control measure?",
+    "options_hi": [
+      "मच्छरों के प्रजनन स्थलों को कम करना",
+      "फॉगिंग / डीडीटी छिड़कना",
+      "स्थिर पानी पर तेल",
+      "गर्म पानी पीना"
+    ],
+    "options_en": [
+      "Reduction of mosquito breeding sites",
+      "Fogging/ spraying DDT",
+      "Oil on stagnant water",
+      "Drinking hot water"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 96,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "किस खाद्य पदार्थ में प्रोटीन का उच्च जैविक मूल्य होता है?",
+    "question_en": "Which foodstuff contains a high biological value of protein?",
+    "options_hi": [
+      "जई",
+      "दाल",
+      "अंडा",
+      "पत्तागोभी"
+    ],
+    "options_en": [
+      "Oats",
+      "Pulses",
+      "Egg",
+      "Cabbage"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 97,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "डेंगू बुखार का एक गंभीर रूप ________ है।",
+    "question_en": "________ is a severe form of Dengue Fever",
+    "options_hi": [
+      "पृथक अंगोपांग (Isolated organopathy)",
+      "रक्तस्रावी बुखार (Haemorrhagic fever)",
+      "एक-सा बुखार (Undifferentiated fever)",
+      "इनमें से कोई भी नहीं"
+    ],
+    "options_en": [
+      "Isolated organopathy",
+      "Haemorrhagic fever",
+      "Undifferentiated fever",
+      "None of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 98,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "किस उद्देश्य के लिए VVM लेबल को टीके (vaccine) की शीशी पर लगाया जाता है?",
+    "question_en": "For what purpose the VVM label is put on a vaccine vial?",
+    "options_hi": [
+      "वैक्सीन पोटेंसी जाँच के लिए",
+      "वैक्सीन संदूषण जाँच के लिए",
+      "सही अनुपात के जाँच के लिए",
+      "खुराक मापन के लिए"
+    ],
+    "options_en": [
+      "Test for vaccine potency",
+      "Test for vaccine contamination",
+      "Test for correct proportion",
+      "Measurement of dosage"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 99,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "ज़िनॉन तत्व का प्रतीक क्या है?",
+    "question_en": "What is the symbol of the element Xenon?",
+    "options_hi": [
+      "Xe",
+      "Xo",
+      "Xn",
+      "X"
+    ],
+    "options_en": [
+      "Xe",
+      "Xo",
+      "Xn",
+      "X"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 100,
+    "subject": "Health and Sanitation",
+    "type": "bilingual",
+    "question_hi": "टाइफाइड का रोगोद्भवन काल (incubation period) क्या है?",
+    "question_en": "What is the incubation period of typhoid?",
+    "options_hi": [
+      "5 से 7 दिन",
+      "20 से 25 दिन",
+      "18 से 24 दिन",
+      "10 से 14 दिन"
+    ],
+    "options_en": [
+      "5 to 7 days",
+      "20 to 25 days",
+      "18 to 24 days",
+      "10 to 14 days"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+let current = 0, lang = "bi", answers = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), visited = Array(questions.length).fill(false), remaining = totalSeconds, timerInterval = null;
+function startTest(){document.getElementById("startScreen").classList.add("hidden");document.getElementById("examScreen").classList.remove("hidden");visited[0]=true;buildSections();buildPalette();renderQuestion();timerInterval=setInterval(tick,1000);}
+function tick(){remaining--;updateTimer();if(remaining<=0)submitTest(true);}
+function updateTimer(){const m=String(Math.floor(remaining/60)).padStart(2,"0"),s=String(remaining%60).padStart(2,"0");document.getElementById("timer").textContent="Time: "+m+":"+s;}
+function setLang(v){lang=v;["btnHi","btnEn","btnBi"].forEach(id=>document.getElementById(id).classList.remove("active"));document.getElementById(v==="hi"?"btnHi":v==="en"?"btnEn":"btnBi").classList.add("active");renderQuestion();}
+function showQuestion(q){if(lang==="hi")return q.question_hi;if(lang==="en")return q.question_en;return "<b>Hindi:</b> "+q.question_hi+"<br><br><b>English:</b> "+q.question_en;}
+function showOption(q,i){if(lang==="hi")return q.options_hi[i];if(lang==="en")return q.options_en[i];return "<b>Hindi:</b> "+q.options_hi[i]+"<br><span class='muted'><b>English:</b> "+q.options_en[i]+"</span>";}
+function renderQuestion(){const q=questions[current];visited[current]=true;document.getElementById("sectionName").textContent=q.subject||"Section";document.getElementById("qNo").textContent="Question "+(current+1)+" / "+questions.length;document.getElementById("questionText").innerHTML=showQuestion(q);const optBox=document.getElementById("options");optBox.innerHTML="";q.options_hi.forEach((_,i)=>{const div=document.createElement("button");div.className="option"+(answers[current]===i?" selected":"");div.innerHTML="<b>("+(i+1)+")</b> <span>"+showOption(q,i)+"</span>";div.onclick=()=>{answers[current]=i;marked[current]=false;updateStats();buildPalette();renderQuestion();};optBox.appendChild(div);});updateStats();buildPalette();}
+function nextQ(){if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}
+function prevQ(){if(current>0)current--;visited[current]=true;renderQuestion();}
+function clearResponse(){answers[current]=null;marked[current]=false;renderQuestion();}
+function markReview(){marked[current]=true;if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}
+function statusClass(i){if(answers[i]!==null&&marked[i])return"answered-review";if(marked[i])return"review";if(answers[i]!==null)return"answered";if(visited[i])return"not-answered";return"not-visited";}
+function buildPalette(){const pal=document.getElementById("palette");pal.innerHTML="";questions.forEach((q,i)=>{const b=document.createElement("button");b.className="pbtn "+statusClass(i)+(i===current?" current":"");b.textContent=i+1;b.onclick=()=>{current=i;visited[current]=true;renderQuestion();};pal.appendChild(b);});}
+function buildSections(){const box=document.getElementById("sectionJump"),map=new Map();questions.forEach((q,i)=>{if(!map.has(q.subject))map.set(q.subject,i);});box.innerHTML="";for(const [name,index] of map.entries()){const b=document.createElement("button");b.className="btn";b.textContent=name;b.onclick=()=>{current=index;visited[current]=true;renderQuestion();};box.appendChild(b);}}
+function updateStats(){const attempted=answers.filter(x=>x!==null).length;document.getElementById("attempted").textContent=attempted;document.getElementById("notAttempted").textContent=questions.length-attempted;}
+function submitTest(auto){if(!auto&&!confirm("Are you sure you want to submit the test?"))return;clearInterval(timerInterval);let attempted=0,notAttempted=0,correct=0,wrong=0;questions.forEach((q,i)=>{if(answers[i]===null)notAttempted++;else{attempted++;if(answers[i]===q.correct)correct++;else wrong++;}});const score=(correct*marksPerQuestion)-(wrong*negativeMarking),maxMarks=questions.length*marksPerQuestion,percentage=(score/maxMarks)*100,timeTaken=totalSeconds-remaining,result={date:new Date().toLocaleString(),attempted,notAttempted,correct,wrong,score:Number(score.toFixed(2)),maxMarks,percentage:Number(percentage.toFixed(2)),timeTaken:formatTime(timeTaken)};saveHistory(result);showResult(result);}
+function formatTime(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");}
+function saveHistory(result){const old=JSON.parse(localStorage.getItem(storageKey)||"[]");old.unshift(result);localStorage.setItem(storageKey,JSON.stringify(old.slice(0,10)));}
+function loadHistory(){const old=JSON.parse(localStorage.getItem(storageKey)||"[]");if(!old.length)return;let rows=old.map((h,i)=>`<tr><td>${i+1}</td><td>${h.date}</td><td>${h.score}</td><td>${h.percentage}%</td><td>${h.timeTaken}</td></tr>`).join("");document.getElementById("historyBox").innerHTML=`<h3>Attempt History - This Test Only</h3><table><tr><th>#</th><th>Date</th><th>Marks</th><th>%</th><th>Time</th></tr>${rows}</table>`;}
+function showResult(r){document.getElementById("examScreen").classList.add("hidden");document.getElementById("resultScreen").classList.remove("hidden");document.getElementById("timer").textContent="Submitted";document.getElementById("resultSummary").innerHTML=`<div class="result-grid"><div class="result-box"><span>Total Questions</span><strong>${questions.length}</strong></div><div class="result-box"><span>Attempted</span><strong>${r.attempted}</strong></div><div class="result-box"><span>Not Attempted</span><strong>${r.notAttempted}</strong></div><div class="result-box"><span>Correct</span><strong>${r.correct}</strong></div><div class="result-box"><span>Wrong</span><strong>${r.wrong}</strong></div><div class="result-box"><span>Marks Obtained</span><strong>${r.score}</strong></div><div class="result-box"><span>Maximum Marks</span><strong>${r.maxMarks}</strong></div><div class="result-box"><span>Percentage</span><strong>${r.percentage}%</strong></div><div class="result-box"><span>Time Taken</span><strong>${r.timeTaken}</strong></div><div class="result-box"><span>Marking Scheme</span><strong>+1 / -0.25</strong></div></div>`;let html="";questions.forEach((q,i)=>{const user=answers[i],ok=user===q.correct,correctText=q.options_en[q.correct]+" / "+q.options_hi[q.correct],userText=user===null?"Not Attempted":q.options_en[user]+" / "+q.options_hi[user],exp=q.explanation_en||q.explanation_hi||"Explanation not provided.";html+=`<div class="answer-row"><b>Q${i+1}.</b> ${q.question_en}<br><span class="muted">${q.question_hi}</span><div>Correct Answer: <span class="correct">${correctText}</span></div><div>Your Answer: <span class="${user===null?'muted':ok?'correct':'wrong'}">${userText}</span></div><div class="muted">Explanation: ${exp}</div></div>`;});document.getElementById("answerKey").innerHTML=html;}
+loadHistory();updateTimer();
+</script>
+</body>
+</html>
