@@ -59,100 +59,8 @@ button{border:none;border-radius:7px;padding:10px 14px;font-weight:800;cursor:po
   .score-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
-
-<style id="auto-common-mock-style">
-.math {
-  white-space: nowrap;
-  font-family: "Times New Roman", serif;
-}
-
-.frac {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  line-height: 1.2;
-  margin: 0 4px;
-}
-
-.frac .top {
-  display: block;
-  padding: 0 4px 2px;
-  border-bottom: 1.5px solid currentColor;
-}
-
-.frac .bottom {
-  display: block;
-  padding: 2px 4px 0;
-}
-
-sup, sub {
-  line-height: 0;
-}
-
-.question-palette,
-.palette-buttons,
-#paletteButtons,
-#questionPalette,
-.palette-grid,
-.question-buttons {
-  max-height: 420px;
-  overflow-y: auto;
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-
-  .exam-container,
-  .main-container,
-  .test-container,
-  .quiz-container,
-  .content-wrapper {
-    display: block !important;
-    width: 100% !important;
-  }
-
-  .side-panel,
-  .question-palette,
-  .palette-panel,
-  .right-panel {
-    width: 100% !important;
-    max-height: 260px;
-    overflow-y: auto;
-    margin-top: 10px;
-  }
-
-  button {
-    min-height: 38px;
-    font-size: 14px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-</style>
-
 </head>
 <body>
-
-<a href="index.html" data-auto-home-button style="
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 99999;
-  background: #0b5ed7;
-  color: #ffffff;
-  padding: 8px 13px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-">Home</a>
-
 <div class="exam-header">
   <div class="exam-title">Health, Family Welfare Society — STS Senior Treatment Supervisor Mock Test</div>
   <div class="langbar">
@@ -212,7 +120,7 @@ sup, sub {
   </aside>
 </div>
 <script>
-const TEST_ID = "health_family_welfare_sts<sub>2</sub>1_april<sub>2</sub>018_bilingual_v1";
+const TEST_ID = "health_family_welfare_sts_21_april_2018_bilingual_v1";
 const questions = [{"id": 1, "hi": "एकीकृत एम्बूलेंस परियोजना में कौनसी गतिविधि शामिल नहीं है -", "en": "Which activity is not included in the Integrated Ambulance Project?", "opts_hi": ["कॉल सेन्टर", "104 एम्बूलेंस", "मोबाईल मेडिकल यूनिट", "108 एम्बूलेंस"], "opts_en": ["Call centre", "104 ambulance", "Mobile medical unit", "108 ambulance"], "ans": 3}, {"id": 2, "hi": "पैन्क्रियाज ग्रन्थि से निकलने वाले इन्सुलिन का संबंध कौनसी बीमारी से है -", "en": "Insulin secreted by the pancreas is related to which disease?", "opts_hi": ["कैंसर", "थैलेसिमिया", "हिमोफिलिया", "डायबिटीज"], "opts_en": ["Cancer", "Thalassemia", "Haemophilia", "Diabetes"], "ans": 4}, {"id": 3, "hi": "किशोर स्वास्थ्य के लिए कौनसा कार्यक्रम शुरू किया गया है -", "en": "Which programme has been started for adolescent health?", "opts_hi": ["आरबीएसके", "आरकेएसके", "जेएसके", "एनएसएसके"], "opts_en": ["RBSK", "RKSK", "JSK", "NSSK"], "ans": 2}, {"id": 4, "hi": "परिवार नियोजन के अस्थाई साधनों में यह शामिल नहीं है -", "en": "Which of these is not included among temporary methods of family planning?", "opts_hi": ["आईयूसीडी", "अन्तरा इंजेक्शन", "नसबंदी", "कंडोम"], "opts_en": ["IUCD", "Antara injection", "Sterilization", "Condom"], "ans": 3}, {"id": 5, "hi": "इनमें से कौनसी योजना राजस्थान राज्य में लागू नहीं है -", "en": "Which of these schemes is not implemented in Rajasthan state?", "opts_hi": ["बाल हृदय योजना", "भामाशाह स्वास्थ्य बीमा", "राजश्री", "चिरायु"], "opts_en": ["Bal Hriday Yojana", "Bhamashah Swasthya Bima", "Rajshree", "Chirayu"], "ans": 1}, {"id": 6, "hi": "राजस्थान की महिलाओं को सशक्तिकरण के लिए वित्तीय समावेशन हेतु कौनसी योजना चलाई जा रही है -", "en": "Which scheme is being run in Rajasthan for women empowerment through financial inclusion?", "opts_hi": ["बेटी बचाओ बेटी पढ़ाओ", "भामाशाह", "लाड़ली", "सुकन्या योजना"], "opts_en": ["Beti Bachao Beti Padhao", "Bhamashah", "Ladli", "Sukanya Yojana"], "ans": 2}, {"id": 7, "hi": "वर्तमान में आशाओं के ऑनलाईन भुगतान सिस्टम को किस नाम से जाना जाता है -", "en": "At present, the online payment system for ASHAs is known by which name?", "opts_hi": ["आशा पे", "आशा ज्योति", "आशा किरण", "आशा सॉफ्ट"], "opts_en": ["ASHA Pay", "ASHA Jyoti", "ASHA Kiran", "ASHA Soft"], "ans": 4}, {"id": 8, "hi": "विटामिन ए की कमी के कारण कौनसा रोग हो सकता है -", "en": "Deficiency of Vitamin A may cause which disease?", "opts_hi": ["रतौंधी", "बेरी-बेरी", "स्कर्वी", "रिकेट्स"], "opts_en": ["Night blindness", "Beri-beri", "Scurvy", "Rickets"], "ans": 1}, {"id": 9, "hi": "एन्जियोग्राफी टेस्ट किस बीमारी की पहचान के लिए करवाया जाता है -", "en": "Angiography test is done to identify which disease?", "opts_hi": ["थायराइड", "कैंसर", "स्वाईन फ्लू", "हृदय रोग"], "opts_en": ["Thyroid", "Cancer", "Swine flu", "Heart disease"], "ans": 4}, {"id": 10, "hi": "किस योजना के तहत राजस्थान में राजकीय चिकित्सालयों में निःशुल्क दवा दी जाती है -", "en": "Under which scheme are free medicines provided in government hospitals in Rajasthan?", "opts_hi": ["एमएनजेवाई", "एमएनडीवाई", "बीएसबीवाई", "जेएसवाई"], "opts_en": ["MNJY", "MNDY", "BSBY", "JSY"], "ans": 2}, {"id": 11, "hi": "राजस्थान में निःशुल्क दवा प्रबन्धन के लिए कौनसा सॉफ्टवेयर उपयोग में लिया जाता है -", "en": "Which software is used for free medicine management in Rajasthan?", "opts_hi": ["आशा सॉफ्ट", "ई-औषधि", "ई-उपकरण", "ई-साधन"], "opts_en": ["ASHA Soft", "e-Aushadhi", "e-Upkaran", "e-Sadhan"], "ans": 2}, {"id": 12, "hi": "आरएमएससी (RMSC) की फुल फार्म क्या है -", "en": "What is the full form of RMSC?", "opts_hi": ["राजस्थान मेडिकल सर्विसेज कॉर्पोरेशन", "राजस्थान मेडिसन सर्जरी कॉर्पोरेशन", "रॉयल मेडिकल सर्विसेज कॉर्पोरेशन", "रॉयल मेडिकल सर्जरी कॉर्पोरेशन"], "opts_en": ["Rajasthan Medical Services Corporation", "Rajasthan Medicine Surgery Corporation", "Royal Medical Services Corporation", "Royal Medical Surgery Corporation"], "ans": 1}, {"id": 13, "hi": "राजस्थान में भ्रूण लिंग जाँच संबंधी सूचना देने हेतु कौनसी योजना है -", "en": "Which scheme is there in Rajasthan for giving information regarding foetal sex determination?", "opts_hi": ["बेटी बचाओ-बेटी पढ़ाओ", "शुभ लक्ष्मी", "मुखबिर", "सुगम"], "opts_en": ["Beti Bachao-Beti Padhao", "Shubh Lakshmi", "Mukhbir", "Sugam"], "ans": 3}, {"id": 14, "hi": "वर्तमान में स्वास्थ्य विभाग गर्भवती की कितनी एएनसी जाँचे अनिवार्य मानता है -", "en": "At present, how many ANC check-ups does the Health Department consider mandatory for a pregnant woman?", "opts_hi": ["2", "6", "1", "4"], "opts_en": ["2", "6", "1", "4"], "ans": 4}, {"id": 15, "hi": "चम्बल नदी बहती है -", "en": "The Chambal river flows through -", "opts_hi": ["केवल मध्य प्रदेश में", "मध्य प्रदेश एवं राजस्थान में", "मध्य प्रदेश, राजस्थान एवं उत्तर प्रदेश में", "मध्य प्रदेश, महाराष्ट्र एवं राजस्थान"], "opts_en": ["Only Madhya Pradesh", "Madhya Pradesh and Rajasthan", "Madhya Pradesh, Rajasthan and Uttar Pradesh", "Madhya Pradesh, Maharashtra and Rajasthan"], "ans": 3}, {"id": 16, "hi": "भाखड़ा नांगल परियोजना किसका संयुक्त उपक्रम है -", "en": "Bhakra Nangal Project is a joint undertaking of -", "opts_hi": ["पंजाब व हरियाणा का", "पंजाब, हरियाणा व हिमाचल प्रदेश का", "पंजाब, हरियाणा व राजस्थान का", "पंजाब, हरियाणा तथा राष्ट्रीय राजधानी क्षेत्र दिल्ली का"], "opts_en": ["Punjab and Haryana", "Punjab, Haryana and Himachal Pradesh", "Punjab, Haryana and Rajasthan", "Punjab, Haryana and National Capital Territory Delhi"], "ans": 3}, {"id": 17, "hi": "यदि आप फतेहसागर एवं पिछोला झील के शहर में है तो आप कहाँ हैं -", "en": "If you are in the city of Fateh Sagar and Pichola lakes, where are you?", "opts_hi": ["जयपुर", "जोधपुर", "कोटा", "उदयपुर"], "opts_en": ["Jaipur", "Jodhpur", "Kota", "Udaipur"], "ans": 4}, {"id": 18, "hi": "श्रीनाथ जी का मंदिर निम्न में से किस जिले में स्थित है -", "en": "Shrinath Ji temple is located in which district?", "opts_hi": ["करौली", "चित्तौड़गढ़", "राजसमंद", "जयपुर"], "opts_en": ["Karauli", "Chittorgarh", "Rajsamand", "Jaipur"], "ans": 3}, {"id": 19, "hi": "फ्रांस की राजधानी कौनसी है -", "en": "What is the capital of France?", "opts_hi": ["पेरिस", "रोम", "लंदन", "वियेना"], "opts_en": ["Paris", "Rome", "London", "Vienna"], "ans": 1}, {"id": 20, "hi": "राजस्थान के मुख्यमंत्री का क्या नाम है -", "en": "What is the name of the Chief Minister of Rajasthan?", "opts_hi": ["विजय रूपाणी", "देवेन्द्र फडणवीस", "मनोहर लाल खट्टर", "अशोक गहलोत"], "opts_en": ["Vijay Rupani", "Devendra Fadnavis", "Manohar Lal Khattar", "Ashok Gehlot"], "ans": 4}, {"id": 21, "hi": "नक्की झील राजस्थान के किस शहर में है -", "en": "Nakki Lake is in which city of Rajasthan?", "opts_hi": ["माउंट आबू", "उदयपुर", "जोधपुर", "जयपुर"], "opts_en": ["Mount Abu", "Udaipur", "Jodhpur", "Jaipur"], "ans": 1}, {"id": 22, "hi": "राजस्थान के राज्यपाल कौन है -", "en": "Who is the Governor of Rajasthan?", "opts_hi": ["कप्तान सिंह", "कल्याण सिंह", "आनन्दी बेन पटेल", "ओम प्रकाश कोहली"], "opts_en": ["Kaptan Singh", "Kalyan Singh", "Anandiben Patel", "Om Prakash Kohli"], "ans": 2}, {"id": 23, "hi": "आरएनटी मेडिकल कॉलेज एवं अस्पताल राजस्थान के किस शहर में स्थित है -", "en": "RNT Medical College and Hospital is located in which city of Rajasthan?", "opts_hi": ["अजमेर", "उदयपुर", "झालावाड़", "जोधपुर"], "opts_en": ["Ajmer", "Udaipur", "Jhalawar", "Jodhpur"], "ans": 2}, {"id": 24, "hi": "7 व्यक्ति प्रतिदिन 5 घंटे कार्य कर 1 दीवार 5 दिन में बनाते हैं। यदि यही दीवार 25 दिन में 1 व्यक्ति बनाना चाहे तो उसे प्रतिदिन कितने घंटे कार्य करना होगा -", "en": "7 persons working 5 hours daily build one wall in 5 days. If one person wants to build the same wall in 25 days, how many hours per day must he work?", "opts_hi": ["14 घंटे", "15 घंटे", "7 घंटे", "5 घंटे"], "opts_en": ["14 hours", "15 hours", "7 hours", "5 hours"], "ans": 3}, {"id": 25, "hi": "रामलाल 1 वस्तु 100 रु की खरीद कर 15% लाभ पर मोहन को बेचता है जिसे मोहन 10% लाभ पर सोहन को बेचता है। सोहन की इस वस्तु की क्रय दर क्या थी -", "en": "Ramlal buys an item for ₹100 and sells it to Mohan at 15% profit. Mohan sells it to Sohan at 10% profit. What was Sohan’s purchase price?", "opts_hi": ["125", "126.50", "1205", "126"], "opts_en": ["125", "126.50", "1205", "126"], "ans": 2}, {"id": 26, "hi": "यदि 5 संख्याओं का औसत 3 है तथा 1 संख्या 10 है तो अन्य 4 संख्याएँ क्या हो सकती है -", "en": "If the average of 5 numbers is 3 and one number is 10, what can the other 4 numbers be?", "opts_hi": ["1, 1, 1, 2", "1, 2, 1, 2", "1, 1, 1, 1", "2, 2, 2, 1"], "opts_en": ["1, 1, 1, 2", "1, 2, 1, 2", "1, 1, 1, 1", "2, 2, 2, 1"], "ans": 1}, {"id": 27, "hi": "विश्व स्वास्थ्य दिवस कौनसी तारीख को बनाया जाता है -", "en": "World Health Day is observed on which date?", "opts_hi": ["7 अप्रैल", "8 मार्च", "5 जून", "23 सितम्बर"], "opts_en": ["7 April", "8 March", "5 June", "23 September"], "ans": 1}, {"id": 28, "hi": "विटामिन डी को प्राप्त करने का सबसे सुविधाजनक प्राकृतिक स्त्रोत क्या है -", "en": "What is the most convenient natural source of Vitamin D?", "opts_hi": ["सूर्य प्रकाश", "वर्षा का पानी", "मिट्टी का लेप", "बर्फ स्नान"], "opts_en": ["Sunlight", "Rainwater", "Mud application", "Ice bath"], "ans": 1}, {"id": 29, "hi": "एनाफिलीज मच्छर कौनसा रोग फैलाने के लिए जाना जाता है -", "en": "Anopheles mosquito is known to spread which disease?", "opts_hi": ["टायफाईड", "स्वाईन फ्लू", "मलेरिया", "चिकनगुनिया"], "opts_en": ["Typhoid", "Swine flu", "Malaria", "Chikungunya"], "ans": 3}, {"id": 30, "hi": "राजस्थान के क्षेत्रफल की दृष्टि से सबसे बड़े संभाग का नाम बताइये -", "en": "Name the largest division of Rajasthan by area.", "opts_hi": ["जयपुर", "उदयपुर", "बीकानेर", "जोधपुर"], "opts_en": ["Jaipur", "Udaipur", "Bikaner", "Jodhpur"], "ans": 4}, {"id": 31, "hi": "वयस्क मनुष्य के शरीर में कितनी हड्डियाँ होती हैं -", "en": "How many bones are there in the adult human body?", "opts_hi": ["208", "204", "206", "212"], "opts_en": ["208", "204", "206", "212"], "ans": 3}, {"id": 32, "hi": "रणथम्भौर अभ्यारण्य किस जानवर के संरक्षण हेतु विख्यात है -", "en": "Ranthambore Sanctuary is famous for the conservation of which animal?", "opts_hi": ["हाथी", "चीता", "बाघ", "शेर"], "opts_en": ["Elephant", "Cheetah", "Tiger", "Lion"], "ans": 3}, {"id": 33, "hi": "राजस्थान के राज्य सभा में कितने सदस्य बनते हैं -", "en": "How many members from Rajasthan are elected to Rajya Sabha?", "opts_hi": ["15", "12", "10", "8"], "opts_en": ["15", "12", "10", "8"], "ans": 3}, {"id": 34, "hi": "राजस्थान राज्य में चिकित्सा शिक्षा विभाग के शासन सचिव कौन है -", "en": "Who is the Government Secretary of the Medical Education Department in Rajasthan?", "opts_hi": ["आनन्द कुमार", "मुकेश शर्मा", "वीनू गुप्ता", "एम.पी. शर्मा"], "opts_en": ["Anand Kumar", "Mukesh Sharma", "Veenu Gupta", "M. P. Sharma"], "ans": 1}, {"id": 35, "hi": "मेहरानगढ़ का किला राजस्थान के किस शहर में स्थित है -", "en": "Mehrangarh Fort is located in which city of Rajasthan?", "opts_hi": ["जयपुर", "रणकपुर", "कुम्भलगढ़", "जोधपुर"], "opts_en": ["Jaipur", "Ranakpur", "Kumbhalgarh", "Jodhpur"], "ans": 4}, {"id": 36, "hi": "जेके लॉन के नाम से दो चिकित्सा संस्थान है। ये किन दो शहरों में स्थित है -", "en": "There are two medical institutions named JK Lon. In which two cities are they located?", "opts_hi": ["जयपुर, उदयपुर", "उदयपुर, कोटा", "जयपुर, कोटा", "जोधपुर, कोटा"], "opts_en": ["Jaipur, Udaipur", "Udaipur, Kota", "Jaipur, Kota", "Jodhpur, Kota"], "ans": 3}, {"id": 37, "hi": "राजस्थान के देवेन्द्र झांझडिया किस खेल में पैरालम्पिक स्वर्ण पदक विजेता है -", "en": "Devendra Jhajharia of Rajasthan won Paralympic gold medal in which sport?", "opts_hi": ["हॉकी", "तैराकी", "भाला फेंक", "कुश्ती"], "opts_en": ["Hockey", "Swimming", "Javelin throw", "Wrestling"], "ans": 3}, {"id": 38, "hi": "राजस्थान की कौनसी नदी अन्त में यमुना नदी में मिल जाती है -", "en": "Which river of Rajasthan finally joins the Yamuna river?", "opts_hi": ["लूणी", "बनास", "चम्बल", "इनमें से कोई नहीं"], "opts_en": ["Luni", "Banas", "Chambal", "None of these"], "ans": 3}, {"id": 39, "hi": "पानी का रासायनिक नाम क्या है -", "en": "What is the chemical name/formula of water?", "opts_hi": ["H₂O", "HO₂", "OH₂", "H₂O₂"], "opts_en": ["H₂O", "HO₂", "OH₂", "H₂O₂"], "ans": 1}, {"id": 40, "hi": "केरल राज्य में कौनसी भाषा प्रमुखता से बोली जाती है -", "en": "Which language is mainly spoken in Kerala?", "opts_hi": ["मलयालम", "तमिल", "तेलुगू", "कन्नड़"], "opts_en": ["Malayalam", "Tamil", "Telugu", "Kannada"], "ans": 1}, {"id": 41, "hi": "बीएसएफ की स्थापना के 50 वर्ष बाद राजस्थान की जिस महिला को ऑपरेशन भूमिका मिली है, उसका नाम क्या है -", "en": "After 50 years of BSF’s establishment, which woman from Rajasthan got the operational role mentioned?", "opts_hi": ["मनुश्री पारीक", "तनुश्री पारीक", "पूजा गहलोत", "मानसी पूनिया"], "opts_en": ["Manushree Pareek", "Tanushree Pareek", "Pooja Gehlot", "Mansi Poonia"], "ans": 2}, {"id": 42, "hi": "राज्य महिला आयोग की अध्यक्ष कौन है -", "en": "Who is the Chairperson of the State Women Commission?", "opts_hi": ["सुमन शर्मा", "डॉ. ज्योति किरण", "निशा गुप्ता", "मनन चतुर्वेदी"], "opts_en": ["Suman Sharma", "Dr. Jyoti Kiran", "Nisha Gupta", "Manan Chaturvedi"], "ans": 1}, {"id": 43, "hi": "राजस्थान राज्य में वर्तमान में कितनी ग्राम पंचायतें हैं -", "en": "How many gram panchayats are currently in Rajasthan state?", "opts_hi": ["9500", "9910", "9891", "10002"], "opts_en": ["9500", "9910", "9891", "10002"], "ans": 3}, {"id": 44, "hi": "हाल ही में ऑस्ट्रेलिया के किस कप्तान को बॉल टेम्परिंग के लिए दोषी पाया गया -", "en": "Which Australian captain was recently found guilty of ball tampering?", "opts_hi": ["स्टीव स्मिथ", "लेह मेन", "स्टीव वॉ", "डेविड जॉन्सन"], "opts_en": ["Steve Smith", "Leh Men", "Steve Waugh", "David Johnson"], "ans": 1}, {"id": 45, "hi": "राजस्थान के गाँवों को जल की दृष्टि से आत्मनिर्भर बनाने की योजना का नाम क्या है -", "en": "What is the name of the scheme to make Rajasthan villages self-reliant in water?", "opts_hi": ["राष्ट्रीय जल संवर्धन योजना", "राजस्थान जल संवर्धन योजना", "राजस्थान जल स्वावलम्बन योजना", "मुख्यमंत्री जल स्वावलम्बन योजना"], "opts_en": ["National Water Conservation Scheme", "Rajasthan Water Conservation Scheme", "Rajasthan Jal Swavalamban Yojana", "Mukhyamantri Jal Swavalamban Yojana"], "ans": 4}, {"id": 46, "hi": "राजस्थान में आम जन को उचित मूल्य की दुकानों से उपभोक्ता वस्तुएँ मुहैया कराने की योजना कौनसी है -", "en": "Which scheme provides consumer goods to the general public through fair price shops in Rajasthan?", "opts_hi": ["अन्त्योदय", "अन्नपूर्णा", "भामाशाह", "राजश्री"], "opts_en": ["Antyodaya", "Annapurna", "Bhamashah", "Rajshree"], "ans": 2}, {"id": 47, "hi": "हर माह की 9 तारीख को पूरे राज्य में गर्भवती महिलाओं से संबंधित कौनसा कार्यक्रम आयोजित किया जाता है -", "en": "Which programme related to pregnant women is organised across the state on the 9th of every month?", "opts_hi": ["चिरायु", "इन्द्रधनुष", "पीएमएसएमए", "मिशन परिवार विकास"], "opts_en": ["Chirayu", "Indradhanush", "PMSMA", "Mission Parivar Vikas"], "ans": 3}, {"id": 48, "hi": "अगला रक्तदान करने के लिए रक्त दाता को कितने समय का अन्तर रखना होता है -", "en": "How much gap should a blood donor keep before donating blood again?", "opts_hi": ["30 दिन", "2 सप्ताह", "3 माह", "48 घण्टे"], "opts_en": ["30 days", "2 weeks", "3 months", "48 hours"], "ans": 3}, {"id": 49, "hi": "बनी-ठनी पेंटिंग शैली का संबंध राजस्थान के किस शहर से माना जाता है -", "en": "Bani-Thani painting style is associated with which city of Rajasthan?", "opts_hi": ["किशनगढ़", "मारवाड़", "सुजानगढ़", "राजगढ़"], "opts_en": ["Kishangarh", "Marwar", "Sujangarh", "Rajgarh"], "ans": 1}, {"id": 50, "hi": "जीएसटी का पूरा नाम क्या है -", "en": "What is the full form of GST?", "opts_hi": ["Grand Sales Tax", "Goods Sales Tax", "Goods & Services Tax", "Grand Service Tax"], "opts_en": ["Grand Sales Tax", "Goods Sales Tax", "Goods & Services Tax", "Grand Service Tax"], "ans": 3}, {"id": 51, "hi": "आरबीआई के वर्तमान गवर्नर का नाम बताइये -", "en": "Name the current Governor of RBI.", "opts_hi": ["रघुराम राजन", "उर्जित पटेल", "अरुण जेटली", "अरुन्धति रॉय"], "opts_en": ["Raghuram Rajan", "Urjit Patel", "Arun Jaitley", "Arundhati Roy"], "ans": 2}, {"id": 52, "hi": "भारत के वर्तमान कम्पट्रॉलर एवं ऑडिटर जनरल का नाम बताइये -", "en": "Name the current Comptroller and Auditor General of India.", "opts_hi": ["सुनील अरोडा", "राजीव महर्षि", "रघुराम राजन", "विनोद कुमार"], "opts_en": ["Sunil Arora", "Rajiv Mehrishi", "Raghuram Rajan", "Vinod Kumar"], "ans": 2}, {"id": 53, "hi": "यदि हम “Crocin” दवा की बात कर रहे है तो हम कौनसे जैनेरिक सॉल्ट की बात कर रहे होते हैं -", "en": "If we are talking about the medicine “Crocin”, which generic salt are we talking about?", "opts_hi": ["पैरासिटामॉल", "सिट्रीजिन", "एनालजिन", "इनमें से कोई नहीं"], "opts_en": ["Paracetamol", "Cetirizine", "Analgin", "None of these"], "ans": 1}, {"id": 54, "hi": "पेय पदार्थ कॉफी में हानिकारक तत्त्व कौनसा है -", "en": "Which harmful element is present in the beverage coffee?", "opts_hi": ["ऑक्सॉटॉक्सिन", "कैफिन", "इन्सुलिन", "थायमिन"], "opts_en": ["Oxotoxin", "Caffeine", "Insulin", "Thiamine"], "ans": 2}, {"id": 55, "hi": "राजस्थान के किस जिले को कृषि की दृष्टि से पहला ऑर्गेनिक जिला बनाया जा रहा है -", "en": "Which district of Rajasthan is being made the first organic district from the agricultural point of view?", "opts_hi": ["बारां", "धौलपुर", "डूंगरपुर", "जैसलमेर"], "opts_en": ["Baran", "Dholpur", "Dungarpur", "Jaisalmer"], "ans": 3}, {"id": 56, "hi": "भारत की पहली महिला विदेश मंत्री कौन बनी है -", "en": "Who became India’s first woman External Affairs Minister?", "opts_hi": ["सुषमा स्वराज", "सुमित्रा महाजन", "मार्गेट अल्वा", "इनमें से कोई नहीं"], "opts_en": ["Sushma Swaraj", "Sumitra Mahajan", "Margaret Alva", "None of these"], "ans": 1}, {"id": 57, "hi": "राजस्थान में 2017 में शुरू की गई टेलीमेडिसन योजना में कितने केन्द्रों को प्रथम चरण में जोड़ा गया है -", "en": "In Rajasthan’s telemedicine scheme started in 2017, how many centres were connected in the first phase?", "opts_hi": ["110", "525", "100", "80"], "opts_en": ["110", "525", "100", "80"], "ans": 3}, {"id": 58, "hi": "गर्भवती महिला को सोनोग्राफी करवाने से पहले किन बातों को ध्यान रखना जरूरी है -", "en": "Before getting sonography done for a pregnant woman, which points are necessary to keep in mind?", "opts_hi": ["सक्षम चिकित्सक द्वारा सोनोग्राफी की लिखित राय", "सोनोग्राफी करने वाले सेन्टर पर अपनी पहचान साबित करना", "फॉर्म-F भरने की औपचारिकता पूरी होनी चाहिए", "भ्रूण का लिंग जानने के लिए चिकित्सक को अवश्य पूछना चाहिए"], "opts_en": ["Written advice for sonography by a competent doctor", "Proving identity at the sonography centre", "Completion of Form-F formality", "The doctor must be asked to know the sex of the foetus"], "ans": 3}, {"id": 59, "hi": "“दो बूँद” ये शब्द किस अभियान की याद दिलाते हैं -", "en": "The words “Do Boond” remind us of which campaign?", "opts_hi": ["नसबन्दी अभियान", "पल्स पोलियो अभियान", "एड्स अभियान", "जननी सुरक्षा अभियान"], "opts_en": ["Sterilization campaign", "Pulse Polio campaign", "AIDS campaign", "Janani Suraksha campaign"], "ans": 2}, {"id": 60, "hi": "सामुदायिक स्वास्थ्य केन्द्र प्रायः कितनी जनसंख्या पर स्थापित किये जाते हैं -", "en": "Community Health Centres are generally established for what population?", "opts_hi": ["50000", "100000", "200000", "500000"], "opts_en": ["50000", "100000", "200000", "500000"], "ans": 2}];
 let current = 0;
 let lang = localStorage.getItem(TEST_ID + "_lang") || "hi";
@@ -234,16 +142,16 @@ function getSubject(q) {
 function textFor(q) {
   if (lang === "hi") return esc(q.hi);
   if (lang === "en") return esc(q.en);
-  return `<div><span class="math">{esc(q.hi)}</div><div class="en"></span>{esc(q.en)}</div>`;
+  return `<div>${esc(q.hi)}</div><div class="en">${esc(q.en)}</div>`;
 }
 function optFor(q, i) {
   if (lang === "hi") return esc(q.opts_hi[i] || "");
   if (lang === "en") return esc(q.opts_en[i] || "");
-  return `<b>HI:</b> <span class="math">{esc(q.opts_hi[i] || "")}<br><b>EN:</b> </span>{esc(q.opts_en[i] || "")}`;
+  return `<b>HI:</b> ${esc(q.opts_hi[i] || "")}<br><b>EN:</b> ${esc(q.opts_en[i] || "")}`;
 }
 function render() {
   const q = questions[current];
-  document.getElementById("qCount").textContent = `Question <span class="math">{current+1}/</span>{questions.length}`;
+  document.getElementById("qCount").textContent = `Question ${current+1}/${questions.length}`;
   document.getElementById("subjectLabel").textContent = getSubject(q);
   document.getElementById("question").innerHTML = (current+1) + ". " + textFor(q) + (q.ans===0 ? "<br><span class='small'>Note: Source answer key is unclear for this question.</span>" : "");
   const optDiv = document.getElementById("options");
@@ -251,7 +159,7 @@ function render() {
   q.opts_hi.forEach((_, i) => {
     const btn = document.createElement("button");
     btn.className = "opt" + (answers[current] === i+1 ? " selected" : "");
-    btn.innerHTML = `(<span class="math">{i+1}) </span>{optFor(q,i)}`;
+    btn.innerHTML = `(${i+1}) ${optFor(q,i)}`;
     btn.onclick = () => {
       if (!submitted) {
         answers[current] = i+1;
@@ -305,10 +213,10 @@ function submitTest() {
   document.getElementById("testArea").style.display = "none";
   document.getElementById("resultArea").style.display = "block";
   document.getElementById("scoreBox").innerHTML = `
-    <div class="score-box"><b><span class="math">{attempted}</b>Attempted</div>
-    <div class="score-box"><b></span>{correct}</b>Correct</div>
-    <div class="score-box"><b><span class="math">{wrong}</b>Wrong</div>
-    <div class="score-box"><b></span>{marks.toFixed(2)}</b>Score / <span class="math">{counted}</div>
+    <div class="score-box"><b>${attempted}</b>Attempted</div>
+    <div class="score-box"><b>${correct}</b>Correct</div>
+    <div class="score-box"><b>${wrong}</b>Wrong</div>
+    <div class="score-box"><b>${marks.toFixed(2)}</b>Score / ${counted}</div>
   `;
   saveHistory({date:new Date().toLocaleString(), attempted, correct, wrong, skipped, marks:marks.toFixed(2)});
   localStorage.removeItem(TEST_ID + "_state");
@@ -319,8 +227,8 @@ function showReview() {
   questions.forEach((q,i) => {
     const status = q.ans===0 ? "Answer key unclear" : (!answers[i] ? "Skipped" : (answers[i] === q.ans ? "Correct" : "Wrong"));
     out += `<div class="review-card">
-      <b>Q</span>{i+1}.</b> <span class="math">{textFor(q)}<br>
-      <span class="small">Your answer: </span>{answers[i] || "-"} | Correct answer: <span class="math">{q.ans===0 ? "Not given in source" : q.ans} | Status: </span>{status}</span>
+      <b>Q${i+1}.</b> ${textFor(q)}<br>
+      <span class="small">Your answer: ${answers[i] || "-"} | Correct answer: ${q.ans===0 ? "Not given in source" : q.ans} | Status: ${status}</span>
     </div>`;
   });
   document.getElementById("reviewArea").innerHTML = out;
@@ -371,7 +279,7 @@ function saveHistory(item) {
 function loadHistory() {
   const h = JSON.parse(localStorage.getItem(TEST_ID + "_history") || "[]");
   document.getElementById("history").innerHTML = h.length ? h.map(x =>
-    `<div class="history-item"><b><span class="math">{x.date}</b><br>Score: </span>{x.marks} | Correct: <span class="math">{x.correct} | Wrong: </span>{x.wrong}</div>`
+    `<div class="history-item"><b>${x.date}</b><br>Score: ${x.marks} | Correct: ${x.correct} | Wrong: ${x.wrong}</div>`
   ).join("") : "<p class='small'>No attempt yet.</p>";
 }
 loadState();
