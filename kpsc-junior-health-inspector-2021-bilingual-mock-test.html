@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPSC Junior Health Inspector 2021 Mock Test</title>
+<style>
+:root {
+  --primary:#1d4ed8; --primary-dark:#143b9b; --bg:#eef3fb; --card:#ffffff; --text:#111827;
+  --muted:#6b7280; --border:#d1d5db; --green:#16a34a; --red:#dc2626; --purple:#7c3aed; --orange:#f59e0b;
+}
+* { box-sizing:border-box; }
+body { margin:0; font-family: Arial, Noto Sans Devanagari, Mangal, sans-serif; background:var(--bg); color:var(--text); }
+button { cursor:pointer; border:none; border-radius:8px; padding:10px 14px; font-weight:700; }
+.hidden { display:none !important; }
+.topbar { background:#0f172a; color:white; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.logo { font-size:18px; font-weight:800; }
+.timer { background:#fee2e2; color:#991b1b; border-radius:20px; padding:8px 14px; font-weight:800; }
+.langs { display:flex; gap:8px; flex-wrap:wrap; }
+.langs button { background:#e5e7eb; color:#111827; }
+.langs button.active { background:var(--primary); color:white; }
+.container { max-width:1200px; margin:0 auto; padding:16px; }
+.start-card, .result-card { background:var(--card); border-radius:16px; padding:24px; box-shadow:0 10px 30px rgba(15,23,42,.12); }
+.start-title { font-size:30px; margin:0 0 8px; color:#0f172a; }
+.info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:20px 0; }
+.info-box { background:#f8fafc; border:1px solid var(--border); padding:14px; border-radius:12px; }
+.info-box b { display:block; font-size:20px; color:var(--primary); margin-top:4px; }
+.start-btn { background:var(--green); color:white; font-size:18px; padding:14px 26px; }
+.exam-layout { display:grid; grid-template-columns:minmax(0,1fr) 310px; gap:16px; align-items:start; }
+.question-card, .palette-card { background:var(--card); border-radius:14px; box-shadow:0 8px 24px rgba(15,23,42,.10); }
+.question-card { padding:18px; min-height:520px; }
+.q-head { display:flex; justify-content:space-between; gap:10px; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:14px; flex-wrap:wrap; }
+.q-no { font-weight:800; color:var(--primary); }
+.q-text { font-size:18px; line-height:1.65; margin:14px 0 18px; white-space:pre-wrap; }
+.bilingual-block { display:grid; gap:8px; }
+.hi { color:#111827; }
+.en { color:#334155; }
+.option { display:flex; gap:10px; align-items:flex-start; padding:13px; margin:10px 0; border:1px solid var(--border); border-radius:10px; background:#fff; transition:.15s; }
+.option:hover { border-color:var(--primary); background:#f8fbff; }
+.option.selected { border-color:var(--primary); background:#dbeafe; }
+.option input { margin-top:4px; transform:scale(1.15); }
+.option-label { font-weight:800; color:#0f172a; min-width:24px; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; border-top:1px solid var(--border); padding-top:16px; }
+.btn-primary { background:var(--primary); color:white; }
+.btn-secondary { background:#e5e7eb; color:#111827; }
+.btn-review { background:var(--purple); color:white; }
+.btn-danger { background:var(--red); color:white; }
+.btn-warning { background:var(--orange); color:#111827; }
+.palette-card { padding:14px; position:sticky; top:10px; }
+.palette-title { font-weight:800; margin-bottom:8px; }
+.legend { display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:12px; margin-bottom:12px; }
+.legend span { display:flex; align-items:center; gap:6px; }
+.dot { width:14px; height:14px; border-radius:4px; display:inline-block; border:1px solid #999; }
+.notvisited { background:#e5e7eb; }
+.notanswered { background:#ef4444; color:white; }
+.answered { background:#22c55e; color:white; }
+.review { background:#8b5cf6; color:white; }
+.ansreview { background:linear-gradient(135deg,#22c55e 55%,#8b5cf6 55%); color:white; }
+.palette-scroll { max-height:360px; overflow-y:auto; border:1px solid var(--border); border-radius:12px; padding:10px; background:#f8fafc; }
+.palette-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+.palette-btn { padding:9px 0; border-radius:8px; font-size:13px; border:2px solid transparent; }
+.palette-btn.current { outline:3px solid #111827; }
+.submit-wide { width:100%; margin-top:12px; background:#dc2626; color:white; }
+.summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:18px 0; }
+.score-box { padding:14px; border-radius:12px; border:1px solid var(--border); background:#f8fafc; }
+.score-box b { display:block; font-size:22px; color:#0f172a; margin-top:4px; }
+.answer-key { margin-top:20px; max-height:520px; overflow:auto; border:1px solid var(--border); border-radius:12px; }
+.answer-item { padding:14px; border-bottom:1px solid var(--border); background:white; }
+.answer-item:last-child { border-bottom:none; }
+.correct { color:var(--green); font-weight:800; }
+.wrong { color:var(--red); font-weight:800; }
+.history-table { width:100%; border-collapse:collapse; margin-top:12px; font-size:14px; }
+.history-table th,.history-table td { border:1px solid var(--border); padding:8px; text-align:left; }
+.history-table th { background:#f1f5f9; }
+@media (max-width: 850px) {
+  .exam-layout { grid-template-columns:1fr; }
+  .palette-card { position:static; }
+  .palette-scroll { max-height:185px; }
+  .palette-grid { grid-template-columns:repeat(8,1fr); }
+  .question-card { min-height:auto; }
+  .q-text { font-size:16px; }
+  .actions button { flex:1 1 45%; }
+}
+@media (max-width: 520px) {
+  .container { padding:10px; }
+  .start-title { font-size:23px; }
+  .palette-grid { grid-template-columns:repeat(5,1fr); }
+  .topbar { align-items:flex-start; }
+  button { padding:9px 10px; }
+  .actions button { flex:1 1 100%; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">KPSC Junior Health Inspector 2021 Mock Test</div>
+  <div id="timer" class="timer hidden">02:00:00</div>
+  <div class="langs hidden" id="langBox">
+    <button onclick="setLanguage('hi')" id="btn-hi">Hindi</button>
+    <button onclick="setLanguage('en')" id="btn-en">English</button>
+    <button onclick="setLanguage('bi')" id="btn-bi" class="active">Bilingual</button>
+  </div>
+</div>
+
+<div class="container">
+  <section id="startScreen" class="start-card">
+    <h1 class="start-title">KPSC Junior Health Inspector 2021</h1>
+    <p>Complete bilingual CBT/TCS-iON style mock test. Questions are based on the uploaded extracted paper.</p>
+    <div class="info-grid">
+      <div class="info-box">Total Questions <b id="totalQStart">100</b></div>
+      <div class="info-box">Maximum Marks <b>100</b></div>
+      <div class="info-box">Duration <b>120 Minutes</b></div>
+      <div class="info-box">Marking <b>+1 / -0.25</b></div>
+    </div>
+    <button class="start-btn" onclick="startTest()">Start Test</button>
+    <div id="historyStart"></div>
+  </section>
+
+  <section id="examScreen" class="hidden">
+    <div class="exam-layout">
+      <main class="question-card">
+        <div class="q-head">
+          <div class="q-no" id="questionNumber">Question 1 of 100</div>
+          <div id="statusText">Not Answered</div>
+        </div>
+        <div id="questionText" class="q-text"></div>
+        <div id="optionsBox"></div>
+        <div class="actions">
+          <button class="btn-secondary" onclick="prevQuestion()">Previous</button>
+          <button class="btn-primary" onclick="saveAndNext()">Save & Next</button>
+          <button class="btn-review" onclick="markForReview()">Mark for Review</button>
+          <button class="btn-warning" onclick="clearResponse()">Clear Response</button>
+          <button class="btn-danger" onclick="submitTest()">Submit Test</button>
+        </div>
+      </main>
+      <aside class="palette-card">
+        <div class="palette-title">Question Palette</div>
+        <div class="legend">
+          <span><i class="dot notvisited"></i> Not Visited</span>
+          <span><i class="dot notanswered"></i> Not Answered</span>
+          <span><i class="dot answered"></i> Answered</span>
+          <span><i class="dot review"></i> Review</span>
+          <span style="grid-column:span 2"><i class="dot ansreview"></i> Answered & Review</span>
+        </div>
+        <div class="palette-scroll">
+          <div class="palette-grid" id="paletteGrid"></div>
+        </div>
+        <button class="submit-wide" onclick="submitTest()">Submit Test</button>
+      </aside>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="result-card hidden">
+    <h2>Result</h2>
+    <div id="resultSummary" class="summary-grid"></div>
+    <button class="btn-primary" onclick="restartTest()">Restart Test</button>
+    <button class="btn-secondary" onclick="window.print()">Print Result</button>
+    <h3>Answer Key</h3>
+    <div id="answerKey" class="answer-key"></div>
+    <h3>Attempt History - This Test Only</h3>
+    <div id="historyResult"></div>
+  </section>
+</div>
+
+<script>
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const testTitle = "KPSC Junior Health Inspector 2021";
+const testId = "kpsc-junior-health-inspector-2021";
+const totalDurationSeconds = 120 * 60;
+
+const questions = [
+  {
+    "id": 1,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The true nerve of hearing which is the portion of auditory nerve.",
+    "question_hi": "श्रवण तंत्रिका का वह भाग कौन-सा है जिसे सुनने की वास्तविक तंत्रिका कहा जाता है?",
+    "options_en": [
+      "Abducens",
+      "Cochlear nerve",
+      "Vestibular nerve",
+      "Trochlear nerve"
+    ],
+    "options_hi": [
+      "एब्ड्यूसेन्स",
+      "कॉक्लियर नर्व",
+      "वेस्टिबुलर नर्व",
+      "ट्रोक्लियर नर्व"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The average life span of RBC.",
+    "question_hi": "RBC की औसत आयु कितनी होती है?",
+    "options_en": [
+      "130 days",
+      "7-14 days",
+      "120 days",
+      "30 days"
+    ],
+    "options_hi": [
+      "130 दिन",
+      "7-14 दिन",
+      "120 दिन",
+      "30 दिन"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The organ in which the grey matter can be seen in the form of letter 'H'.",
+    "question_hi": "किस अंग में ग्रे मैटर ‘H’ अक्षर के रूप में दिखाई देता है?",
+    "options_en": [
+      "Spinal cord",
+      "Cerebrum",
+      "Medulla oblongata",
+      "Cerebellum"
+    ],
+    "options_hi": [
+      "स्पाइनल कॉर्ड",
+      "सेरेब्रम",
+      "मेडुला ऑब्लोंगाटा",
+      "सेरेबेलम"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The hormone that stimulates the formation of spermatozoa in testes of males.",
+    "question_hi": "पुरुषों के वृषणों में शुक्राणुओं के निर्माण को कौन-सा हार्मोन उत्तेजित करता है?",
+    "options_en": [
+      "Luteinising hormone",
+      "Prolactin",
+      "ACTH",
+      "FSH"
+    ],
+    "options_hi": [
+      "ल्यूटिनाइजिंग हार्मोन",
+      "प्रोलैक्टिन",
+      "ACTH",
+      "FSH"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The pacemaker of heart.",
+    "question_hi": "हृदय का पेसमेकर कौन-सा है?",
+    "options_en": [
+      "Chordae tendinae",
+      "S.A. Node",
+      "Bundle of His",
+      "Papillary muscles"
+    ],
+    "options_hi": [
+      "Chordae tendinae",
+      "S.A. नोड",
+      "बंडल ऑफ हिस",
+      "पैपिलरी मसल्स"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The specially altered sweat glands in the skin of ear.",
+    "question_hi": "कान की त्वचा में विशेष रूप से परिवर्तित स्वेद ग्रंथियाँ कौन-सी हैं?",
+    "options_en": [
+      "Brunner's gland",
+      "Sebaceous gland",
+      "Meibomian gland",
+      "Ceruminous gland"
+    ],
+    "options_hi": [
+      "ब्रनर ग्रंथि",
+      "सेबेशियस ग्रंथि",
+      "मेइबोमियन ग्रंथि",
+      "सेरुमिनस ग्रंथि"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The volume of air that can be passed in and out of lungs by forcible inspiration and expiration.",
+    "question_hi": "जबरदस्ती श्वास लेने और छोड़ने से फेफड़ों में आने-जाने वाली वायु की मात्रा क्या कहलाती है?",
+    "options_en": [
+      "Tidal air",
+      "Cardiac impulse",
+      "Vital capacity",
+      "Pulse pressure"
+    ],
+    "options_hi": [
+      "टाइडल एयर",
+      "कार्डिएक इम्पल्स",
+      "वाइटल कैपेसिटी",
+      "पल्स प्रेशर"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The area which receives images and impressions of interpretation in the occipital lobe of cerebrum.",
+    "question_hi": "सेरेब्रम के ऑक्सिपिटल लोब में चित्रों और छापों की व्याख्या प्राप्त करने वाला क्षेत्र कौन-सा है?",
+    "options_en": [
+      "Motor area",
+      "Auditory area",
+      "Sensory area",
+      "Visual area"
+    ],
+    "options_hi": [
+      "मोटर क्षेत्र",
+      "श्रवण क्षेत्र",
+      "संवेदी क्षेत्र",
+      "दृश्य क्षेत्र"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The insensible water loss which is a simple diffusion of water through skin.",
+    "question_hi": "त्वचा के माध्यम से जल के सरल प्रसरण से होने वाली अदृश्य जल-हानि क्या कहलाती है?",
+    "options_en": [
+      "Perspiration",
+      "Sweat",
+      "Sebum",
+      "None of these"
+    ],
+    "options_hi": [
+      "पर्सपिरेशन",
+      "स्वेद/पसीना",
+      "सीबम",
+      "इनमें से कोई नहीं"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "A person with blood group A can receive blood of the following blood groups.",
+    "question_hi": "रक्त समूह A वाला व्यक्ति किन रक्त समूहों का रक्त ले सकता है?",
+    "options_en": [
+      "B & AB",
+      "A & AB",
+      "B & O",
+      "A & O"
+    ],
+    "options_hi": [
+      "B और AB",
+      "A और AB",
+      "B और O",
+      "A और O"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following statement is are correct about Teeth-hygiene? (i) Periodontal disease is the commonest cause of tooth loss. (ii) Enamel can repair by itself. (iii) Dental plaque is protecting teeth from caries. (iv) Halitosis is the term for bad breath.",
+    "question_hi": "दंत-स्वच्छता के बारे में निम्न कथनों में सही कौन-से हैं? (i) दाँत गिरने का सबसे सामान्य कारण पीरियोडॉन्टल रोग है। (ii) इनेमल स्वयं मरम्मत कर सकता है। (iii) डेंटल प्लाक दाँतों को कैरीज़ से बचाता है। (iv) हैलिटोसिस दुर्गंधयुक्त श्वास का शब्द है।",
+    "options_en": [
+      "Only (i) & (ii)",
+      "Only (i) & (iv)",
+      "Only (ii) & (iii)",
+      "Only (iii) & (iv)"
+    ],
+    "options_hi": [
+      "केवल (i) & (ii)",
+      "केवल (i) & (iv)",
+      "केवल (ii) & (iii)",
+      "केवल (iii) & (iv)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The following are 'essential' amino acids, except. (i) Phenylalanine (ii) Threonine (iii) Methionine (iv) Valine",
+    "question_hi": "निम्नलिखित में कौन-से आवश्यक अमीनो अम्ल हैं, अपवाद बताइए। (i) फिनाइलएलैनिन (ii) थ्रेओनिन (iii) मेथियोनिन (iv) वैलीन",
+    "options_en": [
+      "(i)",
+      "(ii)",
+      "(iii)",
+      "None of the above"
+    ],
+    "options_hi": [
+      "(i)",
+      "(ii)",
+      "(iii)",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following statement is/are wrong about vitamins? (i) Vitamin $B_{1}$ (Thiamine) deficiency results in Beriberi. (ii) Vitamin $B_{2}$ (Riboflavin) deficiency results in Pellagra (iii) Vitamin $B_{12}$ deficiency results in Pernicious Anemia. (iv) Vitamin C (Ascorbic Acid) is essential for wound healing.",
+    "question_hi": "विटामिनों के बारे में निम्न कथनों में गलत कौन-सा/से हैं? (i) विटामिन B₁ की कमी से बेरी-बेरी होता है। (ii) विटामिन B₂ की कमी से पेलाग्रा होता है। (iii) विटामिन B₁₂ की कमी से पर्निशियस एनीमिया होता है। (iv) विटामिन C घाव भरने के लिए आवश्यक है।",
+    "options_en": [
+      "Only (i)",
+      "Only (ii)",
+      "Only (iii)",
+      "None of the above"
+    ],
+    "options_hi": [
+      "केवल (i)",
+      "केवल (ii)",
+      "केवल (iii)",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following tests are used to assess the quality of pasteurized milk? (i) Phosphatase test (ii) Standard plate count (iii) Shick test (iv) Coliform count",
+    "question_hi": "पाश्चुरीकृत दूध की गुणवत्ता जाँचने के लिए कौन-कौन से परीक्षण उपयोग किए जाते हैं? (i) फॉस्फेटेज टेस्ट (ii) स्टैंडर्ड प्लेट काउंट (iii) शिक टेस्ट (iv) कोलिफॉर्म काउंट",
+    "options_en": [
+      "Only (i), (ii) & (iv)",
+      "Only (ii), (iii) & (iv)",
+      "Only (i), (ii) & (iii)",
+      "All of the above"
+    ],
+    "options_hi": [
+      "केवल (i), (ii) & (iv)",
+      "केवल (ii), (iii) & (iv)",
+      "केवल (i), (ii) & (iii)",
+      "उपरोक्त सभी"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following bacteria are gram negative? (i) Pneumococci (ii) Meningococci (iii) Gonococci (iv) Streptococci",
+    "question_hi": "निम्नलिखित में कौन-से बैक्टीरिया ग्राम-नेगेटिव हैं? (i) न्यूमोकोक्की (ii) मेनिंगोकोक्की (iii) गोनोकोक्की (iv) स्ट्रेप्टोकोक्की",
+    "options_en": [
+      "Only (i) & (ii)",
+      "Only (i) & (iv)",
+      "Only (ii) & (iii)",
+      "All of the above"
+    ],
+    "options_hi": [
+      "केवल (i) & (ii)",
+      "केवल (i) & (iv)",
+      "केवल (ii) & (iii)",
+      "उपरोक्त सभी"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following methods of sterilization work using the technique of dry heat? (i) Hot air oven (ii) Autoclave (iii) Incinerator (iv) Hospital sterilizer",
+    "question_hi": "निम्नलिखित निर्जीवीकरण विधियों में सूखी ऊष्मा तकनीक से कौन-सी काम करती हैं? (i) हॉट एयर ओवन (ii) ऑटोक्लेव (iii) इन्सिनरेटर (iv) हॉस्पिटल स्टेरिलाइज़र",
+    "options_en": [
+      "Only (i) & (iii)",
+      "Only (i) & (iv)",
+      "Only (ii) & (iv)",
+      "Only (ii) & (iii)"
+    ],
+    "options_hi": [
+      "केवल (i) & (iii)",
+      "केवल (i) & (iv)",
+      "केवल (ii) & (iv)",
+      "केवल (ii) & (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following statement is/are correct about functions of Sterile Supplies Department (CSSD) in a hospital? (i) Supply of sterile linen for operation theatre (ii) Supply of potable drinking water (iii) Supply of oxygen gas for operation theatre (iv) Disinfection of equipments such as ventilators",
+    "question_hi": "अस्पताल में सेंट्रल स्टेराइल सप्लाइज विभाग (CSSD) के कार्यों के बारे में सही कथन कौन-से हैं? (i) ऑपरेशन थिएटर के लिए स्टेराइल लिनेन की आपूर्ति (ii) पीने योग्य जल की आपूर्ति (iii) ऑपरेशन थिएटर के लिए ऑक्सीजन गैस की आपूर्ति (iv) वेंटिलेटर जैसे उपकरणों का विसंक्रमण",
+    "options_en": [
+      "Only (i) & (ii)",
+      "Only (i) & (iii)",
+      "Only (ii) & (iii)",
+      "Only (i) & (iv)"
+    ],
+    "options_hi": [
+      "केवल (i) & (ii)",
+      "केवल (i) & (iii)",
+      "केवल (ii) & (iii)",
+      "केवल (i) & (iv)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following statements are wrong about different types of infection? (i) First infection by a parasite is known as primary infection. (ii) The infection caused by a parasite in a patient suffering from a disease caused by another parasite is known as cross infection. (iii) Hospital Acquired infection is known as endogenous infection. (iv) Infection in a particular organ is called focal infection.",
+    "question_hi": "विभिन्न प्रकार के संक्रमणों के बारे में निम्न कथनों में गलत कौन-से हैं? (i) किसी परजीवी द्वारा प्रथम संक्रमण प्राथमिक संक्रमण कहलाता है। (ii) किसी अन्य रोग से पीड़ित रोगी में दूसरे परजीवी से हुआ संक्रमण क्रॉस संक्रमण कहलाता है। (iii) अस्पताल-अर्जित संक्रमण एंडोजेनस संक्रमण कहलाता है। (iv) किसी विशेष अंग का संक्रमण फोकल संक्रमण कहलाता है।",
+    "options_en": [
+      "Only (i) & (iv)",
+      "Only (ii) & (iv)",
+      "Only (ii) & (iii)",
+      "None of them"
+    ],
+    "options_hi": [
+      "केवल (i) & (iv)",
+      "केवल (ii) & (iv)",
+      "केवल (ii) & (iii)",
+      "इनमें से कोई नहीं"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following is not a zoonotic disease?",
+    "question_hi": "निम्नलिखित में कौन-सा ज़ूनोटिक रोग नहीं है?",
+    "options_en": [
+      "Japanese Encephalitis",
+      "Kyasanur Forest Disease",
+      "Brucellosis",
+      "Dracunculiasis"
+    ],
+    "options_hi": [
+      "जापानese Encephalitis",
+      "Kyasanur Forest रोग",
+      "Brucellosis",
+      "Dracunculiasis"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following drugs are used to treat Covid-19? (i) Dexamethasone (ii) Favipiravir (iii) Remdesivir (iv) Tocilizumab",
+    "question_hi": "Covid-19 के उपचार में निम्नलिखित में कौन-सी दवाएँ उपयोग की जाती हैं? (i) डेक्सामेथासोन (ii) फेवीपिराविर (iii) रेमडेसिविर (iv) टोसीलिज़ुमैब",
+    "options_en": [
+      "All of them",
+      "Only (ii) & (iii)",
+      "Only (i) & (iii)",
+      "Only (i), (iii) & (iv)"
+    ],
+    "options_hi": [
+      "सभी",
+      "केवल (ii) & (iii)",
+      "केवल (i) & (iii)",
+      "केवल (i), (iii) & (iv)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The state of semi unconsciousness in which casualty responds to external stimuli or loud noise.",
+    "question_hi": "अर्ध-बेहोशी की वह अवस्था जिसमें casualty बाहरी उत्तेजना या तेज आवाज पर प्रतिक्रिया देता है, क्या कहलाती है?",
+    "options_en": [
+      "Coma",
+      "Stupor",
+      "Fainting",
+      "Somnolent"
+    ],
+    "options_hi": [
+      "कोमा",
+      "स्टूपर",
+      "बेहोशी",
+      "सोमनोलेंट"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The condition in which the blood is coughed out mixed with air or sputum.",
+    "question_hi": "वह स्थिति जिसमें रक्त खाँसी के साथ हवा या बलगम में मिला हुआ निकलता है, क्या कहलाती है?",
+    "options_en": [
+      "Epistaxis",
+      "Malena",
+      "Haemoptysis",
+      "Haemetemesis"
+    ],
+    "options_hi": [
+      "नाक से रक्तस्राव",
+      "मेलेना",
+      "हीमोप्टाइसिस",
+      "हीमैटेमेसिस"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "When fever is present only for several hours during the day, it can be termed.",
+    "question_hi": "जब बुखार दिन में केवल कुछ घंटों के लिए होता है, तो उसे क्या कहा जाता है?",
+    "options_en": [
+      "Continuous fever",
+      "Remittent fever",
+      "Moderate fever",
+      "Intermittent fever"
+    ],
+    "options_hi": [
+      "सतत बुखार",
+      "रिमिटेंट बुखार",
+      "मध्यम बुखार",
+      "इंटरमिटेंट बुखार"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The first aid for fractures includes the following group: (i) Avoid all unnecessary movements (ii) Reduce the fracture and bring bones to normal position (iii) Apply splints (iv) Prevent infection",
+    "question_hi": "फ्रैक्चर में प्राथमिक उपचार में निम्न समूह में क्या शामिल है? (i) अनावश्यक हरकतों से बचना (ii) हड्डी को सामान्य स्थिति में लाना (iii) स्प्लिंट लगाना (iv) संक्रमण रोकना",
+    "options_en": [
+      "(i), (iii), (iv)",
+      "( ), (i), (iv)",
+      "( ), (ii), (iii)",
+      "(iii) (iv)"
+    ],
+    "options_hi": [
+      "(i), (iii), (iv)",
+      "( ), (i), (iv)",
+      "( ), (ii), (iii)",
+      "(iii) (iv)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Expand OCHA.",
+    "question_hi": "OCHA का पूरा नाम क्या है?",
+    "options_en": [
+      "Office for Coordination of Humanitarian Affairs.",
+      "Office for Coordination of Health Affairs.",
+      "Organisation for Coordination of Humanitarian Affairs.",
+      "Organisation for Coordination of Health Affairs."
+    ],
+    "options_hi": [
+      "Office for Coordination of Humanitarian Affairs.",
+      "Office for Coordination of Health Affairs.",
+      "Organisation for Coordination of Humanitarian Affairs.",
+      "Organisation for Coordination of Health Affairs."
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "A person who met a motor bike accident has a spinal fracture. He is unable to sit and stand following injury. This inability can be termed as.",
+    "question_hi": "मोटर बाइक दुर्घटना में व्यक्ति की रीढ़ में फ्रैक्चर हो गया। चोट के बाद वह बैठने और खड़े होने में असमर्थ है। इस असमर्थता को क्या कहा जाएगा?",
+    "options_en": [
+      "Handicap",
+      "Disease",
+      "Disability",
+      "Impairment"
+    ],
+    "options_hi": [
+      "हैंडिकैप",
+      "रोग",
+      "विकलांगता/अक्षमता",
+      "हानि/दोष"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Rehabilitation in which restoration of capacity to earn livelihood is aimed.",
+    "question_hi": "किस पुनर्वास में आजीविका कमाने की क्षमता बहाल करना लक्ष्य होता है?",
+    "options_en": [
+      "Vocational Rehabilitation",
+      "Medical Rehabilitation",
+      "Social Rehabilitation",
+      "Psychological Rehabilitation"
+    ],
+    "options_hi": [
+      "व्यावसायिक पुनर्वास",
+      "चिकित्सीय पुनर्वास",
+      "सामाजिक पुनर्वास",
+      "मनोवैज्ञानिक पुनर्वास"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The World Disaster Reduction Day is observed on.",
+    "question_hi": "विश्व आपदा न्यूनीकरण दिवस कब मनाया जाता है?",
+    "options_en": [
+      "$2^{nd}$ Wednesday of December",
+      "$2^{nd}$ Wednesday of October",
+      "$13^{\\prime\\prime}$ October",
+      "December $3^{rd}$"
+    ],
+    "options_hi": [
+      "$2^{nd}$ Wednesदिन of December",
+      "$2^{nd}$ Wednesदिन of October",
+      "$13^{\\prime\\prime}$ October",
+      "December $3^{rd}$"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "A victim of drowning is rescued. In order to drain out water from the body, the following first aid measures should be taken, except.",
+    "question_hi": "डूबने से बचाए गए व्यक्ति के शरीर से पानी निकालने के लिए निम्न प्राथमिक उपचारों में कौन-सा नहीं करना चाहिए?",
+    "options_en": [
+      "Force out water from stomach",
+      "Place the victim in prone position",
+      "Raise the middle part of body",
+      "Clear the airway and mouth"
+    ],
+    "options_hi": [
+      "Force out water from stomach",
+      "Place the victim in prone position",
+      "Raise the middle part of body",
+      "Clear the airway and mouth"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "When a flood is over, the instruetion to be followed is",
+    "question_hi": "बाढ़ समाप्त होने के बाद कौन-सा निर्देश पालन करना चाहिए?",
+    "options_en": [
+      "Can use all consumables",
+      "Can use canned foods",
+      "Wait until the water is declared safe before drinking.",
+      "The people should return to home immediately"
+    ],
+    "options_hi": [
+      "Can use all consumables",
+      "Can use canned foods",
+      "Wait until the water है declared safe before drinking.",
+      "The people should return to home immediately"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is the right option regarding health problems associated with obesity? (i) Obesity can lead to gall bladder diseases and sleep apnea (ii) It moderately increases the risk of osteoarthritis and gout (iii) There is slightly increased risk of breast, endometrial and colon cancers in obese persons",
+    "question_hi": "मोटापे से जुड़े स्वास्थ्य समस्याओं के बारे में सही विकल्प चुनिए: (i) मोटापा पित्ताशय रोग और स्लीप एपनिया का कारण बन सकता है। (ii) यह ऑस्टियोआर्थराइटिस और गाउट का जोखिम मध्यम रूप से बढ़ाता है। (iii) मोटे व्यक्तियों में स्तन, एंडोमेट्रियल और कोलन कैंसर का जोखिम थोड़ा बढ़ता है।",
+    "options_en": [
+      "(i) is correct, (ii) is incorrect",
+      "(ii) is correct, (i) incorrect",
+      "Both incorrect",
+      "Both correct"
+    ],
+    "options_hi": [
+      "(i) है सही, (ii) है inसही",
+      "(ii) है सही, (i) inसही",
+      "दोनों गलत",
+      "दोनों सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Read the statements and choose the correct option regarding accidents and injury prevention. (i) Safety helmets reduce the risk of head injury by 30% and fatalities by 40% (ii) There should be a basic reporting system of all accidents (iii) Drugs such as barbiturates, amphetamines and cannabis can improve the driver's concentration ability",
+    "question_hi": "दुर्घटनाओं और चोट-निवारण के बारे में कथन पढ़कर सही विकल्प चुनिए। (i) सेफ्टी हेलमेट सिर की चोट का जोखिम 30% और मृत्यु का जोखिम 40% कम करते हैं। (ii) सभी दुर्घटनाओं की मूल रिपोर्टिंग प्रणाली होनी चाहिए। (iii) बार्बिटुरेट्स, एम्फेटामाइन और कैनबिस जैसे ड्रग्स चालक की एकाग्रता क्षमता सुधारते हैं।",
+    "options_en": [
+      "(i) and (ii) correct, (iii) incorrect",
+      "(ii) and (iii) correct, (i) incorrect",
+      "(i) and (iii) correct, (ii) incorrect",
+      "(i), (ii) and (iii) correct"
+    ],
+    "options_hi": [
+      "(i) and (ii) सही, (iii) inसही",
+      "(ii) and (iii) सही, (i) inसही",
+      "(i) and (iii) सही, (ii) inसही",
+      "(i), (ii) and (iii) सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is the correct option regarding causes of childhood blindness? (i) Leading causes are Xerophthalmia, Congenital cataract, and Congenital glaucoma (ii) Other causes include uncorrected refractive errors, optic atrophy and retinopathy due to prematurity.",
+    "question_hi": "बाल्यावस्था अंधता के कारणों के बारे में सही विकल्प चुनिए। (i) प्रमुख कारण जेरोफ्थैल्मिया, जन्मजात मोतियाबिंद और जन्मजात ग्लूकोमा हैं। (ii) अन्य कारणों में असुधारित अपवर्तक त्रुटियाँ, ऑप्टिक एट्रोफी और प्रीमैच्योरिटी से रेटिनोपैथी शामिल हैं।",
+    "options_en": [
+      "(i) correct, (ii) incorrect",
+      "(ii) correct, (i) incorrect",
+      "Both correct",
+      "Both incorrect"
+    ],
+    "options_hi": [
+      "(i) सही, (ii) inसही",
+      "(ii) सही, (i) inसही",
+      "दोनों सही",
+      "दोनों गलत"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Pick the right option after reading the statements on geriatrics. (i) The 3 major ailments reported by elderly persons are visual impairment, locomotive disorders and neurological complaints. (ii) Biological age of an elderly person is identical with his chronological age",
+    "question_hi": "जेरियाट्रिक्स पर कथन पढ़कर सही विकल्प चुनिए। (i) वृद्ध व्यक्तियों में तीन प्रमुख समस्याएँ दृष्टि-दोष, चलने-फिरने के विकार और न्यूरोलॉजिकल शिकायतें हैं। (ii) वृद्ध व्यक्ति की जैविक आयु उसकी कालानुक्रमिक आयु के समान होती है।",
+    "options_en": [
+      "(i) is correct, (ii) is incorrect",
+      "(ii) is correct, (i) incorrect",
+      "Both incorrect",
+      "Both correct"
+    ],
+    "options_hi": [
+      "(i) है सही, (ii) है inसही",
+      "(ii) है सही, (i) inसही",
+      "दोनों गलत",
+      "दोनों सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Read the following statements about non modifiable risk factors of Hypertension/ (i) Blood pressure increases with age in both sexes. (ii) Children of hypertensive parents have 45% chance of developing hypertension. (iii) Population studies have shown that blood pressure is higher in white ethnic communities.",
+    "question_hi": "हाइपरटेंशन के non-modifiable risk factors के बारे में निम्न कथन पढ़िए। (i) रक्तचाप उम्र के साथ दोनों लिंगों में बढ़ता है। (ii) उच्च रक्तचाप वाले माता-पिता के बच्चों में हाइपरटेंशन विकसित होने की 45% संभावना होती है। (iii) जनसंख्या अध्ययनों में श्वेत समुदायों में रक्तचाप अधिक पाया गया है।",
+    "options_en": [
+      "(i) and (ii) are incorrect, (iii) is correct",
+      "(ii) and (iii) are incorrect, (i) is correct",
+      "(iii) is incorrect, (i) and (ii) are correct",
+      "(i) and (iii) are incorrect, (ii) is correct"
+    ],
+    "options_hi": [
+      "(i) and (ii) हैं inसही, (iii) है सही",
+      "(ii) and (iii) हैं inसही, (i) है सही",
+      "(iii) है inसही, (i) and (ii) हैं सही",
+      "(i) and (iii) हैं inसही, (ii) है सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is the right option related to maternal diabetes ? (i) Offsprings of diabetic pregnancies including gestational diabetes are often small babies. (ii) Offsprings of diabetic pregnancies including gestational diabetes often tend to develop obesity in childhood. (iii) Children born to mothers after they developed diabetes have a 3 fold higher risk of developing diabetes than those born before..",
+    "question_hi": "मातृ मधुमेह से संबंधित सही विकल्प चुनिए। (i) डायबिटिक/गेस्टेशनल डायबिटीज वाली गर्भावस्था की संतान अक्सर छोटे बच्चे होते हैं। (ii) ऐसी संतान में बचपन में मोटापा विकसित होने की प्रवृत्ति होती है। (iii) माँ में डायबिटीज होने के बाद जन्मे बच्चों में पहले जन्मे बच्चों की तुलना में डायबिटीज का 3 गुना अधिक जोखिम होता है।",
+    "options_en": [
+      "(i), (ii) and (iii) are correct",
+      "(i) incorrect, (ii) and (iii) correct",
+      "(ii) incorrect, (i) and (iii) correct",
+      "(iii) incorrect, (i) and (ii) correct"
+    ],
+    "options_hi": [
+      "(i), (ii) and (iii) हैं सही",
+      "(i) inसही, (ii) and (iii) सही",
+      "(ii) inसही, (i) and (iii) सही",
+      "(iii) inसही, (i) and (ii) सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Choose the correct option related to proper bio-medical waste management. (i) Waste items in yellow bag are treated by autoclaving (ii) Waste items in black bag are disposed in secured land fill.",
+    "question_hi": "उचित जैव-चिकित्सा अपशिष्ट प्रबंधन से संबंधित सही विकल्प चुनिए। (i) पीले बैग की वस्तुओं का उपचार ऑटोक्लेविंग से किया जाता है। (ii) काले बैग की वस्तुओं को सुरक्षित लैंडफिल में निपटाया जाता है।",
+    "options_en": [
+      "(i) is correct, (ii) incorrect",
+      "(i) and (ii) correct",
+      "(i) incorrect, (ii) correct",
+      "(i) and (ii) incorrect"
+    ],
+    "options_hi": [
+      "(i) है सही, (ii) inसही",
+      "(i) and (ii) सही",
+      "(i) inसही, (ii) सही",
+      "(i) and (ii) inसही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Regarding Stroke, which is correct? (i) Transient Ischemic attacks (TIA) are episodes of irreversible focal and neurological deficit lasting for more than 24 hours (ii) First priority in stroke prevention goes to control of arterial hypertension (iii) Previously it was considered as an inevitable part of aging, focus is now on primary prevention through community activation.",
+    "question_hi": "स्ट्रोक के बारे में कौन-सा सही है? (i) TIA 24 घंटे से अधिक रहने वाली अपरिवर्तनीय फोकल न्यूरोलॉजिकल कमी की घटनाएँ हैं। (ii) स्ट्रोक रोकथाम में पहली प्राथमिकता arterial hypertension नियंत्रण है। (iii) पहले इसे उम्र बढ़ने का अनिवार्य भाग माना जाता था, अब सामुदायिक सक्रियता से प्राथमिक रोकथाम पर जोर है।",
+    "options_en": [
+      "(ii) and (iii) are correct",
+      "(i) and (iii)) are correct",
+      "(i) and (ii) are correct",
+      "All are correct"
+    ],
+    "options_hi": [
+      "(ii) and (iii) हैं सही",
+      "(i) and (iii)) हैं सही",
+      "(i) and (ii) हैं सही",
+      "All हैं सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is true considering tobacco use and cancers? (i) Worldwide, cigarette smoking is responsible for more than one million premature deaths each year. (ii) Tobacco use leads to cancer of larynx, bladder, pancreas",
+    "question_hi": "तंबाकू उपयोग और कैंसर के संदर्भ में कौन-सा सत्य है? (i) विश्वभर में सिगरेट धूम्रपान हर वर्ष दस लाख से अधिक असमय मौतों के लिए जिम्मेदार है। (ii) तंबाकू उपयोग से लैरिंक्स, मूत्राशय और अग्न्याशय का कैंसर होता है।",
+    "options_en": [
+      "(i) is true, (ii) is false",
+      "(ii) is true, (i) is false",
+      "(i) and (ii) are true",
+      "(i) and (ii) are false"
+    ],
+    "options_hi": [
+      "(i) है सत्य, (ii) है असत्य",
+      "(ii) है सत्य, (i) है असत्य",
+      "(i) and (ii) हैं सत्य",
+      "(i) and (ii) हैं असत्य"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is the correct option? (i) According to WHO a healthy person aged 18 to 64 years should try to achieve 50 minutes of moderate intensity aerobic physical activities every week (ii) Physical activities also include leisure time activities like dancing, playing and gardening",
+    "question_hi": "सही विकल्प चुनिए। (i) WHO के अनुसार 18 से 64 वर्ष के स्वस्थ व्यक्ति को प्रति सप्ताह 50 मिनट मध्यम तीव्रता की एरोबिक गतिविधि करनी चाहिए। (ii) शारीरिक गतिविधियों में नृत्य, खेलना और बागवानी जैसी leisure activities भी शामिल हैं।",
+    "options_en": [
+      "(i) correct",
+      "(ii) correct",
+      "Both correct",
+      "Both incorrect"
+    ],
+    "options_hi": [
+      "(i) सही",
+      "(ii) सही",
+      "दोनों सही",
+      "दोनों गलत"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Public Health concept born in -",
+    "question_hi": "Public Health की अवधारणा कहाँ जन्मी?",
+    "options_en": [
+      "Japan",
+      "England",
+      "America",
+      "China"
+    ],
+    "options_hi": [
+      "जापान",
+      "इंग्लैंड",
+      "अमेरिका",
+      "चीन"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following disease is caused by Bacteria?",
+    "question_hi": "निम्नलिखित में कौन-सा रोग बैक्टीरिया से होता है?",
+    "options_en": [
+      "Chicken pox",
+      "Measles",
+      "Mumps",
+      "TB"
+    ],
+    "options_hi": [
+      "चिकन पॉक्स",
+      "मीजल्स",
+      "मम्प्स",
+      "टीबी"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The concept of Primary Health care came into lime light at a conference held at -",
+    "question_hi": "Primary Health Care की अवधारणा किस सम्मेलन में प्रमुखता में आई?",
+    "options_en": [
+      "Alma Ata",
+      "New Delhi",
+      "Rio de Janeiro",
+      "Vienna"
+    ],
+    "options_hi": [
+      "अल्मा-अटा",
+      "नई दिल्ली",
+      "रियो डी जेनेरो",
+      "वियना"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Identify the correct combination below providing primary health care services in India. (i) Sub Centres (ii) Primary Health Centres (iii) Community Health Centres (iv) Rural Hospitals",
+    "question_hi": "भारत में प्राथमिक स्वास्थ्य सेवाएँ देने वाले सही संयोजन की पहचान करें। (i) Sub Centres (ii) Primary Health Centres (iii) Community Health Centres (iv) Rural Hospitals",
+    "options_en": [
+      "Only (i)",
+      "(i) & (ii) only",
+      "(i), (ii) & (iii)",
+      "All of the above"
+    ],
+    "options_hi": [
+      "केवल (i)",
+      "(i) & (ii) only",
+      "(i), (ii) & (iii)",
+      "उपरोक्त सभी"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Vasectomized persons should be advised not to lift heavy objects or ride bicycles for how many days after the operation?",
+    "question_hi": "नसबंदी (vasectomy) करवाए व्यक्ति को ऑपरेशन के बाद कितने दिनों तक भारी वस्तु उठाने या साइकिल चलाने से बचने की सलाह दी जानी चाहिए?",
+    "options_en": [
+      "5 days",
+      "15 days",
+      "25 days",
+      "35 days"
+    ],
+    "options_hi": [
+      "5 दिन",
+      "15 दिन",
+      "25 दिन",
+      "35 दिन"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The day on which the World Health Organization came into force.",
+    "question_hi": "विश्व स्वास्थ्य संगठन किस दिन लागू हुआ?",
+    "options_en": [
+      "$6^{th}$ March, 1947",
+      "$7^{d}$ April, 1948",
+      "$8^{th}$ May, 1949",
+      "$9^{th}$ June, 1950"
+    ],
+    "options_hi": [
+      "$6^{th}$ March, 1947",
+      "$7^{d}$ April, 1948",
+      "$8^{th}$ May, 1949",
+      "$9^{th}$ June, 1950"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The system of Registration of Births & Deaths in India is far from satisfactory due to (Identify the right combination below) (i) Lack of Uniformity (ii) Lack of Completeness (iii) Lack of Accuracy (iv) Ignorance of People",
+    "question_hi": "भारत में जन्म और मृत्यु पंजीकरण व्यवस्था असंतोषजनक होने के कारण कौन-से हैं? (i) एकरूपता की कमी (ii) पूर्णता की कमी (iii) सटीकता की कमी (iv) लोगों की अज्ञानता",
+    "options_en": [
+      "Only (i)",
+      "Only (i) & (ii)",
+      "Only (i), (ii) & (iii)",
+      "(i), (ii), (iii) & (iv)"
+    ],
+    "options_hi": [
+      "केवल (i)",
+      "केवल (i) & (ii)",
+      "केवल (i), (ii) & (iii)",
+      "(i), (ii), (iii) & (iv)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Eligible Couple means",
+    "question_hi": "Eligible Couple का अर्थ क्या है?",
+    "options_en": [
+      "Currently married couple where wife is in the age group of 15 to 50 years.",
+      "Currently married couple where wife is in the age group of 15 to 45 years.",
+      "Currently married couple where wife is in the age group of 18 to 50 years.",
+      "Currently married couple where wife is in the age group of 18 to 45 years."
+    ],
+    "options_hi": [
+      "Currently married couple where wife है in the age group of 15 to 50 years.",
+      "Currently married couple where wife है in the age group of 15 to 45 years.",
+      "Currently married couple where wife है in the age group of 18 to 50 years.",
+      "Currently married couple where wife है in the age group of 18 to 45 years."
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The Tag line of World Health day 2020.",
+    "question_hi": "World Health Day 2020 की टैगलाइन क्या थी?",
+    "options_en": [
+      "Support Health Workers",
+      "Support Health System",
+      "Support Nurses & Midwives",
+      "Support Doctors"
+    ],
+    "options_hi": [
+      "स्वास्थ्यकर्मियों का समर्थन",
+      "स्वास्थ्य प्रणाली का समर्थन",
+      "नर्सों और मिडवाइव्स का समर्थन",
+      "डॉक्टरों का समर्थन"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Dosage of TT-1 for a woman in early pregnancy is -",
+    "question_hi": "प्रारंभिक गर्भावस्था में महिला के लिए TT-1 की खुराक कितनी है?",
+    "options_en": [
+      "0.05 ml",
+      "0.01 ml",
+      "0.5 ml",
+      "1 ml"
+    ],
+    "options_hi": [
+      "0.05 ml",
+      "0.01 ml",
+      "0.5 ml",
+      "1 ml"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "In excreta disposal, Effluent forms in - (i) Septic Tank (ii) Sewage treatment plant (iii) Oxidation pond",
+    "question_hi": "मल-निपटान में effluent कहाँ बनता है? (i) Septic Tank (ii) Sewage treatment plant (iii) Oxidation pond",
+    "options_en": [
+      "Only (i) & (ii)",
+      "Only (ii) & (iii)",
+      "Only (i) & (iii)",
+      "(i), (ii) & (iii)"
+    ],
+    "options_hi": [
+      "केवल (i) & (ii)",
+      "केवल (ii) & (iii)",
+      "केवल (i) & (iii)",
+      "(i), (ii) & (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Average amount of sewage which flows through the sewage system in 24 hours (i) Average scum flow (ii) Average sewage flow (iii) Dry weather flow",
+    "question_hi": "24 घंटे में सीवेज सिस्टम से बहने वाली सीवेज की औसत मात्रा क्या कहलाती है? (i) Average scum flow (ii) Average sewage flow (iii) Dry weather flow",
+    "options_en": [
+      "Only (ii)",
+      "Only (i)",
+      "Only (iii)",
+      "(i), (ii) & (iii)"
+    ],
+    "options_hi": [
+      "केवल (ii)",
+      "केवल (i)",
+      "केवल (iii)",
+      "(i), (ii) & (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Back washing process introduced with (i) Slow sand filter (ii) Rapid sand filter (iii) Grit chamber",
+    "question_hi": "Back washing प्रक्रिया किसमें शुरू की जाती है? (i) Slow sand filter (ii) Rapid sand filter (iii) Grit chamber",
+    "options_en": [
+      "Only (i) & (ii)",
+      "Only (ii)",
+      "Only (i)",
+      "Only (iii)"
+    ],
+    "options_hi": [
+      "केवल (i) & (ii)",
+      "केवल (ii)",
+      "केवल (i)",
+      "केवल (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Heart of sewage treatment plant (i) Sedimentation tank (ii) Trickling filter (iii) Aeration tank",
+    "question_hi": "Sewage treatment plant का heart किसे कहा जाता है? (i) Sedimentation tank (ii) Trickling filter (iii) Aeration tank",
+    "options_en": [
+      "Only (i) & (ii)",
+      "Only (ii)",
+      "Only (i)",
+      "Only (iii)"
+    ],
+    "options_hi": [
+      "केवल (i) & (ii)",
+      "केवल (ii)",
+      "केवल (i)",
+      "केवल (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Method for refuse disposal: (i) Dumping (ii) Sanitary landfill (iii) Manure pits",
+    "question_hi": "Refuse disposal की विधियाँ कौन-सी हैं? (i) Dumping (ii) Sanitary landfill (iii) Manure pits",
+    "options_en": [
+      "Only (iii) & (i)",
+      "Only (in) & (i)",
+      "Only (i)",
+      "(i), (ii) & (iii)"
+    ],
+    "options_hi": [
+      "केवल (iii) & (i)",
+      "केवल (in) & (i)",
+      "केवल (i)",
+      "(i), (ii) & (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Estimated volume of water in one cubic metre of a well: (i) 1000 litres (ii) 10000 litres (iii) 100 litres",
+    "question_hi": "कुएँ के एक घन मीटर में पानी की अनुमानित मात्रा कितनी होती है? (i) 1000 litres (ii) 10000 litres (iii) 100 litres",
+    "options_en": [
+      "Only (i)",
+      "Only",
+      "",
+      "Only (iii)"
+    ],
+    "options_hi": [
+      "केवल (i)",
+      "केवल",
+      "",
+      "केवल (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Different name of oxidation pond (i) Waste stabilization pond (ii) Redox pond (iii) Sewage lagoons",
+    "question_hi": "Oxidation pond के अन्य नाम कौन-से हैं? (i) Waste stabilization pond (ii) Redox pond (iii) Sewage lagoons",
+    "options_en": [
+      "Only (ii)",
+      "Only (i)",
+      "Only (iii)",
+      "(i), (ii) and (iii)"
+    ],
+    "options_hi": [
+      "केवल (ii)",
+      "केवल (i)",
+      "केवल (iii)",
+      "(i), (ii) and (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Commonly using larvicides for chemical control- (i) Mineral oils (ii) Malathion (iii) Lindane",
+    "question_hi": "Chemical control में सामान्यतः उपयोग होने वाले larvicides कौन-से हैं? (i) Mineral oils (ii) Malathion (iii) Lindane",
+    "options_en": [
+      "Only (i) & (ii)",
+      "Only (ii)",
+      "Only (i)",
+      "Only (iii)"
+    ],
+    "options_hi": [
+      "केवल (i) & (ii)",
+      "केवल (ii)",
+      "केवल (i)",
+      "केवल (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Heart of the slow sand filter (i) Vital layer (ii) Zoogleal layer (iii) Biological layer",
+    "question_hi": "Slow sand filter का heart क्या है? (i) Vital layer (ii) Zoogleal layer (iii) Biological layer",
+    "options_en": [
+      "Only (iii)",
+      "Only (i) & (ii)",
+      "Only (ii) & (iii)",
+      "(i), (ii) & (iii)"
+    ],
+    "options_hi": [
+      "केवल (iii)",
+      "केवल (i) & (ii)",
+      "केवल (ii) & (iii)",
+      "(i), (ii) & (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The disease associated with rodents (i) Salmonillosis (ii) Plague (iii) Leishmaniasis",
+    "question_hi": "कौन-सा रोग rodents से संबंधित है? (i) Salmonellosis (ii) Plague (iii) Leishmaniasis",
+    "options_en": [
+      "Only (ii)",
+      "Only (i), (ii) & (iii)",
+      "Only (i) & (ii)",
+      "Only (ii) & (iii)"
+    ],
+    "options_hi": [
+      "केवल (ii)",
+      "केवल (i), (ii) & (iii)",
+      "केवल (i) & (ii)",
+      "केवल (ii) & (iii)"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "In communication \"Technical Know-how\" is -",
+    "question_hi": "Communication में “Technical Know-how” क्या है?",
+    "options_en": [
+      "Channel",
+      "Message",
+      "Source",
+      "Feed back"
+    ],
+    "options_hi": [
+      "चैनल",
+      "संदेश",
+      "स्रोत",
+      "फीडबैक"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Television is an example of -",
+    "question_hi": "Television किसका उदाहरण है?",
+    "options_en": [
+      "Audio aid",
+      "Video aid",
+      "Audio-Video aid",
+      "All of the above"
+    ],
+    "options_hi": [
+      "श्रव्य सहायक",
+      "दृश्य सहायक",
+      "Audio-दृश्य सहायक",
+      "उपरोक्त सभी"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Cognitive level of communication is based on-",
+    "question_hi": "Communication का cognitive level किस पर आधारित है?",
+    "options_en": [
+      "Attitude",
+      "Skill",
+      "Psychomotor",
+      "Knowledge"
+    ],
+    "options_hi": [
+      "दृष्टिकोण",
+      "कौशल",
+      "Psychomotor",
+      "ज्ञान"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Public Health Act is approach in Health Education.",
+    "question_hi": "Health Education में Public Health Act कौन-सा approach है?",
+    "options_en": [
+      "Educational",
+      "Regulatory",
+      "Service",
+      "None of these"
+    ],
+    "options_hi": [
+      "शैक्षिक",
+      "नियामक",
+      "सेवा",
+      "इनमें से कोई नहीं"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The concept of 'Microteaching' put forward by-",
+    "question_hi": "Microteaching की अवधारणा किसने प्रस्तुत की?",
+    "options_en": [
+      "W. Allen",
+      "Edgar Dale",
+      "Maslow",
+      "Piaget"
+    ],
+    "options_hi": [
+      "W. Allen",
+      "Edgar Dale",
+      "Maslow",
+      "Piaget"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The process of 'Sociometry' was put forward by-",
+    "question_hi": "Sociometry की प्रक्रिया किसने प्रस्तुत की?",
+    "options_en": [
+      "Skinner",
+      "J.L. Moreno",
+      "C.H. Coolle",
+      "Freud"
+    ],
+    "options_hi": [
+      "Skinner",
+      "J.L. Moreno",
+      "C.H. Coolle",
+      "Freud"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "'Individual Methods' in health communications is-",
+    "question_hi": "Health communication में Individual Method कौन-सा है?",
+    "options_en": [
+      "Workshop",
+      "Exhibition",
+      "Seminar",
+      "House visit"
+    ],
+    "options_hi": [
+      "कार्यशाला",
+      "प्रदर्शनी",
+      "सेमिनार",
+      "घर भ्रमण"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Consist of series of meetings.",
+    "question_hi": "किसमें meetings की series होती है?",
+    "options_en": [
+      "Seminar",
+      "Workshop",
+      "Role play",
+      "All of the above"
+    ],
+    "options_hi": [
+      "सेमिनार",
+      "कार्यशाला",
+      "भूमिका-अभिनय",
+      "उपरोक्त सभी"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Expand DAVP-",
+    "question_hi": "DAVP का पूरा नाम क्या है?",
+    "options_en": [
+      "Department of Advertising and Visual Publicity",
+      "Department of Audio Visual Publicity",
+      "Directorate of Advertising and Visual Publicity",
+      "None of these"
+    ],
+    "options_hi": [
+      "Department of Advertising and Visual Publicity",
+      "Department of Audio Visual Publicity",
+      "Directorate of Advertising and Visual Publicity",
+      "इनमें से कोई नहीं"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "In Communication \"the Cone of Experience' theory put forward by-",
+    "question_hi": "Communication में “Cone of Experience” सिद्धांत किसने दिया?",
+    "options_en": [
+      "Sigmund Freud",
+      "Charles Mcintyre",
+      "Skinner",
+      "Edgar Dale"
+    ],
+    "options_hi": [
+      "Sigmund Freud",
+      "Charles Mcintyre",
+      "Skinner",
+      "Edgar Dale"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Expand 'MBO' -",
+    "question_hi": "MBO का पूरा नाम क्या है?",
+    "options_en": [
+      "Management Behaviour Objectives",
+      "Management By Objectives",
+      "Model Behaviour Organization",
+      "Management Behaviour Organization"
+    ],
+    "options_hi": [
+      "प्रबंधन Behaviour Objectives",
+      "उद्देश्यों द्वारा प्रबंधन",
+      "Model Behaviour Organization",
+      "प्रबंधन Behaviour Organization"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "In \"POSDCORB\", 'D' means",
+    "question_hi": "POSDCORB में ‘D’ का अर्थ क्या है?",
+    "options_en": [
+      "Developing",
+      "Designing",
+      "Directing",
+      "Deviating"
+    ],
+    "options_hi": [
+      "Developing",
+      "Designing",
+      "निर्देशन",
+      "Deviating"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "\"Determining what is to be done\" is -",
+    "question_hi": "“क्या किया जाना है” निर्धारित करना किसे कहा जाता है?",
+    "options_en": [
+      "Organizing",
+      "Co-ordinating",
+      "Monitoring",
+      "Planning"
+    ],
+    "options_hi": [
+      "Organizing",
+      "Co-ordinating",
+      "Monitoring",
+      "योजना बनाना"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 74,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "PERT is a technique",
+    "question_hi": "PERT किसकी तकनीक है?",
+    "options_en": [
+      "Communication",
+      "Management",
+      "Budgeting",
+      "Organizing"
+    ],
+    "options_hi": [
+      "Communication",
+      "प्रबंधन",
+      "Budgeting",
+      "Organizing"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 75,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The Fourteen Principles of Management put forward by -",
+    "question_hi": "Management के चौदह सिद्धांत किसने दिए?",
+    "options_en": [
+      "Maslow",
+      "Pearson",
+      "Eric Erickson",
+      "Henry Fayol"
+    ],
+    "options_hi": [
+      "Maslow",
+      "Pearson",
+      "Eric Erickson",
+      "Henry Fayol"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 76,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Panchayati Raj Bill adopted by Parliament in 1992 by amendment.",
+    "question_hi": "Panchayati Raj Bill संसद द्वारा 1992 में किस संशोधन से अपनाया गया?",
+    "options_en": [
+      "73rd",
+      "70th",
+      "72nd",
+      "74th"
+    ],
+    "options_hi": [
+      "73rd",
+      "70th",
+      "72nd",
+      "74th"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 77,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Panchayati Raj System initially introduced in-",
+    "question_hi": "Panchayati Raj System प्रारंभ में कहाँ लागू किया गया?",
+    "options_en": [
+      "Kerala",
+      "Sikkim",
+      "Punjab",
+      "Rajasthan"
+    ],
+    "options_hi": [
+      "केरल",
+      "सिक्किम",
+      "पंजाब",
+      "राजस्थान"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 78,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "In Covid-19 Awareness Campaign \"SMS\" means-",
+    "question_hi": "Covid-19 Awareness Campaign में “SMS” का अर्थ क्या है?",
+    "options_en": [
+      "Safe Method Surveillance",
+      "Soap Mask Sanitizer",
+      "Soap Mask Social Distance",
+      "Safety Mask Service"
+    ],
+    "options_hi": [
+      "Safe Method Surveillance",
+      "Soap Mask Sanitizer",
+      "Soap Mask Social Distance",
+      "Safety Mask सेवा"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 79,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "In India \"The Air (Prevention and Control of Pollution) Act\" Enacted in -",
+    "question_hi": "भारत में Air (Prevention and Control of Pollution) Act कब enacted हुआ?",
+    "options_en": [
+      "1961",
+      "1981",
+      "1971",
+      "1991"
+    ],
+    "options_hi": [
+      "1961",
+      "1981",
+      "1971",
+      "1991"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 80,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The Epidemic Diseases Act, 1897 was amended in.",
+    "question_hi": "Epidemic Diseases Act, 1897 में संशोधन कब किया गया?",
+    "options_en": [
+      "April 2020",
+      "May 2020",
+      "June 2020",
+      "July 2020"
+    ],
+    "options_hi": [
+      "April 2020",
+      "May 2020",
+      "June 2020",
+      "July 2020"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 81,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Name the Swiss Psychiatrist who divided personalities into two types extrovert and introvert.",
+    "question_hi": "Extrovert और introvert दो प्रकारों में व्यक्तित्व विभाजित करने वाले Swiss psychiatrist का नाम बताइए।",
+    "options_en": [
+      "Henry Dunant",
+      "Carl Jung",
+      "Rock Feller",
+      "James Braid"
+    ],
+    "options_hi": [
+      "Henry Dunant",
+      "Carl Jung",
+      "Rock Feller",
+      "James Braid"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 82,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which of the following is obtained by dividing the mental age by chronological age and multiplying by 100?",
+    "question_hi": "Mental age को chronological age से भाग देकर 100 से गुणा करने पर क्या प्राप्त होता है?",
+    "options_en": [
+      "Emotional Quotient",
+      "Spiritual Quotient",
+      "Physical Quotient",
+      "Intelligence Quotient"
+    ],
+    "options_hi": [
+      "Emotional Quotient",
+      "Spiritual Quotient",
+      "Physical Quotient",
+      "Intelligence Quotient"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 83,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Instead of accepting failure and correcting himself, the individual tries to make excuses and justifies his behaviour. What is it?",
+    "question_hi": "असफलता स्वीकार कर सुधार करने के बजाय व्यक्ति बहाने बनाकर अपने व्यवहार को उचित ठहराता है। इसे क्या कहते हैं?",
+    "options_en": [
+      "Projection",
+      "Displacement",
+      "Regression",
+      "Rationalization"
+    ],
+    "options_hi": [
+      "Projection",
+      "Displacement",
+      "Regression",
+      "Rationalization"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 84,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "To prepare couple for child birth and child rearing -",
+    "question_hi": "दंपति को बच्चे के जन्म और पालन-पोषण के लिए तैयार करना किससे संबंधित है?",
+    "options_en": [
+      "Adulthood",
+      "Childhood",
+      "Parenthood",
+      "Elderly"
+    ],
+    "options_hi": [
+      "Adulthood",
+      "Childhood",
+      "Parenthood",
+      "Elderly"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 85,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "An individual is faced with problems, he employs certain ways to achieve health. happiness or success.",
+    "question_hi": "जब व्यक्ति समस्याओं का सामना करता है, तो स्वास्थ्य, खुशी या सफलता पाने के लिए कुछ तरीके अपनाता है। यह क्या है?",
+    "options_en": [
+      "Habit formation",
+      "Learning",
+      "Defence mechanism",
+      "Listening"
+    ],
+    "options_hi": [
+      "Habit formation",
+      "Learning",
+      "Defence mechanism",
+      "Listening"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 86,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The social group determined by geographical boundaries and/or common values and interests.",
+    "question_hi": "भौगोलिक सीमाओं और/या सामान्य मूल्यों व हितों से निर्धारित सामाजिक समूह क्या कहलाता है?",
+    "options_en": [
+      "Nation",
+      "Family",
+      "State",
+      "Community"
+    ],
+    "options_hi": [
+      "Nation",
+      "Family",
+      "State",
+      "समुदाय"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 87,
+    "correct": 0,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Condition in which the patient pre-occupied with fears of having serious disease",
+    "question_hi": "वह स्थिति जिसमें रोगी गंभीर बीमारी होने के भय में अत्यधिक व्यस्त रहता है, क्या कहलाती है?",
+    "options_en": [
+      "Hypochondriasis",
+      "Phobia",
+      "Generalised anxiety disorder",
+      "Dyspnoea"
+    ],
+    "options_hi": [
+      "Hypochondriasis",
+      "Phobia",
+      "Generalised anxiety disorder",
+      "Dyspnoea"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 88,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "The family consists of the married couple and their children-",
+    "question_hi": "विवाहित दंपति और उनके बच्चों से बना परिवार क्या कहलाता है?",
+    "options_en": [
+      "Three generation family",
+      "Joint family",
+      "Broken family",
+      "Nuclear family"
+    ],
+    "options_hi": [
+      "Three generation family",
+      "जॉइंट फैमिली",
+      "ब्रोकन फैमिली",
+      "न्यूक्लियर फैमिली"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 89,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Mental Disease descend from one generation to the other-",
+    "question_hi": "कौन-सा मानसिक रोग एक पीढ़ी से दूसरी पीढ़ी में उतर सकता है?",
+    "options_en": [
+      "Stress",
+      "Schizophrenia",
+      "Anorexia",
+      "Osteomalacia"
+    ],
+    "options_hi": [
+      "Stress",
+      "Schizophrenia",
+      "Anorexia",
+      "Osteomalacia"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 90,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Name the fundamental right that explains the child labour is an offence-",
+    "question_hi": "कौन-सा मौलिक अधिकार बताता है कि child labour अपराध है?",
+    "options_en": [
+      "Right to Equality",
+      "Right to Liberty",
+      "Cultural and Educational Right",
+      "Right Against Exploitation"
+    ],
+    "options_hi": [
+      "समानता का अधिकार",
+      "स्वतंत्रता का अधिकार",
+      "सांस्कृतिक और शैक्षिक अधिकार",
+      "शोषण के विरुद्ध अधिकार"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 91,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is correct statement ? (i) In Hookworm infection, reservoir is man and source of infection is contaminated soil. (ii) In Tetnus, reservoir and source are the same that is, soil.",
+    "question_hi": "कौन-सा कथन सही है? (i) Hookworm infection में reservoir man है और infection का source contaminated soil है। (ii) Tetanus में reservoir और source दोनों soil हैं।",
+    "options_en": [
+      "(i) correct and (ii) incorrect",
+      "(ii) correct and (i) incorrect",
+      "Both correct",
+      "Both incorrect"
+    ],
+    "options_hi": [
+      "(i) सही and (ii) inसही",
+      "(ii) सही and (i) inसही",
+      "दोनों सही",
+      "दोनों गलत"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 92,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Read the statements about types of vaccines: (i) Hepatitis A Vaccine is a killed type vaccine (ii) Hepatitis B and HPV are Toxoid vaccines (iii) BCG and Rotavirus vaccines are Live attenuated vaccines.",
+    "question_hi": "Vaccines के प्रकारों के बारे में कथन पढ़िए: (i) Hepatitis A vaccine killed type vaccine है। (ii) Hepatitis B और HPV toxoid vaccines हैं। (iii) BCG और Rotavirus vaccines live attenuated vaccines हैं।",
+    "options_en": [
+      "(i) and (ii) true, (iii) false",
+      "(ii) and (iii) true, (i) is false",
+      "(i) and (iii) true, (ii) is false",
+      "All are true"
+    ],
+    "options_hi": [
+      "(i) and (ii) सत्य, (iii) असत्य",
+      "(ii) and (iii) सत्य, (i) है असत्य",
+      "(i) and (iii) सत्य, (ii) है असत्य",
+      "All हैं सत्य"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 93,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Regarding Fixed Dose combination, choose the right option: (i) In DOTS, medicines are now prepared in fixed dose combinations that reduces the number of tablets to be consumed. (ii) Instead of alternate day regimen, TB patients taking FDC are switched to a daily regimen.",
+    "question_hi": "Fixed Dose Combination के बारे में सही विकल्प चुनिए: (i) DOTS में medicines अब FDC में तैयार होती हैं जिससे tablets की संख्या कम होती है। (ii) alternate day regimen के बजाय TB patients को daily regimen पर shift किया जाता है।",
+    "options_en": [
+      "(i) is correct, (ii) incorrect",
+      "(ii) correct, (i) incorrect",
+      "Both incorrect",
+      "(i) and (ii) correct"
+    ],
+    "options_hi": [
+      "(i) है सही, (ii) inसही",
+      "(ii) सही, (i) inसही",
+      "दोनों गलत",
+      "(i) and (ii) सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 94,
+    "correct": 3,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is the correct statement regarding ORS? (i) Composition of Trisodium citrate dehydrate in reduced osmolarity ORS is 4.5 g/L. (ii) At home it can be prepared by mixing 6 teaspoon of salt and one teaspoon of sugar in one litre of water. (iii) After each loose stool, children under 2 years of age should be given 50 to 100 ml of ORS.",
+    "question_hi": "ORS के बारे में सही कथन चुनिए। (i) Reduced osmolarity ORS में trisodium citrate dihydrate की मात्रा 4.5 g/L है। (ii) घर पर इसे 1 लीटर पानी में 6 चम्मच नमक और 1 चम्मच चीनी मिलाकर बनाया जा सकता है। (iii) 2 वर्ष से कम आयु के बच्चों को हर loose stool के बाद 50–100 ml ORS देना चाहिए।",
+    "options_en": [
+      "(i) and (ii) correct",
+      "(ii) and (iii) correct",
+      "Only (i) correct",
+      "Only (iii) correct"
+    ],
+    "options_hi": [
+      "(i) and (ii) सही",
+      "(ii) and (iii) सही",
+      "केवल (i) सही",
+      "केवल (iii) सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 95,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "During the first visit of a 9 month old infant, if the mother permits only one injection, which one should be given?",
+    "question_hi": "9 माह के शिशु की पहली visit में यदि माँ केवल एक injection की अनुमति देती है, तो कौन-सा दिया जाना चाहिए?",
+    "options_en": [
+      "DPT vaccine with OPV and Vitamin A",
+      "BCG and OPV vaccine with vitamin A",
+      "Measles vaccine and OPV with vitamin A",
+      "Hepatitis B vaccine and OPV with vitamin A"
+    ],
+    "options_hi": [
+      "DPT vaccine with OPV and Vitamin A",
+      "BCG and OPV vaccine with vitamin A",
+      "मीजल्स vaccine and OPV with vitamin A",
+      "Hepatitहै B vaccine and OPV with vitamin A"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 96,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Pick the correct option associated with H1N1 influenza infection. (i) Inactivated vaccine is administered as a single dose intramuscular, injection in the upper arm. (ii) Live attenuated vaccines are given via nasal spray (iii) Category A patients are at high risk as they have the most severe respiratory symptoms",
+    "question_hi": "H1N1 influenza infection से संबंधित सही विकल्प चुनिए। (i) Inactivated vaccine single dose intramuscular injection के रूप में upper arm में दी जाती है। (ii) Live attenuated vaccines nasal spray से दी जाती हैं। (iii) Category A patients high risk होते हैं क्योंकि उनमें severe respiratory symptoms होते हैं।",
+    "options_en": [
+      "(i) and (iii) correct",
+      "(i) and (ii) correct",
+      "(ii) and (iii) correct",
+      "All are correct"
+    ],
+    "options_hi": [
+      "(i) and (iii) सही",
+      "(i) and (ii) सही",
+      "(ii) and (iii) सही",
+      "All हैं सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 97,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Choose the correct option (i) Syphilis is caused by Treponema pallidum (ii) Whooping cough is caused by Haemophilus ducreyi (iii) Lymphatic Filariasis is caused by Wuchereria bancrofti",
+    "question_hi": "सही विकल्प चुनिए। (i) Syphilis, Treponema pallidum से होता है। (ii) Whooping cough, Haemophilus ducreyi से होता है। (iii) Lymphatic Filariasis, Wuchereria bancrofti से होता है।",
+    "options_en": [
+      "(i) and (ii) correct",
+      "(ii) and (iii) correct",
+      "(i) and (iii) correct",
+      "All are correct"
+    ],
+    "options_hi": [
+      "(i) and (ii) सही",
+      "(ii) and (iii) सही",
+      "(i) and (iii) सही",
+      "All हैं सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 98,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Read and choose the correct option: (i) Herd immunity can protect the individual in case of Tetanus (ii) Herd immunity is maintained and stepped up by immunization programme",
+    "question_hi": "पढ़िए और सही विकल्प चुनिए: (i) Herd immunity tetanus में individual की रक्षा कर सकती है। (ii) Herd immunity immunization programme द्वारा maintained और stepped up होती है।",
+    "options_en": [
+      "(i) is true and (ii) is false",
+      "(i) is false and (ii) is true",
+      "Both are true",
+      "Both false"
+    ],
+    "options_hi": [
+      "(i) है सत्य and (ii) है असत्य",
+      "(i) है असत्य and (ii) है सत्य",
+      "Both हैं सत्य",
+      "Both असत्य"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 99,
+    "correct": 1,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is the correct statement about acute flaccid paralysis (AFP) and polio ? (i) Reporting of all cases of AFP in children under 5 years of age is mandatory. (ii) Polio vaccine should be stored at sub-zero temperature to prevent inactivation (iii) Doses of OPV during PPI are extra doses which supplement and do not replace the doses received during routine immunization service",
+    "question_hi": "Acute flaccid paralysis (AFP) और polio के बारे में सही कथन कौन-सा है? (i) 5 वर्ष से कम आयु के बच्चों में AFP के सभी cases की reporting mandatory है। (ii) Polio vaccine को inactivation रोकने के लिए sub-zero temperature पर रखना चाहिए। (iii) PPI के दौरान OPV doses extra doses होती हैं, जो routine immunization की doses को supplement करती हैं और replace नहीं करतीं।",
+    "options_en": [
+      "(i) and (ii) correct",
+      "(ii) and (iii) correct",
+      "(i) and (iii) correct",
+      "All are correct"
+    ],
+    "options_hi": [
+      "(i) and (ii) सही",
+      "(ii) and (iii) सही",
+      "(i) and (iii) सही",
+      "All हैं सही"
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 100,
+    "correct": 2,
+    "subject": "Health/Public Health",
+    "type": "bilingual",
+    "question_en": "Which is the correct option related to IDSP?",
+    "question_hi": "IDSP से संबंधित सही विकल्प कौन-सा है?",
+    "options_en": [
+      "It was launched in November 2010",
+      "Cough more than 1 week comes under IDSP surveillance.",
+      "Classification of surveillance in IDSP is as syndromic diagnosis, presumptive and confirmed diagnosis.",
+      "IDSP does not involve private hospitals and labs."
+    ],
+    "options_hi": [
+      "It was launched in November 2010",
+      "Cough more than 1 week comes under IDSP surveillance.",
+      "Classification of surveillance in IDSP है as syndromic diagnosis, presumptive and confirmed diagnosis.",
+      "IDSP does not involve private hospitals and labs."
+    ],
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+
+let current = 0;
+let language = "bi";
+let answers = Array(questions.length).fill(null);
+let visited = Array(questions.length).fill(false);
+let review = Array(questions.length).fill(false);
+let remaining = totalDurationSeconds;
+let timerInterval = null;
+let startTimestamp = null;
+
+function escapeHtml(str) {
+  return String(str || "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+
+function formatTime(sec) {
+  sec = Math.max(0, Math.floor(sec));
+  const h = String(Math.floor(sec/3600)).padStart(2,'0');
+  const m = String(Math.floor((sec%3600)/60)).padStart(2,'0');
+  const s = String(sec%60).padStart(2,'0');
+  return `${h}:${m}:${s}`;
+}
+
+function startTest() {
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('examScreen').classList.remove('hidden');
+  document.getElementById('timer').classList.remove('hidden');
+  document.getElementById('langBox').classList.remove('hidden');
+  startTimestamp = Date.now();
+  visited[0] = true;
+  renderPalette();
+  renderQuestion();
+  startTimer();
+}
+
+function startTimer() {
+  document.getElementById('timer').textContent = formatTime(remaining);
+  timerInterval = setInterval(() => {
+    remaining--;
+    document.getElementById('timer').textContent = formatTime(remaining);
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      submitTest(true);
+    }
+  }, 1000);
+}
+
+function setLanguage(lang) {
+  language = lang;
+  ['hi','en','bi'].forEach(l => document.getElementById('btn-'+l).classList.toggle('active', l===lang));
+  renderQuestion();
+}
+
+function bilingualText(hi, en, type) {
+  if (type === 'hindi_only') return `<div class="hi">${escapeHtml(hi || en)}</div>`;
+  if (type === 'english_only') return `<div class="en">${escapeHtml(en || hi)}</div>`;
+  if (language === 'hi') return `<div class="hi">${escapeHtml(hi || en)}</div>`;
+  if (language === 'en') return `<div class="en">${escapeHtml(en || hi)}</div>`;
+  return `<div class="bilingual-block"><div class="hi">${escapeHtml(hi || en)}</div><div class="en">${escapeHtml(en || hi)}</div></div>`;
+}
+
+function getStatus(i) {
+  if (answers[i] !== null && review[i]) return 'Answered & Marked for Review';
+  if (review[i]) return 'Marked for Review';
+  if (answers[i] !== null) return 'Answered';
+  if (visited[i]) return 'Not Answered';
+  return 'Not Visited';
+}
+
+function statusClass(i) {
+  if (answers[i] !== null && review[i]) return 'ansreview';
+  if (review[i]) return 'review';
+  if (answers[i] !== null) return 'answered';
+  if (visited[i]) return 'notanswered';
+  return 'notvisited';
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  visited[current] = true;
+  document.getElementById('questionNumber').textContent = `Question ${current+1} of ${questions.length}`;
+  document.getElementById('statusText').textContent = getStatus(current);
+  let imageHtml = q.image ? `<div style="margin:10px 0"><img src="${escapeHtml(q.image)}" alt="Question image" style="max-width:100%;border:1px solid #ddd;border-radius:10px"></div>` : "";
+  document.getElementById('questionText').innerHTML = bilingualText(q.question_hi, q.question_en, q.type) + imageHtml;
+  const opts = q.options_en.map((opt, idx) => {
+    const checked = answers[current] === idx ? 'checked' : '';
+    const selected = answers[current] === idx ? 'selected' : '';
+    const optText = bilingualText(q.options_hi[idx], q.options_en[idx], q.type);
+    return `<label class="option ${selected}">
+      <input type="radio" name="option" value="${idx}" ${checked} onchange="selectOption(${idx})">
+      <span class="option-label">${String.fromCharCode(65+idx)}.</span>
+      <span>${optText}</span>
+    </label>`;
+  }).join('');
+  document.getElementById('optionsBox').innerHTML = opts;
+  renderPalette();
+}
+
+function renderPalette() {
+  const grid = document.getElementById('paletteGrid');
+  grid.innerHTML = questions.map((_, i) => 
+    `<button class="palette-btn ${statusClass(i)} ${i===current?'current':''}" onclick="goToQuestion(${i})">${i+1}</button>`
+  ).join('');
+}
+
+function selectOption(idx) {
+  answers[current] = idx;
+  renderQuestion();
+}
+
+function goToQuestion(i) {
+  current = i;
+  visited[current] = true;
+  renderQuestion();
+}
+
+function prevQuestion() {
+  if (current > 0) goToQuestion(current - 1);
+}
+
+function saveAndNext() {
+  review[current] = false;
+  if (current < questions.length - 1) goToQuestion(current + 1);
+  else renderQuestion();
+}
+
+function markForReview() {
+  review[current] = true;
+  if (current < questions.length - 1) goToQuestion(current + 1);
+  else renderQuestion();
+}
+
+function clearResponse() {
+  answers[current] = null;
+  review[current] = false;
+  renderQuestion();
+}
+
+function submitTest(auto=false) {
+  if (!auto) {
+    const ok = confirm("Are you sure you want to submit the test?");
+    if (!ok) return;
+  }
+  clearInterval(timerInterval);
+  const timeTakenSeconds = Math.round((Date.now() - startTimestamp)/1000);
+  let attempted = 0, correct = 0, wrong = 0, unattempted = 0;
+  questions.forEach((q,i) => {
+    if (answers[i] === null) unattempted++;
+    else {
+      attempted++;
+      if (answers[i] === q.correct) correct++;
+      else wrong++;
+    }
+  });
+  const score = (correct * marksPerQuestion) - (wrong * negativeMarking);
+  const maxMarks = questions.length * marksPerQuestion;
+  const percentage = (score / maxMarks) * 100;
+  const result = {
+    date: new Date().toLocaleString(),
+    total: questions.length, attempted, unattempted, correct, wrong,
+    score: Number(score.toFixed(2)), maxMarks, percentage: Number(percentage.toFixed(2)),
+    timeTaken: formatTime(timeTakenSeconds)
+  };
+  saveHistory(result);
+  showResult(result);
+}
+
+function showResult(result) {
+  document.getElementById('examScreen').classList.add('hidden');
+  document.getElementById('timer').classList.add('hidden');
+  document.getElementById('langBox').classList.add('hidden');
+  document.getElementById('resultScreen').classList.remove('hidden');
+  const boxes = [
+    ['Total Questions', result.total], ['Attempted', result.attempted], ['Not Attempted', result.unattempted],
+    ['Correct', result.correct], ['Wrong', result.wrong], ['Marks Obtained', result.score],
+    ['Maximum Marks', result.maxMarks], ['Percentage', result.percentage + '%'], ['Time Taken', result.timeTaken],
+    ['Marking Scheme', '+1 / -0.25']
+  ];
+  document.getElementById('resultSummary').innerHTML = boxes.map(b => `<div class="score-box">${b[0]}<b>${b[1]}</b></div>`).join('');
+  renderAnswerKey();
+  renderHistory('historyResult');
+}
+
+function renderAnswerKey() {
+  document.getElementById('answerKey').innerHTML = questions.map((q,i) => {
+    const user = answers[i];
+    const userText = user === null ? 'Not attempted' : `${String.fromCharCode(65+user)}. ${q.options_en[user]}`;
+    const corrText = `${String.fromCharCode(65+q.correct)}. ${q.options_en[q.correct]}`;
+    const cls = user === null ? '' : (user === q.correct ? 'correct' : 'wrong');
+    return `<div class="answer-item">
+      <b>Q${i+1}.</b> ${escapeHtml(q.question_en)}<br>
+      <span class="correct">Correct Answer: ${escapeHtml(corrText)}</span><br>
+      <span class="${cls}">Your Answer: ${escapeHtml(userText)}</span><br>
+      <small>Explanation: Explanation not provided.</small>
+    </div>`;
+  }).join('');
+}
+
+function historyKey() {
+  return "attempt_history_" + testId;
+}
+
+function saveHistory(result) {
+  const list = JSON.parse(localStorage.getItem(historyKey()) || "[]");
+  list.unshift(result);
+  localStorage.setItem(historyKey(), JSON.stringify(list.slice(0, 20)));
+}
+
+function renderHistory(targetId) {
+  const list = JSON.parse(localStorage.getItem(historyKey()) || "[]");
+  if (!list.length) {
+    document.getElementById(targetId).innerHTML = "<p>No attempt history yet for this test.</p>";
+    return;
+  }
+  document.getElementById(targetId).innerHTML = `<table class="history-table">
+    <thead><tr><th>Date</th><th>Score</th><th>Correct</th><th>Wrong</th><th>Attempted</th><th>Time</th></tr></thead>
+    <tbody>${list.map(r => `<tr><td>${r.date}</td><td>${r.score}/${r.maxMarks}</td><td>${r.correct}</td><td>${r.wrong}</td><td>${r.attempted}</td><td>${r.timeTaken}</td></tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function restartTest() {
+  current = 0;
+  language = "bi";
+  answers = Array(questions.length).fill(null);
+  visited = Array(questions.length).fill(false);
+  review = Array(questions.length).fill(false);
+  remaining = totalDurationSeconds;
+  document.getElementById('resultScreen').classList.add('hidden');
+  document.getElementById('startScreen').classList.remove('hidden');
+  renderHistory('historyStart');
+}
+
+document.getElementById('totalQStart').textContent = questions.length;
+renderHistory('historyStart');
+</script>
+</body>
+</html>
