@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Hari Singh Gour University Sanitary Inspector Mock Test</title>
+<style>
+:root {
+  --primary:#1d4ed8; --primary-dark:#143b9b; --bg:#eef3fb; --card:#ffffff; --text:#111827;
+  --muted:#6b7280; --border:#d1d5db; --green:#16a34a; --red:#dc2626; --purple:#7c3aed; --orange:#f59e0b;
+}
+* { box-sizing:border-box; }
+body { margin:0; font-family: Arial, Noto Sans Devanagari, Mangal, sans-serif; background:var(--bg); color:var(--text); }
+button { cursor:pointer; border:none; border-radius:8px; padding:10px 14px; font-weight:700; }
+.hidden { display:none !important; }
+.topbar { background:#0f172a; color:white; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.logo { font-size:18px; font-weight:800; }
+.timer { background:#fee2e2; color:#991b1b; border-radius:20px; padding:8px 14px; font-weight:800; }
+.langs { display:flex; gap:8px; flex-wrap:wrap; }
+.langs button { background:#e5e7eb; color:#111827; }
+.langs button.active { background:var(--primary); color:white; }
+.container { max-width:1200px; margin:0 auto; padding:16px; }
+.start-card, .result-card { background:var(--card); border-radius:16px; padding:24px; box-shadow:0 10px 30px rgba(15,23,42,.12); }
+.start-title { font-size:30px; margin:0 0 8px; color:#0f172a; }
+.info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:20px 0; }
+.info-box { background:#f8fafc; border:1px solid var(--border); padding:14px; border-radius:12px; }
+.info-box b { display:block; font-size:20px; color:var(--primary); margin-top:4px; }
+.start-btn { background:var(--green); color:white; font-size:18px; padding:14px 26px; }
+.exam-layout { display:grid; grid-template-columns:minmax(0,1fr) 310px; gap:16px; align-items:start; }
+.question-card, .palette-card { background:var(--card); border-radius:14px; box-shadow:0 8px 24px rgba(15,23,42,.10); }
+.question-card { padding:18px; min-height:520px; }
+.q-head { display:flex; justify-content:space-between; gap:10px; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:14px; flex-wrap:wrap; }
+.q-no { font-weight:800; color:var(--primary); }
+.q-text { font-size:18px; line-height:1.65; margin:14px 0 18px; white-space:pre-wrap; }
+.bilingual-block { display:grid; gap:8px; }
+.hi { color:#111827; }
+.en { color:#334155; }
+.option { display:flex; gap:10px; align-items:flex-start; padding:13px; margin:10px 0; border:1px solid var(--border); border-radius:10px; background:#fff; transition:.15s; }
+.option:hover { border-color:var(--primary); background:#f8fbff; }
+.option.selected { border-color:var(--primary); background:#dbeafe; }
+.option input { margin-top:4px; transform:scale(1.15); }
+.option-label { font-weight:800; color:#0f172a; min-width:24px; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; border-top:1px solid var(--border); padding-top:16px; }
+.btn-primary { background:var(--primary); color:white; }
+.btn-secondary { background:#e5e7eb; color:#111827; }
+.btn-review { background:var(--purple); color:white; }
+.btn-danger { background:var(--red); color:white; }
+.btn-warning { background:var(--orange); color:#111827; }
+.palette-card { padding:14px; position:sticky; top:10px; }
+.palette-title { font-weight:800; margin-bottom:8px; }
+.legend { display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:12px; margin-bottom:12px; }
+.legend span { display:flex; align-items:center; gap:6px; }
+.dot { width:14px; height:14px; border-radius:4px; display:inline-block; border:1px solid #999; }
+.notvisited { background:#e5e7eb; }
+.notanswered { background:#ef4444; color:white; }
+.answered { background:#22c55e; color:white; }
+.review { background:#8b5cf6; color:white; }
+.ansreview { background:linear-gradient(135deg,#22c55e 55%,#8b5cf6 55%); color:white; }
+.palette-scroll { max-height:360px; overflow-y:auto; border:1px solid var(--border); border-radius:12px; padding:10px; background:#f8fafc; }
+.palette-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+.palette-btn { padding:9px 0; border-radius:8px; font-size:13px; border:2px solid transparent; }
+.palette-btn.current { outline:3px solid #111827; }
+.submit-wide { width:100%; margin-top:12px; background:#dc2626; color:white; }
+.summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:18px 0; }
+.score-box { padding:14px; border-radius:12px; border:1px solid var(--border); background:#f8fafc; }
+.score-box b { display:block; font-size:22px; color:#0f172a; margin-top:4px; }
+.answer-key { margin-top:20px; max-height:520px; overflow:auto; border:1px solid var(--border); border-radius:12px; }
+.answer-item { padding:14px; border-bottom:1px solid var(--border); background:white; }
+.answer-item:last-child { border-bottom:none; }
+.correct { color:var(--green); font-weight:800; }
+.wrong { color:var(--red); font-weight:800; }
+.history-table { width:100%; border-collapse:collapse; margin-top:12px; font-size:14px; }
+.history-table th,.history-table td { border:1px solid var(--border); padding:8px; text-align:left; }
+.history-table th { background:#f1f5f9; }
+@media (max-width: 850px) {
+  .exam-layout { grid-template-columns:1fr; }
+  .palette-card { position:static; }
+  .palette-scroll { max-height:185px; }
+  .palette-grid { grid-template-columns:repeat(8,1fr); }
+  .question-card { min-height:auto; }
+  .q-text { font-size:16px; }
+  .actions button { flex:1 1 45%; }
+}
+@media (max-width: 520px) {
+  .container { padding:10px; }
+  .start-title { font-size:23px; }
+  .palette-grid { grid-template-columns:repeat(5,1fr); }
+  .topbar { align-items:flex-start; }
+  button { padding:9px 10px; }
+  .actions button { flex:1 1 100%; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">Dr. Hari Singh Gour University Sanitary Inspector Mock Test</div>
+  <div id="timer" class="timer hidden">02:00:00</div>
+  <div class="langs hidden" id="langBox">
+    <button onclick="setLanguage('hi')" id="btn-hi">Hindi</button>
+    <button onclick="setLanguage('en')" id="btn-en">English</button>
+    <button onclick="setLanguage('bi')" id="btn-bi" class="active">Bilingual</button>
+  </div>
+</div>
+
+<div class="container">
+  <section id="startScreen" class="start-card">
+    <h1 class="start-title">Dr. Hari Singh Gour University Sanitary Inspector</h1>
+    <p>Complete bilingual CBT/TCS-iON style mock test. Questions are based on the uploaded extracted paper.</p>
+    <div class="info-grid">
+      <div class="info-box">Total Questions <b id="totalQStart">100</b></div>
+      <div class="info-box">Maximum Marks <b>100</b></div>
+      <div class="info-box">Duration <b>120 Minutes</b></div>
+      <div class="info-box">Marking <b>+1 / -0.25</b></div>
+    </div>
+    <button class="start-btn" onclick="startTest()">Start Test</button>
+    <div id="historyStart"></div>
+  </section>
+
+  <section id="examScreen" class="hidden">
+    <div class="exam-layout">
+      <main class="question-card">
+        <div class="q-head">
+          <div class="q-no" id="questionNumber">Question 1 of 100</div>
+          <div id="statusText">Not Answered</div>
+        </div>
+        <div id="questionText" class="q-text"></div>
+        <div id="optionsBox"></div>
+        <div class="actions">
+          <button class="btn-secondary" onclick="prevQuestion()">Previous</button>
+          <button class="btn-primary" onclick="saveAndNext()">Save & Next</button>
+          <button class="btn-review" onclick="markForReview()">Mark for Review</button>
+          <button class="btn-warning" onclick="clearResponse()">Clear Response</button>
+          <button class="btn-danger" onclick="submitTest()">Submit Test</button>
+        </div>
+      </main>
+      <aside class="palette-card">
+        <div class="palette-title">Question Palette</div>
+        <div class="legend">
+          <span><i class="dot notvisited"></i> Not Visited</span>
+          <span><i class="dot notanswered"></i> Not Answered</span>
+          <span><i class="dot answered"></i> Answered</span>
+          <span><i class="dot review"></i> Review</span>
+          <span style="grid-column:span 2"><i class="dot ansreview"></i> Answered & Review</span>
+        </div>
+        <div class="palette-scroll">
+          <div class="palette-grid" id="paletteGrid"></div>
+        </div>
+        <button class="submit-wide" onclick="submitTest()">Submit Test</button>
+      </aside>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="result-card hidden">
+    <h2>Result</h2>
+    <div id="resultSummary" class="summary-grid"></div>
+    <button class="btn-primary" onclick="restartTest()">Restart Test</button>
+    <button class="btn-secondary" onclick="window.print()">Print Result</button>
+    <h3>Answer Key</h3>
+    <div id="answerKey" class="answer-key"></div>
+    <h3>Attempt History - This Test Only</h3>
+    <div id="historyResult"></div>
+  </section>
+</div>
+
+<script>
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const testTitle = "Dr. Hari Singh Gour University Sanitary Inspector";
+const testId = "dr-hari-singh-gour-university-sanitary-inspector";
+const totalDurationSeconds = 120 * 60;
+
+const questions = [
+  {
+    "id": 1,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "सही सन्धि विच्छेद का चयन कीजिए- जभी",
+    "question_en": "सही सन्धि विच्छेद का चयन कीजिए- जभी",
+    "options_hi": [
+      "जभ + ई",
+      "जब + ही",
+      "जभी + ई",
+      "ज + भी"
+    ],
+    "options_en": [
+      "जभ + ई",
+      "जब + ही",
+      "जभी + ई",
+      "ज + भी"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "अव्ययीभाव समास का एक उदाहरण 'यथाशक्ति' का सही विग्रह क्या होगा?",
+    "question_en": "अव्ययीभाव समास का एक उदाहरण 'यथाशक्ति' का सही विग्रह क्या होगा?",
+    "options_hi": [
+      "जैसी शक्ति",
+      "जितनी शक्ति",
+      "शक्ति अनुसार",
+      "यथा जो शक्ति"
+    ],
+    "options_en": [
+      "जैसी शक्ति",
+      "जितनी शक्ति",
+      "शक्ति अनुसार",
+      "यथा जो शक्ति"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "किस शब्द में 'प्र' उपसर्ग का प्रयोग हुआ है?",
+    "question_en": "किस शब्द में 'प्र' उपसर्ग का प्रयोग हुआ है?",
+    "options_hi": [
+      "प्रबंध",
+      "प्रगति",
+      "प्रस्थान",
+      "उपर्युक्त सभी"
+    ],
+    "options_en": [
+      "प्रबंध",
+      "प्रगति",
+      "प्रस्थान",
+      "उपर्युक्त सभी"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "पर्यायवाची शब्द का चयन कीजिए- अमिय",
+    "question_en": "पर्यायवाची शब्द का चयन कीजिए- अमिय",
+    "options_hi": [
+      "विष",
+      "सुधा",
+      "मधुप",
+      "आम"
+    ],
+    "options_en": [
+      "विष",
+      "सुधा",
+      "मधुप",
+      "आम"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "विलोम शब्द/विपरीतार्थक शब्द- अधुनातन",
+    "question_en": "विलोम शब्द/विपरीतार्थक शब्द- अधुनातन",
+    "options_hi": [
+      "प्राचीन",
+      "भूतकालिक",
+      "पुरातन",
+      "विगतकालीन"
+    ],
+    "options_en": [
+      "प्राचीन",
+      "भूतकालिक",
+      "पुरातन",
+      "विगतकालीन"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "निम्नलिखित शब्द का अर्थ बताइए- पृच्छक",
+    "question_en": "निम्नलिखित शब्द का अर्थ बताइए- पृच्छक",
+    "options_hi": [
+      "इच्छा करने वाला",
+      "प्रश्न पूछने वाला",
+      "प्रश्न बनाने वाला",
+      "पृष्ठ देने वाला"
+    ],
+    "options_en": [
+      "इच्छा करने वाला",
+      "प्रश्न पूछने वाला",
+      "प्रश्न बनाने वाला",
+      "पृष्ठ देने वाला"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "दिए गए वाक्य में काले छपे शब्द की वर्तनी अशुद्ध है। सही वर्तनी चुनिए- ग्यान का भण्डार अथाह होता है।",
+    "question_en": "दिए गए वाक्य में काले छपे शब्द की वर्तनी अशुद्ध है। सही वर्तनी चुनिए- ग्यान का भण्डार अथाह होता है।",
+    "options_hi": [
+      "गियान",
+      "ज्ञान",
+      "गिआन",
+      "ज्यान"
+    ],
+    "options_en": [
+      "गियान",
+      "ज्ञान",
+      "गिआन",
+      "ज्यान"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "वाक्य में त्रुटि हो तो उस भाग का चयन कीजिए, अन्यथा 'कोई त्रुटि नहीं' चुनिए।",
+    "question_en": "वाक्य में त्रुटि हो तो उस भाग का चयन कीजिए, अन्यथा 'कोई त्रुटि नहीं' चुनिए।",
+    "options_hi": [
+      "व्यक्ति के हर प्रकार के कष्टों को",
+      "वह पल भर में",
+      "दूर करती है।",
+      "कोई त्रुटि नहीं"
+    ],
+    "options_en": [
+      "व्यक्ति के हर प्रकार के कष्टों को",
+      "वह पल भर में",
+      "दूर करती है।",
+      "कोई त्रुटि नहीं"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "'अमन नहीं चलता है' इस वाक्य में भाववाच्य रूप कौनसा है?",
+    "question_en": "'अमन नहीं चलता है' इस वाक्य में भाववाच्य रूप कौनसा है?",
+    "options_hi": [
+      "अमन से चला नहीं जाता",
+      "अमन चलता है।",
+      "अमन चला सकता है।",
+      "अमन चलता ही नहीं"
+    ],
+    "options_en": [
+      "अमन से चला नहीं जाता",
+      "अमन चलता है।",
+      "अमन चला सकता है।",
+      "अमन चलता ही नहीं"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "subject": "Hindi Grammar",
+    "type": "hindi_only",
+    "question_hi": "'सुरेश ने खेलकर दूध पी लिया' इस वाक्य में 'खेलकर' कौनसी क्रिया है?",
+    "question_en": "'सुरेश ने खेलकर दूध पी लिया' इस वाक्य में 'खेलकर' कौनसी क्रिया है?",
+    "options_hi": [
+      "सहायक",
+      "नाम बोधक",
+      "सकर्मक",
+      "पूर्वकालिक"
+    ],
+    "options_en": [
+      "सहायक",
+      "नाम बोधक",
+      "सकर्मक",
+      "पूर्वकालिक"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस दिन को हर वर्ष अन्तर्राष्ट्रीय बालिका दिवस के रूप में मनाया जाता है?",
+    "question_en": "Which day is observed every year as International Day of the Girl Child?",
+    "options_hi": [
+      "10 अक्टूबर",
+      "11 अक्टूबर",
+      "09 अक्टूबर",
+      "07 अक्टूबर"
+    ],
+    "options_en": [
+      "10 October",
+      "11 October",
+      "09 October",
+      "07 October"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस शहर में भारत खेल शिखर सम्मेलन आयोजित हुआ?",
+    "question_en": "In which city was the India Sports Summit held?",
+    "options_hi": [
+      "देहरादून",
+      "पुणे",
+      "मुम्बई",
+      "नई दिल्ली"
+    ],
+    "options_en": [
+      "Dehradun",
+      "Pune",
+      "Mumbai",
+      "New Delhi"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस शहर में भारत और थाईलैण्ड के बीच आठवीं संयुक्त आयोग की बैठक आयोजित की गई?",
+    "question_en": "In which city was the 8th Joint Commission Meeting between India and Thailand held?",
+    "options_hi": [
+      "देहरादून",
+      "पुणे",
+      "मुम्बई",
+      "नई दिल्ली"
+    ],
+    "options_en": [
+      "Dehradun",
+      "Pune",
+      "Mumbai",
+      "New Delhi"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "बीसीसीआई का नया अध्यक्ष कौन होगा?",
+    "question_en": "Who would be the new President of BCCI?",
+    "options_hi": [
+      "सौरव गांगुली",
+      "जय शाह",
+      "अरुण सिंह धूमल",
+      "राहुल द्रविड"
+    ],
+    "options_en": [
+      "Sourav Ganguly",
+      "Jay Shah",
+      "Arun Singh Dhumal",
+      "Rahul Dravid"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "कौनसा दिन अन्तर्राष्ट्रीय ग्रामीण महिला दिवस के रूप में मनाया गया?",
+    "question_en": "Which day was observed as International Day of Rural Women?",
+    "options_hi": [
+      "12 अक्टूबर",
+      "13 अक्टूबर",
+      "15 अक्टूबर",
+      "11 अक्टूबर"
+    ],
+    "options_en": [
+      "12 October",
+      "13 October",
+      "15 October",
+      "11 October"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "कौनसा देश भूटान के बाद दक्षिण एशिया में दूसरी सबसे तेजी से बढ़ती अर्थव्यवस्था बन गया है?",
+    "question_en": "Which country became the second fastest growing economy in South Asia after Bhutan?",
+    "options_hi": [
+      "बांग्लादेश",
+      "श्रीलंका",
+      "पाकिस्तान",
+      "नेपाल"
+    ],
+    "options_en": [
+      "Bangladesh",
+      "Sri Lanka",
+      "Pakistan",
+      "Nepal"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "भारतीय नन का नाम क्या है जिनको पोप फ्रांसिस द्वारा संत घोषित किया गया?",
+    "question_en": "What is the name of the Indian nun who was declared a saint by Pope Francis?",
+    "options_hi": [
+      "मारियम थ्रेसिया",
+      "गीता गोपीनाथ",
+      "गीता मित्तल",
+      "शुभ्रा सारस्वत"
+    ],
+    "options_en": [
+      "Mariam Thresia",
+      "Gita Gopinath",
+      "Gita Mittal",
+      "Shubhra Saraswat"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "विलेम-अलेक्जेंडर किस देश के राजा हैं?",
+    "question_en": "Willem-Alexander is the king of which country?",
+    "options_hi": [
+      "जापान",
+      "नीदरलैण्ड",
+      "कुवैत",
+      "ओमान"
+    ],
+    "options_en": [
+      "Japan",
+      "Netherlands",
+      "Kuwait",
+      "Oman"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस शहर में तीसरा भारत ऊर्जा फोरम आयोजित किया गया था?",
+    "question_en": "In which city was the third India Energy Forum held?",
+    "options_hi": [
+      "नई दिल्ली",
+      "मुम्बई",
+      "कोलकाता",
+      "देहरादून"
+    ],
+    "options_en": [
+      "New Delhi",
+      "Mumbai",
+      "Kolkata",
+      "Dehradun"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "लक्ष्य सेन किस खेल से संबंधित हैं?",
+    "question_en": "Lakshya Sen is associated with which sport?",
+    "options_hi": [
+      "टेबल टेनिस",
+      "टेनिस",
+      "बैडमिंटन",
+      "स्क्वैश"
+    ],
+    "options_en": [
+      "Table Tennis",
+      "Tennis",
+      "Badminton",
+      "Squash"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किसने गुवाहाटी में मेगा मल्टीमीडिया प्रदर्शनी का उद्घाटन किया?",
+    "question_en": "Who inaugurated the mega multimedia exhibition in Guwahati?",
+    "options_hi": [
+      "जगदीश मुखी",
+      "विश्वभूषण हरिचंदन",
+      "फागू चौहान",
+      "अनुसुईया उइके"
+    ],
+    "options_en": [
+      "Jagdish Mukhi",
+      "Biswabhusan Harichandan",
+      "Fagu Chauhan",
+      "Anusuiya Uikey"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस शहर में रक्षा मंत्री राजनाथ सिंह ने डीआरडीओ के निदेशकों के 41वें सम्मेलन का उद्घाटन किया?",
+    "question_en": "In which city did Defence Minister Rajnath Singh inaugurate the 41st Conference of DRDO Directors?",
+    "options_hi": [
+      "मुम्बई",
+      "नई दिल्ली",
+      "देहरादून",
+      "जबलपुर"
+    ],
+    "options_en": [
+      "Mumbai",
+      "New Delhi",
+      "Dehradun",
+      "Jabalpur"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "प्रियांशु राजावत किस खेल से संबंधित हैं?",
+    "question_en": "Priyanshu Rajawat is associated with which sport?",
+    "options_hi": [
+      "बैडमिंटन",
+      "टेनिस",
+      "टेबल टेनिस",
+      "स्क्वैश"
+    ],
+    "options_en": [
+      "Badminton",
+      "Tennis",
+      "Table Tennis",
+      "Squash"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस शहर में भारत-आसियान ट्रैक 1.5 संवाद साइबर मुद्दों पर आयोजित किया गया था?",
+    "question_en": "In which city was the India-ASEAN Track 1.5 Dialogue on Cyber Issues held?",
+    "options_hi": [
+      "कोलकाता",
+      "नई दिल्ली",
+      "मुम्बई",
+      "पटना"
+    ],
+    "options_en": [
+      "Kolkata",
+      "New Delhi",
+      "Mumbai",
+      "Patna"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस दिन को विश्व खाद्य दिवस के रूप में मनाया जाता है?",
+    "question_en": "Which day is observed as World Food Day?",
+    "options_hi": [
+      "15 अक्टूबर",
+      "16 अक्टूबर",
+      "13 अक्टूबर",
+      "14 अक्टूबर"
+    ],
+    "options_en": [
+      "15 October",
+      "16 October",
+      "13 October",
+      "14 October"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "कैस सैयद को किस देश के नए राष्ट्रपति के रूप में चुना गया है?",
+    "question_en": "Kais Saied was elected as the new President of which country?",
+    "options_hi": [
+      "अल्जीरिया",
+      "ट्यूनिशिया",
+      "लीबिया",
+      "माल्टा"
+    ],
+    "options_en": [
+      "Algeria",
+      "Tunisia",
+      "Libya",
+      "Malta"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किसको ग्रीस में भारत के अगले राजदूत के रूप में नियुक्त किया गया है?",
+    "question_en": "Who was appointed as India's next Ambassador to Greece?",
+    "options_hi": [
+      "अमृत लुगुन",
+      "निलेश शाह",
+      "माधुरी दीक्षित",
+      "पी.वी. सिंधु"
+    ],
+    "options_en": [
+      "Amrit Lugun",
+      "Nilesh Shah",
+      "Madhuri Dixit",
+      "P. V. Sindhu"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किसने रूस के उलान-उडे में विश्व महिला चैंपियनशिप में रजत पदक जीता?",
+    "question_en": "Who won the silver medal at the World Women's Championship in Ulan-Ude, Russia?",
+    "options_hi": [
+      "मंजू रानी",
+      "जमुना बोरो",
+      "लोवलिना बोरगोहेन",
+      "एम. सी. मैरी कॉम"
+    ],
+    "options_en": [
+      "Manju Rani",
+      "Jamuna Boro",
+      "Lovlina Borgohain",
+      "M. C. Mary Kom"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "2019 ग्लोबल हंगर इंडेक्स (GHI) में भारत का रैंक क्या है?",
+    "question_en": "What was India's rank in the 2019 Global Hunger Index (GHI)?",
+    "options_hi": [
+      "101",
+      "102",
+      "100",
+      "105"
+    ],
+    "options_en": [
+      "101",
+      "102",
+      "100",
+      "105"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस दिन को अन्तर्राष्ट्रीय गरीबी उन्मूलन दिवस के रूप में मनाया जाता है?",
+    "question_en": "Which day is observed as the International Day for the Eradication of Poverty?",
+    "options_hi": [
+      "15 अक्टूबर",
+      "13 अक्टूबर",
+      "16 अक्टूबर",
+      "17 अक्टूबर"
+    ],
+    "options_en": [
+      "15 October",
+      "13 October",
+      "16 October",
+      "17 October"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "कौनसी राज्य सरकार मोटर वाहन कर से ई-वाहनों को छूट देगी?",
+    "question_en": "Which state government will exempt e-vehicles from motor vehicle tax?",
+    "options_hi": [
+      "उत्तर प्रदेश",
+      "मध्य प्रदेश",
+      "आंध्र प्रदेश",
+      "राजस्थान"
+    ],
+    "options_en": [
+      "Uttar Pradesh",
+      "Madhya Pradesh",
+      "Andhra Pradesh",
+      "Rajasthan"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "भारत ने किस देश को Mi-24V हेलीकॉप्टर सौंप दिया?",
+    "question_en": "India handed over Mi-24V helicopters to which country?",
+    "options_hi": [
+      "अफगानिस्तान",
+      "बांग्लादेश",
+      "भूटान",
+      "मिजोरम"
+    ],
+    "options_en": [
+      "Afghanistan",
+      "Bangladesh",
+      "Bhutan",
+      "Mizoram"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किसने भूटान में बांग्लादेश को हराकर SAFF U-15 महिला चैम्पियनशिप जीती?",
+    "question_en": "Who won the SAFF U-15 Women's Championship in Bhutan by defeating Bangladesh?",
+    "options_hi": [
+      "म्यांमार",
+      "श्रीलंका",
+      "भूटान",
+      "भारत"
+    ],
+    "options_en": [
+      "Myanmar",
+      "Sri Lanka",
+      "Bhutan",
+      "India"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "कौन अन्तर्राष्ट्रीय क्रिकेट में भारतीय महिला टीम को 100 जीत दिलाने वाली पहली कप्तान बन गई?",
+    "question_en": "Who became the first captain to lead the Indian women's team to 100 wins in international cricket?",
+    "options_hi": [
+      "हरमनप्रीत कौर",
+      "मिताली राज",
+      "स्मृति मंधाना",
+      "दीप्ति शर्मा"
+    ],
+    "options_en": [
+      "Harmanpreet Kaur",
+      "Mithali Raj",
+      "Smriti Mandhana",
+      "Deepti Sharma"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "लियोनेल मेसी ने छठा गोल्डन शू अवार्ड जीता है। वह किस देश से हैं?",
+    "question_en": "Lionel Messi won his sixth Golden Shoe Award. He is from which country?",
+    "options_hi": [
+      "जापान",
+      "ब्राजील",
+      "पोलैंड",
+      "अर्जेंटीना"
+    ],
+    "options_en": [
+      "Japan",
+      "Brazil",
+      "Poland",
+      "Argentina"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "यशस्वी जायसवाल किस खेल से संबंधित हैं?",
+    "question_en": "Yashasvi Jaiswal is associated with which sport?",
+    "options_hi": [
+      "बैडमिंटन",
+      "क्रिकेट",
+      "टेनिस",
+      "टेबल टेनिस"
+    ],
+    "options_en": [
+      "Badminton",
+      "Cricket",
+      "Tennis",
+      "Table Tennis"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किसे केन्द्रीय कानून सचिव के रूप में नियुक्त किया गया है?",
+    "question_en": "Who was appointed as the Union Law Secretary?",
+    "options_hi": [
+      "अनूप कुमार मेंदीरत्ता",
+      "राजीव कुमार",
+      "अजय भूषण पांडे",
+      "राजीव गौबा"
+    ],
+    "options_en": [
+      "Anoop Kumar Mendiratta",
+      "Rajiv Kumar",
+      "Ajay Bhushan Pandey",
+      "Rajiv Gauba"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस जिले में भारतीय सेना द्वारा 'संगम यूथ फेस्टिवल' का आयोजन किया गया?",
+    "question_en": "In which district was the 'Sangam Youth Festival' organized by the Indian Army?",
+    "options_hi": [
+      "नई दिल्ली",
+      "आगरा",
+      "जम्मू",
+      "मुम्बई"
+    ],
+    "options_en": [
+      "New Delhi",
+      "Agra",
+      "Jammu",
+      "Mumbai"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "दुबई में आयोजित बैठक में किसको ICC के सदस्यों के रूप में फिर से शामिल किया गया?",
+    "question_en": "At the meeting held in Dubai, who were re-included as ICC members?",
+    "options_hi": [
+      "जिम्बाब्वे",
+      "नेपाल",
+      "भूटान",
+      "1 और 2 दोनों"
+    ],
+    "options_en": [
+      "Zimbabwe",
+      "Nepal",
+      "Bhutan",
+      "Both 1 and 2"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "किस बैंक ने एक नई फिक्स्ड डिपॉजिट (FD) स्कीम 'FD Health' लॉन्च की है?",
+    "question_en": "Which bank launched a new fixed deposit scheme named 'FD Health'?",
+    "options_hi": [
+      "एचडीएफसी बैंक",
+      "आईसीआईसीआई बैंक",
+      "पीएनबी",
+      "एसबीआई"
+    ],
+    "options_en": [
+      "HDFC Bank",
+      "ICICI Bank",
+      "PNB",
+      "SBI"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "निर्देश: तीन युग्मों में समान सम्बन्ध है तथा चौथा भिन्न है। भिन्न सम्बन्ध वाले युग्म को चुनिए।",
+    "question_en": "Directions: Three pairs have the same relationship and the fourth is different. Choose the odd pair.",
+    "options_hi": [
+      "कमीज : ड्रेस",
+      "लड़का : लड़की",
+      "आम : फल",
+      "मेज : फर्नीचर"
+    ],
+    "options_en": [
+      "Shirt : Dress",
+      "Boy : Girl",
+      "Mango : Fruit",
+      "Table : Furniture"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "भिन्न सम्बन्ध वाले युग्म को चुनिए।",
+    "question_en": "Choose the pair with a different relationship.",
+    "options_hi": [
+      "किताब : पेज",
+      "मेज : दराज",
+      "करघा : कपड़े",
+      "कार : पहिया"
+    ],
+    "options_en": [
+      "Book : Page",
+      "Table : Drawer",
+      "Loom : Cloth",
+      "Car : Wheel"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि DIRECTION को RIDTCENOI लिखा जाता है तो PRINCIPAL को कैसे लिखा जायेगा?",
+    "question_en": "If DIRECTION is written as RIDTCENOI, how will PRINCIPAL be written?",
+    "options_hi": [
+      "IRPICNLAP",
+      "RIPICNALP",
+      "PIRCNIPLA",
+      "ICNRIPALP"
+    ],
+    "options_en": [
+      "IRPICNLAP",
+      "RIPICNALP",
+      "PIRCNIPLA",
+      "ICNRIPALP"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक निश्चित कोड भाषा में GEORGE को CAKNCA लिखा जाता है, तो JOSEPH को कैसे लिखा जायेगा?",
+    "question_en": "In a certain code language, GEORGE is written as CAKNCA. How will JOSEPH be written?",
+    "options_hi": [
+      "KALFOD",
+      "FKOALD",
+      "KOFALD",
+      "KOFDLA"
+    ],
+    "options_en": [
+      "KALFOD",
+      "FKOALD",
+      "KOFALD",
+      "KOFDLA"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक निश्चित कोड भाषा में TRUHFUL को VTWVJHWN लिखा जाता है, तो FAITHFUL को कैसे लिखा जायेगा?",
+    "question_en": "In a certain code language, TRUHFUL is written as VTWVJHWN. How will FAITHFUL be written?",
+    "options_hi": [
+      "HKCHVJWN",
+      "HCKJVHWN",
+      "HCKVJHWN",
+      "CHKVJHWN"
+    ],
+    "options_en": [
+      "HKCHVJWN",
+      "HCKJVHWN",
+      "HCKVJHWN",
+      "CHKVJHWN"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "श्रेणी में लुप्त पद ज्ञात कीजिए: 1, 9, 25, 49, 121, 169, .....?",
+    "question_en": "Find the missing term in the series: 1, 9, 25, 49, 121, 169, .....?",
+    "options_hi": [
+      "179",
+      "183",
+      "289",
+      "237"
+    ],
+    "options_en": [
+      "179",
+      "183",
+      "289",
+      "237"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "श्रेणी में अगला पद ज्ञात कीजिए: 2, 6, 12, 20, 30, 42, 56, .....",
+    "question_en": "Find the next term in the series: 2, 6, 12, 20, 30, 42, 56, .....",
+    "options_hi": [
+      "72",
+      "62",
+      "65",
+      "70"
+    ],
+    "options_en": [
+      "72",
+      "62",
+      "65",
+      "70"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "A, B, C, X, Y और Z उत्तर की ओर मुँह करके एक सीधी रेखा में बैठे हैं। C, Z के दायें तीसरे स्थान पर है और B, C के दायें दूसरे स्थान पर है। X, A के एकदम दायें बैठा है। A तथा C के बीच कितने लोग बैठे हैं?",
+    "question_en": "A, B, C, X, Y and Z are sitting in a straight line facing north. C sits third to the right of Z and B sits second to the right of C. X sits immediate right of A. How many persons sit between A and C?",
+    "options_hi": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "options_en": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "उसी व्यवस्था में यदि A : X तथा Z : A है, तब Y : ??",
+    "question_en": "In the same arrangement, if A : X and Z : A, then Y : ??",
+    "options_hi": [
+      "Y",
+      "A",
+      "B",
+      "X"
+    ],
+    "options_en": [
+      "Y",
+      "A",
+      "B",
+      "X"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दिये गये शब्दों को सार्थक क्रम में व्यवस्थित करें: 1. डिश 2. काटना 3. पकाना 4. सब्जी 5. बाजार",
+    "question_en": "Arrange the words in a meaningful order: 1. Dish 2. Cutting 3. Cooking 4. Vegetable 5. Market",
+    "options_hi": [
+      "5,4,3,2,1",
+      "5,4,2,3,1",
+      "5,4,1,2,3",
+      "1,3,5,2,4"
+    ],
+    "options_en": [
+      "5,4,3,2,1",
+      "5,4,2,3,1",
+      "5,4,1,2,3",
+      "1,3,5,2,4"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दिये गये शब्दों को सार्थक क्रम में व्यवस्थित करें: 1. कमाना 2. आवेदन 3. नौकरी 4. परीक्षा 5. अध्ययन",
+    "question_en": "Arrange the words in a meaningful order: 1. Earning 2. Application 3. Job 4. Examination 5. Study",
+    "options_hi": [
+      "5,4,2,3,1",
+      "5,4,3,1,2",
+      "5,2,3,4,1",
+      "5,3,1,2,4"
+    ],
+    "options_en": [
+      "5,4,2,3,1",
+      "5,4,3,1,2",
+      "5,2,3,4,1",
+      "5,3,1,2,4"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दिये गये शब्दों को सार्थक क्रम में व्यवस्थित करें: 1. बूढ़ा 2. वयस्क 3. शिशु 4. बच्चा 5. किशोर",
+    "question_en": "Arrange the words in a meaningful order: 1. Old 2. Adult 3. Infant 4. Child 5. Teenager",
+    "options_hi": [
+      "3,4,2,1,5",
+      "3,4,5,2,1",
+      "3,4,1,2,5",
+      "4,3,2,1,5"
+    ],
+    "options_en": [
+      "3,4,2,1,5",
+      "3,4,5,2,1",
+      "3,4,1,2,5",
+      "4,3,2,1,5"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दिये गये शब्दों को सार्थक क्रम में व्यवस्थित करें: 1. चूहा 2. चींटी 3. घोड़ा 4. बिल्ली 5. हेल/व्हेल",
+    "question_en": "Arrange the words in a meaningful order: 1. Mouse 2. Ant 3. Horse 4. Cat 5. Whale",
+    "options_hi": [
+      "3,1,4,2,5",
+      "2,1,5,4,3",
+      "2,1,5,4,3",
+      "4,1,5,3,2"
+    ],
+    "options_en": [
+      "3,1,4,2,5",
+      "2,1,5,4,3",
+      "2,1,5,4,3",
+      "4,1,5,3,2"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दिये गये शब्दों को सार्थक क्रम में व्यवस्थित करें: 1. टांग 2. छाती 3. पैर 4. पेट 5. सिर",
+    "question_en": "Arrange the words in a meaningful order: 1. Leg 2. Chest 3. Foot 4. Stomach 5. Head",
+    "options_hi": [
+      "2,1,3,5,4",
+      "4,1,2,5,3",
+      "3,2,2,5,3",
+      "3,1,4,2,5"
+    ],
+    "options_en": [
+      "2,1,3,5,4",
+      "4,1,2,5,3",
+      "3,2,2,5,3",
+      "3,1,4,2,5"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "19 अक्टूबर 2000 को कौनसा दिन था?",
+    "question_en": "What day was it on 19 October 2000?",
+    "options_hi": [
+      "मंगलवार",
+      "बृहस्पतिवार",
+      "शुक्रवार",
+      "शनिवार"
+    ],
+    "options_en": [
+      "Tuesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "Market leaders usually want to _____ their market share even further, or at least to protect their current market share.",
+    "question_en": "Market leaders usually want to _____ their market share even further, or at least to protect their current market share.",
+    "options_hi": [
+      "decrease",
+      "dominate",
+      "increase",
+      "establish"
+    ],
+    "options_en": [
+      "decrease",
+      "dominate",
+      "increase",
+      "establish"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "A teacher gives many sentences and asks her students to arrange them into a letter using appropriate connectors. The skill chiefly involved in this task is",
+    "question_en": "A teacher gives many sentences and asks her students to arrange them into a letter using appropriate connectors. The skill chiefly involved in this task is",
+    "options_hi": [
+      "collecting information",
+      "expanding notes",
+      "organising",
+      "rewriting"
+    ],
+    "options_en": [
+      "collecting information",
+      "expanding notes",
+      "organising",
+      "rewriting"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "Use the verbs given in brackets either in Active or Passive according to the sense of the sentence. The ship carrying fifty passengers ..... in the sea last month. (sink)",
+    "question_en": "Use the verbs given in brackets either in Active or Passive according to the sense of the sentence. The ship carrying fifty passengers ..... in the sea last month. (sink)",
+    "options_hi": [
+      "sanked",
+      "sinked",
+      "sank",
+      "sunk"
+    ],
+    "options_en": [
+      "sanked",
+      "sinked",
+      "sank",
+      "sunk"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "Choose the correct alternative of the following sentence. Rajni said, \"May God bless you.\"",
+    "question_en": "Choose the correct alternative of the following sentence. Rajni said, \"May God bless you.\"",
+    "options_hi": [
+      "Rajni exclaimed with wish that God might bless me",
+      "Rajni expressed a wish that God might bless me",
+      "Rajni asked God to bless me",
+      "None of the above"
+    ],
+    "options_en": [
+      "Rajni exclaimed with wish that God might bless me",
+      "Rajni expressed a wish that God might bless me",
+      "Rajni asked God to bless me",
+      "None of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "Use the verbs given in brackets either in Active or Passive according to the sense of the sentence. A new house recently by my uncle for personal use. (construct)",
+    "question_en": "Use the verbs given in brackets either in Active or Passive according to the sense of the sentence. A new house recently by my uncle for personal use. (construct)",
+    "options_hi": [
+      "has been constructed",
+      "had been constructed",
+      "has constructed",
+      "had constructed"
+    ],
+    "options_en": [
+      "has been constructed",
+      "had been constructed",
+      "has constructed",
+      "had constructed"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "Choose the word meaning OPPOSITE to the word: BELLICOSE",
+    "question_en": "Choose the word meaning OPPOSITE to the word: BELLICOSE",
+    "options_hi": [
+      "Combative",
+      "Battleful",
+      "Pugnacious",
+      "Pacifistic"
+    ],
+    "options_en": [
+      "Combative",
+      "Battleful",
+      "Pugnacious",
+      "Pacifistic"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "Choose the most suitable option that can replace the underlined part: The meeting with the charismatic zonal manager as the annual performance day approached, provided the salespeople with the so-needed boost.",
+    "question_en": "Choose the most suitable option that can replace the underlined part: The meeting with the charismatic zonal manager as the annual performance day approached, provided the salespeople with the so-needed boost.",
+    "options_hi": [
+      "very-needed",
+      "needy",
+      "so-needful",
+      "much-needed"
+    ],
+    "options_en": [
+      "very-needed",
+      "needy",
+      "so-needful",
+      "much-needed"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "Choose the word opposite in meaning to: Valor",
+    "question_en": "Choose the word opposite in meaning to: Valor",
+    "options_hi": [
+      "Cowardice",
+      "Agreeable",
+      "Unpleasant",
+      "Despicable"
+    ],
+    "options_en": [
+      "Cowardice",
+      "Agreeable",
+      "Unpleasant",
+      "Despicable"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "Choose the word most nearly opposite to the given word: Tragic",
+    "question_en": "Choose the word most nearly opposite to the given word: Tragic",
+    "options_hi": [
+      "Boring",
+      "Mysterious",
+      "Comic",
+      "Incredulous"
+    ],
+    "options_en": [
+      "Boring",
+      "Mysterious",
+      "Comic",
+      "Incredulous"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "subject": "English Grammar",
+    "type": "english_only",
+    "question_hi": "In Direct/Indirect Speech, select the best expression: \"If you don't keep quiet I shall shoot you.\" She said to her in a calm voice.",
+    "question_en": "In Direct/Indirect Speech, select the best expression: \"If you don't keep quiet I shall shoot you.\" She said to her in a calm voice.",
+    "options_hi": [
+      "She warned her calmly that she would shoot her if she didn't keep quiet",
+      "She said calmly that I shall shoot you if you don't keep quiet.",
+      "She warned her to shoot if she didn't keep quiet calmly.",
+      "Calmly she warned her that be quiet be quiet or else she will have to shoot her"
+    ],
+    "options_en": [
+      "She warned her calmly that she would shoot her if she didn't keep quiet",
+      "She said calmly that I shall shoot you if you don't keep quiet.",
+      "She warned her to shoot if she didn't keep quiet calmly.",
+      "Calmly she warned her that be quiet be quiet or else she will have to shoot her"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "दो वृत्तों की परिधियों के बीच 132 सेमी. का अंतर है और छोटे वृत्त की त्रिज्या 14 सेमी. है। बड़े वृत्त की त्रिज्या कितनी है?",
+    "question_en": "The difference between the circumferences of two circles is 132 cm and the radius of the smaller circle is 14 cm. What is the radius of the larger circle?",
+    "options_hi": [
+      "14 सेमी.",
+      "21 सेमी.",
+      "30 सेमी.",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "14 cm",
+      "21 cm",
+      "30 cm",
+      "None of these"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "एक घड़ी प्रातः 8 बजे का समय दर्शा रही है। अपराह्न 2 बजे तक घंटे की सुई कितने अंश घूमेगी?",
+    "question_en": "A clock shows 8 a.m. By 2 p.m., through how many degrees will the hour hand rotate?",
+    "options_hi": [
+      "150 डिग्री",
+      "144 डिग्री",
+      "168 डिग्री",
+      "180 डिग्री"
+    ],
+    "options_en": [
+      "150 degrees",
+      "144 degrees",
+      "168 degrees",
+      "180 degrees"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "एक वस्तु का अंकित मूल्य ₹200 है। अंकित मूल्य पर छूट देने के बाद भी 25% लाभ प्राप्त होता है, तो वस्तु का क्रय मूल्य क्या है?",
+    "question_en": "The marked price of an article is ₹200. Even after giving discount on marked price, a 25% profit is obtained. What is the cost price?",
+    "options_hi": [
+      "200",
+      "175",
+      "120",
+      "140"
+    ],
+    "options_en": [
+      "200",
+      "175",
+      "120",
+      "140"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "एक नाव धारा के प्रतिकूल 24 किमी दूरी 6 घंटे में और धारा की दिशा में 20 किमी दूरी 4 घंटे में तय करती है। शांत जल में नाव की चाल तथा धारा की चाल ज्ञात करें।",
+    "question_en": "A boat covers 24 km upstream in 6 hours and 20 km downstream in 4 hours. Find the speed of the boat in still water and the speed of the stream.",
+    "options_hi": [
+      "4 किमी/घंटा और 3 किमी/घंटा",
+      "4.5 किमी/घंटा और 0.5 किमी/घंटा",
+      "4 किमी/घंटा और 2 किमी/घंटा",
+      "4 किमी/घंटा और 2 किमी/घंटा"
+    ],
+    "options_en": [
+      "4 km/h and 3 km/h",
+      "4.5 km/h and 0.5 km/h",
+      "4 km/h and 2 km/h",
+      "4 km/h and 2 km/h"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "एक आयताकार प्लॉट की लम्बाई और चौड़ाई का अनुपात 5:3 है। यदि परिमाप 320 मीटर हो तो क्षेत्रफल कितना होगा?",
+    "question_en": "The ratio of length and breadth of a rectangular plot is 5:3. If its perimeter is 320 m, what is its area?",
+    "options_hi": [
+      "6000 वर्ग मीटर",
+      "12000 वर्ग मीटर",
+      "4500 वर्ग मीटर",
+      "18000 वर्ग मीटर"
+    ],
+    "options_en": [
+      "6000 sq m",
+      "12000 sq m",
+      "4500 sq m",
+      "18000 sq m"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "270 मीटर लम्बी रेलगाड़ी 54 किमी/घंटा की चाल से एक व्यक्ति को कितनी देर में पार करेगी?",
+    "question_en": "How much time will a 270 m long train running at 54 km/h take to cross a person?",
+    "options_hi": [
+      "18 सेकण्ड",
+      "15 सेकण्ड",
+      "12 सेकण्ड",
+      "20 सेकण्ड"
+    ],
+    "options_en": [
+      "18 seconds",
+      "15 seconds",
+      "12 seconds",
+      "20 seconds"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "एक पंखे का अंकित मूल्य ₹1500 है और 20% छूट दी जाती है। ग्राहक को ₹1104 में खरीदने के लिए अतिरिक्त कौनसी छूट दी जाती है?",
+    "question_en": "The marked price of a fan is ₹1500 and a 20% discount is given. What additional discount is given so that the customer buys it for ₹1104?",
+    "options_hi": [
+      "8%",
+      "10%",
+      "15%",
+      "12%"
+    ],
+    "options_en": [
+      "8%",
+      "10%",
+      "15%",
+      "12%"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "10 सेमी. लम्बाई वाली आयताकार आकृति का क्षेत्रफल एक वृत्त के क्षेत्रफल के बराबर है। वृत्त की परिधि कितनी है?",
+    "question_en": "The area of a rectangular figure of length 10 cm is equal to the area of a circle. What is the circumference of the circle?",
+    "options_hi": [
+      "36 सेमी.",
+      "34 सेमी.",
+      "26 सेमी.",
+      "ज्ञात नहीं कर सकते"
+    ],
+    "options_en": [
+      "36 cm",
+      "34 cm",
+      "26 cm",
+      "Cannot be determined"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 74,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "यदि एक कारीगर का वेतन 2⅔% बढ़ा दिया जाता है तो उसे ₹72 अधिक प्राप्त होते हैं। उसका मासिक वेतन कितने रुपये है?",
+    "question_en": "If a worker's salary is increased by 2⅔%, he receives ₹72 more. What is his monthly salary?",
+    "options_hi": [
+      "7200",
+      "3600",
+      "2700",
+      "2000"
+    ],
+    "options_en": [
+      "7200",
+      "3600",
+      "2700",
+      "2000"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 75,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "एक मिश्रधातु में 12% तांबा है। 69 किग्रा. तांबा पाने के लिए कितनी मिश्रधातु की जरूरत होगी?",
+    "question_en": "An alloy contains 12% copper. How much alloy is needed to obtain 69 kg of copper?",
+    "options_hi": [
+      "424 किलो",
+      "575 किलो",
+      "828 किलो",
+      "1736 किलो"
+    ],
+    "options_en": [
+      "424 kg",
+      "575 kg",
+      "828 kg",
+      "1736 kg"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 76,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "₹1250 की धनराशि 4% वार्षिक चक्रवृद्धि ब्याज पर ₹1352 हो जाती है। समय अवधि क्या होगी?",
+    "question_en": "A sum of ₹1250 becomes ₹1352 at 4% compound interest per annum. What is the time period?",
+    "options_hi": [
+      "4 वर्ष",
+      "2 वर्ष",
+      "3 वर्ष",
+      "5 वर्ष"
+    ],
+    "options_en": [
+      "4 years",
+      "2 years",
+      "3 years",
+      "5 years"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 77,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "एक आयत की लम्बाई 25 सेमी. है, जो वर्ग की भुजा के समान है। आयत का क्षेत्रफल वर्ग से 125 वर्ग सेमी. कम है। आयत की चौड़ाई कितनी है?",
+    "question_en": "The length of a rectangle is 25 cm, equal to the side of a square. The area of the rectangle is 125 sq cm less than the square. What is the breadth?",
+    "options_hi": [
+      "15 सेमी.",
+      "20 सेमी.",
+      "12 सेमी.",
+      "14 सेमी."
+    ],
+    "options_en": [
+      "15 cm",
+      "20 cm",
+      "12 cm",
+      "14 cm"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 78,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "किसी घड़ी का दर्पण प्रतिबिम्ब 11 बजकर 20 मिनट दिखाता है। वास्तविक समय कितना है?",
+    "question_en": "The mirror image of a clock shows 11:20. What is the actual time?",
+    "options_hi": [
+      "12.11",
+      "1.40",
+      "12.40",
+      "6.30"
+    ],
+    "options_en": [
+      "12:11",
+      "1:40",
+      "12:40",
+      "6:30"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 79,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "200 मीटर की बराबर लम्बाई वाली दो रेलगाड़ियाँ विपरीत दिशा से आकर एक-दूसरे को 16 सेकण्ड में पार करती हैं। पहली गाड़ी की चाल क्या है?",
+    "question_en": "Two trains of equal length 200 m each cross each other in 16 seconds from opposite directions. What is the speed of the first train?",
+    "options_hi": [
+      "90 किमी/घंटा",
+      "40 किमी/घंटा",
+      "80 किमी/घंटा",
+      "डेटा अपर्याप्त"
+    ],
+    "options_en": [
+      "90 km/h",
+      "40 km/h",
+      "80 km/h",
+      "Data insufficient"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 80,
+    "subject": "Mathematics",
+    "type": "bilingual",
+    "question_hi": "यदि आयत की लम्बाई 20% बढ़ा दें तथा चौड़ाई 10% कम कर दें, तो क्षेत्रफल पर क्या प्रभाव पड़ेगा?",
+    "question_en": "If the length of a rectangle is increased by 20% and the breadth is decreased by 10%, what will be the effect on area?",
+    "options_hi": [
+      "8% बढ़ेगा",
+      "8% घटेगा",
+      "2% बढ़ेगा",
+      "2% घटेगा"
+    ],
+    "options_en": [
+      "8% increase",
+      "8% decrease",
+      "2% increase",
+      "2% decrease"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 81,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "मैदानी इलाकों में प्रति कितनी ग्रामीण आबादी के लिए एक प्राथमिक स्वास्थ्य केन्द्र होना चाहिए?",
+    "question_en": "In plain areas, one Primary Health Centre should be available for how much rural population?",
+    "options_hi": [
+      "10000",
+      "20000",
+      "30000",
+      "40000"
+    ],
+    "options_en": [
+      "10000",
+      "20000",
+      "30000",
+      "40000"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 82,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "विश्व स्वास्थ्य दिवस कब मनाया जाता है?",
+    "question_en": "When is World Health Day observed?",
+    "options_hi": [
+      "1 मार्च",
+      "7 अप्रैल",
+      "1 जुलाई",
+      "1 दिसम्बर"
+    ],
+    "options_en": [
+      "1 March",
+      "7 April",
+      "1 July",
+      "1 December"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 83,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "एक गर्भवती माँ जिसका टीकाकरण न हुआ हो, उसे गर्भावस्था में टिटेनस टॉक्साइड के कितने डोज देने चाहिए?",
+    "question_en": "How many doses of tetanus toxoid should be given during pregnancy to an unimmunized pregnant woman?",
+    "options_hi": [
+      "एक",
+      "दो",
+      "तीन",
+      "चार"
+    ],
+    "options_en": [
+      "One",
+      "Two",
+      "Three",
+      "Four"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 84,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "1000 लीटर पानी कीटाणुरहित करने के लिए ब्लीचिंग पाउडर की मात्रा है।",
+    "question_en": "The amount of bleaching powder required to disinfect 1000 litres of water is:",
+    "options_hi": [
+      "1.5 ग्राम",
+      "2.5 ग्राम",
+      "3.5 ग्राम",
+      "4.5 ग्राम"
+    ],
+    "options_en": [
+      "1.5 g",
+      "2.5 g",
+      "3.5 g",
+      "4.5 g"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 85,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "अपशिष्ट निपटान की वह विधि जिसमें जानवर की विष्ठा के साथ कचरे का निपटान किया जाता है, कहलाती है।",
+    "question_en": "The method of waste disposal in which refuse is disposed along with animal excreta is called:",
+    "options_hi": [
+      "डंपिंग",
+      "टिपिंग",
+      "कम्पोस्टिंग",
+      "भस्मीकरण"
+    ],
+    "options_en": [
+      "Dumping",
+      "Tipping",
+      "Composting",
+      "Incineration"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 86,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "खसरे के उन्मूलन/नियंत्रण के लिए आवृत्त क्षेत्र कम से कम कितना होना चाहिए?",
+    "question_en": "For measles control, the coverage area should be at least:",
+    "options_hi": [
+      "80%",
+      "85%",
+      "96%",
+      "100%"
+    ],
+    "options_en": [
+      "80%",
+      "85%",
+      "96%",
+      "100%"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 87,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "टीका जो आमतौर पर मध्य-पूर्व के तीर्थ यात्रियों को दिया जाता है।",
+    "question_en": "The vaccine commonly given to pilgrims to the Middle East is:",
+    "options_hi": [
+      "डीपीटी",
+      "इन्फ्लुएंजा",
+      "पीत-ज्वर",
+      "मैनिन्जाइटिस"
+    ],
+    "options_en": [
+      "DPT",
+      "Influenza",
+      "Yellow fever",
+      "Meningitis"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 88,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित प्रक्रियाओं में से 'एक के अलावा बाकी' Vibrio cholerae को पूर्णतः नष्ट करती हैं।",
+    "question_en": "All except one of the following processes completely destroy Vibrio cholerae:",
+    "options_hi": [
+      "उबालना",
+      "सुखाना",
+      "विरंजन पाउडर 1 मिग्रा/लि.",
+      "क्रेसॉल"
+    ],
+    "options_en": [
+      "Boiling",
+      "Drying",
+      "Bleaching powder 1 mg/L",
+      "Cresol"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 89,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित जीव के कारण प्लेग होता है।",
+    "question_en": "Plague is caused by the following organism:",
+    "options_hi": [
+      "Y. pestis",
+      "R. prowazekii",
+      "Corynebacterium",
+      "Arbo-virus"
+    ],
+    "options_en": [
+      "Y. pestis",
+      "R. prowazekii",
+      "Corynebacterium",
+      "Arbo-virus"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 90,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "शौचालय संदूषण स्रोत से कम से कम कितने फीट दूरी पर होना चाहिए?",
+    "question_en": "A latrine should be at least how many feet away from the source of contamination?",
+    "options_hi": [
+      "15",
+      "25",
+      "50",
+      "75"
+    ],
+    "options_en": [
+      "15",
+      "25",
+      "50",
+      "75"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 91,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से एक को छोड़कर बाकी सभी रोग की प्राथमिक रोकथाम के उपाय हैं।",
+    "question_en": "All except one of the following are measures of primary prevention of disease:",
+    "options_hi": [
+      "स्वस्थ जीवन शैली का प्रचार",
+      "उत्तम आहार-पोषण",
+      "टीकाकरण",
+      "आवश्यक उपचार"
+    ],
+    "options_en": [
+      "Promotion of healthy lifestyle",
+      "Good nutrition",
+      "Immunization",
+      "Necessary treatment"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 92,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "पानी के प्रभावी क्लोरीनीकरण के बाद मुक्त अवशिष्ट क्लोरिन की मात्रा कम से कम होनी चाहिए।",
+    "question_en": "After effective chlorination of water, the minimum free residual chlorine should be:",
+    "options_hi": [
+      "0.5 मिग्रा/लि.",
+      "1 मिग्रा/लि.",
+      "50 मिग्रा/लि.",
+      "200 मिग्रा/लि."
+    ],
+    "options_en": [
+      "0.5 mg/L",
+      "1 mg/L",
+      "50 mg/L",
+      "200 mg/L"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 93,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "न्यूमोनिक प्लेग का रोग-संचारण मार्ग है।",
+    "question_en": "The route of transmission of pneumonic plague is:",
+    "options_hi": [
+      "वेक्टर",
+      "थूक की छोटी बूंदें",
+      "फोमाइट",
+      "अन्न"
+    ],
+    "options_en": [
+      "Vector",
+      "Droplet infection",
+      "Fomite",
+      "Food"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 94,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "ऑपरेशन थिएटर की कीटाणुनाशन की सर्वोत्तम प्रक्रिया है।",
+    "question_en": "The best method for disinfection of an operation theatre is:",
+    "options_hi": [
+      "डेटॉल",
+      "फिनॉल",
+      "लायसोल",
+      "फॉर्मल्डिहाइड"
+    ],
+    "options_en": [
+      "Dettol",
+      "Phenol",
+      "Lysol",
+      "Formaldehyde"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 95,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "तीव्र श्वसन संक्रमण नियंत्रण कार्यक्रम के तहत गौण स्वास्थ्य कार्यकर्ता को दी जाने वाली दवा है।",
+    "question_en": "Under the Acute Respiratory Infection control programme, the drug given to peripheral health workers is:",
+    "options_hi": [
+      "टेट्रासाइक्लिन",
+      "कोट्रिमोक्साजोल",
+      "डॉक्सी-साइक्लिन",
+      "क्लोरोक्विन"
+    ],
+    "options_en": [
+      "Tetracycline",
+      "Cotrimoxazole",
+      "Doxycycline",
+      "Chloroquine"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 96,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "हैजा (कॉलेरा) की महामारी के दौरान कुएँ आदर्श रूप से कितनी बार कीटाणुरहित करने चाहिए?",
+    "question_en": "During a cholera epidemic, wells should ideally be disinfected:",
+    "options_hi": [
+      "प्रतिदिन",
+      "प्रति दो दिन",
+      "प्रति तीन दिन",
+      "प्रति सप्ताह"
+    ],
+    "options_en": [
+      "Daily",
+      "Every two days",
+      "Every three days",
+      "Weekly"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 97,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "इन्फ्लुएंजा वायरस का कौनसा टाइप प्रतिवर्ष महामारी उत्पन्न करता है?",
+    "question_en": "Which type of influenza virus causes epidemics every year?",
+    "options_hi": [
+      "A",
+      "B",
+      "C",
+      "उपरोक्त में से एक"
+    ],
+    "options_en": [
+      "A",
+      "B",
+      "C",
+      "One of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 98,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित तापमान में अन्न/भोजन में जीवाणु वृद्धि विशेष रूप से होती है।",
+    "question_en": "At which of the following temperatures does bacterial growth in food especially occur?",
+    "options_hi": [
+      "10-49°C",
+      "20-49°C",
+      "10-60°C",
+      "20-60°C"
+    ],
+    "options_en": [
+      "10-49°C",
+      "20-49°C",
+      "10-60°C",
+      "20-60°C"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 99,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "पाँच-दस मिनट उबालने से निम्नलिखित में से क्या मर जाता है?",
+    "question_en": "By boiling for five to ten minutes, which of the following is killed?",
+    "options_hi": [
+      "बैक्टीरिया",
+      "स्पोर्स",
+      "वायरस",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Bacteria",
+      "Spores",
+      "Viruses",
+      "None of these"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 100,
+    "subject": "Public Health",
+    "type": "bilingual",
+    "question_hi": "निम्नलिखित में से एक को छोड़कर बाकी, वाष्पदाबी विसंक्रमण (ऑटोक्लेविंग) द्वारा रोगाणुरहित किए जाते हैं।",
+    "question_en": "All except one of the following are sterilized by steam under pressure (autoclaving):",
+    "options_hi": [
+      "दस्ताने",
+      "संवर्धन माध्यम",
+      "प्लास्टिक",
+      "लिनन/चादर आदि"
+    ],
+    "options_en": [
+      "Gloves",
+      "Culture media",
+      "Plastic",
+      "Linen/sheets etc."
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+
+let current = 0;
+let language = "bi";
+let answers = Array(questions.length).fill(null);
+let visited = Array(questions.length).fill(false);
+let review = Array(questions.length).fill(false);
+let remaining = totalDurationSeconds;
+let timerInterval = null;
+let startTimestamp = null;
+
+function escapeHtml(str) {
+  return String(str || "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+
+function formatTime(sec) {
+  sec = Math.max(0, Math.floor(sec));
+  const h = String(Math.floor(sec/3600)).padStart(2,'0');
+  const m = String(Math.floor((sec%3600)/60)).padStart(2,'0');
+  const s = String(sec%60).padStart(2,'0');
+  return `${h}:${m}:${s}`;
+}
+
+function startTest() {
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('examScreen').classList.remove('hidden');
+  document.getElementById('timer').classList.remove('hidden');
+  document.getElementById('langBox').classList.remove('hidden');
+  startTimestamp = Date.now();
+  visited[0] = true;
+  renderPalette();
+  renderQuestion();
+  startTimer();
+}
+
+function startTimer() {
+  document.getElementById('timer').textContent = formatTime(remaining);
+  timerInterval = setInterval(() => {
+    remaining--;
+    document.getElementById('timer').textContent = formatTime(remaining);
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      submitTest(true);
+    }
+  }, 1000);
+}
+
+function setLanguage(lang) {
+  language = lang;
+  ['hi','en','bi'].forEach(l => document.getElementById('btn-'+l).classList.toggle('active', l===lang));
+  renderQuestion();
+}
+
+function bilingualText(hi, en, type) {
+  if (type === 'hindi_only') return `<div class="hi">${escapeHtml(hi || en)}</div>`;
+  if (type === 'english_only') return `<div class="en">${escapeHtml(en || hi)}</div>`;
+  if (language === 'hi') return `<div class="hi">${escapeHtml(hi || en)}</div>`;
+  if (language === 'en') return `<div class="en">${escapeHtml(en || hi)}</div>`;
+  return `<div class="bilingual-block"><div class="hi">${escapeHtml(hi || en)}</div><div class="en">${escapeHtml(en || hi)}</div></div>`;
+}
+
+function getStatus(i) {
+  if (answers[i] !== null && review[i]) return 'Answered & Marked for Review';
+  if (review[i]) return 'Marked for Review';
+  if (answers[i] !== null) return 'Answered';
+  if (visited[i]) return 'Not Answered';
+  return 'Not Visited';
+}
+
+function statusClass(i) {
+  if (answers[i] !== null && review[i]) return 'ansreview';
+  if (review[i]) return 'review';
+  if (answers[i] !== null) return 'answered';
+  if (visited[i]) return 'notanswered';
+  return 'notvisited';
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  visited[current] = true;
+  document.getElementById('questionNumber').textContent = `Question ${current+1} of ${questions.length}`;
+  document.getElementById('statusText').textContent = getStatus(current);
+  let imageHtml = q.image ? `<div style="margin:10px 0"><img src="${escapeHtml(q.image)}" alt="Question image" style="max-width:100%;border:1px solid #ddd;border-radius:10px"></div>` : "";
+  document.getElementById('questionText').innerHTML = bilingualText(q.question_hi, q.question_en, q.type) + imageHtml;
+  const opts = q.options_en.map((opt, idx) => {
+    const checked = answers[current] === idx ? 'checked' : '';
+    const selected = answers[current] === idx ? 'selected' : '';
+    const optText = bilingualText(q.options_hi[idx], q.options_en[idx], q.type);
+    return `<label class="option ${selected}">
+      <input type="radio" name="option" value="${idx}" ${checked} onchange="selectOption(${idx})">
+      <span class="option-label">${String.fromCharCode(65+idx)}.</span>
+      <span>${optText}</span>
+    </label>`;
+  }).join('');
+  document.getElementById('optionsBox').innerHTML = opts;
+  renderPalette();
+}
+
+function renderPalette() {
+  const grid = document.getElementById('paletteGrid');
+  grid.innerHTML = questions.map((_, i) => 
+    `<button class="palette-btn ${statusClass(i)} ${i===current?'current':''}" onclick="goToQuestion(${i})">${i+1}</button>`
+  ).join('');
+}
+
+function selectOption(idx) {
+  answers[current] = idx;
+  renderQuestion();
+}
+
+function goToQuestion(i) {
+  current = i;
+  visited[current] = true;
+  renderQuestion();
+}
+
+function prevQuestion() {
+  if (current > 0) goToQuestion(current - 1);
+}
+
+function saveAndNext() {
+  review[current] = false;
+  if (current < questions.length - 1) goToQuestion(current + 1);
+  else renderQuestion();
+}
+
+function markForReview() {
+  review[current] = true;
+  if (current < questions.length - 1) goToQuestion(current + 1);
+  else renderQuestion();
+}
+
+function clearResponse() {
+  answers[current] = null;
+  review[current] = false;
+  renderQuestion();
+}
+
+function submitTest(auto=false) {
+  if (!auto) {
+    const ok = confirm("Are you sure you want to submit the test?");
+    if (!ok) return;
+  }
+  clearInterval(timerInterval);
+  const timeTakenSeconds = Math.round((Date.now() - startTimestamp)/1000);
+  let attempted = 0, correct = 0, wrong = 0, unattempted = 0;
+  questions.forEach((q,i) => {
+    if (answers[i] === null) unattempted++;
+    else {
+      attempted++;
+      if (answers[i] === q.correct) correct++;
+      else wrong++;
+    }
+  });
+  const score = (correct * marksPerQuestion) - (wrong * negativeMarking);
+  const maxMarks = questions.length * marksPerQuestion;
+  const percentage = (score / maxMarks) * 100;
+  const result = {
+    date: new Date().toLocaleString(),
+    total: questions.length, attempted, unattempted, correct, wrong,
+    score: Number(score.toFixed(2)), maxMarks, percentage: Number(percentage.toFixed(2)),
+    timeTaken: formatTime(timeTakenSeconds)
+  };
+  saveHistory(result);
+  showResult(result);
+}
+
+function showResult(result) {
+  document.getElementById('examScreen').classList.add('hidden');
+  document.getElementById('timer').classList.add('hidden');
+  document.getElementById('langBox').classList.add('hidden');
+  document.getElementById('resultScreen').classList.remove('hidden');
+  const boxes = [
+    ['Total Questions', result.total], ['Attempted', result.attempted], ['Not Attempted', result.unattempted],
+    ['Correct', result.correct], ['Wrong', result.wrong], ['Marks Obtained', result.score],
+    ['Maximum Marks', result.maxMarks], ['Percentage', result.percentage + '%'], ['Time Taken', result.timeTaken],
+    ['Marking Scheme', '+1 / -0.25']
+  ];
+  document.getElementById('resultSummary').innerHTML = boxes.map(b => `<div class="score-box">${b[0]}<b>${b[1]}</b></div>`).join('');
+  renderAnswerKey();
+  renderHistory('historyResult');
+}
+
+function renderAnswerKey() {
+  document.getElementById('answerKey').innerHTML = questions.map((q,i) => {
+    const user = answers[i];
+    const userText = user === null ? 'Not attempted' : `${String.fromCharCode(65+user)}. ${q.options_en[user]}`;
+    const corrText = `${String.fromCharCode(65+q.correct)}. ${q.options_en[q.correct]}`;
+    const cls = user === null ? '' : (user === q.correct ? 'correct' : 'wrong');
+    return `<div class="answer-item">
+      <b>Q${i+1}.</b> ${escapeHtml(q.question_en)}<br>
+      <span class="correct">Correct Answer: ${escapeHtml(corrText)}</span><br>
+      <span class="${cls}">Your Answer: ${escapeHtml(userText)}</span><br>
+      <small>Explanation: Explanation not provided.</small>
+    </div>`;
+  }).join('');
+}
+
+function historyKey() {
+  return "attempt_history_" + testId;
+}
+
+function saveHistory(result) {
+  const list = JSON.parse(localStorage.getItem(historyKey()) || "[]");
+  list.unshift(result);
+  localStorage.setItem(historyKey(), JSON.stringify(list.slice(0, 20)));
+}
+
+function renderHistory(targetId) {
+  const list = JSON.parse(localStorage.getItem(historyKey()) || "[]");
+  if (!list.length) {
+    document.getElementById(targetId).innerHTML = "<p>No attempt history yet for this test.</p>";
+    return;
+  }
+  document.getElementById(targetId).innerHTML = `<table class="history-table">
+    <thead><tr><th>Date</th><th>Score</th><th>Correct</th><th>Wrong</th><th>Attempted</th><th>Time</th></tr></thead>
+    <tbody>${list.map(r => `<tr><td>${r.date}</td><td>${r.score}/${r.maxMarks}</td><td>${r.correct}</td><td>${r.wrong}</td><td>${r.attempted}</td><td>${r.timeTaken}</td></tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function restartTest() {
+  current = 0;
+  language = "bi";
+  answers = Array(questions.length).fill(null);
+  visited = Array(questions.length).fill(false);
+  review = Array(questions.length).fill(false);
+  remaining = totalDurationSeconds;
+  document.getElementById('resultScreen').classList.add('hidden');
+  document.getElementById('startScreen').classList.remove('hidden');
+  renderHistory('historyStart');
+}
+
+document.getElementById('totalQStart').textContent = questions.length;
+renderHistory('historyStart');
+</script>
+</body>
+</html>
