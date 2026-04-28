@@ -20,23 +20,28 @@
     header {
       background: linear-gradient(135deg, #0f172a, #1d4ed8);
       color: white;
-      padding: 18px 16px;
+      padding: 12px 10px;
       text-align: center;
+      overflow: visible;
     }
 
     .site-logo {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
+      width: 100%;
       max-width: 100%;
+      text-decoration: none;
+      overflow: visible;
     }
 
     .site-logo img {
-      width: clamp(180px, 32vw, 390px);
+      width: 100%;
+      max-width: 520px;
       height: auto;
-      display: block;
+      max-height: 120px;
       object-fit: contain;
+      display: block;
     }
 
     .container {
@@ -281,12 +286,13 @@
     }
 
     @media (max-width: 768px) {
-      .site-logo img {
-        width: clamp(160px, 65vw, 280px);
+      header {
+        padding: 10px 8px;
       }
 
-      header {
-        padding: 14px 10px;
+      .site-logo img {
+        max-width: 95vw;
+        max-height: 90px;
       }
     }
 
@@ -302,6 +308,13 @@
 
       .card h2 {
         font-size: 16px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .site-logo img {
+        max-width: 96vw;
+        max-height: 75px;
       }
     }
   </style>
