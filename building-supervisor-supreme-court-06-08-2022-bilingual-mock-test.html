@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Supervisor Supreme Court of India 06-08-2022 Mock Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,'Noto Sans Devanagari','Nirmala UI',sans-serif;background:#eef3f9;color:#111827}
+.header{background:#073763;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:50}
+.header h1{font-size:17px;margin:0;line-height:1.35}
+.timer{background:#fff;color:#b91c1c;border-radius:8px;padding:8px 12px;font-weight:800;white-space:nowrap}
+.container{max-width:1280px;margin:16px auto;padding:0 12px}
+.card{background:#fff;border-radius:12px;border:1px solid #d8e2ef;box-shadow:0 2px 8px rgba(15,23,42,.06);padding:18px}
+.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.info{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px}
+.btn{padding:9px 13px;border-radius:8px;border:1px solid #cbd5e1;background:#f8fafc;color:#111827;font-weight:700;cursor:pointer;margin:3px}
+.btn.primary,.btn.active{background:#1d4ed8;color:#fff}
+.btn.success{background:#15803d;color:#fff}
+.btn.warn{background:#fff7ed;color:#9a3412}
+.btn.danger{background:#dc2626;color:#fff}
+.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 305px;gap:16px}
+.langbar,.sectionJump{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.badge{background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;border-radius:999px;padding:5px 10px;font-weight:700;display:inline-block;margin:3px}
+.qtext{font-size:18px;line-height:1.65;font-weight:650;margin:12px 0 14px;padding:12px;background:#f8fafc;border-left:4px solid #1d4ed8;border-radius:8px;overflow-x:auto;white-space:pre-wrap}
+.option{display:flex;gap:10px;width:100%;border:1px solid #d1d5db;border-radius:10px;margin:10px 0;padding:12px;cursor:pointer;line-height:1.45;background:#fff;text-align:left;font-size:16px}
+.option:hover{background:#eff6ff}
+.option.selected{border-color:#2563eb;background:#eff6ff;font-weight:700}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:12px;border-top:1px solid #d8e2ef}
+.side{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 90px);display:flex;flex-direction:column}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.stat{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:10px;text-align:center}
+.stat b{display:block;font-size:20px}
+.palette-scroll{overflow-y:auto;border:1px solid #d8e2ef;border-radius:10px;padding:10px;background:#f8fafc;max-height:390px}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.pbtn{height:38px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;font-weight:800;cursor:pointer}
+.pbtn.current{outline:3px solid #2563eb}
+.pbtn.not-visited{background:#fff}
+.pbtn.not-answered{background:#fee2e2;border-color:#ef4444}
+.pbtn.answered{background:#dcfce7;border-color:#16a34a}
+.pbtn.review{background:#fef3c7;border-color:#f59e0b}
+.pbtn.answered-review{background:#ddd6fe;border-color:#7c3aed}
+.legend{display:grid;gap:5px;font-size:13px;margin:8px 0}
+.dot{width:16px;height:16px;border-radius:4px;border:1px solid #94a3b8;display:inline-block;vertical-align:middle;margin-right:6px}
+.result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.result-box{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px;text-align:center}
+.result-box strong{display:block;font-size:22px;color:#073763}
+.answer-row{border:1px solid #dbe3ef;border-radius:10px;padding:12px;margin:10px 0;background:#fff;line-height:1.5}
+.correct{color:#15803d;font-weight:800}
+.wrong{color:#b91c1c;font-weight:800}
+.muted,.small{font-size:13px;color:#64748b}
+.hidden{display:none!important}
+table{border-collapse:collapse;width:100%;background:#fff}
+th,td{border:1px solid #cbd5e1;padding:8px;text-align:left}
+th{background:#e2e8f0}
+.question-image{max-width:100%;height:auto;display:block;margin:12px 0;border:1px solid #ddd;border-radius:6px}
+.math{white-space:nowrap;font-family:"Times New Roman",serif}
+.frac{display:inline-block;vertical-align:middle;text-align:center;line-height:1.2;margin:0 4px}
+.frac .top{display:block;padding:0 4px 2px;border-bottom:1.5px solid currentColor}
+.frac .bottom{display:block;padding:2px 4px 0}
+sup,sub{line-height:0}
+@media(max-width:980px){.exam-layout{grid-template-columns:1fr}.side{position:static;max-height:none}.palette-scroll{max-height:210px}.palette{grid-template-columns:repeat(10,1fr)}}
+@media(max-width:520px){.header{flex-direction:column;align-items:flex-start}.start-grid,.result-grid{grid-template-columns:1fr}.palette{grid-template-columns:repeat(5,1fr)}.btn{width:100%;margin:4px 0}.nav{display:block}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Building Supervisor Supreme Court of India 06-08-2022 Mock Test<br><span class="small" style="color:#dbeafe">50 Questions | +1 correct, -0.25 wrong</span></h1>
+  <div class="timer" id="timer">Time: 60:00</div>
+</div>
+
+<div class="container">
+<section id="startScreen" class="card">
+  <h2>Online Mock Test</h2>
+  <div class="start-grid">
+    <div class="info"><b>Test Name:</b><br>Building Supervisor Supreme Court of India 06-08-2022 Mock Test</div>
+    <div class="info"><b>Total Questions:</b><br>50</div>
+    <div class="info"><b>Total Marks:</b><br>50</div>
+    <div class="info"><b>Time Duration:</b><br>60 Minutes</div>
+    <div class="info"><b>Marking Scheme:</b><br>+1 Correct, -0.25 Wrong</div>
+    <div class="info"><b>Image Folder:</b><br>images/building-supervisor-supreme-court-2022/<br>No images required</div>
+  </div>
+  <button class="btn success" onclick="startTest()">Start Test</button>
+  <div id="historyBox"></div>
+</section>
+
+<section id="examScreen" class="hidden">
+  <div class="exam-layout">
+    <div class="card">
+      <div class="langbar">
+        <b>Language view:</b>
+        <button class="btn" id="btnHi" onclick="setLang('hi')">हिंदी</button>
+        <button class="btn" id="btnEn" onclick="setLang('en')">English</button>
+        <button class="btn active" id="btnBi" onclick="setLang('bi')">Bilingual</button>
+      </div>
+      <div class="sectionJump" id="sectionJump"></div>
+      <div><span class="badge" id="sectionName"></span><span class="badge" id="qNo"></span></div>
+      <div class="qtext" id="questionText"></div>
+      <div id="imageBox"></div>
+      <div id="options"></div>
+      <div class="nav">
+        <button class="btn" onclick="prevQ()">Previous</button>
+        <button class="btn primary" onclick="nextQ()">Save & Next</button>
+        <button class="btn" onclick="clearResponse()">Clear Response</button>
+        <button class="btn warn" onclick="markReview()">Mark for Review</button>
+        <button class="btn danger" onclick="submitTest(false)">Submit Test</button>
+      </div>
+    </div>
+    <aside class="card side">
+      <div class="stats"><div class="stat"><b id="attempted">0</b>Attempted</div><div class="stat"><b id="notAttempted">50</b>Not Attempted</div></div>
+      <h3>Question Palette</h3>
+      <div class="legend">
+        <div><span class="dot not-visited"></span>Not Visited</div>
+        <div><span class="dot not-answered"></span>Not Answered</div>
+        <div><span class="dot answered"></span>Answered</div>
+        <div><span class="dot review"></span>Marked for Review</div>
+        <div><span class="dot answered-review"></span>Answered & Marked</div>
+      </div>
+      <div class="palette-scroll"><div class="palette" id="palette"></div></div>
+    </aside>
+  </div>
+</section>
+
+<section id="resultScreen" class="card hidden">
+  <h2>Result</h2>
+  <div id="resultSummary"></div>
+  <h3>Answer Key</h3>
+  <div id="answerKey"></div>
+</section>
+</div>
+
+<script>
+const TEST_ID = "building_supervisor_supreme_court_06_08_2022";
+const storageKey = "mock_attempt_history_" + TEST_ID;
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const totalSeconds = 60 * 60;
+const questions = [
+  {
+    "id": 1,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "टॉयलेट के पीछे लगा हुआ टैंक कौन-सा होता है?",
+    "question_en": "Which is the tank on the back of a toilet?",
+    "options_hi": [
+      "सोप टैंक",
+      "सेप्टिक टैंक",
+      "फ्लश टैंक",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Soap tank",
+      "Septic tank",
+      "Flush tank",
+      "None"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Wastewater treatment plant में wastewater के साथ सबसे पहले क्या होता है?",
+    "question_en": "What is the first thing that happens to wastewater at a wastewater treatment plant?",
+    "options_hi": [
+      "Pathogens को मारने के लिए chlorine या ultraviolet light से treatment किया जाता है",
+      "Liquid wastewater को air के साथ मिलाया जाता है ताकि bacteria solid material के छोटे particles को break down कर सकें",
+      "बड़े solid पदार्थों को screen out किया जाता है",
+      "Scum और sludge को liquid wastewater से अलग किया जाता है"
+    ],
+    "options_en": [
+      "Treatment with chlorine or ultraviolet light to kill pathogens",
+      "Liquid wastewater is mixed with air to help bacteria breakdown small particles of solid material",
+      "Large solid things are screened out",
+      "Scum and sludge are separated from the liquid wastewater"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Sludge क्या होता है?",
+    "question_en": "What is sludge?",
+    "options_hi": [
+      "Streams में rocks के नीचे रहने वाले insects",
+      "Wastewater का liquid part",
+      "वे solids जो liquid wastewater से heavy होते हैं और bottom में sink हो जाते हैं",
+      "Fats, grease और oil जैसे solids जो liquid wastewater के ऊपर float करते हैं"
+    ],
+    "options_en": [
+      "Insects that live under rocks in streams",
+      "The liquid part of wastewater",
+      "The solids that are heavier than liquid wastewater and sink to the bottom",
+      "The solids, like fats, grease, and oil, that float on top of liquid wastewater"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Wastewater treatment plant में disinfection step के दौरान क्या होता है?",
+    "question_en": "What happens during the disinfection step at a wastewater treatment plant?",
+    "options_hi": [
+      "Scum और sludge को liquid wastewater से अलग किया जाता है",
+      "Pathogens को मारने के लिए chlorine या ultraviolet light से treatment किया जाता है",
+      "Liquid wastewater को air के साथ मिलाया जाता है ताकि bacteria solid material के छोटे particles को break down कर सकें",
+      "बड़े solid पदार्थों को screen out किया जाता है"
+    ],
+    "options_en": [
+      "Scum and sludge are separated from the liquid wastewater",
+      "Treatment with chlorine or ultraviolet light to kill pathogens",
+      "Liquid wastewater is mixed with air to help bacteria breakdown small particles of solid material",
+      "Large solid things are screened out"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि 'orange' को 'butter', 'butter' को 'soap', 'soap' को 'ink', 'ink' को 'honey' और 'honey' को 'orange' कहा जाए, तो कपड़े धोने के लिए निम्नलिखित में से किसका उपयोग किया जाएगा?",
+    "question_en": "If 'orange' is called 'butter', 'butter' is called 'soap', 'soap' is called 'ink', 'ink' is called 'honey' and 'honey' is called 'orange' then which of the following will be used for washing clothes?",
+    "options_hi": [
+      "Honey",
+      "Butter",
+      "Soap",
+      "Ink"
+    ],
+    "options_en": [
+      "Honey",
+      "Butter",
+      "Soap",
+      "Ink"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "Sin : Crime :: ? — दिए गए संबंध के समान संबंध वाला pair चुनिए।",
+    "question_en": "Sin: Crime :: ? Select the related pair that has the same relationship as the original pair of words.",
+    "options_hi": [
+      "Man : Animal",
+      "Home : Court",
+      "Morality : Legality",
+      "Jury : Priest"
+    ],
+    "options_en": [
+      "Man: Animal",
+      "Home: Court",
+      "Morality: Legality",
+      "Jury: Priest"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "'FOREHAND' शब्द में ऐसे कितने letter pairs हैं जिनके बीच उतने ही letters हैं जितने English alphabet में उनके बीच होते हैं?",
+    "question_en": "How many such pairs of letters are there in the word 'FOREHAND' each of which have as many letters between them as they have in the English alphabet?",
+    "options_hi": [
+      "एक",
+      "दो",
+      "तीन",
+      "तीन से अधिक"
+    ],
+    "options_en": [
+      "One",
+      "Two",
+      "Three",
+      "More than three"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "चार ladies A, B, C, D और चार gentlemen E, F, G, H एक circle में table के चारों ओर एक-दूसरे की ओर facing करके बैठे हैं। Conditions: no two ladies/gentlemen side by side; C, G और E के बीच है और D को face कर रही है; F, D और A के बीच है और G को face कर रहा है; H, B के right में है। A के left में कौन बैठा है?",
+    "question_en": "Four ladies A, B, C and D and four gentlemen E, F, G and H are sitting in a circle round a table facing each other. Conditions: No two ladies or two gentlemen sit side by side; C sits between G and E and faces D; F sits between D and A and faces G; H is to the right of B. Who is sitting to the left of A?",
+    "options_hi": [
+      "E",
+      "F",
+      "G",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "E",
+      "F",
+      "G",
+      "None of these"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "उपरोक्त seating arrangement के अनुसार E किसे face कर रहा है?",
+    "question_en": "According to the above seating arrangement, E is facing whom?",
+    "options_hi": [
+      "B",
+      "G",
+      "H",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "B",
+      "G",
+      "H",
+      "None of these"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "उपरोक्त seating arrangement के अनुसार B के immediate neighbours कौन हैं?",
+    "question_en": "According to the above seating arrangement, who are immediate neighbours of B?",
+    "options_hi": [
+      "G और H",
+      "E और F",
+      "E और H",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "G and H",
+      "E and F",
+      "E and H",
+      "None of these"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "अपने घर से Lokesh 15 km North की ओर गया। फिर West मुड़कर 10 km चला। फिर South मुड़कर 5 km चला। अंत में East मुड़कर 10 km चला। वह अपने घर से किस direction में है?",
+    "question_en": "From his house, Lokesh went 15 km to the North. Then he turned West and covered 10 km. Then he turned South and covered 5 km. Finally, turning to East, he covered 10 km. In which direction is he from his house?",
+    "options_hi": [
+      "East",
+      "West",
+      "North",
+      "South"
+    ],
+    "options_en": [
+      "East",
+      "West",
+      "North",
+      "South"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "subject": "Reasoning",
+    "type": "bilingual",
+    "question_hi": "North की ओर facing बच्चों की row में A left से 15th और B left से 9th है। C, A और B के exactly बीच में है और right से 7th है। Row में total कितने बच्चे हैं?",
+    "question_en": "In a row of children facing North, A stands 15th from left and B stands 9th from left. C, who stands exactly between A and B, is 7th from right. What is the total number of children standing in the row?",
+    "options_hi": [
+      "17",
+      "18",
+      "19",
+      "20"
+    ],
+    "options_en": [
+      "17",
+      "18",
+      "19",
+      "20"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "News classification: Cargo ship से oil spill के बाद हजारों fishes और aquatic birds मृत पाए गए। यह किस area से संबंधित है?",
+    "question_en": "News classification: Thousands of fishes and aquatic birds were found dead after the oil spill from the cargo ship. It belongs to which area?",
+    "options_hi": [
+      "Social Issues",
+      "Environmental Issues",
+      "Politics",
+      "Science and Health"
+    ],
+    "options_en": [
+      "Social Issues",
+      "Environmental Issues",
+      "Politics",
+      "Science and Health"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "News classification: Members के abusive behaviour के कई incidents के कारण Parliament adjourned हो गई। यह किस area से संबंधित है?",
+    "question_en": "News classification: Parliament was adjourned due to several instances of abusive behaviour by the members. It belongs to which area?",
+    "options_hi": [
+      "Social Issues",
+      "Environmental Issues",
+      "Politics",
+      "Science and Health"
+    ],
+    "options_en": [
+      "Social Issues",
+      "Environmental Issues",
+      "Politics",
+      "Science and Health"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "News classification: Alcoholism से domestic violence से निपटने के लिए village की women ने सभी liquor shops में तोड़फोड़ की। यह किस area से संबंधित है?",
+    "question_en": "News classification: Women of the village ransacked all the liquor shops to deal with domestic violence due to alcoholism. It belongs to which area?",
+    "options_hi": [
+      "Social Issues",
+      "Environmental Issues",
+      "Politics",
+      "Science and Health"
+    ],
+    "options_en": [
+      "Social Issues",
+      "Environmental Issues",
+      "Politics",
+      "Science and Health"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "WHO का full form क्या है?",
+    "question_en": "Full form of WHO is?",
+    "options_hi": [
+      "World Hygiene Organisation",
+      "World Heritage Organization",
+      "World Health Organization",
+      "World Human Organisation"
+    ],
+    "options_en": [
+      "World Hygiene Organisation",
+      "World Heritage Organization",
+      "World Health Organization",
+      "World Human Organisation"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "subject": "Polity",
+    "type": "bilingual",
+    "question_hi": "Indian Constitution में 'Fundamental Duties' किस Article में mentioned हैं?",
+    "question_en": "'Fundamental Duties' are mentioned in which Article of Indian Constitution?",
+    "options_hi": [
+      "Article 50",
+      "Article 50A",
+      "Article 51",
+      "Article 51A"
+    ],
+    "options_en": [
+      "Article 50",
+      "Article 50A",
+      "Article 51",
+      "Article 51A"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "subject": "Computer Awareness",
+    "type": "bilingual",
+    "question_hi": "Hardcopy provide करने के लिए निम्न में से किसका उपयोग किया जाता है?",
+    "question_en": "Which of the following is used to provide hardcopy?",
+    "options_hi": [
+      "CRT",
+      "Computer Console",
+      "Printer",
+      "Card Reader"
+    ],
+    "options_en": [
+      "CRT",
+      "Computer Console",
+      "Printer",
+      "Card Reader"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "Swachh Bharat Abhiyan किस date को launch किया गया था?",
+    "question_en": "On which date was Swachh Bharat Abhiyan launched?",
+    "options_hi": [
+      "2 October, 2015",
+      "2 October, 2013",
+      "2 October, 2014",
+      "20 October, 2014"
+    ],
+    "options_en": [
+      "2 October, 2015",
+      "2 October, 2013",
+      "2 October, 2014",
+      "20 October, 2014"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "subject": "Science",
+    "type": "bilingual",
+    "question_hi": "यदि सभी fungi और other decomposers गायब हो जाएँ, तो क्या होगा?",
+    "question_en": "What would happen if all the fungi and other decomposers disappeared?",
+    "options_hi": [
+      "कुछ नहीं",
+      "Air अधिक clean हो जाएगी",
+      "Dead plants और animals के bodies pile up हो जाएँगे",
+      "Soil में अधिक nutrients होंगे"
+    ],
+    "options_en": [
+      "nothing",
+      "the air would be cleaner",
+      "bodies of dead plants and animals would pile up",
+      "soil would have more nutrients"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Wastewater क्या है?",
+    "question_en": "What is wastewater?",
+    "options_hi": [
+      "Toilet, tub या sink में use होने के बाद का water",
+      "Poo water",
+      "उपरोक्त दोनों",
+      "None"
+    ],
+    "options_en": [
+      "Water after it's been used in the toilet, tub or sink",
+      "Poo water",
+      "Both above",
+      "None"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "subject": "Science",
+    "type": "bilingual",
+    "question_hi": "Ozone के बारे में निम्न statements पढ़िए और सही statements चुनिए: (a) यह living organisms के breathing के लिए essential है। (b) यह water disinfect करने में use होती है। (c) यह ultraviolet rays absorb करती है। (d) Air में इसका proportion लगभग 3% है।",
+    "question_en": "Study the following statements about ozone and find out the correct ones: (a) It is essential for breathing of living organisms. (b) It is used to disinfect water. (c) It absorbs ultraviolet rays. (d) Its proportion in air is about 3%.",
+    "options_hi": [
+      "(a), (b) और (c)",
+      "(b) और (c)",
+      "(c) और (d)",
+      "सभी चार"
+    ],
+    "options_en": [
+      "(a), (b) and (c)",
+      "(b) and (c)",
+      "(c) and (d)",
+      "All four"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Wastewater से dirt और sand remove करने के लिए कौन-सी process use की जाती है?",
+    "question_en": "Which process is used to remove dirt and sand from wastewater?",
+    "options_hi": [
+      "Aeration",
+      "Chlorination",
+      "Sedimentation",
+      "Flocculation"
+    ],
+    "options_en": [
+      "Aeration",
+      "Chlorination",
+      "Sedimentation",
+      "Flocculation"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "subject": "Health",
+    "type": "bilingual",
+    "question_hi": "Contaminated water पीने से इनमें से कौन-सी disease हो सकती है?",
+    "question_en": "Which of these diseases can happen from drinking contaminated water?",
+    "options_hi": [
+      "Pneumonia",
+      "Covid-19",
+      "Malaria",
+      "Cholera"
+    ],
+    "options_en": [
+      "Pneumonia",
+      "Covid-19",
+      "Malaria",
+      "Cholera"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Sanitation waste के hazards से human contact की prevention द्वारा health promote करने का _____ means है।",
+    "question_en": "Sanitation is the _____ means of promoting health through prevention of human contact with the hazards of waste.",
+    "options_hi": [
+      "Hygienic",
+      "Proper",
+      "Ultimate",
+      "Perfect"
+    ],
+    "options_en": [
+      "Hygienic",
+      "Proper",
+      "Ultimate",
+      "Perfect"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "भारत का cleanest city कौन-सा है?",
+    "question_en": "Which is the cleanest city of India?",
+    "options_hi": [
+      "Mysore",
+      "Surat",
+      "Delhi",
+      "Chandigarh"
+    ],
+    "options_en": [
+      "Mysore",
+      "Surat",
+      "Delhi",
+      "Chandigarh"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "subject": "General Awareness",
+    "type": "bilingual",
+    "question_hi": "दुनिया का cleanest country कौन-सा है?",
+    "question_en": "Which is the cleanest country in the world?",
+    "options_hi": [
+      "Singapore",
+      "Cuba",
+      "Austria",
+      "France"
+    ],
+    "options_en": [
+      "Singapore",
+      "Cuba",
+      "Austria",
+      "France"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "subject": "Science",
+    "type": "bilingual",
+    "question_hi": "DDT क्या है?",
+    "question_en": "What is DDT?",
+    "options_hi": [
+      "एक elemental plant nutrient",
+      "Malaria cure करने के लिए ली जाने वाली low-toxicity drug",
+      "People के लिए safe microbicide",
+      "एक persistent, chlorinated hydrocarbon insecticide"
+    ],
+    "options_en": [
+      "an elemental plant nutrient",
+      "a low-toxicity drug taken to cure malaria",
+      "a microbicide that is safe for people",
+      "a persistent, chlorinated hydrocarbon insecticide"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "subject": "Health",
+    "type": "bilingual",
+    "question_hi": "Occupational disease क्या है?",
+    "question_en": "What is an occupational disease?",
+    "options_hi": [
+      "Parents से inherited genes के difference के कारण body function में बाधा डालने वाली condition",
+      "Pollutant या toxin के body में जाने से growth, development या body function में interference करने वाली condition",
+      "Foreign organism के body में जाकर function में interference, reproduction और spread करने से होने वाली condition",
+      "Work situation में dangerous conditions या toxic substances के exposure से caused condition"
+    ],
+    "options_en": [
+      "a condition caused by a difference in the genes that someone inherited from their parents that interferes with how the body works",
+      "a condition caused by a pollutant or toxin getting into someone and then interfering with growth, development, or function of the body",
+      "a condition caused by a foreign organism getting into someone where it interferes with how the body works and reproduces and spreads to someone else",
+      "a condition caused by exposure to dangerous conditions or toxic substances in a work situation"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "subject": "Computer Awareness",
+    "type": "bilingual",
+    "question_hi": "Computer terminology में login name और password के verification के लिए कौन-सा term use होता है?",
+    "question_en": "What is the term used for verification of a login name and password in computer terminology?",
+    "options_hi": [
+      "Configuration",
+      "Authentication",
+      "Accessibility",
+      "Logging"
+    ],
+    "options_en": [
+      "Configuration",
+      "Authentication",
+      "Accessibility",
+      "Logging"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "subject": "Computer Awareness",
+    "type": "bilingual",
+    "question_hi": "Pixel smart phone किस company ने develop किया है?",
+    "question_en": "Which company has developed Pixel smart phone?",
+    "options_hi": [
+      "Microsoft",
+      "Google",
+      "Apple",
+      "Samsung"
+    ],
+    "options_en": [
+      "Microsoft",
+      "Google",
+      "Apple",
+      "Samsung"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "subject": "Food Safety",
+    "type": "bilingual",
+    "question_hi": "Bacteria के survive करने की conditions हैं:",
+    "question_en": "The conditions for bacteria to survive are:",
+    "options_hi": [
+      "Food, temperature, stress, oxygen, acidity, time",
+      "Food, temperature, moisture, radiation, acidity, time",
+      "Food, moisture, acidity, oxygen, time, temperature",
+      "None"
+    ],
+    "options_en": [
+      "Food, temperature, stress, oxygen, acidity, time",
+      "Food, temperature, moisture, radiation, acidity, time",
+      "Food, moisture, acidity, oxygen, time, temperature",
+      "None"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "subject": "Food Safety",
+    "type": "bilingual",
+    "question_hi": "Food contact surfaces को कब clean करना चाहिए?",
+    "question_en": "Food contact surfaces should be cleaned:",
+    "options_hi": [
+      "Use से पहले और बाद में",
+      "जब वे visibly dirty हों",
+      "हर चार घंटे में",
+      "उपरोक्त सभी"
+    ],
+    "options_en": [
+      "Before and after they are used",
+      "When they are visibly dirty",
+      "Every four hours",
+      "All the above"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Standard toilet tank में कितना water hold होता है?",
+    "question_en": "How much water does a standard toilet tank hold?",
+    "options_hi": [
+      "1 gallon",
+      "2 gallons",
+      "3 gallons",
+      "None"
+    ],
+    "options_en": [
+      "1 gallon",
+      "2 gallons",
+      "3 gallons",
+      "None"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Toilet flush करने के बाद water और waste कहाँ जाते हैं?",
+    "question_en": "After flushing the toilet, where do the water and waste go?",
+    "options_hi": [
+      "Holding tank में",
+      "Sewerage system में",
+      "उपरोक्त दोनों",
+      "None"
+    ],
+    "options_en": [
+      "into a holding tank",
+      "into a sewerage system",
+      "both above",
+      "None"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "सभी toilets में ____ main components होते हैं।",
+    "question_en": "All toilets have ____ main components.",
+    "options_hi": [
+      "Two",
+      "Three",
+      "Four",
+      "All of them"
+    ],
+    "options_en": [
+      "Two",
+      "three",
+      "four",
+      "All of them"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "यदि आप old toilet को newer model से replace करना चाहते हैं, तो wall से toilet floor bolts तक distance measure क्यों करना चाहिए?",
+    "question_en": "If you plan to replace an old toilet with a newer model, why must you measure the distance from the wall to the toilet floor bolts?",
+    "options_hi": [
+      "Toilets different sizes में आते हैं।",
+      "आपको पता होना चाहिए कि कितनी piping खरीदनी है।",
+      "Both",
+      "Neither answer is correct."
+    ],
+    "options_en": [
+      "Toilets come in different sizes.",
+      "You need to know how much piping to buy.",
+      "Both",
+      "Neither answer is correct."
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "subject": "Health",
+    "type": "bilingual",
+    "question_hi": "Disease transmission को prevent करने का single most effective way क्या है?",
+    "question_en": "What is the single most effective way to prevent the transmission of disease?",
+    "options_hi": [
+      "Antibiotics",
+      "केवल water से hand washing",
+      "Soap और water से hand washing",
+      "No way"
+    ],
+    "options_en": [
+      "Antibiotics",
+      "Hand washing with water only",
+      "Hand washing with soap and water",
+      "No way"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "subject": "Food Safety",
+    "type": "bilingual",
+    "question_hi": "Bacteria के बारे में निम्नलिखित में से कौन-सा true है?",
+    "question_en": "Which of the following is true about bacteria?",
+    "options_hi": [
+      "Bacteria warm environments में faster multiply और grow करते हैं।",
+      "Bacteria को survive करने के लिए air चाहिए।",
+      "हर type का bacteria लोगों को food poisoning दे सकता है।",
+      "Food freeze करने से bacteria kill हो जाते हैं।"
+    ],
+    "options_en": [
+      "Bacteria multiplies and grows faster in warm environments.",
+      "Bacteria needs air to survive.",
+      "Every type of bacteria can give people food poisoning.",
+      "By freezing food you can kill bacteria."
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "subject": "Science",
+    "type": "bilingual",
+    "question_hi": "Viruses क्या होते हैं?",
+    "question_en": "Viruses are:",
+    "options_hi": [
+      "Complete saprophytes",
+      "Partial parasites",
+      "Partial saprophytes",
+      "Total parasites"
+    ],
+    "options_en": [
+      "Complete saprophytes",
+      "Partial parasites",
+      "Partial saprophytes",
+      "Total Parasites"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "subject": "Health",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सी disease bacteria से caused होती है?",
+    "question_en": "Which one of the following diseases is caused by bacteria?",
+    "options_hi": [
+      "Tuberculosis",
+      "Smallpox",
+      "Rabies",
+      "Covid-19"
+    ],
+    "options_en": [
+      "Tuberculosis",
+      "Smallpox",
+      "Rabies",
+      "Covid-19"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "subject": "Health",
+    "type": "bilingual",
+    "question_hi": "Human body का normal temperature क्या है?",
+    "question_en": "Normal temperature of human body is:",
+    "options_hi": [
+      "40.5°F",
+      "36.9°F",
+      "98.6°F",
+      "82.4°F"
+    ],
+    "options_en": [
+      "40.5 F",
+      "36.9 F",
+      "98.6 F",
+      "82.4 F"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "subject": "Environment",
+    "type": "bilingual",
+    "question_hi": "Earth के climate को affect करने में decisive role कौन-सी gas निभाती है?",
+    "question_en": "Which one of the following gases plays a decisive role in affecting the climate of earth?",
+    "options_hi": [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon dioxide",
+      "Hydrogen"
+    ],
+    "options_en": [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon dioxide",
+      "Hydrogen"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "subject": "Environment",
+    "type": "bilingual",
+    "question_hi": "India में किस institute ने institute के अंदर generate solid waste के treatment और disposal के लिए full-scale project शुरू किया है?",
+    "question_en": "Which institute in India has embarked on a full-scale project for treating and disposing of solid waste generated within the institute by itself?",
+    "options_hi": [
+      "All India Institute of Medical Science, Delhi",
+      "Indian Institute of Science, Bangalore",
+      "National Institute of Urban Affairs, Delhi",
+      "IIT, Delhi"
+    ],
+    "options_en": [
+      "All India Institute of Medical Science, Delhi",
+      "India Institute of Science, Bangalore",
+      "National Institute of Urban Affairs, Delhi",
+      "IIT, Delhi"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "UNO ने किस year को International Year of Sanitation declare किया था?",
+    "question_en": "Which year has been declared as the International Year of Sanitation by the United Nation Organization (UNO)?",
+    "options_hi": [
+      "2014",
+      "2015",
+      "2008",
+      "2011"
+    ],
+    "options_en": [
+      "2014",
+      "2015",
+      "2008",
+      "2011"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "subject": "Computer Awareness",
+    "type": "bilingual",
+    "question_hi": "Wi-Fi का full form क्या है?",
+    "question_en": "What is the full form of Wi-Fi?",
+    "options_hi": [
+      "Wireless Fidelity",
+      "Wireless Find",
+      "Wireless Function",
+      "Wireless Fibber"
+    ],
+    "options_en": [
+      "Wireless Fidelity",
+      "Wireless Find",
+      "Wireless Function",
+      "Wireless Fibber"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "subject": "Computer Awareness",
+    "type": "bilingual",
+    "question_hi": "Email communications में use होने वाले 'CC' का full form क्या है?",
+    "question_en": "What is the full form of 'CC' used in email communications?",
+    "options_hi": [
+      "Candid Copy",
+      "Common Copy",
+      "Carbon Copy",
+      "Combined Copy"
+    ],
+    "options_en": [
+      "Candid Copy",
+      "Common Copy",
+      "Carbon Copy",
+      "Combined Copy"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "NUSP के objectives क्या हैं?",
+    "question_en": "What are the objectives of NUSP?",
+    "options_hi": [
+      "Sanitation issues address करना और city sanitation plan prepare करना",
+      "Urban inhabitants को safer places पर migrate करना",
+      "Urban people को houses clean करने के लिए brooms provide करना",
+      "National Urban Safety Plan prepare करना"
+    ],
+    "options_en": [
+      "To address issues on sanitation & prepare city sanitation plan",
+      "To migrate urban inhabitants to safer places",
+      "To provide urban people with brooms to clean their houses",
+      "To prepare National Urban Safety Plan"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "subject": "Sanitation",
+    "type": "bilingual",
+    "question_hi": "Black water क्या है?",
+    "question_en": "What is Black water?",
+    "options_hi": [
+      "Toilet से discharged wastewater",
+      "Bathroom से wastewater",
+      "Kitchen sink से wastewater",
+      "उपरोक्त सभी"
+    ],
+    "options_en": [
+      "It is wastewater discharged from toilet",
+      "Wastewater from the bathroom",
+      "Wastewater from the kitchen sink",
+      "All above"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "subject": "Health IT",
+    "type": "bilingual",
+    "question_hi": "Electronic Health Record क्या है?",
+    "question_en": "What is Electronic Health Record?",
+    "options_hi": [
+      "Digital format में distributed personal health record",
+      "यह एक recorder है जो health record करता है",
+      "यह blood pressure record करने वाला instrument है",
+      "यह बिना input के electronically health record करने वाला device है"
+    ],
+    "options_en": [
+      "It is distributed personal health record in digital format",
+      "It is a recorder which records health",
+      "It is an instrument which records blood pressure",
+      "It is a device which records health electronically without input"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+
+let current=0, lang="bi", answers=Array(questions.length).fill(null), marked=Array(questions.length).fill(false), visited=Array(questions.length).fill(false), remaining=totalSeconds, timerInterval=null;
+
+function startTest(){document.getElementById("startScreen").classList.add("hidden");document.getElementById("examScreen").classList.remove("hidden");visited[0]=true;buildSections();buildPalette();renderQuestion();timerInterval=setInterval(tick,1000);}
+function tick(){remaining--;updateTimer();if(remaining<=0)submitTest(true);}
+function updateTimer(){let m=String(Math.floor(remaining/60)).padStart(2,"0"),s=String(remaining%60).padStart(2,"0");document.getElementById("timer").textContent="Time: "+m+":"+s;}
+function setLang(v){lang=v;["btnHi","btnEn","btnBi"].forEach(id=>document.getElementById(id).classList.remove("active"));document.getElementById(v==="hi"?"btnHi":v==="en"?"btnEn":"btnBi").classList.add("active");renderQuestion();}
+function showQuestion(q){if(q.type==="hindi_only")return q.question_hi;if(q.type==="english_only")return q.question_en;if(lang==="hi")return q.question_hi;if(lang==="en")return q.question_en;return "<b>Hindi:</b> "+q.question_hi+"<br><br><b>English:</b> "+q.question_en;}
+function showOption(q,i){if(q.type==="hindi_only")return q.options_hi[i];if(q.type==="english_only")return q.options_en[i];if(lang==="hi")return q.options_hi[i];if(lang==="en")return q.options_en[i];return "<b>Hindi:</b> "+q.options_hi[i]+"<br><span class='muted'><b>English:</b> "+q.options_en[i]+"</span>";}
+function renderQuestion(){let q=questions[current];visited[current]=true;document.getElementById("sectionName").textContent=q.subject;document.getElementById("qNo").textContent="Question "+(current+1)+" / "+questions.length;document.getElementById("questionText").innerHTML=showQuestion(q);document.getElementById("imageBox").innerHTML=q.image?'<img src="'+q.image+'" alt="Question '+q.id+' Image" class="question-image">':"";let box=document.getElementById("options");box.innerHTML="";q.options_en.forEach((_,i)=>{let b=document.createElement("button");b.className="option"+(answers[current]===i?" selected":"");b.innerHTML="<b>("+(i+1)+")</b> <span>"+showOption(q,i)+"</span>";b.onclick=()=>{answers[current]=i;marked[current]=false;renderQuestion();};box.appendChild(b);});updateStats();buildPalette();}
+function nextQ(){if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}
+function prevQ(){if(current>0)current--;visited[current]=true;renderQuestion();}
+function clearResponse(){answers[current]=null;marked[current]=false;renderQuestion();}
+function markReview(){marked[current]=true;if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}
+function statusClass(i){if(answers[i]!==null&&marked[i])return"answered-review";if(marked[i])return"review";if(answers[i]!==null)return"answered";if(visited[i])return"not-answered";return"not-visited";}
+function buildPalette(){let p=document.getElementById("palette");p.innerHTML="";questions.forEach((q,i)=>{let b=document.createElement("button");b.className="pbtn "+statusClass(i)+(i===current?" current":"");b.textContent=i+1;b.onclick=()=>{current=i;visited[current]=true;renderQuestion();};p.appendChild(b);});}
+function buildSections(){let box=document.getElementById("sectionJump"),map=new Map();questions.forEach((q,i)=>{if(!map.has(q.subject))map.set(q.subject,i);});box.innerHTML="";for(const [name,index] of map.entries()){let b=document.createElement("button");b.className="btn";b.textContent=name;b.onclick=()=>{current=index;visited[current]=true;renderQuestion();};box.appendChild(b);}}
+function updateStats(){let a=answers.filter(x=>x!==null).length;document.getElementById("attempted").textContent=a;document.getElementById("notAttempted").textContent=questions.length-a;}
+function submitTest(auto){if(!auto&&!confirm("Are you sure you want to submit the test?"))return;clearInterval(timerInterval);let attempted=0,notAttempted=0,correct=0,wrong=0;questions.forEach((q,i)=>{if(answers[i]===null)notAttempted++;else{attempted++;if(answers[i]===q.correct)correct++;else wrong++;}});let score=(correct*marksPerQuestion)-(wrong*negativeMarking),maxMarks=questions.length*marksPerQuestion,percentage=(score/maxMarks)*100,timeTaken=totalSeconds-remaining,result={date:new Date().toLocaleString(),attempted,notAttempted,correct,wrong,score:Number(score.toFixed(2)),maxMarks,percentage:Number(percentage.toFixed(2)),timeTaken:formatTime(timeTaken)};saveHistory(result);showResult(result);}
+function formatTime(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");}
+function saveHistory(r){let old=JSON.parse(localStorage.getItem(storageKey)||"[]");old.unshift(r);localStorage.setItem(storageKey,JSON.stringify(old.slice(0,10)));}
+function loadHistory(){let old=JSON.parse(localStorage.getItem(storageKey)||"[]");if(!old.length)return;let rows=old.map((h,i)=>'<tr><td>'+(i+1)+'</td><td>'+h.date+'</td><td>'+h.score+'</td><td>'+h.percentage+'%</td><td>'+h.timeTaken+'</td></tr>').join("");document.getElementById("historyBox").innerHTML='<h3>Attempt History - This Test Only</h3><table><tr><th>#</th><th>Date</th><th>Marks</th><th>%</th><th>Time</th></tr>'+rows+'</table>';}
+function showResult(r){document.getElementById("examScreen").classList.add("hidden");document.getElementById("resultScreen").classList.remove("hidden");document.getElementById("timer").textContent="Submitted";document.getElementById("resultSummary").innerHTML='<div class="result-grid"><div class="result-box"><span>Total Questions</span><strong>'+questions.length+'</strong></div><div class="result-box"><span>Attempted</span><strong>'+r.attempted+'</strong></div><div class="result-box"><span>Not Attempted</span><strong>'+r.notAttempted+'</strong></div><div class="result-box"><span>Correct</span><strong>'+r.correct+'</strong></div><div class="result-box"><span>Wrong</span><strong>'+r.wrong+'</strong></div><div class="result-box"><span>Marks Obtained</span><strong>'+r.score+'</strong></div><div class="result-box"><span>Maximum Marks</span><strong>'+r.maxMarks+'</strong></div><div class="result-box"><span>Percentage</span><strong>'+r.percentage+'%</strong></div><div class="result-box"><span>Time Taken</span><strong>'+r.timeTaken+'</strong></div><div class="result-box"><span>Marking</span><strong>+1 / -0.25</strong></div></div>';document.getElementById("answerKey").innerHTML=questions.map((q,i)=>{let u=answers[i],ok=u===q.correct;let correctText=q.options_en[q.correct]+" / "+q.options_hi[q.correct];let userText=u===null?"Not Attempted":q.options_en[u]+" / "+q.options_hi[u];return '<div class="answer-row"><b>Q'+(i+1)+'.</b> '+q.question_en+'<br><span class="muted">'+q.question_hi+'</span><div>Correct Answer: <span class="correct">'+correctText+'</span></div><div>Your Answer: <span class="'+(u===null?'muted':ok?'correct':'wrong')+'">'+userText+'</span></div><div class="muted">Explanation: Explanation not provided.</div></div>';}).join("");}
+loadHistory();updateTimer();
+</script>
+</body>
+</html>
