@@ -1,0 +1,5198 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gujarat Sanitary Inspector Hindi English Bilingual Mock Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,'Noto Sans Devanagari','Nirmala UI',sans-serif;background:#eef3f9;color:#111827}
+.header{background:#073763;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:50}
+.header h1{font-size:17px;margin:0;line-height:1.35}
+.timer{background:#fff;color:#b91c1c;border-radius:8px;padding:8px 12px;font-weight:800;white-space:nowrap}
+.container{max-width:1280px;margin:16px auto;padding:0 12px}
+.card{background:#fff;border-radius:12px;border:1px solid #d8e2ef;box-shadow:0 2px 8px rgba(15,23,42,.06);padding:18px}
+.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.info{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px}
+.btn{padding:9px 13px;border-radius:8px;border:1px solid #cbd5e1;background:#f8fafc;color:#111827;font-weight:700;cursor:pointer;margin:3px}
+.btn.primary,.btn.active{background:#1d4ed8;color:#fff}
+.btn.success{background:#15803d;color:#fff}
+.btn.warn{background:#fff7ed;color:#9a3412}
+.btn.danger{background:#dc2626;color:#fff}
+.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 305px;gap:16px}
+.langbar,.sectionJump{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.badge{background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;border-radius:999px;padding:5px 10px;font-weight:700;display:inline-block;margin:3px}
+.qtext{font-size:18px;line-height:1.75;font-weight:650;margin:12px 0 14px;padding:12px;background:#f8fafc;border-left:4px solid #1d4ed8;border-radius:8px;overflow-x:auto}
+.option{display:flex;gap:10px;width:100%;border:1px solid #d1d5db;border-radius:10px;margin:10px 0;padding:12px;cursor:pointer;line-height:1.55;background:#fff;text-align:left;font-size:16px}
+.option:hover{background:#eff6ff}
+.option.selected{border-color:#2563eb;background:#eff6ff;font-weight:700}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:12px;border-top:1px solid #d8e2ef}
+.side{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 90px);display:flex;flex-direction:column}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.stat{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:10px;text-align:center}
+.stat b{display:block;font-size:20px}
+.palette-scroll{overflow-y:auto;border:1px solid #d8e2ef;border-radius:10px;padding:10px;background:#f8fafc;max-height:390px}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.pbtn{height:38px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;font-weight:800;cursor:pointer}
+.pbtn.current{outline:3px solid #2563eb}
+.pbtn.not-visited{background:#fff}
+.pbtn.not-answered{background:#fee2e2;border-color:#ef4444}
+.pbtn.answered{background:#dcfce7;border-color:#16a34a}
+.pbtn.review{background:#fef3c7;border-color:#f59e0b}
+.pbtn.answered-review{background:#ddd6fe;border-color:#7c3aed}
+.legend{display:grid;gap:5px;font-size:13px;margin:8px 0}
+.dot{width:16px;height:16px;border-radius:4px;border:1px solid #94a3b8;display:inline-block;vertical-align:middle;margin-right:6px}
+.result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.result-box{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px;text-align:center}
+.result-box strong{display:block;font-size:22px;color:#073763}
+.answer-row{border:1px solid #dbe3ef;border-radius:10px;padding:12px;margin:10px 0;background:#fff;line-height:1.5}
+.correct{color:#15803d;font-weight:800}
+.wrong{color:#b91c1c;font-weight:800}
+.muted,.small{font-size:13px;color:#64748b}
+.note{background:#ecfdf5;border:1px solid #86efac;color:#065f46;padding:10px;border-radius:10px;margin:10px 0}
+.hidden{display:none!important}
+.question-image{max-width:100%;height:auto;display:block;margin:12px 0;border:1px solid #ddd;border-radius:6px}
+.math{white-space:nowrap;font-family:"Times New Roman",serif}
+.frac{display:inline-block;vertical-align:middle;text-align:center;line-height:1.2;margin:0 4px}
+.frac .top{display:block;padding:0 4px 2px;border-bottom:1.5px solid currentColor}
+.frac .bottom{display:block;padding:2px 4px 0}
+sup,sub{line-height:0}
+table{border-collapse:collapse;width:100%;background:#fff;margin:8px 0}
+th,td{border:1px solid #cbd5e1;padding:8px;text-align:left}
+th{background:#e2e8f0}
+@media(max-width:980px){.exam-layout{grid-template-columns:1fr}.side{position:static;max-height:none}.palette-scroll{max-height:210px}.palette{grid-template-columns:repeat(10,1fr)}}
+@media(max-width:520px){.header{flex-direction:column;align-items:flex-start}.start-grid,.result-grid{grid-template-columns:1fr}.palette{grid-template-columns:repeat(5,1fr)}.btn{width:100%;margin:4px 0}.nav{display:block}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Gujarat Sanitary Inspector Hindi English Bilingual Mock Test<br><span class="small" style="color:#dbeafe">210 Questions | +1 correct, -0.25 wrong</span></h1>
+  <div class="timer" id="timer">Time: 210:00</div>
+</div>
+
+<div class="container">
+<section id="startScreen" class="card">
+  <h2>Online Mock Test</h2>
+  <div class="note"><b>Ready:</b> यह final Hindi + English bilingual version है. Hindi button पर Hindi, English button पर English, और Bilingual button पर दोनों languages दिखेंगी.</div>
+  <div class="start-grid">
+    <div class="info"><b>Test Name:</b><br>Gujarat Sanitary Inspector Hindi English Bilingual Mock Test</div>
+    <div class="info"><b>Total Questions:</b><br>210</div>
+    <div class="info"><b>Total Marks:</b><br>210</div>
+    <div class="info"><b>Time Duration:</b><br>210 Minutes</div>
+    <div class="info"><b>Marking Scheme:</b><br>+1 Correct, -0.25 Wrong</div>
+    <div class="info"><b>Image Folder:</b><br>images/gujarat-sanitary-inspector-hindi-english-final/<br>No images required</div>
+  </div>
+  <button class="btn success" onclick="startTest()">Start Test</button>
+  <div id="historyBox"></div>
+</section>
+
+<section id="examScreen" class="hidden">
+  <div class="exam-layout">
+    <div class="card">
+      <div class="langbar">
+        <b>Language view:</b>
+        <button class="btn active" id="btnHi" onclick="setLang('hi')">Hindi</button>
+        <button class="btn" id="btnEn" onclick="setLang('en')">English</button>
+        <button class="btn" id="btnBi" onclick="setLang('bi')">Bilingual</button>
+      </div>
+      <div class="sectionJump" id="sectionJump"></div>
+      <div><span class="badge" id="sectionName"></span><span class="badge" id="qNo"></span></div>
+      <div class="qtext" id="questionText"></div>
+      <div id="imageBox"></div>
+      <div id="options"></div>
+      <div class="nav">
+        <button class="btn" onclick="prevQ()">Previous</button>
+        <button class="btn primary" onclick="nextQ()">Save & Next</button>
+        <button class="btn" onclick="clearResponse()">Clear Response</button>
+        <button class="btn warn" onclick="markReview()">Mark for Review</button>
+        <button class="btn danger" onclick="submitTest(false)">Submit Test</button>
+      </div>
+    </div>
+
+    <aside class="card side">
+      <div class="stats"><div class="stat"><b id="attempted">0</b>Attempted</div><div class="stat"><b id="notAttempted">210</b>Not Attempted</div></div>
+      <h3>Question Palette</h3>
+      <div class="legend">
+        <div><span class="dot not-visited"></span>Not Visited</div>
+        <div><span class="dot not-answered"></span>Not Answered</div>
+        <div><span class="dot answered"></span>Answered</div>
+        <div><span class="dot review"></span>Marked for Review</div>
+        <div><span class="dot answered-review"></span>Answered & Marked</div>
+      </div>
+      <div class="palette-scroll"><div class="palette" id="palette"></div></div>
+    </aside>
+  </div>
+</section>
+
+<section id="resultScreen" class="card hidden">
+  <h2>Result</h2>
+  <div id="resultSummary"></div>
+  <h3>Answer Key</h3>
+  <div id="answerKey"></div>
+</section>
+</div>
+
+<script>
+const TEST_ID = "gujarat_sanitary_inspector_hindi_english_final";
+const storageKey = "mock_attempt_history_" + TEST_ID;
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const totalSeconds = 210 * 60;
+const questions = [
+  {
+    "id": 1,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दो संख्या-समूह दिए गए हैं। प्रत्येक समूह में पहली संख्या पर कुछ गणितीय क्रियाएँ करके दूसरी संख्या प्राप्त की गई है; फिर दूसरी संख्या पर वही प्रकार की क्रियाएँ करके तीसरी संख्या प्राप्त की गई है, और इसी तरह क्रम आगे बढ़ता है। कौन-सा विकल्प नीचे दिए गए समूहों में अपनाई गई समान क्रियाओं का अनुसरण करता है? नोट: संख्याओं को अंकों में तोड़े बिना पूरी संख्या पर क्रियाएँ करनी हैं। 49 - 46 - 43 - 40; 56 - 53 - 50 - 47",
+    "question_en": "Two number sets are given below. In each set, the second number is obtained by applying certain mathematical operations to the first number; the third number is obtained similarly from the second, and so on. Which option follows the same operations as the given sets? Note: Operations must be performed on whole numbers without splitting them into digits. 49 - 46 - 43 - 40; 56 - 53 - 50 - 47",
+    "options_hi": [
+      "64 - 60 - 57 - 52",
+      "70 - 67 - 62 - 60",
+      "54 - 51 - 46 - 45",
+      "61 - 58 - 55 - 52"
+    ],
+    "options_en": [
+      "64 - 60 - 57 - 52",
+      "70 - 67 - 62 - 60",
+      "54 - 51 - 46 - 45",
+      "61 - 58 - 55 - 52"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक प्रश्न के बाद I और II क्रमांकित दो कथन दिए गए हैं। आपको तय करना है कि कथनों में दी गई जानकारी प्रश्न का उत्तर देने के लिए पर्याप्त है या नहीं। प्रश्न: A, B, C, D और E में प्रत्येक ने परीक्षा में अलग-अलग अंक प्राप्त किए। दूसरे सबसे अधिक अंक किसने प्राप्त किए? कथन I: A ने C से अधिक अंक प्राप्त किए और C ने D से अधिक अंक प्राप्त किए। B ने C से कम अंक प्राप्त किए। कथन II: E ने A से अधिक अंक प्राप्त किए। B ने D से अधिक अंक प्राप्त किए।",
+    "question_en": "A question is followed by two statements numbered I and II. Decide whether the information given in the statements is sufficient to answer the question. Question: A, B, C, D and E each scored different marks in an exam. Who scored the second highest marks? Statement I: A scored more than C, and C scored more than D. B scored less than C. Statement II: E scored more than A. B scored more than D.",
+    "options_hi": [
+      "केवल कथन I पर्याप्त है, जबकि कथन II पर्याप्त नहीं है।",
+      "केवल कथन II पर्याप्त है, जबकि कथन I पर्याप्त नहीं है।",
+      "कथन I और II दोनों मिलकर पर्याप्त हैं, लेकिन कोई भी अकेला पर्याप्त नहीं है।",
+      "कथन I और II दोनों मिलकर भी पर्याप्त नहीं हैं।"
+    ],
+    "options_en": [
+      "Statement I alone is sufficient, while statement II is not sufficient.",
+      "Statement II alone is sufficient, while statement I is not sufficient.",
+      "Statements I and II together are sufficient, but neither statement alone is sufficient.",
+      "Statements I and II together are not sufficient."
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि A का अर्थ ÷, B का अर्थ ×, C का अर्थ + और D का अर्थ − है, तो निम्न समीकरण में प्रश्नचिह्न (?) के स्थान पर क्या आएगा? 17 C 10 A 2 C 4 B 5 D 9 = ?",
+    "question_en": "If A means ÷, B means ×, C means + and D means −, what will come in place of the question mark (?) in the following equation? 17 C 10 A 2 C 4 B 5 D 9 = ?",
+    "options_hi": [
+      "49",
+      "33",
+      "54",
+      "21"
+    ],
+    "options_en": [
+      "49",
+      "33",
+      "54",
+      "21"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "F, G, H, I और J की ऊँचाई अलग-अलग है। H, F से छोटा है लेकिन G से लंबा है। केवल एक व्यक्ति I से लंबा है। F सबसे लंबा नहीं है। इनमें दूसरा सबसे छोटा व्यक्ति कौन है?",
+    "question_en": "F, G, H, I and J have different heights. H is shorter than F but taller than G. Only one person is taller than I. F is not the tallest. Who is the second shortest among them?",
+    "options_hi": [
+      "G",
+      "I",
+      "H",
+      "F"
+    ],
+    "options_en": [
+      "G",
+      "I",
+      "H",
+      "F"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "उस समूह का चयन कीजिए जिसमें संख्याएँ उसी प्रकार संबंधित हैं जैसे दिए गए समूहों की संख्याएँ संबंधित हैं। नोट: संख्याओं को अंकों में विभाजित किए बिना पूरी संख्या पर क्रियाएँ करनी हैं। (11, 1, 12), (3, 6, 9)",
+    "question_en": "Select the set in which the numbers are related in the same way as the numbers in the given sets. Note: Operations must be performed on whole numbers without splitting them into digits. (11, 1, 12), (3, 6, 9)",
+    "options_hi": [
+      "(7, 1, 9)",
+      "(1, 9, 10)",
+      "(2, 2, 3)",
+      "(6, 4, 11)"
+    ],
+    "options_en": [
+      "(7, 1, 9)",
+      "(1, 9, 10)",
+      "(2, 2, 3)",
+      "(6, 4, 11)"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक निश्चित तर्क के अनुसार 10, 31 से संबंधित है। उसी तर्क के अनुसार 8, 25 से संबंधित है। उसी तर्क के आधार पर 12 किससे संबंधित होगा?",
+    "question_en": "According to a certain logic, 10 is related to 31. Following the same logic, 8 is related to 25. Following the same logic, 12 is related to which option?",
+    "options_hi": [
+      "35",
+      "37",
+      "39",
+      "36"
+    ],
+    "options_en": [
+      "35",
+      "37",
+      "39",
+      "36"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि A का अर्थ ÷, B का अर्थ ×, C का अर्थ + और D का अर्थ − है, तो निम्न समीकरण में प्रश्नचिह्न (?) के स्थान पर क्या आएगा? 6 A 2 C 12 C 9 B 5 = ?",
+    "question_en": "If A means ÷, B means ×, C means + and D means −, what will come in place of the question mark (?) in the following equation? 6 A 2 C 12 C 9 B 5 = ?",
+    "options_hi": [
+      "69",
+      "51",
+      "60",
+      "75"
+    ],
+    "options_en": [
+      "69",
+      "51",
+      "60",
+      "75"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "R, S, T, U और V की आयु अलग-अलग है। S, T से बड़ा है लेकिन R से छोटा है। केवल एक व्यक्ति U से छोटा है। R सबसे बड़ा नहीं है। इनमें आयु में दूसरा सबसे बड़ा कौन है?",
+    "question_en": "R, S, T, U and V have different ages. S is older than T but younger than R. Only one person is younger than U. R is not the oldest. Who is the second oldest among them?",
+    "options_hi": [
+      "R",
+      "U",
+      "S",
+      "T"
+    ],
+    "options_en": [
+      "R",
+      "U",
+      "S",
+      "T"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दी गई संख्या और प्रतीक श्रेणी को देखकर प्रश्न का उत्तर दीजिए। गणना केवल बाएँ से दाएँ करनी है। सभी संख्याएँ एक-अंकीय हैं। (बाएँ) £ 5 Ω & 3 * % 4 9 2 + 6 # 1 @ 8 $ 7 (दाएँ) ऐसी कितनी संख्याएँ हैं जिनके ठीक पहले एक अन्य संख्या और ठीक बाद एक प्रतीक है?",
+    "question_en": "Refer to the following number and symbol series and answer the question. Count only from left to right. All numbers are single-digit numbers. (Left) £ 5 Ω & 3 * % 4 9 2 + 6 # 1 @ 8 $ 7 (Right) How many numbers are there, each of which is immediately preceded by another number and immediately followed by a symbol?",
+    "options_hi": [
+      "चार",
+      "दो",
+      "तीन",
+      "एक"
+    ],
+    "options_en": [
+      "Four",
+      "Two",
+      "Three",
+      "One"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दी गई संख्या-प्रतीक श्रेणी को देखकर प्रश्न का उत्तर दीजिए। गणना केवल बाएँ से दाएँ करनी है। सभी संख्याएँ एक-अंकीय हैं। (बाएँ) @ 8 $ 7 & 3 * £ 5 Ω 9 2 + 6 # 1 % 4 (दाएँ) ऐसी कितनी संख्याएँ हैं जिनके ठीक पहले एक प्रतीक और ठीक बाद दूसरी संख्या है?",
+    "question_en": "Refer to the following number-symbol series and answer the question. Count only from left to right. All numbers are single-digit numbers. (Left) @ 8 $ 7 & 3 * £ 5 Ω 9 2 + 6 # 1 % 4 (Right) How many numbers are there, each of which is immediately preceded by a symbol and immediately followed by another number?",
+    "options_hi": [
+      "तीन",
+      "दो",
+      "एक",
+      "चार"
+    ],
+    "options_en": [
+      "Three",
+      "Two",
+      "One",
+      "Four"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "A, C का पिता है। C, D का भाई है। G, H का पिता है। H, D का पुत्र है। A का G से क्या संबंध है?",
+    "question_en": "A is the father of C. C is the brother of D. G is the father of H. H is the son of D. How is A related to G?",
+    "options_hi": [
+      "पत्नी का भाई",
+      "पत्नी का पिता",
+      "भाई",
+      "पिता"
+    ],
+    "options_en": [
+      "Brother-in-law",
+      "Father-in-law",
+      "Brother",
+      "Father"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "दी गई श्रृंखला में प्रश्नचिह्न (?) के स्थान पर क्या आएगा? 126 118 107 93 76 ?",
+    "question_en": "What should come in place of the question mark (?) in the given series? 126 118 107 93 76 ?",
+    "options_hi": [
+      "61",
+      "53",
+      "56",
+      "55"
+    ],
+    "options_en": [
+      "61",
+      "53",
+      "56",
+      "55"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक कोड भाषा में A + B का अर्थ है 'A, B की माता है', A − B का अर्थ है 'A, B का भाई है', A × B का अर्थ है 'A, B की पत्नी है', और A ÷ B का अर्थ है 'A, B का पिता है'। यदि R − Y + H ÷ S × L है, तो R का L से क्या संबंध है?",
+    "question_en": "In a code language, A + B means 'A is the mother of B', A − B means 'A is the brother of B', A × B means 'A is the wife of B', and A ÷ B means 'A is the father of B'. If R − Y + H ÷ S × L, how is R related to L?",
+    "options_hi": [
+      "पत्नी का पिता",
+      "पत्नी के पिता की माता का भाई",
+      "पत्नी का भाई",
+      "पत्नी के पिता की माता का पिता"
+    ],
+    "options_en": [
+      "Father-in-law",
+      "Brother of the mother of wife’s father",
+      "Brother-in-law",
+      "Father of the mother of wife’s father"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक कोड भाषा में A + B का अर्थ है 'A, B की माता है', A − B का अर्थ है 'A, B का भाई है', A × B का अर्थ है 'A, B की पत्नी है', और A ÷ B का अर्थ है 'A, B का पिता है'। यदि R − Y + H × S ÷ L है, तो R का L से क्या संबंध है?",
+    "question_en": "In a code language, A + B means 'A is the mother of B', A − B means 'A is the brother of B', A × B means 'A is the wife of B', and A ÷ B means 'A is the father of B'. If R − Y + H × S ÷ L, how is R related to L?",
+    "options_hi": [
+      "भाई",
+      "माता की माता का भाई",
+      "पिता",
+      "माता की माता का पिता"
+    ],
+    "options_en": [
+      "Brother",
+      "Brother of maternal grandmother",
+      "Father",
+      "Father of maternal grandmother"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "एक प्रश्न के बाद I और II क्रमांकित दो कथन दिए गए हैं। प्रश्न: M, N, O, P और Q की आयु अलग-अलग है। सबसे बड़ा कौन है? कथन I: O, N और P से बड़ा है। M, N से बड़ा लेकिन Q से छोटा है। कथन II: Q, M और O से बड़ा है। साथ ही M, N और P से बड़ा है।",
+    "question_en": "A question is followed by two statements numbered I and II. Question: M, N, O, P and Q are of different ages. Who is the oldest? Statement I: O is older than N and P. M is older than N but younger than Q. Statement II: Q is older than M and O. Also, M is older than N and P.",
+    "options_hi": [
+      "केवल कथन I पर्याप्त है, जबकि कथन II पर्याप्त नहीं है।",
+      "दोनों कथन मिलकर भी पर्याप्त नहीं हैं।",
+      "केवल कथन II पर्याप्त है, जबकि कथन I पर्याप्त नहीं है।",
+      "कथन I और II दोनों मिलकर पर्याप्त हैं, लेकिन कोई भी अकेला पर्याप्त नहीं है।"
+    ],
+    "options_en": [
+      "Statement I alone is sufficient, while statement II is not sufficient.",
+      "Both statements together are not sufficient.",
+      "Statement II alone is sufficient, while statement I is not sufficient.",
+      "Statements I and II together are sufficient, but neither statement alone is sufficient."
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "L, M, N, O और P की ऊँचाई अलग-अलग है। M, N से लंबा लेकिन P से छोटा है। केवल एक व्यक्ति L से लंबा है। P सबसे लंबा नहीं है। इनमें दूसरा सबसे छोटा कौन है?",
+    "question_en": "L, M, N, O and P have different heights. M is taller than N but shorter than P. Only one person is taller than L. P is not the tallest. Who is the second shortest among them?",
+    "options_hi": [
+      "O",
+      "M",
+      "N",
+      "L"
+    ],
+    "options_en": [
+      "O",
+      "M",
+      "N",
+      "L"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "दी गई श्रृंखला में प्रश्नचिह्न (?) के स्थान पर क्या आएगा? 102 106 112 120 130 ?",
+    "question_en": "What should come in place of the question mark (?) in the given series? 102 106 112 120 130 ?",
+    "options_hi": [
+      "142",
+      "138",
+      "144",
+      "140"
+    ],
+    "options_en": [
+      "142",
+      "138",
+      "144",
+      "140"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि A का अर्थ ÷, B का अर्थ ×, C का अर्थ + और D का अर्थ − है, तो निम्न समीकरण में प्रश्नचिह्न (?) के स्थान पर क्या आएगा? 8 B 3 D 21 A 7 C 10 B 2 = ?",
+    "question_en": "If A means ÷, B means ×, C means + and D means −, what will come in place of the question mark (?) in the following equation? 8 B 3 D 21 A 7 C 10 B 2 = ?",
+    "options_hi": [
+      "41",
+      "36",
+      "50",
+      "63"
+    ],
+    "options_en": [
+      "41",
+      "36",
+      "50",
+      "63"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "दी गई श्रृंखला में प्रश्नचिह्न (?) के स्थान पर क्या आएगा? 84 79 87 82 90 85 93 ?",
+    "question_en": "What should come in place of the question mark (?) in the given series? 84 79 87 82 90 85 93 ?",
+    "options_hi": [
+      "88",
+      "81",
+      "101",
+      "98"
+    ],
+    "options_en": [
+      "88",
+      "81",
+      "101",
+      "98"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "A, B, C, D और E की ऊँचाई अलग-अलग है। A ठीक दो व्यक्तियों से लंबा है। E, B से लंबा लेकिन D से छोटा है। C, B से छोटा है। सबसे लंबा कौन है?",
+    "question_en": "A, B, C, D and E have different heights. A is taller than exactly two people. E is taller than B but shorter than D. C is shorter than B. Who is the tallest?",
+    "options_hi": [
+      "B",
+      "A",
+      "C",
+      "D"
+    ],
+    "options_en": [
+      "B",
+      "A",
+      "C",
+      "D"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि संख्या 3147568 के प्रत्येक विषम अंक में 1 जोड़ा जाए और प्रत्येक सम अंक में से 2 घटाया जाए, तो बनी नई संख्या में कितने अंक एक से अधिक बार दिखाई देंगे?",
+    "question_en": "If 1 is added to each odd digit and 2 is subtracted from each even digit of the number 3147568, how many digits will appear more than once in the new number formed?",
+    "options_hi": [
+      "दो",
+      "चार",
+      "एक",
+      "तीन"
+    ],
+    "options_en": [
+      "Two",
+      "Four",
+      "One",
+      "Three"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "नीचे दो संख्या-समूह दिए गए हैं। प्रत्येक समूह में पहली संख्या पर कुछ गणितीय क्रियाएँ करके दूसरी संख्या प्राप्त होती है; फिर वही क्रम आगे चलता है। कौन-सा विकल्प समान क्रियाओं का अनुसरण करता है? नोट: संख्याओं को अंकों में तोड़े बिना पूरी संख्या पर क्रियाएँ करनी हैं। 17 - 22 - 27 - 32; 11 - 16 - 21 - 26",
+    "question_en": "Two number sets are given below. In each set, the second number is obtained by applying certain mathematical operations to the first number, and the same pattern continues. Which option follows the same operations? Note: Operations must be performed on whole numbers without splitting them into digits. 17 - 22 - 27 - 32; 11 - 16 - 21 - 26",
+    "options_hi": [
+      "19 - 21 - 24 - 27",
+      "13 - 18 - 23 - 28",
+      "10 - 15 - 18 - 21",
+      "21 - 26 - 36 - 41"
+    ],
+    "options_en": [
+      "19 - 21 - 24 - 27",
+      "13 - 18 - 23 - 28",
+      "10 - 15 - 18 - 21",
+      "21 - 26 - 36 - 41"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि संख्या 4731856 के अंकों को बाएँ से दाएँ आरोही क्रम में व्यवस्थित किया जाए, तो मूल संख्या की तुलना में नई संख्या में कितने अंकों की स्थिति अपरिवर्तित रहेगी?",
+    "question_en": "If the digits of the number 4731856 are arranged in ascending order from left to right, how many digits will remain in the same position as in the original number?",
+    "options_hi": [
+      "शून्य",
+      "तीन",
+      "एक",
+      "दो"
+    ],
+    "options_en": [
+      "Zero",
+      "Three",
+      "One",
+      "Two"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "दी गई श्रृंखला में प्रश्नचिह्न (?) के स्थान पर क्या आएगा? 173 182 201 210 229 238 ?",
+    "question_en": "What should come in place of the question mark (?) in the given series? 173 182 201 210 229 238 ?",
+    "options_hi": [
+      "251",
+      "257",
+      "247",
+      "260"
+    ],
+    "options_en": [
+      "251",
+      "257",
+      "247",
+      "260"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "दी गई श्रृंखला में प्रश्नचिह्न (?) के स्थान पर क्या आएगा? 119 132 139 152 159 172 ?",
+    "question_en": "What should come in place of the question mark (?) in the given series? 119 132 139 152 159 172 ?",
+    "options_hi": [
+      "182",
+      "192",
+      "189",
+      "179"
+    ],
+    "options_en": [
+      "182",
+      "192",
+      "189",
+      "179"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "A, B, C, D और E का वजन अलग-अलग है। B, D से भारी लेकिन C से हल्का है। केवल एक व्यक्ति A से भारी है। C सबसे भारी नहीं है। इनमें दूसरा सबसे हल्का कौन है?",
+    "question_en": "A, B, C, D and E have different weights. B is heavier than D but lighter than C. Only one person is heavier than A. C is not the heaviest. Who is the second lightest among them?",
+    "options_hi": [
+      "C",
+      "D",
+      "A",
+      "B"
+    ],
+    "options_en": [
+      "C",
+      "D",
+      "A",
+      "B"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "A, C का भाई है। C, D का पिता है। G, H का पिता है। H, D का पुत्र है। A का H से क्या संबंध है?",
+    "question_en": "A is the brother of C. C is the father of D. G is the father of H. H is the son of D. How is A related to H?",
+    "options_hi": [
+      "माता के पिता के पिता",
+      "माता का भाई",
+      "माता का पिता",
+      "माता के पिता का भाई"
+    ],
+    "options_en": [
+      "Father of maternal grandfather",
+      "Maternal uncle",
+      "Maternal grandfather",
+      "Brother of maternal grandfather"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "यदि संख्या 5671834 के अंकों को बाएँ से दाएँ आरोही क्रम में व्यवस्थित किया जाए, तो मूल संख्या की तुलना में कितने अंकों की स्थिति अपरिवर्तित रहेगी?",
+    "question_en": "If the digits of the number 5671834 are arranged in ascending order from left to right, how many digit positions will remain unchanged compared to the original number?",
+    "options_hi": [
+      "चार",
+      "दो",
+      "तीन",
+      "कोई नहीं"
+    ],
+    "options_en": [
+      "Four",
+      "Two",
+      "Three",
+      "None"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "निम्न संख्या श्रेणी को देखकर प्रश्न का उत्तर दीजिए। सभी संख्याएँ एक-अंकीय हैं। गणना केवल बाएँ से दाएँ करनी है। (बाएँ) 3 2 4 5 4 1 9 8 5 6 9 7 8 4 3 5 6 2 4 2 7 3 7 5 7 1 (दाएँ) ऐसी कितनी सम संख्याएँ हैं जिनके ठीक पहले एक सम संख्या और ठीक बाद एक विषम संख्या है?",
+    "question_en": "Refer to the following number series and answer the question. All numbers are single-digit numbers. Count only from left to right. (Left) 3 2 4 5 4 1 9 8 5 6 9 7 8 4 3 5 6 2 4 2 7 3 7 5 7 1 (Right) How many even numbers are there, each of which is immediately preceded by an even number and immediately followed by an odd number?",
+    "options_hi": [
+      "चार",
+      "दो",
+      "एक",
+      "तीन"
+    ],
+    "options_en": [
+      "Four",
+      "Two",
+      "One",
+      "Three"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "subject": "Mental Ability and Reasoning",
+    "type": "bilingual",
+    "question_hi": "F, G, H, I और J की आयु अलग-अलग है। केवल तीन व्यक्ति H से बड़े हैं। I, J से बड़ा लेकिन G से छोटा है। J सबसे छोटा नहीं है। आयु में सबसे बड़ा कौन है?",
+    "question_en": "F, G, H, I and J have different ages. Only three people are older than H. I is older than J but younger than G. J is not the youngest. Who is the oldest?",
+    "options_hi": [
+      "F",
+      "G",
+      "H",
+      "I"
+    ],
+    "options_en": [
+      "F",
+      "G",
+      "H",
+      "I"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "आनंद अपनी आय का 30% भोजन पर, 5% बच्चों की शिक्षा पर और 25% किराए पर खर्च करता है। शेष राशि का 20% कपड़ों पर खर्च करता है। इन सभी खर्चों के बाद उसके पास ₹15,000 बचते हैं। उसकी मासिक आय ज्ञात कीजिए।",
+    "question_en": "Anand spends 30% of his income on food, 5% on his children’s education and 25% on rent. He spends 20% of the remaining amount on clothes. After all these expenses, he has ₹15,000 left. Find his monthly income.",
+    "options_hi": [
+      "₹46,875",
+      "₹46,785",
+      "₹46,575",
+      "₹46,835"
+    ],
+    "options_en": [
+      "₹46,875",
+      "₹46,785",
+      "₹46,575",
+      "₹46,835"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक पुस्तक ₹360 में 20% लाभ पर बेची जाती है। उसकी लागत कीमत ज्ञात कीजिए।",
+    "question_en": "A book is sold for ₹360 at a profit of 20%. Find its cost price.",
+    "options_hi": [
+      "₹250",
+      "₹330",
+      "₹300",
+      "₹280"
+    ],
+    "options_en": [
+      "₹250",
+      "₹330",
+      "₹300",
+      "₹280"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "9, 12 और 15 का ल.सा.अ. ________ है।",
+    "question_en": "The LCM of 9, 12 and 15 is ________.",
+    "options_hi": [
+      "180",
+      "90",
+      "240",
+      "360"
+    ],
+    "options_en": [
+      "180",
+      "90",
+      "240",
+      "360"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "A और B एक व्यवसाय में क्रमशः ₹6,000 और ₹4,000 निवेश करते हैं। वे ₹5,000 के लाभ को अपने निवेश के अनुपात में बाँटते हैं। A को कितना लाभ मिलेगा?",
+    "question_en": "A and B invest ₹6,000 and ₹4,000 respectively in a business. They divide a profit of ₹5,000 in the ratio of their investments. How much profit does A get?",
+    "options_hi": [
+      "₹5,500",
+      "₹4,500",
+      "₹4,000",
+      "₹3,000"
+    ],
+    "options_en": [
+      "₹5,500",
+      "₹4,500",
+      "₹4,000",
+      "₹3,000"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "हर्षल और शशांत भाई हैं। उनकी आयु का योग 24 वर्ष है। हर्षल, शशांत से 4 वर्ष बड़ा है। हर्षल की वर्तमान आयु कितनी है?",
+    "question_en": "Harshal and Shashant are brothers. The sum of their ages is 24 years. Harshal is 4 years older than Shashant. What is Harshal’s present age?",
+    "options_hi": [
+      "18 वर्ष",
+      "14 वर्ष",
+      "12 वर्ष",
+      "16 वर्ष"
+    ],
+    "options_en": [
+      "18 years",
+      "14 years",
+      "12 years",
+      "16 years"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "यदि 6 आदमी 14 दिनों में एक दीवार रंग सकते हैं, तो 12 आदमी उसी दर से वही दीवार कितने दिनों में रंगेंगे?",
+    "question_en": "If 6 men can paint a wall in 14 days, how many days will 12 men take to paint the same wall at the same rate?",
+    "options_hi": [
+      "7 दिन",
+      "4 दिन",
+      "8 दिन",
+      "6 दिन"
+    ],
+    "options_en": [
+      "7 days",
+      "4 days",
+      "8 days",
+      "6 days"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक उत्पाद की अंकित कीमत ₹1,500 है। 20% और 20% की दो क्रमिक छूट दी जाती हैं। उसकी विक्रय कीमत क्या होगी?",
+    "question_en": "The marked price of a product is ₹1,500. Two successive discounts of 20% and 20% are given. What is its selling price?",
+    "options_hi": [
+      "₹960",
+      "₹940",
+      "₹956",
+      "₹966"
+    ],
+    "options_en": [
+      "₹960",
+      "₹940",
+      "₹956",
+      "₹966"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "24, 7, 12, 20, 13, 10k, (10k+7), (4k−22), 21 और 8 का औसत 21 है। k का मान ज्ञात कीजिए।",
+    "question_en": "The average of 24, 7, 12, 20, 13, 10k, (10k+7), (4k−22), 21 and 8 is 21. Find the value of k.",
+    "options_hi": [
+      "2",
+      "7",
+      "8",
+      "5"
+    ],
+    "options_en": [
+      "2",
+      "7",
+      "8",
+      "5"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक मशीन 12 घंटे में 960 बोल्ट बनाती है। यदि उत्पादन दर समान रहे, तो वह 15 घंटे में कितने बोल्ट बनाएगी?",
+    "question_en": "A machine produces 960 bolts in 12 hours. If the production rate remains the same, how many bolts will it produce in 15 hours?",
+    "options_hi": [
+      "1120",
+      "1000",
+      "1200",
+      "1050"
+    ],
+    "options_en": [
+      "1120",
+      "1000",
+      "1200",
+      "1050"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक व्यक्ति 20 km/hr, 30 km/hr और 60 km/hr की गति से तीन समान दूरियाँ तय करता है। पूरी यात्रा की औसत गति कितनी है?",
+    "question_en": "A person covers three equal distances at speeds of 20 km/hr, 30 km/hr and 60 km/hr. What is the average speed for the whole journey?",
+    "options_hi": [
+      "50 km/hr",
+      "30 km/hr",
+      "40 km/hr",
+      "20 km/hr"
+    ],
+    "options_en": [
+      "50 km/hr",
+      "30 km/hr",
+      "40 km/hr",
+      "20 km/hr"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक दुकानदार किसी वस्तु पर 25% और 10% की क्रमिक छूट देता है। कुल शुद्ध छूट प्रतिशत कितना है?",
+    "question_en": "A shopkeeper gives successive discounts of 25% and 10% on an article. What is the overall net discount percentage?",
+    "options_hi": [
+      "52.5%",
+      "40.5%",
+      "36.5%",
+      "32.5%"
+    ],
+    "options_en": [
+      "52.5%",
+      "40.5%",
+      "36.5%",
+      "32.5%"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "निम्न का मान ज्ञात कीजिए: 9 − [(5 − 2) + 3 × 4]",
+    "question_en": "Evaluate: 9 − [(5 − 2) + 3 × 4]",
+    "options_hi": [
+      "−5",
+      "−7",
+      "−6",
+      "−8"
+    ],
+    "options_en": [
+      "−5",
+      "−7",
+      "−6",
+      "−8"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक समान्तर श्रेणी (AP) में पहला पद 10 है और पाँचवाँ पद 26 है। समान्तर श्रेणी का सामान्य अंतर ज्ञात कीजिए।",
+    "question_en": "In an arithmetic progression (AP), the first term is 10 and the fifth term is 26. Find the common difference of the AP.",
+    "options_hi": [
+      "2",
+      "5",
+      "3",
+      "4"
+    ],
+    "options_en": [
+      "2",
+      "5",
+      "3",
+      "4"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "दो संख्याएँ 4 : 7 के अनुपात में हैं। यदि उनका महत्तम समापवर्तक 9 है, तो उनका लघुत्तम समापवर्त्य ज्ञात कीजिए।",
+    "question_en": "Two numbers are in the ratio 4 : 7. If their HCF is 9, find their LCM.",
+    "options_hi": [
+      "144",
+      "252",
+      "72",
+      "180"
+    ],
+    "options_en": [
+      "144",
+      "252",
+      "72",
+      "180"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "(1 − 2z)² का सरल रूप ________ है।",
+    "question_en": "The simplified form of (1 − 2z)² is ________.",
+    "options_hi": [
+      "1 + 4z + 4z²",
+      "1 + 4z − 4z²",
+      "1 − 4z − 4z²",
+      "1 − 4z + 4z²"
+    ],
+    "options_en": [
+      "1 + 4z + 4z²",
+      "1 + 4z − 4z²",
+      "1 − 4z − 4z²",
+      "1 − 4z + 4z²"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "₹900 को A और B के बीच 5 : 4 के अनुपात में बाँटा जाता है। A को कितने रुपये मिलेंगे?",
+    "question_en": "₹900 is divided between A and B in the ratio 5 : 4. How much money will A get?",
+    "options_hi": [
+      "₹400",
+      "₹450",
+      "₹600",
+      "₹500"
+    ],
+    "options_en": [
+      "₹400",
+      "₹450",
+      "₹600",
+      "₹500"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक खुदरा व्यापारी ₹220 में एक इलेक्ट्रॉनिक आइटम खरीदता है। उसका ओवरहेड खर्च ₹20 है। वह उसे ₹300 में बेचता है और x% लाभ कमाता है। x का मान क्या है?",
+    "question_en": "A retailer buys an electronic item for ₹220. His overhead expense is ₹20. He sells the item for ₹300 and earns x% profit. What is the value of x?",
+    "options_hi": [
+      "15",
+      "45",
+      "25",
+      "5"
+    ],
+    "options_en": [
+      "15",
+      "45",
+      "25",
+      "5"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "समान्तर श्रेणी (AP) 3, 6, 9, … के पहले 10 पदों का योग ज्ञात कीजिए।",
+    "question_en": "Find the sum of the first 10 terms of the arithmetic progression (AP) 3, 6, 9, …",
+    "options_hi": [
+      "162",
+      "164",
+      "165",
+      "166"
+    ],
+    "options_en": [
+      "162",
+      "164",
+      "165",
+      "166"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "मंगलवार को 1,550 लोगों ने एक प्रदर्शनी देखी, जबकि बुधवार को 1,860 लोगों ने देखी। प्रदर्शनी देखने वालों की संख्या में कितने प्रतिशत की वृद्धि हुई?",
+    "question_en": "On Tuesday, 1,550 people visited an exhibition, while on Wednesday, 1,860 people visited it. By what percentage did the number of visitors increase?",
+    "options_hi": [
+      "17.67%",
+      "20%",
+      "16.67%",
+      "21%"
+    ],
+    "options_en": [
+      "17.67%",
+      "20%",
+      "16.67%",
+      "21%"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "2,125 में कौन-सी सबसे छोटी संख्या जोड़ी जानी चाहिए ताकि प्राप्त योग 83 से पूर्णतः विभाज्य हो?",
+    "question_en": "What is the smallest number that should be added to 2,125 so that the resulting sum is exactly divisible by 83?",
+    "options_hi": [
+      "11",
+      "50",
+      "33",
+      "81"
+    ],
+    "options_en": [
+      "11",
+      "50",
+      "33",
+      "81"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक बस 80 km/hr की गति से 240 km की दूरी तय करती है। यात्रा पूरी करने में बस को कितना समय लगेगा?",
+    "question_en": "A bus covers a distance of 240 km at a speed of 80 km/hr. How much time will the bus take to complete the journey?",
+    "options_hi": [
+      "2 घंटे",
+      "3 घंटे",
+      "6 घंटे",
+      "4 घंटे"
+    ],
+    "options_en": [
+      "2 hours",
+      "3 hours",
+      "6 hours",
+      "4 hours"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक नाव धारा के विपरीत दिशा में 36 km की दूरी 3 घंटे में तय करती है। यदि धारा की गति 3 km/hr है, तो स्थिर पानी में नाव की गति कितनी होगी?",
+    "question_en": "A boat covers 36 km upstream in 3 hours. If the speed of the current is 3 km/hr, what is the speed of the boat in still water?",
+    "options_hi": [
+      "16 km/hr",
+      "15 km/hr",
+      "12 km/hr",
+      "13 km/hr"
+    ],
+    "options_en": [
+      "16 km/hr",
+      "15 km/hr",
+      "12 km/hr",
+      "13 km/hr"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "सचिन, रवीन्द्र और विराट की औसत आयु 38 वर्ष है। यदि सचिन और विराट की औसत आयु 40 वर्ष है, तो 5 वर्ष बाद रवीन्द्र की आयु कितनी होगी?",
+    "question_en": "The average age of Sachin, Ravindra and Virat is 38 years. If the average age of Sachin and Virat is 40 years, what will be Ravindra’s age after 5 years?",
+    "options_hi": [
+      "41 वर्ष",
+      "38 वर्ष",
+      "39 वर्ष",
+      "40 वर्ष"
+    ],
+    "options_en": [
+      "41 years",
+      "38 years",
+      "39 years",
+      "40 years"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक विद्यार्थी के अंतिम ग्रेड की गणना इन घटकों के आधार पर की जाती है: क्विज़ (ग्रेड का 20%, औसत 85), मिड-टर्म (30%, अंक 78), प्रोजेक्ट (25%, अंक 92) और अंतिम परीक्षा (25%, अंक 88)। विद्यार्थी का कुल अंतिम ग्रेड कितना है?",
+    "question_en": "A student’s final grade is calculated based on these components: quizzes (20% of the grade, average 85), midterm (30%, score 78), project (25%, score 92), and final exam (25%, score 88). What is the student’s overall final grade?",
+    "options_hi": [
+      "84.3",
+      "82.5",
+      "85.4",
+      "80.6"
+    ],
+    "options_en": [
+      "84.3",
+      "82.5",
+      "85.4",
+      "80.6"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "C एक काम 6 दिनों में पूरा कर सकता है और D वही काम 12 दिनों में पूरा कर सकता है। यदि C और D दोनों मिलकर काम करें, तो वे काम कितने दिनों में पूरा करेंगे?",
+    "question_en": "C can complete a work in 6 days and D can complete the same work in 12 days. If C and D work together, in how many days will they complete the work?",
+    "options_hi": [
+      "3 दिन",
+      "5 दिन",
+      "6 दिन",
+      "4 दिन"
+    ],
+    "options_en": [
+      "3 days",
+      "5 days",
+      "6 days",
+      "4 days"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक दुकानदार एक वस्तु ₹1,200 में बेचता है और 20% लाभ कमाता है। वस्तु की लागत कीमत कितनी थी?",
+    "question_en": "A shopkeeper sells an article for ₹1,200 and makes a profit of 20%. What was the cost price of the article?",
+    "options_hi": [
+      "₹1,000",
+      "₹2,000",
+      "₹1,200",
+      "₹1,100"
+    ],
+    "options_en": [
+      "₹1,000",
+      "₹2,000",
+      "₹1,200",
+      "₹1,100"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "130 m और 120 m लंबी दो ट्रेनें क्रमशः 54 km/hr और 36 km/hr की गति से एक-दूसरे की ओर चल रही हैं। वे एक-दूसरे को कितने सेकंड में पार करेंगी?",
+    "question_en": "Two trains of lengths 130 m and 120 m are moving towards each other at speeds of 54 km/hr and 36 km/hr respectively. In how many seconds will they cross each other?",
+    "options_hi": [
+      "20 सेकंड",
+      "10 सेकंड",
+      "25 सेकंड",
+      "12 सेकंड"
+    ],
+    "options_en": [
+      "20 seconds",
+      "10 seconds",
+      "25 seconds",
+      "12 seconds"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "सरलीकरण करने पर प्राप्त मान ______ है।",
+    "question_en": "On simplifying, the value obtained is ______.",
+    "options_hi": [
+      "25",
+      "1",
+      "5",
+      "2"
+    ],
+    "options_en": [
+      "25",
+      "1",
+      "5",
+      "2"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "निम्न रैखिक समीकरणों के निकाय को हल कीजिए: x + y + z = 6; 2x − y + z = 3; x + 2y − z = 5",
+    "question_en": "Solve the following system of linear equations: x + y + z = 6; 2x − y + z = 3; x + 2y − z = 5",
+    "options_hi": [
+      "x = 10/7, y = 17/7, z = −12/7",
+      "x = −13/7, y = 17/7, z = 10/7",
+      "x = −13/7, y = −17/7, z = 12/7",
+      "x = 13/7, y = 17/7, z = 12/7"
+    ],
+    "options_en": [
+      "x = 10/7, y = 17/7, z = −12/7",
+      "x = −13/7, y = 17/7, z = 10/7",
+      "x = −13/7, y = −17/7, z = 12/7",
+      "x = 13/7, y = 17/7, z = 12/7"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "subject": "Numerical Aptitude",
+    "type": "bilingual",
+    "question_hi": "एक व्यक्ति का वेतन ₹5,000 था। उसमें 20% कमी हुई। उसका नया वेतन कितना है?",
+    "question_en": "A man’s salary was ₹5,000. It was reduced by 20%. What is his new salary?",
+    "options_hi": [
+      "₹4,000",
+      "₹4,800",
+      "₹4,650",
+      "₹4,500"
+    ],
+    "options_en": [
+      "₹4,000",
+      "₹4,800",
+      "₹4,650",
+      "₹4,500"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "वित्तीय शक्तियों के अंतर्गत, अप्रत्याशित खर्चों के लिए राष्ट्रपति निम्न में से किस निधि को नियंत्रित करता है?",
+    "question_en": "Under financial powers, which of the following funds does the President control for unforeseen expenditure?",
+    "options_hi": [
+      "वित्त आयोग आरक्षित निधि",
+      "भारत की आकस्मिक निधि",
+      "भारत का लोक लेखा",
+      "भारत की संचित निधि"
+    ],
+    "options_en": [
+      "Finance Commission Reserve",
+      "Contingency Fund of India",
+      "Public Account of India",
+      "Consolidated Fund of India"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारतीय संविधान की प्रस्तावना भारत को __________ घोषित करती है।",
+    "question_en": "The Preamble of the Indian Constitution declares India to be __________.",
+    "options_hi": [
+      "एक संघीय, एकात्मक, समाजवादी, लोकतांत्रिक गणराज्य",
+      "एक गणराज्य, समाजवादी, एकात्मक, लोकतांत्रिक राज्य",
+      "एक संप्रभु, समाजवादी, धर्मनिरपेक्ष, लोकतांत्रिक गणराज्य",
+      "एक संप्रभु, उदारवादी, धर्मनिरपेक्ष, लोकतांत्रिक संघ"
+    ],
+    "options_en": [
+      "a federal, unitary, socialist, democratic republic",
+      "a republic, socialist, unitary, democratic state",
+      "a sovereign, socialist, secular, democratic republic",
+      "a sovereign, liberal, secular, democratic union"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारतीय संविधान का निम्न में से कौन-सा अनुच्छेद राज्य को न्यायपालिका को कार्यपालिका से अलग करने का निर्देश देता है?",
+    "question_en": "Which of the following Articles of the Indian Constitution directs the State to separate the judiciary from the executive?",
+    "options_hi": [
+      "अनुच्छेद 50",
+      "अनुच्छेद 51",
+      "अनुच्छेद 46",
+      "अनुच्छेद 44"
+    ],
+    "options_en": [
+      "Article 50",
+      "Article 51",
+      "Article 46",
+      "Article 44"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "राष्ट्रपति के रूप में कार्य करते समय उपराष्ट्रपति के कार्य क्या होते हैं?",
+    "question_en": "What are the functions of the Vice-President while acting as the President?",
+    "options_hi": [
+      "सभी संवैधानिक शक्तियाँ खो देता है।",
+      "राष्ट्रपति की सभी शक्तियों का प्रयोग करता है।",
+      "केवल राज्य विधानसभाओं को भंग कर सकता है।",
+      "राज्यसभा के सभापति के रूप में कार्यरत रहता है।"
+    ],
+    "options_en": [
+      "He loses all constitutional powers.",
+      "He exercises all the powers of the President.",
+      "He can only dissolve State Legislative Assemblies.",
+      "He continues to act as Chairman of the Rajya Sabha."
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "42वें संशोधन (1976) के दौरान निम्न में से कौन प्रधानमंत्री थे?",
+    "question_en": "Who among the following was the Prime Minister during the 42nd Amendment (1976)?",
+    "options_hi": [
+      "मोरारजी देसाई",
+      "इंदिरा गांधी",
+      "राजीव गांधी",
+      "लाल बहादुर शास्त्री"
+    ],
+    "options_en": [
+      "Morarji Desai",
+      "Indira Gandhi",
+      "Rajiv Gandhi",
+      "Lal Bahadur Shastri"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारत के वित्त आयोग का गठन संविधान के किस अनुच्छेद के तहत किया गया है?",
+    "question_en": "Under which Article of the Constitution is the Finance Commission of India constituted?",
+    "options_hi": [
+      "अनुच्छेद 110",
+      "अनुच्छेद 324",
+      "अनुच्छेद 148",
+      "अनुच्छेद 280"
+    ],
+    "options_en": [
+      "Article 110",
+      "Article 324",
+      "Article 148",
+      "Article 280"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारतीय संविधान का निम्न में से कौन-सा अनुच्छेद सुप्रीम कोर्ट को रिट जारी करने का अधिकार देता है?",
+    "question_en": "Which of the following Articles of the Indian Constitution empowers the Supreme Court to issue writs?",
+    "options_hi": [
+      "अनुच्छेद 368",
+      "अनुच्छेद 226",
+      "अनुच्छेद 32",
+      "अनुच्छेद 131"
+    ],
+    "options_en": [
+      "Article 368",
+      "Article 226",
+      "Article 32",
+      "Article 131"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारत के संविधान के अनुसार, मंत्रिपरिषद सामूहिक रूप से किसके प्रति उत्तरदायी होती है?",
+    "question_en": "According to the Constitution of India, the Council of Ministers is collectively responsible to whom?",
+    "options_hi": [
+      "लोकसभा, जो भारत के लोगों का प्रत्यक्ष प्रतिनिधित्व करती है",
+      "सुप्रीम कोर्ट, जो देश में कानून का शासन सुनिश्चित करता है",
+      "राज्यसभा, जो संघ के राज्यों का प्रतिनिधित्व करती है",
+      "भारत के राष्ट्रपति, शासन के सभी निर्णयों के लिए"
+    ],
+    "options_en": [
+      "The Lok Sabha, which directly represents the people of India",
+      "The Supreme Court, which ensures rule of law in the country",
+      "The Rajya Sabha, which represents the States of the Union",
+      "The President of India for all decisions of governance"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारत में किसी जिले में कृषि भूमि से संबंधित मामले के लिए निम्न में से किसे राजस्व न्यायालय नहीं माना जाता है?",
+    "question_en": "In India, which of the following is not considered a revenue court for cases related to agricultural land in a district?",
+    "options_hi": [
+      "तहसीलदार",
+      "कलेक्टर",
+      "मुंसिफ",
+      "राजस्व बोर्ड"
+    ],
+    "options_en": [
+      "Tehsildar",
+      "Collector",
+      "Munsif",
+      "Board of Revenue"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारत में केंद्र और राज्यों के बीच विवादों का निपटारा निम्न में से कौन करता है?",
+    "question_en": "Who among the following settles disputes between the Centre and the States in India?",
+    "options_hi": [
+      "संसद",
+      "उपराष्ट्रपति",
+      "सर्वोच्च न्यायालय",
+      "राष्ट्रपति"
+    ],
+    "options_en": [
+      "Parliament",
+      "Vice-President",
+      "Supreme Court",
+      "President"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "2025 संयुक्त राष्ट्र जलवायु परिवर्तन सम्मेलन (COP30) किस देश में आयोजित होने वाला है?",
+    "question_en": "The 2025 United Nations Climate Change Conference (COP30) is scheduled to be held in which country?",
+    "options_hi": [
+      "संयुक्त अरब अमीरात",
+      "दक्षिण अफ्रीका",
+      "भारत",
+      "ब्राज़ील"
+    ],
+    "options_en": [
+      "United Arab Emirates",
+      "South Africa",
+      "India",
+      "Brazil"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "भारत में हर वर्ष चिकित्सा पेशे का सम्मान करने और डॉ. बिधान चंद्र रॉय को याद करने के लिए किस दिन को 'राष्ट्रीय डॉक्टर दिवस' के रूप में मनाया जाता है?",
+    "question_en": "In India, which day is celebrated every year as 'National Doctors’ Day' to honour the medical profession and remember Dr. Bidhan Chandra Roy?",
+    "options_hi": [
+      "5 सितंबर",
+      "1 जुलाई",
+      "26 जनवरी",
+      "15 अगस्त"
+    ],
+    "options_en": [
+      "5 September",
+      "1 July",
+      "26 January",
+      "15 August"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "स्वच्छ सर्वेक्षण 2024-25 में, 10 लाख से अधिक जनसंख्या वाले शहरों में किस भारतीय शहर को सबसे स्वच्छ शहर घोषित किया गया था?",
+    "question_en": "In Swachh Survekshan 2024-25, which Indian city was declared the cleanest city among cities with a population of more than 10 lakh?",
+    "options_hi": [
+      "भोपाल",
+      "सूरत",
+      "इंदौर",
+      "अहमदाबाद"
+    ],
+    "options_en": [
+      "Bhopal",
+      "Surat",
+      "Indore",
+      "Ahmedabad"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 74,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "सितंबर 2025 में विश्व एथलेटिक्स चैंपियनशिप कहाँ आयोजित हुई थी?",
+    "question_en": "Where was the World Athletics Championships held in September 2025?",
+    "options_hi": [
+      "टोक्यो",
+      "लंदन",
+      "सिडनी",
+      "बर्लिन"
+    ],
+    "options_en": [
+      "Tokyo",
+      "London",
+      "Sydney",
+      "Berlin"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 75,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "अगस्त 2025 में केंद्रीय मंत्रिमंडल द्वारा स्वीकृत ₹4,600 करोड़ की नई सेमीकंडक्टर निर्माण परियोजनाओं के लिए कौन-से तीन राज्य मेजबान होंगे?",
+    "question_en": "Which three States will host the new semiconductor manufacturing projects worth ₹4,600 crore approved by the Union Cabinet in August 2025?",
+    "options_hi": [
+      "महाराष्ट्र, राजस्थान, तेलंगाना",
+      "गुजरात, कर्नाटक, तमिलनाडु",
+      "केरल, हरियाणा, असम",
+      "ओडिशा, पंजाब, आंध्र प्रदेश"
+    ],
+    "options_en": [
+      "Maharashtra, Rajasthan, Telangana",
+      "Gujarat, Karnataka, Tamil Nadu",
+      "Kerala, Haryana, Assam",
+      "Odisha, Punjab, Andhra Pradesh"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 76,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "सस्टेनेबल डेवलपमेंट रिपोर्ट 2025 के अनुसार, भारत का SDG इंडेक्स स्कोर 100 में से कितना है?",
+    "question_en": "According to the Sustainable Development Report 2025, what is India’s SDG Index score out of 100?",
+    "options_hi": [
+      "75",
+      "67",
+      "72",
+      "60"
+    ],
+    "options_en": [
+      "75",
+      "67",
+      "72",
+      "60"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 77,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "सितंबर 2025 में केंद्रीय गृह एवं सहकारिता मंत्री की अध्यक्षता में 5वीं राजभाषा परिषद कहाँ आयोजित हुई थी?",
+    "question_en": "In September 2025, where was the 5th Official Language Conference held under the chairmanship of the Union Home and Cooperation Minister?",
+    "options_hi": [
+      "गांधीनगर, गुजरात",
+      "वडोदरा, गुजरात",
+      "सूरत, गुजरात",
+      "अहमदाबाद, गुजरात"
+    ],
+    "options_en": [
+      "Gandhinagar, Gujarat",
+      "Vadodara, Gujarat",
+      "Surat, Gujarat",
+      "Ahmedabad, Gujarat"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 78,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "अगस्त 2025 में भारत के विदेशी मुद्रा भंडार में लगभग 9.3 अरब डॉलर की तेज गिरावट हुई। इस गिरावट का मुख्य कारण निम्न में से क्या बताया गया?",
+    "question_en": "In August 2025, India’s foreign exchange reserves fell sharply by about 9.3 billion dollars. Which of the following was cited as the main reason for this decline?",
+    "options_hi": [
+      "पूँजी प्रवाह में वृद्धि",
+      "निर्यात में अचानक वृद्धि",
+      "सोने की खरीद में भारी वृद्धि",
+      "रुपये को स्थिर करने के लिए RBI का हस्तक्षेप"
+    ],
+    "options_en": [
+      "Increase in capital inflows",
+      "Sudden increase in exports",
+      "Sharp rise in gold purchases",
+      "RBI intervention to stabilise the rupee"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 79,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "गुजरात में जन सुरक्षा संवृद्धि अभियान (जुलाई–सितंबर 2025) सरकारी योजनाओं के कवरेज और जागरूकता में किन मुद्दों पर ध्यान केंद्रित करता है?",
+    "question_en": "In Gujarat, the Jan Suraksha Samruddhi Abhiyan (July–September 2025) focuses on coverage and awareness of government schemes on which issues?",
+    "options_hi": [
+      "नवीकरणीय ऊर्जा अपनाने पर",
+      "जैविक खेती की पद्धतियों पर",
+      "KYC अपडेट और डिजिटल धोखाधड़ी की रोकथाम पर",
+      "शहरी सैटेलाइट वाहन और परिवहन सुरक्षा पर"
+    ],
+    "options_en": [
+      "Renewable energy adoption",
+      "Organic farming methods",
+      "KYC updates and prevention of digital fraud",
+      "Urban satellite vehicles and transport safety"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 80,
+    "subject": "Constitution and Current Affairs",
+    "type": "bilingual",
+    "question_hi": "20 अगस्त 2025 को भारत स्काउट्स और गाइड्स कार्यक्रम में भाग लेने के लिए 22 देशों के 175 से अधिक अंतरराष्ट्रीय प्रतिनिधि किस शहर में एकत्र हुए थे?",
+    "question_en": "On 20 August 2025, in which city did more than 175 international delegates from 22 countries gather to attend the Bharat Scouts and Guides programme?",
+    "options_hi": [
+      "मुंबई, भारत",
+      "बेंगलुरु, भारत",
+      "कोलकाता, भारत",
+      "नई दिल्ली, भारत"
+    ],
+    "options_en": [
+      "Mumbai, India",
+      "Bengaluru, India",
+      "Kolkata, India",
+      "New Delhi, India"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 81,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "हम सबके लिए चिंता का कारण क्या है?",
+    "question_en": "What is a cause of concern for all of us?",
+    "options_hi": [
+      "हमारी आदत",
+      "सामाजिक रीति-रिवाज",
+      "वायु प्रदूषण",
+      "हमारा भोजन"
+    ],
+    "options_en": [
+      "Our habit",
+      "Social custom",
+      "Air pollution",
+      "Our food"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 82,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "किस अवसर पर देर रात तक लाउडस्पीकर का उपयोग किया जाता है?",
+    "question_en": "On which occasion are loudspeakers used till late at night?",
+    "options_hi": [
+      "नवरात्रि में",
+      "सभा में",
+      "दीवाली में",
+      "उत्तरायण में"
+    ],
+    "options_en": [
+      "During Navratri",
+      "In a meeting",
+      "During Diwali",
+      "During Uttarayan"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 83,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "ध्वनि प्रदूषण कम करने के लिए हमें किसका सीमित मात्रा में उपयोग करना चाहिए?",
+    "question_en": "What should we use in a limited manner to reduce noise pollution?",
+    "options_hi": [
+      "लाउडस्पीकर",
+      "हारमोनियम",
+      "बाँसुरी",
+      "तबला"
+    ],
+    "options_en": [
+      "Loudspeaker",
+      "Harmonium",
+      "Flute",
+      "Tabla"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 84,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "क्या करना शिष्टाचार के विरुद्ध है?",
+    "question_en": "What is against good manners?",
+    "options_hi": [
+      "लाउडस्पीकर बजाना",
+      "आवाज तेज रखना",
+      "बड़े-बड़े आवाज करना",
+      "आवाज धीमी रखना"
+    ],
+    "options_en": [
+      "Playing a loudspeaker",
+      "Keeping the volume loud",
+      "Making loud noises",
+      "Keeping the volume low"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 85,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "वायु प्रदूषण, जल प्रदूषण और ध्वनि प्रदूषण दिन-प्रतिदिन बढ़ते जा रहे हैं — यह किसका विषय है?",
+    "question_en": "Air pollution, water pollution and noise pollution are increasing day by day — this is a matter of what?",
+    "options_hi": [
+      "खुशी का",
+      "चिंता का",
+      "विकास का",
+      "समृद्धि का"
+    ],
+    "options_en": [
+      "Happiness",
+      "Concern",
+      "Development",
+      "Prosperity"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 86,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "अपने स्वास्थ्य लाभ के दौरान अरुणिमा ने क्या लक्ष्य निर्धारित किया?",
+    "question_en": "What goal did Arunima set during her recovery?",
+    "options_hi": [
+      "वॉलीबॉल खेलने के लिए वापस लौटना",
+      "माउंट एवरेस्ट पर चढ़ना",
+      "डॉक्टर बनना",
+      "अस्पताल बनाना"
+    ],
+    "options_en": [
+      "To return to playing volleyball",
+      "To climb Mount Everest",
+      "To become a doctor",
+      "To build a hospital"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 87,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा विकल्प अरुणिमा की उपलब्धि का सबसे अच्छा प्रतीक है?",
+    "question_en": "Which of the following best symbolises Arunima’s achievement?",
+    "options_hi": [
+      "राष्ट्रीय खेल नीति",
+      "कृत्रिम अंग तकनीक में प्रगति",
+      "सीमाओं से ऊपर उठती मानव भावना",
+      "प्रतिस्पर्धियों की हार"
+    ],
+    "options_en": [
+      "National sports policy",
+      "Advances in artificial limb technology",
+      "Human spirit rising above limitations",
+      "Defeat of competitors"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 88,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "अरुणिमा की कहानी से वास्तविक जीवन का कौन-सा संबंध जोड़ा जा सकता है?",
+    "question_en": "What real-world connection can be drawn from Arunima’s story?",
+    "options_hi": [
+      "केवल खिलाड़ी ही त्रासदी से उबर सकते हैं।",
+      "विकलांगता मानव क्षमता को सीमित नहीं करती।",
+      "खेल चोटें अपरिहार्य हैं।",
+      "प्रशिक्षण के बिना पहाड़ चढ़ना असंभव है।"
+    ],
+    "options_en": [
+      "Only athletes can recover from tragedy.",
+      "Disability does not limit human potential.",
+      "Sports injuries are inevitable.",
+      "Mountains are impossible to climb without training."
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 89,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "गद्यांश का मुख्य विषय क्या है?",
+    "question_en": "What is the main theme of the passage?",
+    "options_hi": [
+      "पर्वतारोहण पर्यटन का विकास",
+      "दृढ़ संकल्प से विपरीत परिस्थितियों पर विजय",
+      "रेल दुर्घटनाओं की त्रासदी",
+      "भारत में खेलों का महत्व"
+    ],
+    "options_en": [
+      "Growth of mountaineering tourism",
+      "Overcoming adversity through determination",
+      "Tragedy of train accidents",
+      "Importance of sports in India"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 90,
+    "subject": "Comprehension",
+    "type": "bilingual",
+    "question_hi": "गद्यांश किस संरचनात्मक पैटर्न का अनुसरण करता है?",
+    "question_en": "Which structural pattern does the passage follow?",
+    "options_hi": [
+      "तुलना-विरोध",
+      "कारण-परिणाम",
+      "कालानुक्रमिक वर्णन",
+      "संवाद"
+    ],
+    "options_en": [
+      "Compare–contrast",
+      "Cause–effect",
+      "Chronological narration",
+      "Dialogue"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 91,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से किस धूल के साँस में जाने पर मुख्य रूप से बायसिनोसिस नियंत्रण कार्यक्रम ध्यान केंद्रित करता है?",
+    "question_en": "The Byssinosis Control Programme mainly focuses on inhalation of which of the following dusts?",
+    "options_hi": [
+      "कोयला",
+      "सिलिका",
+      "कपास",
+      "एस्बेस्टस"
+    ],
+    "options_en": [
+      "Coal",
+      "Silica",
+      "Cotton",
+      "Asbestos"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 92,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा कीट पानी में अंडे नहीं देता?",
+    "question_en": "Which of the following insects does not lay eggs in water?",
+    "options_hi": [
+      "क्यूलेक्स मच्छर",
+      "एनोफिलीज मच्छर",
+      "एडीज मच्छर",
+      "त्सेत्से मक्खी"
+    ],
+    "options_en": [
+      "Culex mosquito",
+      "Anopheles mosquito",
+      "Aedes mosquito",
+      "Tsetse fly"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 93,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "चिकित्सा उपकरणों के लिए निम्न में से किस उच्च-स्तरीय जंतुनाशक का उपयोग किया जाता है?",
+    "question_en": "Which of the following high-level disinfectants is used for medical instruments?",
+    "options_hi": [
+      "ग्लूटाराल्डिहाइड",
+      "सोडियम क्लोराइड",
+      "फिनॉल",
+      "साबुन और पानी"
+    ],
+    "options_en": [
+      "Glutaraldehyde",
+      "Sodium chloride",
+      "Phenol",
+      "Soap and water"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 94,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "रोगी को विटामिन C के आहार स्रोतों के बारे में बताते समय, विटामिन C के सर्वोत्तम स्रोत के रूप में निम्न में से किन खाद्य पदार्थों की सलाह देनी चाहिए?",
+    "question_en": "When teaching a patient about dietary sources of vitamin C, which of the following foods should be recommended as the best sources of vitamin C?",
+    "options_hi": [
+      "लाल मांस और पोल्ट्री",
+      "हरी पत्तेदार सब्जियाँ और खट्टे फल",
+      "डेयरी उत्पाद और अंडे",
+      "साबुत अनाज और दालें"
+    ],
+    "options_en": [
+      "Red meat and poultry",
+      "Green leafy vegetables and citrus fruits",
+      "Dairy products and eggs",
+      "Whole grains and pulses"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 95,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "ऑटोमेटेड एक्सटर्नल डिफिब्रिलेटर (AED) कब शॉक देगा?",
+    "question_en": "When will an Automated External Defibrillator (AED) deliver a shock?",
+    "options_hi": [
+      "जब शॉक देने योग्य रिदम पता चले",
+      "यदि रोगी साँस ले रहा हो",
+      "छाती में दर्द के दौरान",
+      "जब रक्तचाप कम हो"
+    ],
+    "options_en": [
+      "When a shockable rhythm is detected",
+      "If the patient is breathing",
+      "During chest pain",
+      "When blood pressure is low"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 96,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन जनसांख्यिकी (Demography) का घटक नहीं है?",
+    "question_en": "Which of the following is not a component of demography?",
+    "options_hi": [
+      "जनसंख्या घनत्व",
+      "जनसंख्या आकार",
+      "सकल घरेलू उत्पाद (GDP)",
+      "जन्म और मृत्यु दर"
+    ],
+    "options_en": [
+      "Population density",
+      "Population size",
+      "Gross Domestic Product (GDP)",
+      "Birth and death rates"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 97,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से किसे जैव-चिकित्सीय कचरे का एक स्रोत माना जाता है?",
+    "question_en": "Which of the following is considered a source of biomedical waste?",
+    "options_hi": [
+      "घर की रसोई",
+      "अस्पताल और स्वास्थ्य-देखभाल सुविधाएँ",
+      "कार्यालय भवन",
+      "सार्वजनिक उद्यान"
+    ],
+    "options_en": [
+      "Home kitchen",
+      "Hospitals and healthcare facilities",
+      "Office buildings",
+      "Public parks"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 98,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सी सेवा परिवार कल्याण कार्यक्रम के अंतर्गत दी जाने वाली प्रमुख सेवाओं में से एक है?",
+    "question_en": "Which of the following is one of the main services provided under the Family Welfare Programme?",
+    "options_hi": [
+      "स्कूल शिक्षा",
+      "मुफ्त गर्भनिरोधक",
+      "सड़क परिवहन",
+      "अस्पताल में मुफ्त बिस्तर"
+    ],
+    "options_en": [
+      "School education",
+      "Free contraceptives",
+      "Road transport",
+      "Free hospital beds"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 99,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "_______________ के संश्लेषण के लिए आयोडीन आवश्यक है।",
+    "question_en": "Iodine is essential for the synthesis of _______________.",
+    "options_hi": [
+      "इंसुलिन",
+      "हीमोग्लोबिन",
+      "थायरॉइड हार्मोन",
+      "पित्त"
+    ],
+    "options_en": [
+      "Insulin",
+      "Haemoglobin",
+      "Thyroid hormones",
+      "Bile"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 100,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा महत्वपूर्ण सूचक 1,000 जीवित जन्मों पर मौतों की संख्या दर्शाता है?",
+    "question_en": "Which of the following vital indicators shows the number of deaths per 1,000 live births?",
+    "options_hi": [
+      "शिशु मृत्यु दर",
+      "कच्ची मृत्यु दर",
+      "मामला मृत्यु दर",
+      "मातृ मृत्यु दर"
+    ],
+    "options_en": [
+      "Infant mortality rate",
+      "Crude death rate",
+      "Case fatality rate",
+      "Maternal mortality rate"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 101,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "संक्रमण के प्रसार को रोकने के लिए किस प्रकार के अस्पताल कचरे को निपटान से पहले ऑटोक्लेविंग या जलाने की आवश्यकता होती है?",
+    "question_en": "Which type of hospital waste needs autoclaving or incineration before disposal to prevent the spread of infection?",
+    "options_hi": [
+      "सामान्य गैर-संक्रामक कचरा",
+      "रसोई का कचरा",
+      "सभी पैकेजिंग सामग्री",
+      "प्रयोगशाला का संक्रामक कचरा"
+    ],
+    "options_en": [
+      "General non-infectious waste",
+      "Kitchen waste",
+      "All packaging material",
+      "Infectious laboratory waste"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 102,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "गंभीर COVID-19 के लिए किस समूह को उच्च जोखिम वाला माना जाता है?",
+    "question_en": "Which group is considered at high risk for severe COVID-19?",
+    "options_hi": [
+      "स्वस्थ वयस्क",
+      "सह-रोगों वाले बुजुर्ग",
+      "किशोर",
+      "5 वर्ष से कम आयु के बच्चे"
+    ],
+    "options_en": [
+      "Healthy adults",
+      "Elderly people with comorbidities",
+      "Adolescents",
+      "Children below 5 years of age"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 103,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से क्या मुख्य रूप से शरीर के ऊतकों के निर्माण में मदद करता है?",
+    "question_en": "Which of the following mainly helps in building body tissues?",
+    "options_hi": [
+      "प्रोटीन",
+      "पानी",
+      "वसा",
+      "कार्बोहाइड्रेट"
+    ],
+    "options_en": [
+      "Protein",
+      "Water",
+      "Fat",
+      "Carbohydrates"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 104,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "फूड हैंडलर में अचानक मतली और उल्टी का मुख्य कारण निम्न में से कौन-सा खाद्यजनित रोग है?",
+    "question_en": "Which of the following food-borne diseases is a major cause of sudden nausea and vomiting in a food handler?",
+    "options_hi": [
+      "स्टैफिलोकोकस ऑरियस",
+      "लिस्टेरियोसिस",
+      "ई. कोलाई संक्रमण",
+      "क्लोस्ट्रीडियम बोटुलिनम"
+    ],
+    "options_en": [
+      "Staphylococcus aureus",
+      "Listeriosis",
+      "E. coli infection",
+      "Clostridium botulinum"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 105,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "संक्रमण नियंत्रण के किस उपाय में रोग के प्रसार को रोकने के लिए संक्रमित रोगियों को अलग रखना शामिल है?",
+    "question_en": "Which infection control measure involves keeping infected patients separate to prevent the spread of disease?",
+    "options_hi": [
+      "निगरानी",
+      "अलगाव",
+      "संपर्क निषेध",
+      "टीकाकरण"
+    ],
+    "options_en": [
+      "Surveillance",
+      "Isolation",
+      "Quarantine",
+      "Vaccination"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 106,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "सुई और सिरिंज जैसे नुकीले कचरे को श्रेड करने का प्राथमिक लाभ क्या है?",
+    "question_en": "What is the primary benefit of shredding sharps waste such as needles and syringes?",
+    "options_hi": [
+      "यह परिवहन के लिए कचरे का वजन बढ़ाता है।",
+      "बाद में इससे सजावटी सामग्री बनाई जा सकती है।",
+      "उन्हें रिसाइकल करके नया उत्पाद बनाना आसान हो जाता है।",
+      "यह आकस्मिक सुई-चुभन चोट और अवैध पुनः उपयोग को रोकता है।"
+    ],
+    "options_en": [
+      "It increases the weight of waste for transport.",
+      "Decorative material can be made from it later.",
+      "It makes recycling into a new product easier.",
+      "It prevents accidental needle-stick injury and illegal reuse."
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 107,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "लार्वीसाइड्स के लिए सामान्य उपयोग-स्थल कौन-सा है?",
+    "question_en": "What is the common application site for larvicides?",
+    "options_hi": [
+      "इमारतों और घरों के आसपास हवा में",
+      "मच्छरों के प्रजनन स्थल, जैसे रुका हुआ पानी",
+      "बगीचों और खेतों में पौधों पर",
+      "मानव त्वचा और पालतू जानवरों की त्वचा पर"
+    ],
+    "options_en": [
+      "In the air around buildings and houses",
+      "Mosquito breeding sites, such as stagnant water",
+      "On plants in gardens and fields",
+      "On human skin and pet skin"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 108,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "शारीरिक/अनाटोमिकल कचरे के लिए गहरे दफन गड्ढे की न्यूनतम गहराई कितनी होनी चाहिए?",
+    "question_en": "What should be the minimum depth of a deep burial pit for anatomical waste?",
+    "options_hi": [
+      "6 मीटर",
+      "2 मीटर",
+      "0.5 मीटर",
+      "1 फुट"
+    ],
+    "options_en": [
+      "6 metres",
+      "2 metres",
+      "0.5 metre",
+      "1 foot"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 109,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से किस प्रकार के कचरे के निपटान के लिए कम्पोस्टिंग सबसे प्रभावी विधि है?",
+    "question_en": "Composting is most effective as a waste disposal method for which of the following types of waste?",
+    "options_hi": [
+      "प्लास्टिक बोतलें, अन्य प्लास्टिक वस्तुएँ और धातु के डिब्बे",
+      "निर्माण और विध्वंस का मलबा",
+      "कागज और कार्डबोर्ड",
+      "कार्बनिक कचरा, जैसे भोजन कचरा और बगीचे की कटाई"
+    ],
+    "options_en": [
+      "Plastic bottles, other plastic items and metal cans",
+      "Construction and demolition debris",
+      "Paper and cardboard",
+      "Organic waste, such as food waste and yard trimmings"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 110,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "एक व्यक्ति ने बताया कि उसे मंद प्रकाश में देखने में कठिनाई होती है और उसकी आँखें सूखी रहती हैं। निम्न में से किस विटामिन की कमी इन लक्षणों का कारण हो सकती है?",
+    "question_en": "A person reports difficulty seeing in dim light and dryness of eyes. Deficiency of which vitamin can lead to these symptoms?",
+    "options_hi": [
+      "विटामिन A",
+      "विटामिन B",
+      "विटामिन E",
+      "विटामिन K"
+    ],
+    "options_en": [
+      "Vitamin A",
+      "Vitamin B",
+      "Vitamin E",
+      "Vitamin K"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 111,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "रोग के प्राकृतिक इतिहास के किस चरण में रोग चिकित्सकीय रूप से स्पष्ट और निदान योग्य हो जाता है?",
+    "question_en": "During which stage of the natural history of disease does the disease become clinically apparent and diagnosable?",
+    "options_hi": [
+      "संवेदनशीलता",
+      "ऊष्मायन",
+      "स्वास्थ्य-लाभ",
+      "नैदानिक रोग"
+    ],
+    "options_en": [
+      "Susceptibility",
+      "Incubation",
+      "Recovery",
+      "Clinical disease"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 112,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "पल्स पोलियो कार्यक्रम में मुख्य रूप से किस प्रकार की वैक्सीन का उपयोग किया जाता है?",
+    "question_en": "Which type of vaccine is mainly used in the Pulse Polio Programme?",
+    "options_hi": [
+      "पोलियो वैक्सीन पैच, त्वचा पर लगाया जाता है।",
+      "पोलियो और खसरा की संयुक्त वैक्सीन",
+      "निष्क्रिय पोलियो वैक्सीन (IPV), इंजेक्शन द्वारा दी जाती है।",
+      "ओरल पोलियो वैक्सीन (OPV), बूंदों के रूप में दी जाती है।"
+    ],
+    "options_en": [
+      "Polio vaccine patch applied on the skin",
+      "Combined vaccine for polio and measles",
+      "Inactivated polio vaccine (IPV), given by injection",
+      "Oral polio vaccine (OPV), given as drops"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 113,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "कार्यस्थल सुरक्षा में जोखिम मूल्यांकन का मुख्य महत्व क्या है?",
+    "question_en": "What is the main importance of risk assessment in workplace safety?",
+    "options_hi": [
+      "केवल स्वास्थ्य और सुरक्षा नियमों का पालन सुनिश्चित करना",
+      "कर्मचारियों का मनोबल और उत्पादकता बढ़ाना",
+      "कार्यस्थल पर संभावित खतरों की पहचान और मूल्यांकन करना",
+      "दुर्घटनाओं के लिए दोषारोपण करना"
+    ],
+    "options_en": [
+      "Only to ensure compliance with health and safety rules",
+      "To increase employee morale and productivity",
+      "To identify and assess potential hazards at the workplace",
+      "To assign blame for accidents"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 114,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "किस प्रकार के जैव-चिकित्सीय कचरे का सामान्यतः ऑटोक्लेविंग द्वारा उपचार किया जाता है?",
+    "question_en": "Which type of biomedical waste is usually treated by autoclaving?",
+    "options_hi": [
+      "मानव शारीरिक कचरा",
+      "नुकीला कचरा",
+      "संक्रामक प्लास्टिक कचरा",
+      "दूषित लिनेन"
+    ],
+    "options_en": [
+      "Human anatomical waste",
+      "Sharps waste",
+      "Infectious plastic waste",
+      "Soiled linen"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 115,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से किसे जैव-अपघटनीय ठोस कचरा माना जाता है?",
+    "question_en": "Which of the following is considered biodegradable solid waste?",
+    "options_hi": [
+      "प्लास्टिक की बोतल",
+      "सब्जियों के छिलके",
+      "टूटा हुआ काँच",
+      "एल्युमिनियम फॉयल"
+    ],
+    "options_en": [
+      "Plastic bottle",
+      "Vegetable peels",
+      "Broken glass",
+      "Aluminium foil"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 116,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "डिप्थीरिया मुख्य रूप से कैसे फैलता है?",
+    "question_en": "How is diphtheria mainly transmitted?",
+    "options_hi": [
+      "दूषित पानी से",
+      "मच्छर के काटने से",
+      "वायुजनित बूंदों से",
+      "त्वचा संपर्क से"
+    ],
+    "options_en": [
+      "Through contaminated water",
+      "By mosquito bite",
+      "Through airborne droplets",
+      "By skin contact"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 117,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "स्थल पर ठोस कचरे के अनुचित भंडारण से जुड़ा मुख्य स्वास्थ्य जोखिम क्या है?",
+    "question_en": "What is the main health risk associated with improper on-site storage of solid waste?",
+    "options_hi": [
+      "यह चूहों, मक्खियों और अन्य कीटों जैसे रोगवाहकों को आकर्षित करता है।",
+      "रिसाइक्लिंग दर बढ़ती है।",
+      "समुदाय और गाँव का सौंदर्य बेहतर होता है।",
+      "कचरा संग्रहण के लिए कर दरें बढ़ती हैं।"
+    ],
+    "options_en": [
+      "It attracts vectors such as rats, flies and other insects.",
+      "It increases recycling rates.",
+      "It improves the aesthetic appearance of the community and village.",
+      "It increases tax rates for waste collection."
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 118,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "जापानी एन्सेफलाइटिस के लिए कौन-सा वाहक जिम्मेदार है?",
+    "question_en": "Which vector is responsible for Japanese encephalitis?",
+    "options_hi": [
+      "एनोफिलीज मच्छर",
+      "एडीज मच्छर",
+      "टिक",
+      "क्यूलेक्स मच्छर"
+    ],
+    "options_en": [
+      "Anopheles mosquito",
+      "Aedes mosquito",
+      "Tick",
+      "Culex mosquito"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 119,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "दाह-संस्कार प्रक्रिया की मुख्य उप-उत्पादों में से कौन-सा है?",
+    "question_en": "Which of the following is a main by-product of the cremation process?",
+    "options_hi": [
+      "अस्थि-अवशेष या हड्डी के टुकड़े",
+      "शरीर के अखंड अंग और ऊतक",
+      "विघटित कार्बनिक पदार्थ",
+      "मीथेन और कार्बन डाइऑक्साइड जैसी गैसें"
+    ],
+    "options_en": [
+      "Cremains or bone fragments",
+      "Intact body organs and tissues",
+      "Decomposed organic matter",
+      "Gases such as methane and carbon dioxide"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 120,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "भोजन पकाते समय गर्मी से कौन-सा विटामिन सबसे अधिक नष्ट होता है?",
+    "question_en": "Which vitamin is most destroyed by heat during cooking?",
+    "options_hi": [
+      "विटामिन C",
+      "विटामिन D",
+      "विटामिन E",
+      "विटामिन K"
+    ],
+    "options_en": [
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin E",
+      "Vitamin K"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 121,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "एक निरक्षर रोगी को पोषण के बारे में सिखाने की सर्वोत्तम विधि कौन-सी है?",
+    "question_en": "What is the best way to teach nutrition to an illiterate patient?",
+    "options_hi": [
+      "केवल मौखिक निर्देशों का उपयोग करना",
+      "चित्रों, चार्टों और दृश्य सहायक सामग्री का उपयोग करना",
+      "उन्हें वैज्ञानिक लेख देना",
+      "शिक्षण को पूरी तरह टालना"
+    ],
+    "options_en": [
+      "Use only verbal instructions",
+      "Use pictures, charts and visual aids",
+      "Give them scientific articles",
+      "Avoid teaching completely"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 122,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "प्रयोगशाला सेटिंग में PPE के रूप में लैब कोट का उपयोग क्यों किया जाता है?",
+    "question_en": "Why is a lab coat used as a form of PPE in laboratory settings?",
+    "options_hi": [
+      "कर्मचारी को वैज्ञानिक जैसा दिखाने के लिए",
+      "ठंडी प्रयोगशाला में कर्मचारी को गर्म रखने के लिए",
+      "उपकरणों के लिए आसानी से उपलब्ध जेबें देने के लिए",
+      "कर्मचारी के अपने कपड़ों पर फैलाव से सुरक्षा के लिए"
+    ],
+    "options_en": [
+      "To make the worker look like a scientist",
+      "To keep the worker warm in a cold laboratory",
+      "To provide easy-to-access pockets for tools",
+      "To protect the worker’s own clothes from spills"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 123,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "एक स्वस्थ वयस्क के लिए शरीर के वजन के प्रति किलोग्राम प्रतिदिन प्रोटीन का अनुशंसित आहार भत्ता (RDA) क्या है?",
+    "question_en": "What is the Recommended Dietary Allowance (RDA) of protein per kilogram of body weight per day for a healthy adult?",
+    "options_hi": [
+      "0.2 g/kg",
+      "1.5 g/kg",
+      "0.8 g/kg",
+      "0.5 g/kg"
+    ],
+    "options_en": [
+      "0.2 g/kg",
+      "1.5 g/kg",
+      "0.8 g/kg",
+      "0.5 g/kg"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 124,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "प्राथमिक स्वास्थ्य देखभाल में समान वितरण का सिद्धांत क्या दर्शाता है?",
+    "question_en": "What does the principle of equitable distribution in primary health care mean?",
+    "options_hi": [
+      "स्वास्थ्य सेवाएँ केवल भुगतान करने वालों के लिए उपलब्ध हैं।",
+      "विशेषज्ञ देखभाल को मूलभूत सेवाओं से अधिक प्राथमिकता दी जाती है।",
+      "सेवाएँ सामाजिक-आर्थिक स्थिति के बजाय बीमारी की गंभीरता के आधार पर दी जाती हैं।",
+      "स्वास्थ्य देखभाल आर्थिक या भौगोलिक बाधाओं के बावजूद सभी तक पहुँचती है।"
+    ],
+    "options_en": [
+      "Health care services are available only to those who can pay.",
+      "Specialised care is prioritised over basic services.",
+      "Services are provided based on severity of illness, not socioeconomic status.",
+      "Health care reaches everyone despite economic or geographical barriers."
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 125,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "चाइल्ड सर्वाइवल एंड सेफ मदरहुड (CSSM) में बाल टीकाकरण अनुसूची के अंतर्गत दी जाने वाली प्राथमिक वैक्सीन _________ वैक्सीन है।",
+    "question_en": "Under the child immunization schedule in Child Survival and Safe Motherhood (CSSM), the primary vaccine given is the _________ vaccine.",
+    "options_hi": [
+      "रूबेला",
+      "HPV",
+      "BCG",
+      "MMR"
+    ],
+    "options_en": [
+      "Rubella",
+      "HPV",
+      "BCG",
+      "MMR"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 126,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "एक स्वास्थ्य कार्यकर्ता को लगता है कि शौचालय कुएँ के बहुत पास बना है। सही नर्सिंग सलाह क्या होगी?",
+    "question_en": "A health worker feels that a toilet is built too close to a well. What is the correct nursing advice?",
+    "options_hi": [
+      "कुएँ को बंद कर दें।",
+      "शौचालय को कम से कम 15 मीटर दूर स्थानांतरित करें।",
+      "सभी आवश्यकताओं के लिए वही पानी उपयोग करें।",
+      "गड्ढे को प्रतिदिन साफ करने के लिए रसायनों का उपयोग करें।"
+    ],
+    "options_en": [
+      "Close the well.",
+      "Move the toilet at least 15 metres away.",
+      "Use the same water for all needs.",
+      "Use chemicals to clean the pit daily."
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 127,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "परिवार के पोषण मूल्यांकन में नर्स की भूमिका में निम्न में से किसे छोड़कर बाकी सभी शामिल हैं?",
+    "question_en": "The nurse’s role in family nutritional assessment includes all of the following except:",
+    "options_hi": [
+      "आहार सेवन संबंधी डेटा एकत्रित करना",
+      "पोषण शिक्षा प्रदान करना",
+      "पूरक दवाएँ लिखना",
+      "जोखिम वाले व्यक्तियों की पहचान करना"
+    ],
+    "options_en": [
+      "Collecting dietary intake data",
+      "Providing nutritional education",
+      "Prescribing supplements",
+      "Identifying at-risk individuals"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 128,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "HIV मुख्य रूप से किन कोशिकाओं को संक्रमित करता है?",
+    "question_en": "HIV primarily infects which cells?",
+    "options_hi": [
+      "प्लेटलेट्स",
+      "CD4+ T लिम्फोसाइट्स",
+      "लाल रक्त कोशिकाएँ",
+      "B लिम्फोसाइट्स"
+    ],
+    "options_en": [
+      "Platelets",
+      "CD4+ T lymphocytes",
+      "Red blood cells",
+      "B lymphocytes"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 129,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "पृथ्वी पर जीवन के लिए सामान्य ग्रीनहाउस प्रभाव का क्या महत्व है?",
+    "question_en": "What is the importance of the normal greenhouse effect for life on Earth?",
+    "options_hi": [
+      "यह सभी आने वाले सौर विकिरण को सतह तक पहुँचने से रोकता है।",
+      "यह वैश्विक स्तर पर चरम मौसम पैटर्न बनाता है।",
+      "यह वायुमंडलीय दबाव को तेजी से घटाता है।",
+      "यह पृथ्वी का औसत तापमान रहने योग्य स्तर पर बनाए रखता है।"
+    ],
+    "options_en": [
+      "It prevents all incoming solar radiation from reaching the surface.",
+      "It creates extreme weather patterns globally.",
+      "It rapidly reduces atmospheric pressure.",
+      "It maintains Earth’s average temperature at a habitable level."
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 130,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "खाद्य विज्ञान में 'इमल्शन' शब्द क्या दर्शाता है?",
+    "question_en": "In food science, what does the term 'emulsion' mean?",
+    "options_hi": [
+      "एक तरल जो जम गया हो और फिर पिघल गया हो।",
+      "दो या अधिक तरल पदार्थों का स्थिर मिश्रण जो सामान्यतः आपस में नहीं मिलते।",
+      "विभिन्न संरचनाओं में रसायनों वाले ठोस और तरल का मिश्रण।",
+      "पानी में घुली हुई शक्कर का घोल।"
+    ],
+    "options_en": [
+      "A liquid that has frozen and then melted",
+      "A stable mixture of two or more liquids that normally do not mix",
+      "A mixture of solids and liquids containing chemicals in different structures",
+      "A solution of sugar dissolved in water"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 131,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "कौन-सी मिट्टी की स्थिति हेल्मिन्थिक संक्रमणों का जोखिम बढ़ाती है?",
+    "question_en": "Which soil condition increases the risk of helminthic infections?",
+    "options_hi": [
+      "पथरीली मिट्टी",
+      "जमी हुई मिट्टी",
+      "सूखी मिट्टी",
+      "खराब स्वच्छता वाली रेतीली मिट्टी"
+    ],
+    "options_en": [
+      "Rocky soil",
+      "Frozen soil",
+      "Dry soil",
+      "Sandy soil with poor sanitation"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 132,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सी सेवा उप-केन्द्र पर नहीं दी जाती है?",
+    "question_en": "Which of the following services is not provided at a sub-centre?",
+    "options_hi": [
+      "टीकाकरण",
+      "सामान्य प्रसव",
+      "स्वास्थ्य शिक्षा",
+      "छोटी सर्जरी"
+    ],
+    "options_en": [
+      "Immunization",
+      "Normal delivery",
+      "Health education",
+      "Minor surgery"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 133,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "2015 तक MDG 6 के अंतर्गत भारत की मुख्य उपलब्धि क्या थी?",
+    "question_en": "What was India’s major achievement under MDG 6 by 2015?",
+    "options_hi": [
+      "शून्य मातृ मृत्यु",
+      "मलेरिया उन्मूलन",
+      "सार्वभौमिक बीमा",
+      "पोलियो उन्मूलन"
+    ],
+    "options_en": [
+      "Zero maternal deaths",
+      "Elimination of malaria",
+      "Universal insurance",
+      "Elimination of polio"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 134,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "स्वच्छता अभियानों में प्रयुक्त शब्द 'ODF' का पूर्ण रूप क्या है?",
+    "question_en": "What is the full form of 'ODF' used in sanitation campaigns?",
+    "options_hi": [
+      "ओपन डिफेकशन फ्री",
+      "ऑक्सीजन डिमांड फैक्टर",
+      "ऑनलाइन डेटा फॉर्म",
+      "ओपन ड्रिंकिंग फैसिलिटी"
+    ],
+    "options_en": [
+      "Open Defecation Free",
+      "Oxygen Demand Factor",
+      "Online Data Form",
+      "Open Drinking Facility"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 135,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "एक स्वास्थ्य अधिकारी घरों के पास जमा पानी का निरीक्षण करता है और कई निवासी बार-बार मच्छर काटने की शिकायत करते हैं। पहला सुझाया कदम क्या होना चाहिए?",
+    "question_en": "A health officer observes stagnant water near houses, and many residents complain of frequent mosquito bites. What should be the first recommended step?",
+    "options_hi": [
+      "लोगों के बाहर जाने पर प्रतिबंध लगाएँ।",
+      "पानी जमा करने वाले कंटेनरों को हटाएँ या ढक दें।",
+      "मच्छरों को भगाने के लिए इत्र छिड़कें।",
+      "निवासियों को अधिक पानी पीने के लिए प्रोत्साहित करें।"
+    ],
+    "options_en": [
+      "Ban people from going outside.",
+      "Remove or cover water-holding containers.",
+      "Spray perfume to repel mosquitoes.",
+      "Encourage residents to drink more water."
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 136,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "सेप्टिक सिस्टम का कौन-सा घटक गंदे पानी से ठोस पदार्थों को हटाकर उन्हें तली में बैठने देता है?",
+    "question_en": "Which component of a septic system is responsible for removing solids from wastewater by allowing them to settle at the bottom?",
+    "options_hi": [
+      "वितरण बॉक्स",
+      "ड्रेनेज क्षेत्र",
+      "सेप्टिक टैंक",
+      "वातन इकाई"
+    ],
+    "options_en": [
+      "Distribution box",
+      "Drainage field",
+      "Septic tank",
+      "Aeration unit"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 137,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "बंद कमरे में अच्छे वेंटिलेशन द्वारा मुख्यतः कौन-सी गैस हटाई जाती है?",
+    "question_en": "Which gas is mainly removed by good ventilation in a closed room?",
+    "options_hi": [
+      "कार्बन डाइऑक्साइड",
+      "नाइट्रोजन",
+      "हाइड्रोजन",
+      "ऑक्सीजन"
+    ],
+    "options_en": [
+      "Carbon dioxide",
+      "Nitrogen",
+      "Hydrogen",
+      "Oxygen"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 138,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "पंचायत समिति निम्न में से किस स्तर पर कार्य करती है?",
+    "question_en": "At which of the following levels does the Panchayat Samiti function?",
+    "options_hi": [
+      "जिला स्तर",
+      "ग्राम स्तर",
+      "ब्लॉक स्तर",
+      "राज्य स्तर"
+    ],
+    "options_en": [
+      "District level",
+      "Village level",
+      "Block level",
+      "State level"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 139,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा एंटीसेप्टिक का सबसे अच्छा वर्णन करता है?",
+    "question_en": "Which of the following best describes an antiseptic?",
+    "options_hi": [
+      "संक्रमण रोकने के लिए जीवित ऊतकों पर उपयोग किया जाने वाला रसायन",
+      "सूक्ष्मजीवों को मारने के लिए निर्जीव वस्तुओं पर उपयोग किया जाने वाला रसायन",
+      "एक प्रकार का एंटीबायोटिक",
+      "एक रसायन जो सभी सूक्ष्मजीवी जीवन को नष्ट कर देता है"
+    ],
+    "options_en": [
+      "A chemical used on living tissues to prevent infection",
+      "A chemical used on inanimate objects to kill microorganisms",
+      "A type of antibiotic",
+      "A chemical that destroys all microbial life"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 140,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा कारक पारिवारिक पोषण मूल्यांकन का भाग नहीं है?",
+    "question_en": "Which of the following factors is not a part of nutritional family assessment?",
+    "options_hi": [
+      "घरेलू आय",
+      "शारीरिक गतिविधि",
+      "वाहन स्वामित्व",
+      "खाने की आदतें"
+    ],
+    "options_en": [
+      "Household income",
+      "Physical activity",
+      "Vehicle ownership",
+      "Eating habits"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 141,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "प्रधानमंत्री आवास योजना (PMAY) का मुख्य लक्ष्य क्या है?",
+    "question_en": "What is the main objective of the Pradhan Mantri Awas Yojana (PMAY)?",
+    "options_hi": [
+      "2022 तक सभी पात्र शहरी और ग्रामीण परिवारों को सस्ते आवास प्रदान करना",
+      "2030 तक पूरे भारत में स्मार्ट शहरों का निर्माण करना",
+      "2025 तक सभी नागरिकों को मुफ्त स्वास्थ्य सेवा देना",
+      "2030 तक सभी ग्रामीण घरों को बिजली कनेक्शन देना"
+    ],
+    "options_en": [
+      "To provide affordable housing to all eligible urban and rural families by 2022",
+      "To build smart cities across India by 2030",
+      "To provide free healthcare to all citizens by 2025",
+      "To provide electricity connections to all rural households by 2030"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 142,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "रसोई में निम्न में से किसे स्वच्छता जोखिम माना जाता है?",
+    "question_en": "Which of the following is considered a hygiene risk in a kitchen?",
+    "options_hi": [
+      "बंद कैबिनेट",
+      "ढका हुआ भोजन",
+      "खुला कूड़ादान",
+      "लेबल लगे कंटेनर"
+    ],
+    "options_en": [
+      "Closed cabinet",
+      "Covered food",
+      "Open dustbin",
+      "Labelled containers"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 143,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "गलत मेडिकल रिकॉर्ड बनाने वाले डॉक्टर पर किसका आरोप लग सकता है?",
+    "question_en": "A doctor who creates a false medical record may be accused of what?",
+    "options_hi": [
+      "मानहानि",
+      "हमला",
+      "लापरवाही",
+      "गोपनीयता का उल्लंघन"
+    ],
+    "options_en": [
+      "Defamation",
+      "Assault",
+      "Negligence",
+      "Breach of confidentiality"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 144,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "चाइल्ड सर्वाइवल एंड सेफ मदरहुड (CSSM) कार्यक्रम का मुख्य उद्देश्य क्या है?",
+    "question_en": "What is the main objective of the Child Survival and Safe Motherhood (CSSM) programme?",
+    "options_hi": [
+      "प्राथमिक स्वास्थ्य केन्द्रों में जेनेटिक इंजीनियरिंग प्रयोगशालाएँ शुरू करना",
+      "सभी महिलाओं को इन-विट्रो फर्टिलाइजेशन उपलब्ध कराना",
+      "गर्भवती और स्तनपान कराने वाली माताओं को आयरन और फोलिक एसिड की पूरकता देना",
+      "सभी आनुवंशिक स्थितियों के लिए सभी नवजात शिशुओं की अनिवार्य स्क्रीनिंग"
+    ],
+    "options_en": [
+      "Starting genetic engineering laboratories in primary health centres",
+      "Providing all women access to in-vitro fertilization",
+      "Providing iron and folic acid supplementation to pregnant and lactating mothers",
+      "Mandatory universal newborn screening for all genetic conditions"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 145,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "ऐसा संक्रमण जो व्यक्ति में कोई उल्लेखनीय संकेत या लक्षण नहीं दिखाता, फिर भी प्रयोगशाला परीक्षणों से पता लगाया जा सकता है, उसे क्या कहते हैं?",
+    "question_en": "An infection that shows no noticeable signs or symptoms in a person but can still be detected by laboratory tests is known as:",
+    "options_hi": [
+      "नोसोकोमियल संक्रमण",
+      "आईएट्रोजेनिक संक्रमण",
+      "सबक्लिनिकल संक्रमण",
+      "अवसरवादी संक्रमण"
+    ],
+    "options_en": [
+      "Nosocomial infection",
+      "Iatrogenic infection",
+      "Subclinical infection",
+      "Opportunistic infection"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 146,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "संदिग्ध पोलियोवायरस संक्रमण वाले रोगी में एबॉर्टिव पोलियोमाइलाइटिस की पुष्टि के लिए सबसे विशिष्ट प्रयोगशाला परीक्षण कौन-सा है?",
+    "question_en": "What is the most specific laboratory test to confirm abortive poliomyelitis in a patient with suspected poliovirus infection?",
+    "options_hi": [
+      "मस्तिष्क और रीढ़ की MRI",
+      "मल नमूने से पोलियोवायरस का पृथक्करण",
+      "एंटीबॉडी के लिए रक्त परीक्षण",
+      "बैक्टीरिया वृद्धि देखने के लिए मूत्र विश्लेषण"
+    ],
+    "options_en": [
+      "MRI of the brain and spinal cord",
+      "Isolation of poliovirus from stool sample",
+      "Blood test for antibodies",
+      "Urine analysis to observe bacterial growth"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 147,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "जिला स्तर पर स्वास्थ्य सेवाओं के लिए कौन जिम्मेदार होता है?",
+    "question_en": "Who is responsible for health services at the district level?",
+    "options_hi": [
+      "मुख्य चिकित्सा अधिकारी (CMO)",
+      "खंड विकास अधिकारी",
+      "पंचायत प्रमुख",
+      "नगरपालिका आयुक्त"
+    ],
+    "options_en": [
+      "Chief Medical Officer (CMO)",
+      "Block Development Officer",
+      "Panchayat President",
+      "Municipal Commissioner"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 148,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "वायु गुणवत्ता सूचकांक (AQI) के बारे में सही व्याख्या कौन-सी है?",
+    "question_en": "Which is the correct interpretation of the Air Quality Index (AQI)?",
+    "options_hi": [
+      "AQI केवल हवा का तापमान मापता है।",
+      "उच्च AQI बेहतर वायु गुणवत्ता दर्शाता है।",
+      "AQI का मान वायु गुणवत्ता से संबंधित नहीं है।",
+      "कम AQI बेहतर वायु गुणवत्ता दर्शाता है।"
+    ],
+    "options_en": [
+      "AQI measures only air temperature.",
+      "A higher AQI indicates better air quality.",
+      "AQI value is not related to air quality.",
+      "A lower AQI indicates better air quality."
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 149,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "BMW प्रबंधन में निम्न में से कौन-सी स्वच्छ निपटान विधि नहीं है?",
+    "question_en": "In BMW management, which of the following is not a hygienic disposal method?",
+    "options_hi": [
+      "शारीरिक/अनाटोमिकल कचरे की कम्पोस्टिंग",
+      "तरल कचरे का रासायनिक कीटाणुशोधन",
+      "गहरे दफन की विधि (ग्रामीण क्षेत्रों में दिशानिर्देशों के अनुसार)",
+      "ऑटोक्लेविंग"
+    ],
+    "options_en": [
+      "Composting of anatomical waste",
+      "Chemical disinfection of liquid waste",
+      "Deep burial (as per guidelines in rural areas)",
+      "Autoclaving"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 150,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा End TB Strategy के तीन स्तंभों में से एक नहीं है?",
+    "question_en": "Which of the following is not one of the three pillars of the End TB Strategy?",
+    "options_hi": [
+      "सघन अनुसंधान और नवाचार",
+      "वैक्सीन विकास और वितरण में तेज वृद्धि",
+      "साहसिक नीतियाँ और सहायक प्रणालियाँ",
+      "एकीकृत, रोगी-केंद्रित देखभाल और रोकथाम"
+    ],
+    "options_en": [
+      "Intensified research and innovation",
+      "Rapid scale-up of vaccine development and delivery",
+      "Bold policies and supportive systems",
+      "Integrated, patient-centred care and prevention"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 151,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "आप objections का सामना करते समय 'empathy' के professional value को कैसे शामिल करते हैं?",
+    "question_en": "How do you incorporate the professional value of empathy while handling objections?",
+    "options_hi": [
+      "सामने वाले व्यक्ति की चिंता का मूल कारण उसके दृष्टिकोण से समझने का प्रयास करें।",
+      "Client/customer को बताएं कि आपको पहले भी इसी समस्या का सामना करना पड़ा है।",
+      "उनकी आपत्ति से सहमत हों और उन्हें बताएं कि यह एक बड़ी समस्या है।",
+      "आपका product या service उनकी expectations पूरी नहीं कर पाया, इसके लिए माफी मांगें।"
+    ],
+    "options_en": [
+      "Try to understand the root cause of the other person’s concern from their perspective.",
+      "Tell the client/customer that you have faced the same problem before.",
+      "Agree with their objection and tell them it is a big problem.",
+      "Apologize that your product or service could not meet their expectations."
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 152,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Waste minimisation hierarchy में पहला कदम कौन-सा है?",
+    "question_en": "Which of the following is the first step in the waste minimisation hierarchy?",
+    "options_hi": [
+      "Recycling",
+      "Incineration",
+      "Source reduction",
+      "Disposal"
+    ],
+    "options_en": [
+      "Recycling",
+      "Incineration",
+      "Source reduction",
+      "Disposal"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 153,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "भारत में किस constitutional amendment act के तहत urban local bodies, जैसे municipal corporations, को constitutional status दिया गया था?",
+    "question_en": "Under which Constitutional Amendment Act in India were urban local bodies, such as municipal corporations, given constitutional status?",
+    "options_hi": [
+      "53rd Constitutional Amendment Act",
+      "74th Constitutional Amendment Act",
+      "92nd Constitutional Amendment Act",
+      "42nd Constitutional Amendment Act"
+    ],
+    "options_en": [
+      "53rd Constitutional Amendment Act",
+      "74th Constitutional Amendment Act",
+      "92nd Constitutional Amendment Act",
+      "42nd Constitutional Amendment Act"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 154,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Traditional unlined landfill का मुख्य pollution effect क्या है?",
+    "question_en": "What is the main polluting effect of a traditional unlined landfill?",
+    "options_hi": [
+      "Leachate द्वारा groundwater और soil contamination",
+      "Atmosphere में excessive heat release",
+      "Local wind speed में increase",
+      "Birds और animals का attraction"
+    ],
+    "options_en": [
+      "Contamination of groundwater and soil by leachate",
+      "Excessive release of heat into the atmosphere",
+      "Increase in local wind speed",
+      "Attraction of birds and animals"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 155,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Family की nutritional status का assessment करते समय nurse को किस बात पर विचार करना चाहिए?",
+    "question_en": "While assessing a family’s nutritional status, what should a nurse consider?",
+    "options_hi": [
+      "Cultural और religious dietary practices",
+      "Only hospital records",
+      "Only children’s diet",
+      "Only income of the head of the household"
+    ],
+    "options_en": [
+      "Cultural and religious dietary practices",
+      "Only hospital records",
+      "Only children’s diet",
+      "Only the income of the head of the household"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 156,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Government of India द्वारा शुरू किए गए Mission Indradhanush का मुख्य objective क्या है?",
+    "question_en": "What is the main objective of Mission Indradhanush launched by the Government of India?",
+    "options_hi": [
+      "Essential medicines के prices control करना",
+      "Non-communicable diseases से mortality reduce करना",
+      "Healthcare providers में digital literacy improve करना",
+      "Children को व्यापक immunization coverage देना"
+    ],
+    "options_en": [
+      "To control prices of essential medicines",
+      "To reduce mortality due to non-communicable diseases",
+      "To improve digital literacy among healthcare providers",
+      "To provide extensive immunization coverage to children"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 157,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Pathogen की host में enter करने, survive करने और multiply होने की ability को कौन-सा term बताता है?",
+    "question_en": "Which term refers to the ability of a pathogen to enter, survive and multiply in a host?",
+    "options_hi": [
+      "Virulence",
+      "Infectivity",
+      "Immunity",
+      "Susceptibility"
+    ],
+    "options_en": [
+      "Virulence",
+      "Infectivity",
+      "Immunity",
+      "Susceptibility"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 158,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से किसे standard PPE का part नहीं माना जाता है?",
+    "question_en": "Which of the following is not considered a part of standard personal protective equipment (PPE)?",
+    "options_hi": [
+      "Gloves",
+      "Stethoscope",
+      "Face mask",
+      "Gown"
+    ],
+    "options_en": [
+      "Gloves",
+      "Stethoscope",
+      "Face mask",
+      "Gown"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 159,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Hospital settings में किस disease के लिए airborne precautions जरूरी होते हैं?",
+    "question_en": "For which of the following diseases are airborne precautions required in hospital settings?",
+    "options_hi": [
+      "Cholera",
+      "Hepatitis C",
+      "Dengue",
+      "Tuberculosis"
+    ],
+    "options_en": [
+      "Cholera",
+      "Hepatitis C",
+      "Dengue",
+      "Tuberculosis"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 160,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Infectious biomedical waste के treatment/disposal के लिए सामान्यतः कौन-सी method use होती है?",
+    "question_en": "Which method is commonly used for the treatment/disposal of infectious biomedical waste?",
+    "options_hi": [
+      "Incineration",
+      "Composting",
+      "Landfilling without treatment",
+      "Burying in open ground"
+    ],
+    "options_en": [
+      "Incineration",
+      "Composting",
+      "Landfilling without treatment",
+      "Burying in open ground"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 161,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "ASHA workers किस health mission का part हैं?",
+    "question_en": "ASHA workers are a part of which health mission?",
+    "options_hi": [
+      "NACP",
+      "RNTCP",
+      "NLEP",
+      "NHM"
+    ],
+    "options_en": [
+      "NACP",
+      "RNTCP",
+      "NLEP",
+      "NHM"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 162,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "कौन-सा main ethical principle healthcare providers को patient की personal health information को unauthorized disclosure से बचाने की requirement देता है?",
+    "question_en": "Which main ethical principle requires healthcare providers to protect a patient’s personal health information from unauthorized disclosure?",
+    "options_hi": [
+      "Beneficence",
+      "Non-maleficence",
+      "Confidentiality",
+      "Autonomy"
+    ],
+    "options_en": [
+      "Beneficence",
+      "Non-maleficence",
+      "Confidentiality",
+      "Autonomy"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 163,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Food के लिए temperature danger zone, जिसमें bacteria rapidly multiply होते हैं, कौन-सा है?",
+    "question_en": "What is the temperature danger zone for food, in which bacteria multiply rapidly?",
+    "options_hi": [
+      "0°C to 10°C",
+      "60°C to 100°C",
+      "Below −18°C",
+      "5°C to 60°C"
+    ],
+    "options_en": [
+      "0°C to 10°C",
+      "60°C to 100°C",
+      "Below −18°C",
+      "5°C to 60°C"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 164,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "UTI prevent करने के लिए urinary catheter drainage bag को रखने की सही position क्या है?",
+    "question_en": "What is the correct position for placing a urinary catheter drainage bag to prevent urinary tract infection?",
+    "options_hi": [
+      "Patient के bladder level पर",
+      "Bladder level से ऊपर",
+      "Patient की waist level पर",
+      "Bladder level से नीचे"
+    ],
+    "options_en": [
+      "At the level of the patient’s bladder",
+      "Above the bladder level",
+      "At the patient’s waist level",
+      "Below the bladder level"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 165,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "भारत में food businesses को license देने और regulate करने के लिए कौन-सी authority responsible है?",
+    "question_en": "In India, which authority is responsible for licensing and regulating food businesses?",
+    "options_hi": [
+      "FSSAI",
+      "WHO",
+      "NITI Aayog",
+      "ICMR"
+    ],
+    "options_en": [
+      "FSSAI",
+      "WHO",
+      "NITI Aayog",
+      "ICMR"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 166,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Water analysis में BOD test करने का main purpose क्या है?",
+    "question_en": "What is the main purpose of performing a BOD test in water analysis?",
+    "options_hi": [
+      "Heavy metals की concentration determine करना",
+      "Water में dissolved organic matter की amount measure करना",
+      "Specific chemical pollutant का source identify करना",
+      "Radioactive substances की presence check करना"
+    ],
+    "options_en": [
+      "To determine the concentration of heavy metals",
+      "To measure the amount of dissolved organic matter in water",
+      "To identify the source of a specific chemical pollutant",
+      "To check the presence of radioactive substances"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 167,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन ICDS scheme का target beneficiary group नहीं है?",
+    "question_en": "Which of the following is not a target beneficiary group under the ICDS scheme?",
+    "options_hi": [
+      "Lactating mothers",
+      "Pregnant women",
+      "Young adults aged 18–25 years",
+      "Children below 6 years"
+    ],
+    "options_en": [
+      "Lactating mothers",
+      "Pregnant women",
+      "Young adults aged 18–25 years",
+      "Children below 6 years"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 168,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Good sanitation किस common disease को prevent करने में मदद करता है?",
+    "question_en": "Good sanitation helps prevent which common disease?",
+    "options_hi": [
+      "Diabetes",
+      "Heart disease",
+      "Asthma",
+      "Cholera"
+    ],
+    "options_en": [
+      "Diabetes",
+      "Heart disease",
+      "Asthma",
+      "Cholera"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 169,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "VVM के किस stage में vaccine को generally immediate discard के लिए consider करना चाहिए?",
+    "question_en": "At which VVM stage should the vaccine generally be considered for immediate discard?",
+    "options_hi": [
+      "Stage 0, inner square is lighter than outer circle",
+      "Stage 2, inner square is light grey",
+      "Stage 4, inner square is darker than outer circle",
+      "Stage 1, inner square is white and outer circle is black"
+    ],
+    "options_en": [
+      "Stage 0, inner square is lighter than the outer circle",
+      "Stage 2, inner square is light grey",
+      "Stage 4, inner square is darker than the outer circle",
+      "Stage 1, inner square is white and the outer circle is black"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 170,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Schools में vision screening का main purpose क्या detect करना है?",
+    "question_en": "What is the main purpose of vision screening in schools?",
+    "options_hi": [
+      "Colour blindness",
+      "Major vision issues",
+      "Cataract",
+      "Glaucoma"
+    ],
+    "options_en": [
+      "Colour blindness",
+      "Major vision issues",
+      "Cataract",
+      "Glaucoma"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 171,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Waterborne disease के sudden outbreak के समय सबसे appropriate immediate action क्या है?",
+    "question_en": "During a sudden outbreak of a waterborne disease, what is the most appropriate immediate action?",
+    "options_hi": [
+      "सिर्फ existing patients के treatment पर focus करना",
+      "New cases की surveillance और reporting बढ़ाना",
+      "कोई action लेने से पहले laboratory confirmation की प्रतीक्षा करना",
+      "केवल routine water sanitation practices continue रखना"
+    ],
+    "options_en": [
+      "Focus only on treating existing patients",
+      "Increase surveillance and reporting of new cases",
+      "Wait for laboratory confirmation before taking any action",
+      "Continue only with routine water sanitation practices"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 172,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Fecal contamination of water का common biological indicator कौन-सा है?",
+    "question_en": "What is the common biological indicator of possible fecal contamination of water?",
+    "options_hi": [
+      "Mycobacterium की presence",
+      "Coliform bacteria की presence",
+      "Mumps virus की presence",
+      "Influenza virus की presence"
+    ],
+    "options_en": [
+      "Presence of Mycobacterium",
+      "Presence of coliform bacteria",
+      "Presence of mumps virus",
+      "Presence of influenza virus"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 173,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Trauma triage का main purpose क्या है?",
+    "question_en": "What is the main purpose of trauma triage?",
+    "options_hi": [
+      "Patients को arrival time के आधार पर treat करना",
+      "Injury severity के आधार पर patients को priority देना",
+      "Patients को जल्दी discharge करना",
+      "Patient details record करना"
+    ],
+    "options_en": [
+      "To treat patients based on arrival time",
+      "To prioritize patients based on severity of injury",
+      "To discharge patients quickly",
+      "To record patient details"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 174,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा nutrient humans के लिए energy source नहीं है?",
+    "question_en": "Which of the following nutrients is not a source of energy for humans?",
+    "options_hi": [
+      "Protein",
+      "Water",
+      "Carbohydrate",
+      "Fat"
+    ],
+    "options_en": [
+      "Protein",
+      "Water",
+      "Carbohydrate",
+      "Fat"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 175,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Registration of Births and Deaths Act के तहत, birth या death की घटना की registration कहाँ करानी आवश्यक है?",
+    "question_en": "Under the Registration of Births and Deaths Act, where must the occurrence of a birth or death be registered?",
+    "options_hi": [
+      "Applicant के nearest government office में",
+      "जहाँ person रहता है उस place पर",
+      "जहाँ event occurred हुआ उस place पर",
+      "Police officer in charge के discretion पर"
+    ],
+    "options_en": [
+      "At the applicant’s nearest government office",
+      "At the place where the person lives",
+      "At the place where the event occurred",
+      "At the discretion of the police officer in charge"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 176,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Generalised seizure के बारे में कौन-सा statement सही है?",
+    "question_en": "Which of the following statements about a generalised seizure is correct?",
+    "options_hi": [
+      "Seizure जो brain के specific localised area में originate होता है",
+      "Seizure जो body की only one side पर होता है",
+      "Seizure जो onset से ही पूरे brain को affect करता है",
+      "Seizure जो flashing light जैसे specific sensory trigger से होता है"
+    ],
+    "options_en": [
+      "A seizure originating in a specific localized area of the brain",
+      "A seizure occurring on only one side of the body",
+      "A seizure that affects the whole brain from onset",
+      "A seizure caused by a specific sensory trigger such as flashing light"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 177,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Local level पर overall disaster response का coordination कौन करता है?",
+    "question_en": "Who coordinates the overall disaster response at the local level?",
+    "options_hi": [
+      "Media reporters",
+      "Civil defence officers",
+      "Traffic police",
+      "School teachers"
+    ],
+    "options_en": [
+      "Media reporters",
+      "Civil defence officers",
+      "Traffic police",
+      "School teachers"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 178,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Hospitals में mechanical air purification की common method कौन-सी है?",
+    "question_en": "Which of the following is a common method of mechanical air purification in hospitals?",
+    "options_hi": [
+      "Windows खोलना",
+      "HEPA filters का use",
+      "Water sprinkling",
+      "Air boiling"
+    ],
+    "options_en": [
+      "Opening windows",
+      "Use of HEPA filters",
+      "Sprinkling water",
+      "Boiling air"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 179,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Bhopal gas disaster के बाद environment की protection और improvement के लिए कौन-सा main umbrella legislation enact किया गया?",
+    "question_en": "After the Bhopal gas disaster, which main umbrella legislation was enacted for the protection and improvement of the environment?",
+    "options_hi": [
+      "Environment (Protection) Act, 1986",
+      "Air (Prevention and Control of Pollution) Act, 1981",
+      "Water (Prevention and Control of Pollution) Act, 1974",
+      "Forest (Conservation) Act, 1980"
+    ],
+    "options_en": [
+      "Environment (Protection) Act, 1986",
+      "Air (Prevention and Control of Pollution) Act, 1981",
+      "Water (Prevention and Control of Pollution) Act, 1974",
+      "Forest (Conservation) Act, 1980"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 180,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Biomedical waste के लिए chemical treatment method का example कौन-सा है?",
+    "question_en": "Which of the following is an example of a chemical treatment method for biomedical waste?",
+    "options_hi": [
+      "Autoclaving",
+      "Ozonation",
+      "Incineration",
+      "Microwaving"
+    ],
+    "options_en": [
+      "Autoclaving",
+      "Ozonation",
+      "Incineration",
+      "Microwaving"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 181,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Poor housing conditions related to environment से जुड़ी main problem कौन-सी है?",
+    "question_en": "Which of the following is a main problem associated with poor housing conditions related to the environment?",
+    "options_hi": [
+      "Residents के लिए physical activity में increase",
+      "Disease, injury और death के risk की higher possibility",
+      "Social interaction और community building में increase",
+      "Mental और social well-being को promote करना"
+    ],
+    "options_en": [
+      "Increase in physical activity for residents",
+      "Higher possibility of risk of disease, injury and death",
+      "Increase in social interaction and community building",
+      "Promotion of mental and social well-being"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 182,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Nursing profession के संदर्भ में telemedicine क्या है?",
+    "question_en": "In the context of the nursing profession, what is telemedicine?",
+    "options_hi": [
+      "Technology का use करके remote diagnosis और care",
+      "एक प्रकार की medicine",
+      "Online nursing games",
+      "एक medical TV show"
+    ],
+    "options_en": [
+      "Remote diagnosis and care using technology",
+      "A type of medicine",
+      "Online nursing games",
+      "A medical TV show"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 183,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Endemic disease क्या है?",
+    "question_en": "What is an endemic disease?",
+    "options_hi": [
+      "किसी specific geographical area में regularly पाया जाने वाला disease",
+      "अचानक फैलने वाला disease",
+      "Globally large number of people को affect करने वाला disease",
+      "Eradicated disease"
+    ],
+    "options_en": [
+      "A disease regularly found in a specific geographical area",
+      "A disease that spreads suddenly",
+      "A disease affecting a large number of people globally",
+      "A disease that has been eradicated"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 184,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "WHO की sanitation पर risk-reduction strategies prevention के किस level पर focus करती हैं?",
+    "question_en": "WHO risk-reduction strategies on sanitation focus on which level of prevention?",
+    "options_hi": [
+      "Tertiary prevention",
+      "Quaternary prevention",
+      "Primary prevention",
+      "Experimental prevention"
+    ],
+    "options_en": [
+      "Tertiary prevention",
+      "Quaternary prevention",
+      "Primary prevention",
+      "Experimental prevention"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 185,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Hypertension treatment में first-line drug class कौन-सी है?",
+    "question_en": "Which is a first-line drug class used in the treatment of hypertension?",
+    "options_hi": [
+      "Antibiotics",
+      "Proton pump inhibitors",
+      "Insulin",
+      "Calcium channel blockers"
+    ],
+    "options_en": [
+      "Antibiotics",
+      "Proton pump inhibitors",
+      "Insulin",
+      "Calcium channel blockers"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 186,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Rheumatic heart disease, एक serious complication, आमतौर पर किस organism के initial infection के बाद होता है?",
+    "question_en": "Rheumatic heart disease, a serious complication, usually occurs after initial infection with which organism?",
+    "options_hi": [
+      "Group A Streptococcus",
+      "Mycobacterium tuberculosis",
+      "Escherichia coli",
+      "Staphylococcus aureus"
+    ],
+    "options_en": [
+      "Group A Streptococcus",
+      "Mycobacterium tuberculosis",
+      "Escherichia coli",
+      "Staphylococcus aureus"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 187,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Healthcare settings में WASH का full form क्या है?",
+    "question_en": "What is the full form of WASH in healthcare settings?",
+    "options_hi": [
+      "Water, Sanitation and Hygiene",
+      "Waste, Air, Safety, Hygiene",
+      "Water, Air, Sanitation, Health",
+      "Water, Access, Safety, Healthcare"
+    ],
+    "options_en": [
+      "Water, Sanitation and Hygiene",
+      "Waste, Air, Safety, Hygiene",
+      "Water, Air, Sanitation, Health",
+      "Water, Access, Safety, Healthcare"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 188,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Suspected infected dead body को handle करने के बाद nurse को क्या करना चाहिए?",
+    "question_en": "After handling a suspected infected dead body, what should the nurse do?",
+    "options_hi": [
+      "Cleaning procedures को ignore करना चाहिए",
+      "Only gloves और mask remove करने चाहिए",
+      "Hands को clean करना और surfaces को disinfect करना चाहिए",
+      "Next user के लिए same PPE use करनी चाहिए"
+    ],
+    "options_en": [
+      "Ignore cleaning procedures",
+      "Only remove gloves and mask",
+      "Clean hands and disinfect surfaces",
+      "Use the same PPE for the next user"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 189,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन NHM का main component है?",
+    "question_en": "Which of the following is a main component of NHM?",
+    "options_hi": [
+      "Private healthcare institutions के लिए funding",
+      "Health and Wellness Centres",
+      "Tax reforms",
+      "Urban housing"
+    ],
+    "options_en": [
+      "Funding for private healthcare institutions",
+      "Health and Wellness Centres",
+      "Tax reforms",
+      "Urban housing"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 190,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Government of India ने National Urban Livelihoods Mission (NULM) किस year में launch किया?",
+    "question_en": "In which year did the Government of India launch the National Urban Livelihoods Mission (NULM)?",
+    "options_hi": [
+      "2000",
+      "2024",
+      "2005",
+      "2013"
+    ],
+    "options_en": [
+      "2000",
+      "2024",
+      "2005",
+      "2013"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 191,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Environmental sanitation में adequate ventilation किसमें मदद करता है?",
+    "question_en": "In environmental sanitation, adequate ventilation helps in what?",
+    "options_hi": [
+      "Handwashing की जरूरत को eliminate करने में",
+      "Mosquito जैसे disease vectors को directly control करने में",
+      "Moisture remove करने और mold growth reduce करने में",
+      "Water purification rate increase करने में"
+    ],
+    "options_en": [
+      "Eliminating the need for handwashing",
+      "Directly controlling disease vectors such as mosquitoes",
+      "Removing moisture and reducing mold growth",
+      "Increasing water purification rate"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 192,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Sharps waste से उत्पन्न primary health risk क्या है?",
+    "question_en": "What is the primary health risk arising from sharps waste?",
+    "options_hi": [
+      "Food supply chain contamination",
+      "Needle-stick injuries causing blood-borne infections",
+      "Inhalation of toxic fumes",
+      "Release of radioactive substances"
+    ],
+    "options_en": [
+      "Contamination of the food supply chain",
+      "Needle-stick injuries that may transmit blood-borne infections",
+      "Inhalation of toxic fumes",
+      "Release of radioactive substances"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 193,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "ESI scheme के तहत कौन-सा benefit provided नहीं होता?",
+    "question_en": "Which benefit is not provided under the ESI scheme?",
+    "options_hi": [
+      "Medical care",
+      "Sickness benefit",
+      "Pension at retirement",
+      "Maternity benefit"
+    ],
+    "options_en": [
+      "Medical care",
+      "Sickness benefit",
+      "Pension at retirement",
+      "Maternity benefit"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 194,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Food handling establishments का inspection करने का main objective क्या है?",
+    "question_en": "What is the main objective of inspecting food handling establishments?",
+    "options_hi": [
+      "Food-borne illnesses prevent करना और food safety ensure करना",
+      "Business growth promote करना",
+      "Food prices control करना",
+      "Food taste और presentation ensure करना"
+    ],
+    "options_en": [
+      "To prevent food-borne illnesses and ensure food safety",
+      "To promote business growth",
+      "To control food prices",
+      "To ensure food taste and presentation"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 195,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Malaria का कौन-सा type सबसे गंभीर है और life-threatening भी हो सकता है?",
+    "question_en": "Which type of malaria is the most severe and may be life-threatening?",
+    "options_hi": [
+      "P. ovale",
+      "P. falciparum",
+      "P. vivax",
+      "P. malariae"
+    ],
+    "options_en": [
+      "P. ovale",
+      "P. falciparum",
+      "P. vivax",
+      "P. malariae"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 196,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Biomedical waste management में colour-coded containers का use क्यों किया जाता है?",
+    "question_en": "Why are colour-coded containers used in biomedical waste management?",
+    "options_hi": [
+      "Easy reuse facilitate करने के लिए",
+      "Hospital branding से match करने के लिए",
+      "Proper segregation ensure करने के लिए",
+      "Bins को attractive बनाने के लिए"
+    ],
+    "options_en": [
+      "To facilitate easy reuse",
+      "To match hospital branding",
+      "To ensure proper segregation",
+      "To make bins attractive"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 197,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Two-rescuer CPR के दौरान rescuers के लिए roles बदलने का ideal time कौन-सा है?",
+    "question_en": "During two-rescuer CPR, what is the ideal time for rescuers to switch roles?",
+    "options_hi": [
+      "जब victim में signs of life दिखाई दें",
+      "Legal responsibility avoid करने के लिए every 10 minutes",
+      "हर 30 compressions और 2 breaths के बाद",
+      "हर 2 minutes या 5 cycles of compressions and breaths के बाद"
+    ],
+    "options_en": [
+      "When signs of life appear in the victim",
+      "Every 10 minutes to avoid legal responsibility",
+      "After every 30 compressions and 2 breaths",
+      "Every 2 minutes or after 5 cycles of compressions and breaths"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 198,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "किस type की mechanical ventilation system को Heat Recovery Ventilator (HRV) के साथ pair किए जाने की संभावना सबसे अधिक है?",
+    "question_en": "Which type of mechanical ventilation system is most likely to be paired with a Heat Recovery Ventilator (HRV)?",
+    "options_hi": [
+      "Natural ventilation",
+      "Supply-only system",
+      "Exhaust-only system",
+      "Balanced ventilation system"
+    ],
+    "options_en": [
+      "Natural ventilation",
+      "Supply-only system",
+      "Exhaust-only system",
+      "Balanced ventilation system"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 199,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Surgical procedure से पहले informed consent की requirement के पीछे main ethical principle कौन-सा है?",
+    "question_en": "The main ethical principle behind the requirement of informed consent before a surgical procedure is ________.",
+    "options_hi": [
+      "Beneficence",
+      "Autonomy",
+      "Non-maleficence",
+      "Justice"
+    ],
+    "options_en": [
+      "Beneficence",
+      "Autonomy",
+      "Non-maleficence",
+      "Justice"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 200,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Pasteurisation एक process है जो ________.",
+    "question_en": "Pasteurisation is a process that ________.",
+    "options_hi": [
+      "Food से sugar remove करती है।",
+      "Food का colour improve करती है।",
+      "Food में harmful bacteria को destroy करती है।",
+      "Food में nutrients add करती है।"
+    ],
+    "options_en": [
+      "removes sugar from food",
+      "improves the colour of food",
+      "destroys harmful bacteria in food",
+      "adds nutrients to food"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 201,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन Twenty Point Programme में directly included नहीं है?",
+    "question_en": "Which of the following is not directly included in the Twenty Point Programme?",
+    "options_hi": [
+      "Space research",
+      "Clean drinking water",
+      "Rural housing",
+      "Health and family welfare"
+    ],
+    "options_en": [
+      "Space research",
+      "Clean drinking water",
+      "Rural housing",
+      "Health and family welfare"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 202,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Sanitary Health Inspector द्वारा restaurant के routine inspection का main purpose क्या है?",
+    "question_en": "What is the main purpose of a routine inspection of a restaurant by a Sanitary Health Inspector?",
+    "options_hi": [
+      "Tourism website पर restaurant को positive rating देना",
+      "Restaurant owners से business tax collect करना",
+      "Food taste करके ensure करना कि food अच्छी smell और preparation quality का है",
+      "Health code compliance check करना और food safety practices follow हो रही हैं यह ensure करना"
+    ],
+    "options_en": [
+      "To give the restaurant a positive rating on a tourism website",
+      "To collect business tax from restaurant owners",
+      "To taste the food and ensure good smell and preparation quality",
+      "To check health code compliance and ensure food safety practices are followed"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 203,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Minimum Needs Programme (MNP) का primary component कौन-सा है?",
+    "question_en": "What is a primary component of the Minimum Needs Programme (MNP)?",
+    "options_hi": [
+      "Micro-credit schemes",
+      "Promotion of large industries",
+      "Urban infrastructure development",
+      "Rural electrification"
+    ],
+    "options_en": [
+      "Micro-credit schemes",
+      "Promotion of large industries",
+      "Urban infrastructure development",
+      "Rural electrification"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 204,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Poor appetite वाले patient के लिए appropriate nursing intervention क्या है?",
+    "question_en": "What is an appropriate nursing intervention for a patient with poor appetite?",
+    "options_hi": [
+      "छोटी मात्रा में frequent meals देना",
+      "Physical activity कम करना",
+      "Food preferences ignore करना",
+      "Large meals offer करना"
+    ],
+    "options_en": [
+      "Provide small, frequent meals",
+      "Reduce physical activity",
+      "Ignore food preferences",
+      "Offer large meals"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 205,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन fat-soluble vitamin है?",
+    "question_en": "Which of the following is a fat-soluble vitamin?",
+    "options_hi": [
+      "Vitamin C",
+      "Vitamin B1",
+      "Vitamin B12",
+      "Vitamin D"
+    ],
+    "options_en": [
+      "Vitamin C",
+      "Vitamin B1",
+      "Vitamin B12",
+      "Vitamin D"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 206,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Chickenpox का transmission route क्या है?",
+    "question_en": "What is the route of transmission of chickenpox?",
+    "options_hi": [
+      "Airborne droplets और direct contact",
+      "Blood transfusion",
+      "Contaminated water",
+      "Feco-oral route"
+    ],
+    "options_en": [
+      "Airborne droplets and direct contact",
+      "Blood transfusion",
+      "Contaminated water",
+      "Feco-oral route"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 207,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Solid waste disposal method के रूप में deep burial किन areas में permitted है?",
+    "question_en": "In which areas is deep burial permitted as a method of solid waste disposal?",
+    "options_hi": [
+      "Only coastal areas",
+      "All healthcare facilities",
+      "Only urban areas",
+      "Only rural or remote areas"
+    ],
+    "options_en": [
+      "Only coastal areas",
+      "All healthcare facilities",
+      "Only urban areas",
+      "Only rural or remote areas"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 208,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Family nutrition assessment conduct करने का first step क्या है?",
+    "question_en": "What is the first step in conducting a family nutrition assessment?",
+    "options_hi": [
+      "Nutrition supplements provide करना",
+      "Height और weight record करना",
+      "Physical activity पर advice लेना",
+      "Detailed dietary history लेना"
+    ],
+    "options_en": [
+      "Provide nutrition supplements",
+      "Record height and weight",
+      "Advise on physical activity",
+      "Take a detailed dietary history"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 209,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "किस type का biomedical waste मुख्य रूप से needle-stick injuries का cause बन सकता है, जिससे HIV और hepatitis B जैसे infections transmit हो सकते हैं?",
+    "question_en": "Which type of biomedical waste can mainly cause needle-stick injuries that may transmit infections such as HIV and hepatitis B?",
+    "options_hi": [
+      "General solid waste",
+      "Chemical waste",
+      "Sharps waste",
+      "Industrial waste"
+    ],
+    "options_en": [
+      "General solid waste",
+      "Chemical waste",
+      "Sharps waste",
+      "Industrial waste"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 210,
+    "subject": "Technical Qualification / Sanitary Inspector",
+    "type": "bilingual",
+    "question_hi": "Handwashing के steps का सही क्रम कौन-सा है?",
+    "question_en": "Which of the following is the correct sequence of handwashing steps?",
+    "options_hi": [
+      "साबुन लगाएँ, हाथ रगड़ें, हाथ गीले करें, हाथ पानी से धोएँ",
+      "हाथ पानी से धोएँ, साबुन लगाएँ, हाथ रगड़ें, सुखाएँ",
+      "हाथ गीले करें, साबुन लगाएँ, हाथ रगड़ें, हाथ पानी से धोएँ, सुखाएँ",
+      "हाथ सुखाएँ, साबुन लगाएँ, रगड़ें, हाथ पानी से धोएँ"
+    ],
+    "options_en": [
+      "Apply soap, rub hands, wet hands, rinse hands with water",
+      "Rinse hands with water, apply soap, rub hands, dry",
+      "Wet hands, apply soap, rub hands, rinse hands with water, dry",
+      "Dry hands, apply soap, rub, rinse hands with water"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+
+let current = 0;
+let lang = "hi";
+let answers = Array(questions.length).fill(null);
+let marked = Array(questions.length).fill(false);
+let visited = Array(questions.length).fill(false);
+let remaining = totalSeconds;
+let timerInterval = null;
+
+function startTest() {
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("examScreen").classList.remove("hidden");
+  visited[0] = true;
+  buildSections();
+  buildPalette();
+  renderQuestion();
+  timerInterval = setInterval(tick, 1000);
+}
+
+function tick() {
+  remaining--;
+  updateTimer();
+  if (remaining <= 0) submitTest(true);
+}
+
+function updateTimer() {
+  let m = String(Math.floor(remaining / 60)).padStart(2, "0");
+  let s = String(remaining % 60).padStart(2, "0");
+  document.getElementById("timer").textContent = "Time: " + m + ":" + s;
+}
+
+function setLang(v) {
+  lang = v;
+  ["btnHi","btnEn","btnBi"].forEach(id => document.getElementById(id).classList.remove("active"));
+  document.getElementById(v === "hi" ? "btnHi" : v === "en" ? "btnEn" : "btnBi").classList.add("active");
+  renderQuestion();
+}
+
+function showQuestion(q) {
+  if (lang === "hi") return q.question_hi;
+  if (lang === "en") return q.question_en;
+  return "<b>Hindi:</b> " + q.question_hi + "<br><br><b>English:</b> " + q.question_en;
+}
+
+function showOption(q, i) {
+  if (lang === "hi") return q.options_hi[i];
+  if (lang === "en") return q.options_en[i];
+  return "<b>Hindi:</b> " + q.options_hi[i] + "<br><span class='muted'><b>English:</b> " + q.options_en[i] + "</span>";
+}
+
+function renderQuestion() {
+  let q = questions[current];
+  visited[current] = true;
+  document.getElementById("sectionName").textContent = q.subject;
+  document.getElementById("qNo").textContent = "Question " + (current + 1) + " / " + questions.length;
+  document.getElementById("questionText").innerHTML = showQuestion(q);
+  document.getElementById("imageBox").innerHTML = q.image ? '<img src="' + q.image + '" alt="Question ' + q.id + ' Image" class="question-image">' : "";
+  let box = document.getElementById("options");
+  box.innerHTML = "";
+  q.options_en.forEach((_, i) => {
+    let b = document.createElement("button");
+    b.className = "option" + (answers[current] === i ? " selected" : "");
+    b.innerHTML = "<b>(" + (i + 1) + ")</b> <span>" + showOption(q, i) + "</span>";
+    b.onclick = () => {
+      answers[current] = i;
+      marked[current] = false;
+      renderQuestion();
+    };
+    box.appendChild(b);
+  });
+  updateStats();
+  buildPalette();
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  visited[current] = true;
+  renderQuestion();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  visited[current] = true;
+  renderQuestion();
+}
+
+function clearResponse() {
+  answers[current] = null;
+  marked[current] = false;
+  renderQuestion();
+}
+
+function markReview() {
+  marked[current] = true;
+  if (current < questions.length - 1) current++;
+  visited[current] = true;
+  renderQuestion();
+}
+
+function statusClass(i) {
+  if (answers[i] !== null && marked[i]) return "answered-review";
+  if (marked[i]) return "review";
+  if (answers[i] !== null) return "answered";
+  if (visited[i]) return "not-answered";
+  return "not-visited";
+}
+
+function buildPalette() {
+  let p = document.getElementById("palette");
+  p.innerHTML = "";
+  questions.forEach((q, i) => {
+    let b = document.createElement("button");
+    b.className = "pbtn " + statusClass(i) + (i === current ? " current" : "");
+    b.textContent = i + 1;
+    b.onclick = () => {
+      current = i;
+      visited[current] = true;
+      renderQuestion();
+    };
+    p.appendChild(b);
+  });
+}
+
+function buildSections() {
+  let box = document.getElementById("sectionJump"), map = new Map();
+  questions.forEach((q, i) => {
+    if (!map.has(q.subject)) map.set(q.subject, i);
+  });
+  box.innerHTML = "";
+  for (const [name, index] of map.entries()) {
+    let b = document.createElement("button");
+    b.className = "btn";
+    b.textContent = name;
+    b.onclick = () => {
+      current = index;
+      visited[current] = true;
+      renderQuestion();
+    };
+    box.appendChild(b);
+  }
+}
+
+function updateStats() {
+  let a = answers.filter(x => x !== null).length;
+  document.getElementById("attempted").textContent = a;
+  document.getElementById("notAttempted").textContent = questions.length - a;
+}
+
+function submitTest(auto) {
+  if (!auto && !confirm("Are you sure you want to submit the test?")) return;
+  clearInterval(timerInterval);
+  let attempted = 0, notAttempted = 0, correct = 0, wrong = 0;
+  questions.forEach((q, i) => {
+    if (answers[i] === null) notAttempted++;
+    else {
+      attempted++;
+      if (answers[i] === q.correct) correct++;
+      else wrong++;
+    }
+  });
+  let score = (correct * marksPerQuestion) - (wrong * negativeMarking);
+  let maxMarks = questions.length * marksPerQuestion;
+  let percentage = (score / maxMarks) * 100;
+  let timeTaken = totalSeconds - remaining;
+  let result = {
+    date: new Date().toLocaleString(),
+    attempted, notAttempted, correct, wrong,
+    score: Number(score.toFixed(2)),
+    maxMarks,
+    percentage: Number(percentage.toFixed(2)),
+    timeTaken: formatTime(timeTaken)
+  };
+  saveHistory(result);
+  showResult(result);
+}
+
+function formatTime(sec) {
+  return String(Math.floor(sec / 60)).padStart(2, "0") + ":" + String(sec % 60).padStart(2, "0");
+}
+
+function saveHistory(r) {
+  let old = JSON.parse(localStorage.getItem(storageKey) || "[]");
+  old.unshift(r);
+  localStorage.setItem(storageKey, JSON.stringify(old.slice(0, 10)));
+}
+
+function loadHistory() {
+  let old = JSON.parse(localStorage.getItem(storageKey) || "[]");
+  if (!old.length) return;
+  let rows = old.map((h, i) => '<tr><td>' + (i+1) + '</td><td>' + h.date + '</td><td>' + h.score + '</td><td>' + h.percentage + '%</td><td>' + h.timeTaken + '</td></tr>').join("");
+  document.getElementById("historyBox").innerHTML = '<h3>Attempt History - This Test Only</h3><table><tr><th>#</th><th>Date</th><th>Marks</th><th>%</th><th>Time</th></tr>' + rows + '</table>';
+}
+
+function showResult(r) {
+  document.getElementById("examScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.remove("hidden");
+  document.getElementById("timer").textContent = "Submitted";
+  document.getElementById("resultSummary").innerHTML =
+    '<div class="result-grid">' +
+    '<div class="result-box"><span>Total Questions</span><strong>' + questions.length + '</strong></div>' +
+    '<div class="result-box"><span>Attempted</span><strong>' + r.attempted + '</strong></div>' +
+    '<div class="result-box"><span>Not Attempted</span><strong>' + r.notAttempted + '</strong></div>' +
+    '<div class="result-box"><span>Correct</span><strong>' + r.correct + '</strong></div>' +
+    '<div class="result-box"><span>Wrong</span><strong>' + r.wrong + '</strong></div>' +
+    '<div class="result-box"><span>Marks Obtained</span><strong>' + r.score + '</strong></div>' +
+    '<div class="result-box"><span>Maximum Marks</span><strong>' + r.maxMarks + '</strong></div>' +
+    '<div class="result-box"><span>Percentage</span><strong>' + r.percentage + '%</strong></div>' +
+    '<div class="result-box"><span>Time Taken</span><strong>' + r.timeTaken + '</strong></div>' +
+    '<div class="result-box"><span>Marking</span><strong>+1 / -0.25</strong></div>' +
+    '</div>';
+
+  document.getElementById("answerKey").innerHTML = questions.map((q, i) => {
+    let u = answers[i], ok = u === q.correct;
+    let userAns = u === null ? "Not Attempted" : (q.options_en[u] + " / " + q.options_hi[u]);
+    return '<div class="answer-row"><b>Q' + (i+1) + '.</b> ' + q.question_en + '<br><span class="muted">' + q.question_hi + '</span>' +
+      '<div>Correct Answer: <span class="correct">' + q.options_en[q.correct] + ' / ' + q.options_hi[q.correct] + '</span></div>' +
+      '<div>Your Answer: <span class="' + (u === null ? 'muted' : ok ? 'correct' : 'wrong') + '">' + userAns + '</span></div>' +
+      '<div class="muted">Explanation: Explanation not provided.</div></div>';
+  }).join("");
+}
+
+loadHistory();
+updateTimer();
+</script>
+</body>
+</html>
