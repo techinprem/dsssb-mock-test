@@ -1,0 +1,2424 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junior Health Inspector Hindi English Bilingual Mock Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,'Noto Sans Devanagari','Nirmala UI',sans-serif;background:#eef3f9;color:#111827}
+.header{background:#073763;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:50}
+.header h1{font-size:17px;margin:0;line-height:1.35}.timer{background:#fff;color:#b91c1c;border-radius:8px;padding:8px 12px;font-weight:800;white-space:nowrap}
+.container{max-width:1280px;margin:16px auto;padding:0 12px}.card{background:#fff;border-radius:12px;border:1px solid #d8e2ef;box-shadow:0 2px 8px rgba(15,23,42,.06);padding:18px}
+.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}.info{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px}
+.btn{padding:9px 13px;border-radius:8px;border:1px solid #cbd5e1;background:#f8fafc;color:#111827;font-weight:700;cursor:pointer;margin:3px}.btn.primary,.btn.active{background:#1d4ed8;color:#fff}.btn.success{background:#15803d;color:#fff}.btn.warn{background:#fff7ed;color:#9a3412}.btn.danger{background:#dc2626;color:#fff}
+.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 305px;gap:16px}.langbar,.sectionJump{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.badge{background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;border-radius:999px;padding:5px 10px;font-weight:700;display:inline-block;margin:3px}
+.qtext{font-size:18px;line-height:1.75;font-weight:650;margin:12px 0 14px;padding:12px;background:#f8fafc;border-left:4px solid #1d4ed8;border-radius:8px;overflow-x:auto}
+.option{display:flex;gap:10px;width:100%;border:1px solid #d1d5db;border-radius:10px;margin:10px 0;padding:12px;cursor:pointer;line-height:1.55;background:#fff;text-align:left;font-size:16px}.option:hover{background:#eff6ff}.option.selected{border-color:#2563eb;background:#eff6ff;font-weight:700}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:12px;border-top:1px solid #d8e2ef}.side{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 90px);display:flex;flex-direction:column}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.stat{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:10px;text-align:center}.stat b{display:block;font-size:20px}
+.palette-scroll{overflow-y:auto;border:1px solid #d8e2ef;border-radius:10px;padding:10px;background:#f8fafc;max-height:390px}.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.pbtn{height:38px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;font-weight:800;cursor:pointer}.pbtn.current{outline:3px solid #2563eb}.pbtn.not-visited{background:#fff}.pbtn.not-answered{background:#fee2e2;border-color:#ef4444}.pbtn.answered{background:#dcfce7;border-color:#16a34a}.pbtn.review{background:#fef3c7;border-color:#f59e0b}.pbtn.answered-review{background:#ddd6fe;border-color:#7c3aed}
+.legend{display:grid;gap:5px;font-size:13px;margin:8px 0}.dot{width:16px;height:16px;border-radius:4px;border:1px solid #94a3b8;display:inline-block;vertical-align:middle;margin-right:6px}
+.result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.result-box{background:#f8fafc;border:1px solid #d8e2ef;border-radius:10px;padding:12px;text-align:center}.result-box strong{display:block;font-size:22px;color:#073763}
+.answer-row{border:1px solid #dbe3ef;border-radius:10px;padding:12px;margin:10px 0;background:#fff;line-height:1.5}.correct{color:#15803d;font-weight:800}.wrong{color:#b91c1c;font-weight:800}.muted,.small{font-size:13px;color:#64748b}.note{background:#ecfdf5;border:1px solid #86efac;color:#065f46;padding:10px;border-radius:10px;margin:10px 0}.hidden{display:none!important}
+table{border-collapse:collapse;width:100%;background:#fff;margin:8px 0}th,td{border:1px solid #cbd5e1;padding:8px;text-align:left}th{background:#e2e8f0}
+@media(max-width:980px){.exam-layout{grid-template-columns:1fr}.side{position:static;max-height:none}.palette-scroll{max-height:210px}.palette{grid-template-columns:repeat(10,1fr)}}
+@media(max-width:520px){.header{flex-direction:column;align-items:flex-start}.start-grid,.result-grid{grid-template-columns:1fr}.palette{grid-template-columns:repeat(5,1fr)}.btn{width:100%;margin:4px 0}.nav{display:block}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Junior Health Inspector Hindi English Bilingual Mock Test<br><span class="small" style="color:#dbeafe">100 Questions | +1 correct, -0.25 wrong</span></h1>
+  <div class="timer" id="timer">Time: 100:00</div>
+</div>
+<div class="container">
+<section id="startScreen" class="card">
+  <h2>Online Mock Test</h2>
+  <div class="note"><b>Ready:</b> Hindi / English / Bilingual CBT mock test. Source answer key mapping cross-verified.</div>
+  <div class="start-grid">
+    <div class="info"><b>Exam:</b><br>Junior Health Inspector Grade II</div>
+    <div class="info"><b>Total Questions:</b><br>100</div>
+    <div class="info"><b>Total Marks:</b><br>100</div>
+    <div class="info"><b>Time Duration:</b><br>100 Minutes</div>
+    <div class="info"><b>Marking Scheme:</b><br>+1 Correct, -0.25 Wrong</div>
+    <div class="info"><b>Image Folder:</b><br>images/junior-health-inspector/<br>No images required</div>
+  </div>
+  <button class="btn success" onclick="startTest()">Start Test</button>
+  <div id="historyBox"></div>
+</section>
+<section id="examScreen" class="hidden">
+  <div class="exam-layout">
+    <div class="card">
+      <div class="langbar">
+        <b>Language view:</b>
+        <button class="btn active" id="btnHi" onclick="setLang('hi')">Hindi</button>
+        <button class="btn" id="btnEn" onclick="setLang('en')">English</button>
+        <button class="btn" id="btnBi" onclick="setLang('bi')">Bilingual</button>
+      </div>
+      <div><span class="badge" id="sectionName"></span><span class="badge" id="qNo"></span></div>
+      <div class="qtext" id="questionText"></div>
+      <div id="options"></div>
+      <div class="nav">
+        <button class="btn" onclick="prevQ()">Previous</button>
+        <button class="btn primary" onclick="nextQ()">Save & Next</button>
+        <button class="btn" onclick="clearResponse()">Clear Response</button>
+        <button class="btn warn" onclick="markReview()">Mark for Review</button>
+        <button class="btn danger" onclick="submitTest(false)">Submit Test</button>
+      </div>
+    </div>
+    <aside class="card side">
+      <div class="stats"><div class="stat"><b id="attempted">0</b>Attempted</div><div class="stat"><b id="notAttempted">100</b>Not Attempted</div></div>
+      <h3>Question Palette</h3>
+      <div class="legend">
+        <div><span class="dot not-visited"></span>Not Visited</div>
+        <div><span class="dot not-answered"></span>Not Answered</div>
+        <div><span class="dot answered"></span>Answered</div>
+        <div><span class="dot review"></span>Marked for Review</div>
+        <div><span class="dot answered-review"></span>Answered & Marked</div>
+      </div>
+      <div class="palette-scroll"><div class="palette" id="palette"></div></div>
+    </aside>
+  </div>
+</section>
+<section id="resultScreen" class="card hidden">
+  <h2>Result</h2><div id="resultSummary"></div><h3>Answer Key</h3><div id="answerKey"></div>
+</section>
+</div>
+<script>
+const TEST_ID = "junior_health_inspector_hindi_english_bilingual_mock_test";
+const storageKey = "mock_attempt_history_" + TEST_ID;
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const totalSeconds = 100 * 60;
+const questions = [
+  {
+    "id": 1,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "सौ दिन की खाँसी के नाम से जाना जाने वाला रोग कौन-सा है?",
+    "question_en": "Disease known as hundred-day cough",
+    "options_hi": [
+      "क्षय रोग",
+      "काली खाँसी",
+      "टिटनेस",
+      "खसरा"
+    ],
+    "options_en": [
+      "Tuberculosis",
+      "Pertussis",
+      "Tetanus",
+      "Measles"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "जापानी एन्सेफलाइटिस (JE) का वाहक कौन है?",
+    "question_en": "The vector of Japanese Encephalitis (JE)",
+    "options_hi": [
+      "एनोफिलीज मच्छर",
+      "हार्ड टिक",
+      "क्यूलेक्स मच्छर",
+      "सॉफ्ट टिक"
+    ],
+    "options_en": [
+      "Anopheles mosquito",
+      "Hard tick",
+      "Culex mosquito",
+      "Soft tick"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "हेपेटाइटिस B के संचरण का तरीका क्या है?",
+    "question_en": "Mode of transmission of Hepatitis B",
+    "options_hi": [
+      "मल-मुख मार्ग",
+      "मच्छर का काटना",
+      "बूंद संक्रमण",
+      "रक्तजनित संक्रमण"
+    ],
+    "options_en": [
+      "Faeco-oral route",
+      "Mosquito bite",
+      "Droplet infection",
+      "Blood-borne infection"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Diethyl Carbamazine (DEC) किसके नियंत्रण के लिए उपयोग की जाती है?",
+    "question_en": "Diethyl Carbamazine (DEC) is used for the control of",
+    "options_hi": [
+      "फाइलेरियासिस",
+      "हुकवर्म संक्रमण",
+      "मलेरिया",
+      "टाइफाइड बुखार"
+    ],
+    "options_en": [
+      "Filariasis",
+      "Hookworm infection",
+      "Malaria",
+      "Typhoid fever"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "फेफड़ों का आवरण क्या कहलाता है?",
+    "question_en": "Covering of lungs is called",
+    "options_hi": [
+      "पेरीकार्डियम",
+      "प्लूरा",
+      "पेरीओस्टियम",
+      "पेरीकॉन्ड्रियम"
+    ],
+    "options_en": [
+      "Pericardium",
+      "Pleura",
+      "Periosteum",
+      "Perichondrium"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "कोरोनरी धमनियाँ किसे रक्त की आपूर्ति करती हैं?",
+    "question_en": "Coronary arteries supply",
+    "options_hi": [
+      "हृदय",
+      "फेफड़े",
+      "तिल्ली",
+      "यकृत"
+    ],
+    "options_en": [
+      "Heart",
+      "Lungs",
+      "Spleen",
+      "Liver"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "हैजा किससे होता है?",
+    "question_en": "Cholera is caused by",
+    "options_hi": [
+      "विब्रियो",
+      "साल्मोनेला",
+      "ब्रूसेला",
+      "स्टैफिलोकोक्काई"
+    ],
+    "options_en": [
+      "Vibrio",
+      "Salmonella",
+      "Brucella",
+      "Staphylococci"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Widal test किसके निदान में उपयोग होता है?",
+    "question_en": "Widal test is used in the diagnosis of",
+    "options_hi": [
+      "एंटेरिक फीवर",
+      "डेंगू बुखार",
+      "येलो फीवर",
+      "अंडुलेंट फीवर"
+    ],
+    "options_en": [
+      "Enteric fever",
+      "Dengue fever",
+      "Yellow fever",
+      "Undulant fever"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Rabies virus के बारे में निम्न में से कौन-सा सही है?",
+    "question_en": "Which of the following is true about Rabies virus?",
+    "options_hi": [
+      "बुलेट आकार का",
+      "सिंगल-स्ट्रैंडेड RNA",
+      "इथेनॉल, साबुन और डिटर्जेंट के प्रति संवेदनशील",
+      "उपरोक्त सभी"
+    ],
+    "options_en": [
+      "Bullet shaped",
+      "Single-stranded RNA",
+      "Sensitive to ethanol, soap and detergent",
+      "All of the above"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "CD4 count निम्न में से किस संक्रमण से संबंधित है?",
+    "question_en": "CD4 count is related to which of the following infections?",
+    "options_hi": [
+      "HIV",
+      "Herpes",
+      "Hepatitis",
+      "Chickenpox"
+    ],
+    "options_en": [
+      "HIV",
+      "Herpes",
+      "Hepatitis",
+      "Chickenpox"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Cretinism किसकी कमी से होता है?",
+    "question_en": "Cretinism is caused by the deficiency of",
+    "options_hi": [
+      "इंसुलिन",
+      "थायरॉइड हार्मोन",
+      "ग्रोथ हार्मोन",
+      "कॉर्टिसोल"
+    ],
+    "options_en": [
+      "Insulin",
+      "Thyroid hormone",
+      "Growth hormone",
+      "Cortisol"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Insulin अग्न्याशय की किन कोशिकाओं द्वारा produced होता है?",
+    "question_en": "Insulin is produced by which cells of pancreas",
+    "options_hi": [
+      "अल्फा कोशिकाएँ",
+      "बीटा कोशिकाएँ",
+      "δ / D कोशिकाएँ",
+      "गामा कोशिकाएँ"
+    ],
+    "options_en": [
+      "Alpha cells",
+      "Beta cells",
+      "δ / D cells",
+      "Gamma cells"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "स्वच्छ कुएँ की contamination source से न्यूनतम दूरी कितनी होनी चाहिए?",
+    "question_en": "Minimum distance of sanitary well from source of contamination",
+    "options_hi": [
+      "25 feet",
+      "50 feet",
+      "70 feet",
+      "100 feet"
+    ],
+    "options_en": [
+      "25 feet",
+      "50 feet",
+      "70 feet",
+      "100 feet"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से killed vaccine का उदाहरण कौन-सा है?",
+    "question_en": "Which of the following is an example of killed vaccine?",
+    "options_hi": [
+      "BCG",
+      "OPV",
+      "Rubella",
+      "Hepatitis B"
+    ],
+    "options_en": [
+      "BCG",
+      "OPV",
+      "Rubella",
+      "Hepatitis B"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Down's syndrome में chromosomal anomaly कौन-सी होती है?",
+    "question_en": "Chromosomal anomaly in Down's syndrome",
+    "options_hi": [
+      "Trisomy 21",
+      "Trisomy 13",
+      "Trisomy 31",
+      "Trisomy 18"
+    ],
+    "options_en": [
+      "Trisomy 21",
+      "Trisomy 13",
+      "Trisomy 31",
+      "Trisomy 18"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Beri Beri किसकी कमी से होता है?",
+    "question_en": "Beri Beri occurs due to deficiency of",
+    "options_hi": [
+      "Niacin",
+      "Riboflavin",
+      "Folic acid",
+      "Thiamine"
+    ],
+    "options_en": [
+      "Niacin",
+      "Riboflavin",
+      "Folic acid",
+      "Thiamine"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "___________ से कम जन्म वजन को low birth weight कहा जाता है।",
+    "question_en": "Birth weight below _____________ is termed as low birth weight.",
+    "options_hi": [
+      "2 kg",
+      "2.5 kg",
+      "1.5 kg",
+      "1 kg"
+    ],
+    "options_en": [
+      "2 kg",
+      "2.5 kg",
+      "1.5 kg",
+      "1 kg"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Orthotolidine test किसका निर्धारण करने के लिए उपयोग होता है?",
+    "question_en": "Orthotolidine test is used to determine",
+    "options_hi": [
+      "Free chlorine",
+      "Combined chlorine",
+      "Free और combined chlorine दोनों",
+      "Fluorine level"
+    ],
+    "options_en": [
+      "Free chlorine",
+      "Combined chlorine",
+      "Both free and combined chlorine",
+      "Fluorine level"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Clostridium tetani के बारे में निम्न में से कौन-सा सही है?",
+    "question_en": "Which of the following is true about Clostridium tetani?",
+    "options_hi": [
+      "Gram positive",
+      "Aerobic",
+      "Non-spore forming",
+      "मानव intestine में normally नहीं पाया जाता"
+    ],
+    "options_en": [
+      "Gram positive",
+      "Aerobic",
+      "Non-spore forming",
+      "Not found normally in human intestine"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "मानव शरीर की सबसे बड़ी gland कौन-सी है?",
+    "question_en": "Largest gland in human body",
+    "options_hi": [
+      "यकृत",
+      "तिल्ली",
+      "थायरॉइड ग्रंथि",
+      "अग्न्याशय"
+    ],
+    "options_en": [
+      "Liver",
+      "Spleen",
+      "Thyroid gland",
+      "Pancreas"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "कौन-सा programme infant और maternal health services में free health care और referral transport entitlements के माध्यम से zero out-of-pocket expenditure सुनिश्चित करता है?",
+    "question_en": "Programme which ensures zero out-of-pocket expenditure for infant and maternal health services through free health care and referral transport entitlements",
+    "options_hi": [
+      "Janani Suraksha Yojana",
+      "Janani Shishu Suraksha Karyakram",
+      "Facility Based Newborn Care",
+      "None"
+    ],
+    "options_en": [
+      "Janani Suraksha Yojana",
+      "Janani Shishu Suraksha Karyakram",
+      "Facility Based Newborn Care",
+      "None"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Preventive और curative services के integration की recommendation किस committee ने दी थी?",
+    "question_en": "Integration of preventive and curative service was the recommendation of",
+    "options_hi": [
+      "Mudaliar Committee",
+      "Bhore Committee",
+      "Chadha Committee",
+      "Mukerji Committee"
+    ],
+    "options_en": [
+      "Mudaliar Committee",
+      "Bhore Committee",
+      "Chadha Committee",
+      "Mukerji Committee"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Chickenpox का causative agent कौन है?",
+    "question_en": "The causative agent of chickenpox",
+    "options_hi": [
+      "Varicella zoster",
+      "Variola",
+      "Rota virus",
+      "Influenza virus"
+    ],
+    "options_en": [
+      "Varicella zoster",
+      "Variola",
+      "Rota virus",
+      "Influenza virus"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Tetanus spores किस condition में germinate करते हैं?",
+    "question_en": "Tetanus spores germinate under ____________________ condition.",
+    "options_hi": [
+      "Aerobic",
+      "Anaerobic",
+      "Dry",
+      "All"
+    ],
+    "options_en": [
+      "Aerobic",
+      "Anaerobic",
+      "Dry",
+      "All"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "National Malaria Control Programme किस वर्ष शुरू हुआ?",
+    "question_en": "National Malaria Control Programme started in the year",
+    "options_hi": [
+      "1950",
+      "1963",
+      "1953",
+      "1964"
+    ],
+    "options_en": [
+      "1950",
+      "1963",
+      "1953",
+      "1964"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Fast breathing और chest indrawing किसके symptoms हैं?",
+    "question_en": "Fast breathing and chest indrawing are symptoms of",
+    "options_hi": [
+      "Measles",
+      "Pneumonia",
+      "Tetanus",
+      "Dengue"
+    ],
+    "options_en": [
+      "Measles",
+      "Pneumonia",
+      "Tetanus",
+      "Dengue"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Mass drug administration किस programme में अपनाई गई strategy है?",
+    "question_en": "Mass drug administration is a strategy adopted in _______________ programme.",
+    "options_hi": [
+      "Filaria Control Programme",
+      "Leprosy Eradication",
+      "Revised National TB Control",
+      "National AIDS Control Programme"
+    ],
+    "options_en": [
+      "Filaria Control Programme",
+      "Leprosy Eradication",
+      "Revised National TB Control",
+      "National AIDS Control Programme"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Pulse Polio Immunization किस वर्ष शुरू हुआ?",
+    "question_en": "Pulse Polio Immunization started in the year",
+    "options_hi": [
+      "2000",
+      "1998",
+      "2005",
+      "1995"
+    ],
+    "options_en": [
+      "2000",
+      "1998",
+      "2005",
+      "1995"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Bacillus thuringiensis किसे मारने के लिए use होता है?",
+    "question_en": "Bacillus thuringiensis is used to kill",
+    "options_hi": [
+      "Tick larvae",
+      "Flea larvae",
+      "Mosquito larvae",
+      "Cyclops"
+    ],
+    "options_en": [
+      "Tick larvae",
+      "Flea larvae",
+      "Mosquito larvae",
+      "Cyclops"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Hepatitis E किस प्रकार की disease है?",
+    "question_en": "Hepatitis E is a _________________ disease.",
+    "options_hi": [
+      "Water-borne",
+      "Blood-borne",
+      "Air-borne",
+      "None"
+    ],
+    "options_en": [
+      "Water-borne",
+      "Blood-borne",
+      "Air-borne",
+      "None"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Disaster के impact को कम करने के लिए पहले से किए गए measures क्या कहलाते हैं?",
+    "question_en": "Measures taken in advance to reduce the impact of disaster is",
+    "options_hi": [
+      "Rehabilitation",
+      "Relief",
+      "Mitigation",
+      "All of these"
+    ],
+    "options_en": [
+      "Rehabilitation",
+      "Relief",
+      "Mitigation",
+      "All of these"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Figure of 8 किससे संबंधित है?",
+    "question_en": "Figure of 8 is related to",
+    "options_hi": [
+      "Burns",
+      "Bandaging",
+      "Fracture",
+      "None"
+    ],
+    "options_en": [
+      "Burns",
+      "Bandaging",
+      "Fracture",
+      "None"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Crepitus किसमें noted होता है?",
+    "question_en": "Crepitus is noted in ________________",
+    "options_hi": [
+      "कान से bleeding",
+      "Fracture",
+      "Breathing problem",
+      "Disaster"
+    ],
+    "options_en": [
+      "Bleeding from ear",
+      "Fracture",
+      "Breathing problem",
+      "Disaster"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "किसी व्यक्ति की physical या cognitive impairment क्या कहलाती है?",
+    "question_en": "Physical or cognitive impairment of an individual",
+    "options_hi": [
+      "Rehabilitation",
+      "Epilepsy",
+      "Disability",
+      "All of these"
+    ],
+    "options_en": [
+      "Rehabilitation",
+      "Epilepsy",
+      "Disability",
+      "All of these"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Arterial bleeding में blood का colour कैसा होता है?",
+    "question_en": "Colour of blood in arterial bleeding",
+    "options_hi": [
+      "Black",
+      "Bluish",
+      "Dark red",
+      "Bright red"
+    ],
+    "options_en": [
+      "Black",
+      "Bluish",
+      "Dark red",
+      "Bright red"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Conductive deafness किसके malfunctioning से होती है?",
+    "question_en": "Conductive deafness is caused by malfunctioning of",
+    "options_hi": [
+      "Auditory nerve",
+      "Inner ear",
+      "External ear",
+      "None"
+    ],
+    "options_en": [
+      "Auditory nerve",
+      "Inner ear",
+      "External ear",
+      "None"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Disaster का first respondent कौन होता है?",
+    "question_en": "First respondent of a disaster is",
+    "options_hi": [
+      "Government",
+      "Community",
+      "International agencies",
+      "Health sector"
+    ],
+    "options_en": [
+      "Government",
+      "Community",
+      "International agencies",
+      "Health sector"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Physiotherapy prevention के किस level के रूप में considered है?",
+    "question_en": "Physiotherapy is considered as ______________ level of prevention.",
+    "options_hi": [
+      "Primary",
+      "Secondary",
+      "Tertiary",
+      "All"
+    ],
+    "options_en": [
+      "Primary",
+      "Secondary",
+      "Tertiary",
+      "All"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "भारत में blindness का main cause क्या है?",
+    "question_en": "Main cause of blindness in India",
+    "options_hi": [
+      "Glaucoma",
+      "Cataract",
+      "Accidents",
+      "Retinopathy"
+    ],
+    "options_en": [
+      "Glaucoma",
+      "Cataract",
+      "Accidents",
+      "Retinopathy"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Injury या illness के कारण body के effective circulating blood volume में कमी से कौन-सा syndrome होता है?",
+    "question_en": "Syndrome resulting from a decrease in effective circulating blood volume of body due to injury or illness",
+    "options_hi": [
+      "Paralysis",
+      "Shock",
+      "Fainting",
+      "None"
+    ],
+    "options_en": [
+      "Paralysis",
+      "Shock",
+      "Fainting",
+      "None"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Pregnancy रोकने में लगभग 100% effectiveness वाला birth control measure कौन-सा है?",
+    "question_en": "The birth control measure which has almost 100% effectiveness in preventing pregnancy",
+    "options_hi": [
+      "Condoms",
+      "IUD",
+      "Oral pills",
+      "None"
+    ],
+    "options_en": [
+      "Condoms",
+      "IUD",
+      "Oral pills",
+      "None"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Emergency contraceptive unprotected intercourse के कितने hours के भीतर ideal है?",
+    "question_en": "Emergency contraceptive is ideal within _______________ hrs of unprotected intercourse.",
+    "options_hi": [
+      "12",
+      "24",
+      "48",
+      "72"
+    ],
+    "options_en": [
+      "12",
+      "24",
+      "48",
+      "72"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "First millennium goals का target year कौन-सा था?",
+    "question_en": "The target year for first millennium goals was",
+    "options_hi": [
+      "2000",
+      "1978",
+      "2015",
+      "2030"
+    ],
+    "options_en": [
+      "2000",
+      "1978",
+      "2015",
+      "2030"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Smallpox globally किस वर्ष eradicated हुआ?",
+    "question_en": "Smallpox was eradicated globally in the year",
+    "options_hi": [
+      "1970",
+      "1980",
+      "1972",
+      "1975"
+    ],
+    "options_en": [
+      "1970",
+      "1980",
+      "1972",
+      "1975"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Birth control measure targets किस register के data से fixed किए जाते हैं?",
+    "question_en": "Birth control measure targets are fixed using data from __________________ register.",
+    "options_hi": [
+      "RCH register",
+      "Birth register",
+      "EC register",
+      "Death register"
+    ],
+    "options_en": [
+      "RCH register",
+      "Birth register",
+      "EC register",
+      "Death register"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Net reproduction rate of 1 कब achieve किया जा सकता है जब couple protection rate ______ से अधिक हो?",
+    "question_en": "Net reproduction rate of 1 can be achieved if the couple protection rate exceeds",
+    "options_hi": [
+      "30%",
+      "40%",
+      "50%",
+      "60%"
+    ],
+    "options_en": [
+      "30%",
+      "40%",
+      "50%",
+      "60%"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Birth कितने दिनों के भीतर registered होना चाहिए?",
+    "question_en": "Birth should be registered within _______________ days.",
+    "options_hi": [
+      "7",
+      "14",
+      "21",
+      "28"
+    ],
+    "options_en": [
+      "7",
+      "14",
+      "21",
+      "28"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "भारत में प्रति 1000 population eligible couples की approximate संख्या कितनी है?",
+    "question_en": "Approximate number of eligible couples per 1000 population of India.",
+    "options_hi": [
+      "400 to 450",
+      "200 to 250",
+      "150 to 180",
+      "100 to 140"
+    ],
+    "options_en": [
+      "400 to 450",
+      "200 to 250",
+      "150 to 180",
+      "100 to 140"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Demography में भारत किस phase में enter कर चुका है?",
+    "question_en": "In demography India has entered the ______________ phase.",
+    "options_hi": [
+      "Late expanding",
+      "High stationary",
+      "Early expanding",
+      "Low stationary"
+    ],
+    "options_en": [
+      "Late expanding",
+      "High stationary",
+      "Early expanding",
+      "Low stationary"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "PHC में सभी vaccines किसमें stored होती हैं?",
+    "question_en": "All vaccines in PHC are stored in",
+    "options_hi": [
+      "ILR",
+      "Deep freezer",
+      "Cold box",
+      "Vaccine carrier"
+    ],
+    "options_en": [
+      "ILR",
+      "Deep freezer",
+      "Cold box",
+      "Vaccine carrier"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Disease control से संबंधित कौन-सा term incorrect है?",
+    "question_en": "Which is incorrect term regarding control of disease?",
+    "options_hi": [
+      "Control का अर्थ disease incidence कम करना है",
+      "Elimination में disease transmission interrupt होता है",
+      "Eradication agent के extermination द्वारा infection transmission की termination है",
+      "Surveillance health status में changes detect करने के लिए routine activities का performance और analysis है"
+    ],
+    "options_en": [
+      "Control means reducing incidence of disease",
+      "Elimination is interruption of transmission of disease",
+      "Eradication is termination of all transmission of infection by extermination of the agent",
+      "Surveillance is the performance and analysis of routine activities to detect changes in health status"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सी disease eradicated नहीं की जा सकती मानी जाती है?",
+    "question_en": "Which of the following is considered as a disease which cannot be eradicated?",
+    "options_hi": [
+      "Yellow fever",
+      "Measles",
+      "Rubella",
+      "Hepatitis B"
+    ],
+    "options_en": [
+      "Yellow fever",
+      "Measles",
+      "Rubella",
+      "Hepatitis B"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Ortho-tolidine test के बारे में कौन-सा statement incorrect है?",
+    "question_en": "Which is incorrect regarding ortho-tolidine test?",
+    "options_hi": [
+      "यह free और combined chlorine दोनों की measurement करता है",
+      "Test 1 ml water में 0.1 ml reagent मिलाकर किया जाता है",
+      "15 से 20 minutes बाद की reading free chlorine की presence बताती है",
+      "Reading पहले 10 seconds के भीतर ली जानी चाहिए"
+    ],
+    "options_en": [
+      "It enables measurement of both free and combined chlorine",
+      "Test is carried out by adding 0.1 ml of reagent to 1 ml of water",
+      "Reading taken after 15 to 20 minutes indicates presence of free chlorine",
+      "The reading should be taken within first 10 seconds"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "भारत की major non-communicable diseases कौन-सी हैं? i) hypertension ii) diabetes mellitus iii) cancer iv) obesity v) accidents",
+    "question_en": "Which of the following are the major non-communicable diseases of India? i) hypertension ii) diabetes mellitus iii) cancer iv) obesity v) accidents",
+    "options_hi": [
+      "i, ii, iii",
+      "ii, iii",
+      "i, ii, iv",
+      "उपरोक्त सभी"
+    ],
+    "options_en": [
+      "i, ii, iii",
+      "ii, iii",
+      "i, ii, iv",
+      "All of the above"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Single chamber incineration के बारे में कौन-सा incorrect है?",
+    "question_en": "Which is incorrect regarding single chamber incineration?",
+    "options_hi": [
+      "इसकी disinfection efficiency reasonable good होती है",
+      "Thermal resistant chemicals और cytotoxic drugs का complete destruction",
+      "Waste volume और weight में drastic reduction",
+      "Investment और operation cost low होता है"
+    ],
+    "options_en": [
+      "It has reasonably good disinfection efficiency",
+      "Complete destruction of thermal resistant chemicals and cytotoxic drugs",
+      "Drastic reduction of waste in volume and weight",
+      "Investment and operation cost is low"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Septic tank latrine construction के बारे में कौन-सा incorrect है?",
+    "question_en": "Which is incorrect regarding construction of septic tank latrine?",
+    "options_hi": [
+      "5 से 6 members के family के लिए capacity लगभग 2000 litres होनी चाहिए",
+      "Length breadth की लगभग 3 से 4 times होती है",
+      "Depth 4 m होनी चाहिए, जिसमें 2.4 m liquid depth होती है",
+      "Deepest part inlet end होता है और outlet end की ओर evenly slope करता है"
+    ],
+    "options_en": [
+      "Capacity should be about 2000 litres for a family of 5 to 6 members",
+      "It is about 3 to 4 times as long as it is broad",
+      "The depth should be 4 m, of which 2.4 m is liquid depth",
+      "Deepest part is the inlet end sloping up evenly towards outlet end"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Biomedical Waste Management Rules 2016 के अनुसार biomedical waste और bin colour की correct pair कौन-सी है? i) Soiled cotton - red ii) Lancet - white iii) Glass - white iv) Syringe - yellow",
+    "question_en": "Which is the correct pair of biomedical waste and colour of bin regarding Biomedical Waste Management Rules 2016? i) Soiled cotton - red ii) Lancet - white iii) Glass - white iv) Syringe - yellow",
+    "options_hi": [
+      "i and ii",
+      "ii only",
+      "i and iii",
+      "i only"
+    ],
+    "options_en": [
+      "i and ii",
+      "ii only",
+      "i and iii",
+      "i only"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Water contamination का most commonly used bacteriological indicator कौन-सा है?",
+    "question_en": "The most commonly used bacteriological indicator of contamination of water",
+    "options_hi": [
+      "Escherichia coli",
+      "Clostridium perfringens",
+      "Fecal streptococci",
+      "Enterobacter aerogenes"
+    ],
+    "options_en": [
+      "Escherichia coli",
+      "Clostridium perfringens",
+      "Fecal streptococci",
+      "Enterobacter aerogenes"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Personal communication के 7-38-55 rule के बारे में कौन-सा correct है?",
+    "question_en": "Which is correct regarding 7-38-55 rule of personal communication?",
+    "options_hi": [
+      "38% verbal, 7% voice tone और 55% body language",
+      "7% verbal, 38% voice tone और 55% body language",
+      "7% verbal, 55% voice tone और 38% body language",
+      "None of the above"
+    ],
+    "options_en": [
+      "38% verbal, 7% voice tone and 55% body language",
+      "7% verbal, 38% voice tone and 55% body language",
+      "7% verbal, 55% voice tone and 38% body language",
+      "None of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Health communication के सभी functions हैं, except",
+    "question_en": "All are functions of health communication except",
+    "options_hi": [
+      "Motivation",
+      "Organisation",
+      "Raising morale",
+      "Planning"
+    ],
+    "options_en": [
+      "Motivation",
+      "Organisation",
+      "Raising morale",
+      "Planning"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "One-way communication के बारे में कौन-सा incorrect है?",
+    "question_en": "Which of the following is incorrect regarding one-way communication?",
+    "options_hi": [
+      "Knowledge imposed होती है",
+      "Learning authoritative होती है",
+      "यह human behaviour को influence कर सकती है",
+      "Audience participation नहीं होता"
+    ],
+    "options_en": [
+      "Knowledge is imposed",
+      "Learning is authoritative",
+      "Can influence human behaviour",
+      "No audience participation"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन communication का element नहीं है?",
+    "question_en": "Which of the following is not an element of communication?",
+    "options_hi": [
+      "Sender",
+      "Message",
+      "Receiver",
+      "Skills"
+    ],
+    "options_en": [
+      "Sender",
+      "Message",
+      "Receiver",
+      "Skills"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Communication में body language के use को कौन-सा term refer करता है?",
+    "question_en": "Which of the following term refers to the use of body language in communication?",
+    "options_hi": [
+      "Haptics",
+      "Chronemics",
+      "Kinesics",
+      "Vocalics"
+    ],
+    "options_en": [
+      "Haptics",
+      "Chronemics",
+      "Kinesics",
+      "Vocalics"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Health education की definition — “a process aimed at encouraging people to want to be healthy...” — किसने coined की थी?",
+    "question_en": "The definition of health education as “a process aimed at encouraging people to want to be healthy...” was coined by",
+    "options_hi": [
+      "Alma Ata declaration",
+      "Millennium development goal",
+      "World Health Assembly",
+      "World Health Organization"
+    ],
+    "options_en": [
+      "Alma Ata declaration",
+      "Millennium development goal",
+      "World Health Assembly",
+      "World Health Organization"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Health education और propaganda के difference के बारे में कौन-सा false है?",
+    "question_en": "Which is false regarding the difference between health education and propaganda?",
+    "options_hi": [
+      "Education में knowledge actively acquired होता है और propaganda में knowledge लोगों के minds में installed होता है",
+      "Education process information centred होता है और propaganda behaviour centred होता है",
+      "Education reflective behaviour develop करती है और propaganda reflexive behaviour develop करता है",
+      "Education reason को appeal करती है और propaganda emotion को appeal करता है"
+    ],
+    "options_en": [
+      "In education knowledge is actively acquired and in propaganda knowledge is installed in minds of people",
+      "In education process is information centred and in propaganda is behaviour centred",
+      "Education develops reflective behaviour and propaganda develops reflexive behaviour",
+      "Education appeals to reason and propaganda appeals to emotion"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Community को bore well provide करने की situation में health education का कौन-सा approach use हुआ है?",
+    "question_en": "Which type of health education approach is used in the given situation: providing a bore well to a community?",
+    "options_hi": [
+      "Service approach",
+      "Health education approach",
+      "Primary health care approach",
+      "Regulatory approach"
+    ],
+    "options_en": [
+      "Service approach",
+      "Health education approach",
+      "Primary health care approach",
+      "Regulatory approach"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Health education के mass approach के examples कौन-से हैं? i) Television ii) Newspaper iii) Posters iv) Lectures v) Panel discussion",
+    "question_en": "Examples of mass approach of health education are: i) Television ii) Newspaper iii) Posters iv) Lectures v) Panel discussion",
+    "options_hi": [
+      "i, ii, iv",
+      "i, ii, iii",
+      "i, iii, v",
+      "i, ii, v"
+    ],
+    "options_en": [
+      "i, ii, iv",
+      "i, ii, iii",
+      "i, iii, v",
+      "i, ii, v"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "किस health education method का use किसी specific situation के लिए values की expression में किया जा सकता है?",
+    "question_en": "The health education method which can be used for expression of values for a specific situation",
+    "options_hi": [
+      "Posters",
+      "Seminars",
+      "Role plays",
+      "Symposium"
+    ],
+    "options_en": [
+      "Posters",
+      "Seminars",
+      "Role plays",
+      "Symposium"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न सभी India में major vector-borne diseases हैं, except",
+    "question_en": "The following are major vector-borne diseases in India except",
+    "options_hi": [
+      "Lymphatic filariasis",
+      "Japanese encephalitis",
+      "Kala azar",
+      "Yellow fever"
+    ],
+    "options_en": [
+      "Lymphatic filariasis",
+      "Japanese encephalitis",
+      "Kala azar",
+      "Yellow fever"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Intensified National Iron Plus Initiative (I-NIPI) में शामिल changes में कौन-सा except है?",
+    "question_en": "All are the changes included in Intensified National Iron Plus Initiative (I-NIPI) except",
+    "options_hi": [
+      "Tablets 120 days के लिए दी जाती हैं",
+      "6 beneficiary groups हैं",
+      "6 interventions शामिल हैं",
+      "6 institutional mechanisms शामिल हैं"
+    ],
+    "options_en": [
+      "Tablets are given for 120 days",
+      "There are 6 beneficiary groups",
+      "6 interventions are included",
+      "6 institutional mechanisms are included"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Policy formulation किससे concerned होती है?",
+    "question_en": "The policy formulation is concerned with",
+    "options_hi": [
+      "Operational managers",
+      "Top level managers",
+      "Middle level managers",
+      "Intermediary managers"
+    ],
+    "options_en": [
+      "Operational managers",
+      "Top level managers",
+      "Middle level managers",
+      "Intermediary managers"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Health care management में functions की series होती है, except",
+    "question_en": "Health care management contains a series of functions except",
+    "options_hi": [
+      "Planning",
+      "Directing",
+      "Controlling",
+      "Cooperation"
+    ],
+    "options_en": [
+      "Planning",
+      "Directing",
+      "Controlling",
+      "Cooperation"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन management का principle नहीं है?",
+    "question_en": "Which among the following is not a principle of management?",
+    "options_hi": [
+      "Scalar chain of command",
+      "Order",
+      "Reconciliation",
+      "Division of work"
+    ],
+    "options_en": [
+      "Scalar chain of command",
+      "Order",
+      "Reconciliation",
+      "Division of work"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 74,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन management के levels में शामिल नहीं है?",
+    "question_en": "Which of the following is not among the levels of management?",
+    "options_hi": [
+      "Top level",
+      "Middle level",
+      "Supervisory level",
+      "Functional level"
+    ],
+    "options_en": [
+      "Top level",
+      "Middle level",
+      "Supervisory level",
+      "Functional level"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 75,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Kerala Public Health Act 2023 के अनुसार District Public Health Committee का chairman कौन है?",
+    "question_en": "The chairman of District Public Health Committee as per Kerala Public Health Act 2023.",
+    "options_hi": [
+      "District Medical Officer",
+      "District Panchayat President",
+      "District Collector",
+      "Member Secretary"
+    ],
+    "options_en": [
+      "District Medical Officer",
+      "District Panchayat President",
+      "District Collector",
+      "Member Secretary"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 76,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "First Public Health Act किस country में introduced हुआ था?",
+    "question_en": "In which of the following countries was First Public Health Act introduced?",
+    "options_hi": [
+      "Germany",
+      "USA",
+      "France",
+      "England"
+    ],
+    "options_en": [
+      "Germany",
+      "USA",
+      "France",
+      "England"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 77,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Code of Criminal Procedure कब अस्तित्व में आया?",
+    "question_en": "The Code of Criminal Procedure came into existence in",
+    "options_hi": [
+      "1862",
+      "1973",
+      "1873",
+      "1962"
+    ],
+    "options_en": [
+      "1862",
+      "1973",
+      "1873",
+      "1962"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 78,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Kerala Panchayati Raj Act कब force में आया?",
+    "question_en": "Kerala Panchayati Raj Act came into force on",
+    "options_hi": [
+      "23rd April 1994",
+      "23rd April 1991",
+      "28th January 1994",
+      "1st February 1996"
+    ],
+    "options_en": [
+      "23rd April 1994",
+      "23rd April 1991",
+      "28th January 1994",
+      "1st February 1996"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 79,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Kerala municipalities में birth और death के local registrar का नाम क्या है?",
+    "question_en": "Name the local registrar for birth and death of municipalities in Kerala",
+    "options_hi": [
+      "Municipal Secretary",
+      "Health Standing Committee Chairman",
+      "Senior Public Health Inspector",
+      "Health Supervisor"
+    ],
+    "options_en": [
+      "Municipal Secretary",
+      "Health Standing Committee Chairman",
+      "Senior Public Health Inspector",
+      "Health Supervisor"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 80,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Project preparation में क्या-क्या शामिल होते हैं? i) Title page, introduction, executive summary ii) Goals and objectives, team organization structure, work plan iii) Project time line, budget, appendix",
+    "question_en": "Preparation of a project consists of: i) Title page, introduction, executive summary ii) Goals and objectives, team organization structure, work plan iii) Project timeline, budget, appendix",
+    "options_hi": [
+      "Only ii & iii",
+      "Only i & ii",
+      "Only i & iii",
+      "उपरोक्त सभी i, ii और iii"
+    ],
+    "options_en": [
+      "Only ii & iii",
+      "Only i & ii",
+      "Only i & iii",
+      "All of the above i, ii and iii"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 81,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Monogamy का कारण क्या है?",
+    "question_en": "The reason for monogamy",
+    "options_hi": [
+      "विशेषकर agriculture में work के लिए more hands",
+      "पुरुषों, महिलाओं और बच्चों का healthy status",
+      "Status symbol",
+      "Custom"
+    ],
+    "options_en": [
+      "More hands to work especially in agriculture",
+      "Healthy status of men, women and children",
+      "Status symbol",
+      "Custom"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 82,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Associative social process कौन-सा है?",
+    "question_en": "Associative social process",
+    "options_hi": [
+      "Contravention",
+      "Competition",
+      "Conflict",
+      "Assimilation"
+    ],
+    "options_en": [
+      "Contravention",
+      "Competition",
+      "Conflict",
+      "Assimilation"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 83,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Younger generation को older generation द्वारा established values और norms के अनुसार conform करना सिखाया जाता है। इसे क्या कहते हैं?",
+    "question_en": "The younger generation is taught to conform to the values and norms established by the older generation.",
+    "options_hi": [
+      "Socialization",
+      "Customs",
+      "Traditions",
+      "Morals"
+    ],
+    "options_en": [
+      "Socialization",
+      "Customs",
+      "Traditions",
+      "Morals"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 84,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Hallucinations क्या हैं?",
+    "question_en": "Hallucinations are",
+    "options_hi": [
+      "Consciousness की disturbances",
+      "Attention में disturbances",
+      "Perception के disorders",
+      "Emotion के disorders"
+    ],
+    "options_en": [
+      "Disturbances of consciousness",
+      "Disturbances in attention",
+      "Disorders of perception",
+      "Disorders of emotion"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 85,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Schizophrenic parents से जन्मे बच्चे में normal parents से जन्मे बच्चे की तुलना में schizophrenia का risk कितनी times अधिक होता है?",
+    "question_en": "A child born to schizophrenic parents has how many times higher risk of having schizophrenia than a child born to normal parents?",
+    "options_hi": [
+      "30",
+      "20",
+      "40",
+      "10"
+    ],
+    "options_en": [
+      "30",
+      "20",
+      "40",
+      "10"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 86,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "A great humanizing agent कौन-सा है?",
+    "question_en": "A great humanizing agent",
+    "options_hi": [
+      "In group",
+      "Out group",
+      "Primary group",
+      "Secondary group"
+    ],
+    "options_en": [
+      "In group",
+      "Out group",
+      "Primary group",
+      "Secondary group"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 87,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Ego reality principle के basis पर function करता है और किस age के बीच develop होना शुरू होता है?",
+    "question_en": "The ego functions on the basis of reality principle and begins to develop between ages.",
+    "options_hi": [
+      "5 and 10 months",
+      "4 and 6 months",
+      "3 and 4 months",
+      "1 to 2 years"
+    ],
+    "options_en": [
+      "5 and 10 months",
+      "4 and 6 months",
+      "3 and 4 months",
+      "1 to 2 years"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 88,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Maslow's hierarchy pyramid of needs के top पर क्या है?",
+    "question_en": "At the top of Maslow's hierarchy pyramid of needs",
+    "options_hi": [
+      "Physiological need",
+      "Safety and security need",
+      "One's full potential का realization",
+      "Self-esteem needs"
+    ],
+    "options_en": [
+      "Physiological need",
+      "Safety and security need",
+      "Realization of one's full potential",
+      "Self-esteem needs"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 89,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Split personality क्या है?",
+    "question_en": "Split personality is",
+    "options_hi": [
+      "Schizophrenia",
+      "Depressive disorder",
+      "Paranoia",
+      "Psychoneurosis"
+    ],
+    "options_en": [
+      "Schizophrenia",
+      "Depressive disorder",
+      "Paranoia",
+      "Psychoneurosis"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 90,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Drug addiction में repeated use के साथ increasing dose required होने को क्या कहते हैं?",
+    "question_en": "In drug addiction, with repeated use increasing dose required is",
+    "options_hi": [
+      "Dependence",
+      "Addiction",
+      "Tolerance",
+      "Withdrawal syndrome"
+    ],
+    "options_en": [
+      "Dependence",
+      "Addiction",
+      "Tolerance",
+      "Withdrawal syndrome"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 91,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Cancers के viral origin को देखते हुए Ca Cervix में chief suspect कौन है?",
+    "question_en": "Considering the viral origin of cancers, a chief suspect in Ca Cervix is",
+    "options_hi": [
+      "HPV",
+      "EBV",
+      "HCV",
+      "CMV"
+    ],
+    "options_en": [
+      "HPV",
+      "EBV",
+      "HCV",
+      "CMV"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 92,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "WHO के अनुसार Obese Class I क्या है?",
+    "question_en": "According to WHO, Obese Class I is",
+    "options_hi": [
+      "BMI 20-24.99 kg/m²",
+      "BMI 25-29.99 kg/m²",
+      "BMI 30-34.99 kg/m²",
+      "BMI 35-39.99 kg/m²"
+    ],
+    "options_en": [
+      "BMI 20-24.99 kg/m²",
+      "BMI 25-29.99 kg/m²",
+      "BMI 30-34.99 kg/m²",
+      "BMI 35-39.99 kg/m²"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 93,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "CHD prevention में recommended dietary modification में से कौन-सा नहीं है?",
+    "question_en": "Which among the following is not a recommended dietary modification in prevention of CHD?",
+    "options_hi": [
+      "Salt intake को 10 gram daily तक reduce करना",
+      "Saturated fat consumption को total energy intake के 10% से कम limit करना",
+      "Complex carbohydrate consumption बढ़ाना",
+      "Fat intake को total intake के 20-30% तक reduce करना"
+    ],
+    "options_en": [
+      "Reducing salt intake to 10 gram daily",
+      "Limit consumption of saturated fat to less than 10% of total energy intake",
+      "An increase in complex carbohydrate consumption",
+      "Reducing fat intake to 20-30 percent of total intake"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 94,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "भारत में blindness का principal cause क्या है?",
+    "question_en": "The principal cause of blindness in India is",
+    "options_hi": [
+      "Cataract",
+      "Glaucoma",
+      "Refractive errors",
+      "Diabetic retinopathy"
+    ],
+    "options_en": [
+      "Cataract",
+      "Glaucoma",
+      "Refractive errors",
+      "Diabetic retinopathy"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 95,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Palliative care के बारे में नीचे दिए गए सभी statements true हैं, except",
+    "question_en": "All statements about palliative care given below are true except.",
+    "options_hi": [
+      "Family का grief और bereavement support palliative care में शामिल है",
+      "Palliative care open honest communication और shared decision पर जोर देती है",
+      "Palliative care का primary goal disease का treatment और cure है",
+      "Palliative care health care professionals को education और training देती है"
+    ],
+    "options_en": [
+      "Grief and bereavement support of family are included under palliative care",
+      "Palliative care emphasizes open honest communication and shared decision",
+      "Primary goal of palliative care is treatment and cure of disease",
+      "Palliative care offers education and training to health care professionals"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 96,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न waste types में से किसे incinerate नहीं किया जा सकता?",
+    "question_en": "Among the following waste types which one cannot be incinerated?",
+    "options_hi": [
+      "Chemical waste including used or discarded disinfectants",
+      "Human and animal anatomical wastes",
+      "Soiled waste contaminated with body fluids",
+      "Pressurized gas containers"
+    ],
+    "options_en": [
+      "Chemical waste including used or discarded disinfectants",
+      "Human and animal anatomical wastes",
+      "Soiled waste contaminated with body fluids",
+      "Pressurized gas containers"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 97,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से elderly के लिए social assistance programme कौन-सा नहीं है?",
+    "question_en": "Which among the following is not a social assistance programme for elderly?",
+    "options_hi": [
+      "NPOP",
+      "NACP",
+      "NOAPS",
+      "NPHCE"
+    ],
+    "options_en": [
+      "NPOP",
+      "NACP",
+      "NOAPS",
+      "NPHCE"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 98,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Active neglect का example कौन-सा है?",
+    "question_en": "Which among the following is an example of active neglect?",
+    "options_hi": [
+      "Elderly को house में restrain या lock करना",
+      "Elderly का forced isolation",
+      "Elderly की property का personal pleasures के लिए misuse या wasting",
+      "Elderly की likes और dislikes पर inattentiveness"
+    ],
+    "options_en": [
+      "Restraining or locking elderly in the house",
+      "Forced isolation of elderly",
+      "Misuse or wasting the property of elderly for personal pleasures",
+      "Inattentiveness to the likes and dislikes of elderly"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 99,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "DASH diet किसकी prevention और control के लिए recommended है?",
+    "question_en": "DASH diet is recommended for the prevention and control of",
+    "options_hi": [
+      "Diabetes mellitus",
+      "Hypertension",
+      "Chronic respiratory diseases",
+      "Musculoskeletal diseases"
+    ],
+    "options_en": [
+      "Diabetes mellitus",
+      "Hypertension",
+      "Chronic respiratory diseases",
+      "Musculoskeletal diseases"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 100,
+    "subject": "Junior Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Breast cancer से associated risk factor में कौन-सा नहीं है?",
+    "question_en": "Which among the following is not a risk factor associated with breast cancer?",
+    "options_hi": [
+      "Nulliparity",
+      "Late menarche and early menopause",
+      "Benign breast diseases",
+      "Obesity"
+    ],
+    "options_en": [
+      "Nulliparity",
+      "Late menarche and early menopause",
+      "Benign breast diseases",
+      "Obesity"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+let current = 0, lang = "hi";
+let answers = Array(questions.length).fill(null);
+let marked = Array(questions.length).fill(false);
+let visited = Array(questions.length).fill(false);
+let remaining = totalSeconds, timerInterval = null;
+function startTest(){document.getElementById("startScreen").classList.add("hidden");document.getElementById("examScreen").classList.remove("hidden");visited[0]=true;buildPalette();renderQuestion();if(!timerInterval)timerInterval=setInterval(tick,1000);}
+function tick(){remaining--;updateTimer();if(remaining<=0)submitTest(true);}
+function updateTimer(){let m=String(Math.floor(remaining/60)).padStart(2,"0"),s=String(remaining%60).padStart(2,"0");document.getElementById("timer").textContent="Time: "+m+":"+s;}
+function setLang(v){lang=v;["btnHi","btnEn","btnBi"].forEach(id=>document.getElementById(id).classList.remove("active"));document.getElementById(v==="hi"?"btnHi":v==="en"?"btnEn":"btnBi").classList.add("active");renderQuestion();}
+function showQuestion(q){if(lang==="hi")return q.question_hi;if(lang==="en")return q.question_en;return "<b>Hindi:</b> "+q.question_hi+"<br><br><b>English:</b> "+q.question_en;}
+function showOption(q,i){if(lang==="hi")return q.options_hi[i];if(lang==="en")return q.options_en[i];return "<b>Hindi:</b> "+q.options_hi[i]+"<br><span class='muted'><b>English:</b> "+q.options_en[i]+"</span>";}
+function renderQuestion(){let q=questions[current];visited[current]=true;document.getElementById("sectionName").textContent=q.subject;document.getElementById("qNo").textContent="Question "+(current+1)+" / "+questions.length;document.getElementById("questionText").innerHTML=showQuestion(q);let box=document.getElementById("options");box.innerHTML="";q.options_en.forEach((_,i)=>{let b=document.createElement("button");b.className="option"+(answers[current]===i?" selected":"");b.innerHTML="<b>("+(i+1)+")</b> <span>"+showOption(q,i)+"</span>";b.onclick=()=>{answers[current]=i;marked[current]=false;renderQuestion();};box.appendChild(b);});updateStats();buildPalette();}
+function nextQ(){if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}
+function prevQ(){if(current>0)current--;visited[current]=true;renderQuestion();}
+function clearResponse(){answers[current]=null;marked[current]=false;renderQuestion();}
+function markReview(){marked[current]=true;if(current<questions.length-1)current++;visited[current]=true;renderQuestion();}
+function statusClass(i){if(answers[i]!==null&&marked[i])return"answered-review";if(marked[i])return"review";if(answers[i]!==null)return"answered";if(visited[i])return"not-answered";return"not-visited";}
+function buildPalette(){let p=document.getElementById("palette");p.innerHTML="";questions.forEach((q,i)=>{let b=document.createElement("button");b.className="pbtn "+statusClass(i)+(i===current?" current":"");b.textContent=i+1;b.onclick=()=>{current=i;visited[current]=true;renderQuestion();};p.appendChild(b);});}
+function updateStats(){let a=answers.filter(x=>x!==null).length;document.getElementById("attempted").textContent=a;document.getElementById("notAttempted").textContent=questions.length-a;}
+function submitTest(auto){if(!auto&&!confirm("Are you sure you want to submit the test?"))return;clearInterval(timerInterval);let attempted=0,notAttempted=0,correct=0,wrong=0;questions.forEach((q,i)=>{if(answers[i]===null)notAttempted++;else{attempted++;if(answers[i]===q.correct)correct++;else wrong++;}});let score=(correct*marksPerQuestion)-(wrong*negativeMarking),maxMarks=questions.length*marksPerQuestion,percentage=(score/maxMarks)*100,timeTaken=totalSeconds-remaining,result={date:new Date().toLocaleString(),attempted,notAttempted,correct,wrong,score:Number(score.toFixed(2)),maxMarks,percentage:Number(percentage.toFixed(2)),timeTaken:formatTime(timeTaken)};saveHistory(result);showResult(result);}
+function formatTime(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");}
+function saveHistory(r){let old=JSON.parse(localStorage.getItem(storageKey)||"[]");old.unshift(r);localStorage.setItem(storageKey,JSON.stringify(old.slice(0,10)));}
+function loadHistory(){let old=JSON.parse(localStorage.getItem(storageKey)||"[]");if(!old.length)return;let rows=old.map((h,i)=>'<tr><td>'+(i+1)+'</td><td>'+h.date+'</td><td>'+h.score+'</td><td>'+h.percentage+'%</td><td>'+h.timeTaken+'</td></tr>').join("");document.getElementById("historyBox").innerHTML='<h3>Attempt History - This Test Only</h3><table><tr><th>#</th><th>Date</th><th>Marks</th><th>%</th><th>Time</th></tr>'+rows+'</table>';}
+function showResult(r){document.getElementById("examScreen").classList.add("hidden");document.getElementById("resultScreen").classList.remove("hidden");document.getElementById("timer").textContent="Submitted";document.getElementById("resultSummary").innerHTML='<div class="result-grid"><div class="result-box"><span>Total Questions</span><strong>'+questions.length+'</strong></div><div class="result-box"><span>Attempted</span><strong>'+r.attempted+'</strong></div><div class="result-box"><span>Not Attempted</span><strong>'+r.notAttempted+'</strong></div><div class="result-box"><span>Correct</span><strong>'+r.correct+'</strong></div><div class="result-box"><span>Wrong</span><strong>'+r.wrong+'</strong></div><div class="result-box"><span>Marks Obtained</span><strong>'+r.score+'</strong></div><div class="result-box"><span>Maximum Marks</span><strong>'+r.maxMarks+'</strong></div><div class="result-box"><span>Percentage</span><strong>'+r.percentage+'%</strong></div><div class="result-box"><span>Time Taken</span><strong>'+r.timeTaken+'</strong></div><div class="result-box"><span>Marking</span><strong>+1 / -0.25</strong></div></div>';document.getElementById("answerKey").innerHTML=questions.map((q,i)=>{let u=answers[i],ok=u===q.correct;let userAns=u===null?"Not Attempted":(q.options_en[u]+" / "+q.options_hi[u]);return '<div class="answer-row"><b>Q'+(i+1)+'.</b> '+q.question_en+'<br><span class="muted">'+q.question_hi+'</span><div>Correct Answer: <span class="correct">'+q.options_en[q.correct]+' / '+q.options_hi[q.correct]+'</span></div><div>Your Answer: <span class="'+(u===null?'muted':ok?'correct':'wrong')+'">'+userAns+'</span></div><div class="muted">Explanation: Explanation not provided.</div></div>';}).join("");}
+loadHistory();updateTimer();
+</script>
+</body>
+</html>
