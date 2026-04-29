@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMC Multi-Purpose Health Worker Mock Test 100Q - Set B</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial, 'Noto Sans Devanagari', 'Noto Sans Gujarati', sans-serif;background:#eef2f7;color:#111827}
+.header{background:#0f3d68;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:18px}
+.timer{background:#fff;color:#b91c1c;padding:8px 12px;border-radius:8px;font-weight:700}
+.container{max-width:1200px;margin:0 auto;padding:16px}
+.card{background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.08);padding:18px}
+.start-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.info-box{background:#f8fafc;border:1px solid #dbeafe;padding:12px;border-radius:10px}
+button{border:0;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:700}
+.primary{background:#0f3d68;color:#fff}
+.secondary{background:#e5e7eb;color:#111827}
+.warn{background:#f59e0b;color:#111827}
+.danger{background:#dc2626;color:#fff}
+.success{background:#16a34a;color:#fff}
+.langbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.langbar button.active{background:#0f3d68;color:#fff}
+.exam-layout{display:grid;grid-template-columns:1fr 310px;gap:16px;align-items:start}
+.question-card{min-height:420px}
+.qtop{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #e5e7eb;padding-bottom:10px;margin-bottom:14px}
+.question-text{font-size:18px;line-height:1.55;margin:12px 0;white-space:pre-wrap}
+.option{display:flex;gap:10px;align-items:flex-start;border:1px solid #d1d5db;border-radius:10px;padding:12px;margin:10px 0;cursor:pointer;background:#fff}
+.option:hover{background:#f8fafc}
+.option.selected{border-color:#0f3d68;background:#eff6ff}
+.option .label{min-width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#e5e7eb;font-weight:700}
+.option.selected .label{background:#0f3d68;color:#fff}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.palette-card{position:sticky;top:12px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-bottom:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:16px;height:16px;border-radius:4px;display:inline-block}
+.pal-scroll{max-height:330px;overflow-y:auto;border:1px solid #e5e7eb;border-radius:10px;padding:10px;background:#f8fafc}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.pal-btn{padding:8px 0;border-radius:8px;background:#e5e7eb;color:#111827}
+.pal-btn.current{outline:3px solid #0f3d68}
+.not-visited{background:#e5e7eb}
+.not-answered{background:#ef4444;color:#fff}
+.answered{background:#22c55e;color:#fff}
+.review{background:#a855f7;color:#fff}
+.answered-review{background:linear-gradient(135deg,#22c55e 0%,#22c55e 50%,#a855f7 50%,#a855f7 100%);color:#fff}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:12px 0}
+.result-box{border:1px solid #e5e7eb;border-radius:10px;padding:12px;background:#f8fafc}
+.key-item{border:1px solid #e5e7eb;border-radius:10px;padding:12px;margin:10px 0;background:#fff}
+.history-table{width:100%;border-collapse:collapse;margin-top:10px}
+.history-table th,.history-table td{border:1px solid #e5e7eb;padding:8px;text-align:left;font-size:14px}
+.question-image{max-width:100%;height:auto;display:block;margin:12px 0;border:1px solid #ddd;border-radius:6px}
+.math{white-space:nowrap;font-family:"Times New Roman",serif}
+.frac{display:inline-block;vertical-align:middle;text-align:center;line-height:1.2;margin:0 4px}
+.frac .top{display:block;padding:0 4px 2px;border-bottom:1.5px solid currentColor}
+.frac .bottom{display:block;padding:2px 4px 0}
+sup,sub{line-height:0}
+.hidden{display:none!important}
+@media(max-width:820px){
+  .exam-layout{grid-template-columns:1fr}
+  .palette-card{position:static}
+  .pal-scroll{max-height:180px}
+  .header{align-items:flex-start}
+  .question-text{font-size:16px}
+  .actions button{flex:1 1 130px}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo">Tech In Prem Mock Test Series</div>
+  <div id="timerBox" class="timer hidden">00:00:00</div>
+</div>
+
+<div class="container">
+  <section id="startScreen" class="card">
+    <h1>BMC Multi-Purpose Health Worker Mock Test 100Q - Set B</h1>
+    <p><b>Note:</b> This mock test is updated with Question Paper Series B final answer key. Questions and options are available in Hindi and English; English grammar questions are kept in English only.</p>
+    <div class="start-grid">
+      <div class="info-box"><b>Total Questions</b><br><span id="totalQ"></span></div>
+      <div class="info-box"><b>Total Marks</b><br><span id="totalMarks"></span></div>
+      <div class="info-box"><b>Time Duration</b><br>120 Minutes</div>
+      <div class="info-box"><b>Marking Scheme</b><br>+1 Correct, -0.25 Wrong</div>
+    </div>
+    <button class="primary" onclick="startTest()">Start Test</button>
+    <div id="historyBox"></div>
+  </section>
+
+  <section id="examScreen" class="hidden">
+    <div class="exam-layout">
+      <div class="card question-card">
+        <div class="langbar">
+          <button id="btnHi" onclick="setLang('hi')">Hindi</button>
+          <button id="btnEn" onclick="setLang('en')">English</button>
+          <button id="btnBi" onclick="setLang('bi')" class="active">Bilingual</button>
+        </div>
+        <div class="qtop">
+          <b>Question <span id="qNo"></span> of <span id="qTotal"></span></b>
+          <span id="qType"></span>
+        </div>
+        <div id="questionText" class="question-text"></div>
+        <div id="imageBox"></div>
+        <div id="optionsBox"></div>
+        <div class="actions">
+          <button class="secondary" onclick="prevQuestion()">Previous</button>
+          <button class="success" onclick="saveNext()">Save & Next</button>
+          <button class="warn" onclick="markReview()">Mark for Review</button>
+          <button class="secondary" onclick="clearResponse()">Clear Response</button>
+          <button class="danger" onclick="submitTest()">Submit Test</button>
+        </div>
+      </div>
+      <aside class="card palette-card">
+        <h3>Question Palette</h3>
+        <div class="legend">
+          <span><i class="dot not-visited"></i>Not Visited</span>
+          <span><i class="dot not-answered"></i>Not Answered</span>
+          <span><i class="dot answered"></i>Answered</span>
+          <span><i class="dot review"></i>Review</span>
+          <span><i class="dot answered-review"></i>Ans + Review</span>
+        </div>
+        <div class="pal-scroll"><div id="palette" class="palette"></div></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="card hidden"></section>
+</div>
+
+<script>
+const questions = [
+  {
+    "id": 1,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "\"एंडोस्कोपी\" किस रोग के निदान के लिए प्रयोग की जाने वाली चिकित्सीय पद्धति है?",
+    "question_en": "\"Endoscopy\" is a medical procedure used for diagnosis of which disease?",
+    "options_hi": [
+      "हेपेटाइटिस",
+      "क्षय रोग",
+      "एड्स",
+      "पेट के रोग"
+    ],
+    "options_en": [
+      "Hepatitis",
+      "Tuberculosis",
+      "AIDS",
+      "Diseases of the stomach"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "Costo का अर्थ क्या होता है?",
+    "question_en": "What does Costo mean?",
+    "options_hi": [
+      "पसलियां",
+      "कोलोन",
+      "कोशिका",
+      "हड्डी"
+    ],
+    "options_en": [
+      "Ribs",
+      "Colon",
+      "Cell",
+      "Bone"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "दी गई संख्याओं का औसत बताइए: 112, 122, 132, 152, 302",
+    "question_en": "Find the average of the given numbers: 112, 122, 132, 152, 302",
+    "options_hi": [
+      "163",
+      "165",
+      "175",
+      "दिए गए में से कोई नहीं"
+    ],
+    "options_en": [
+      "163",
+      "165",
+      "175",
+      "None of the given"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Change the following sentence into Indirect Speech. He said, \"Honesty is the best policy.\"",
+    "options_hi": [],
+    "options_en": [
+      "He said that honesty is the best policy.",
+      "He said that honesty was the best policy.",
+      "He said honesty had been the best policy.",
+      "He asked me if honesty is the best policy."
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "रक्त में श्वेत रक्त कणों (WBC) की मात्रा सामान्य से बढ़ जाने वाली स्थिति को क्या कहते हैं?",
+    "question_en": "What is the condition called when the number of white blood cells (WBC) in blood increases above normal?",
+    "options_hi": [
+      "साइटोसिस",
+      "ल्यूकोसाइटोसिस",
+      "लिम्फोसाइटोसिस",
+      "थ्रोम्बोसाइटोसिस"
+    ],
+    "options_en": [
+      "Cytosis",
+      "Leukocytosis",
+      "Lymphocytosis",
+      "Thrombocytosis"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "दी गई श्रेणी में लुप्त पद बताइए: 35, 118, 280, 600, __, 2504, 5036",
+    "question_en": "Find the missing term in the series: 35, 118, 280, 600, __, 2504, 5036",
+    "options_hi": [
+      "1236",
+      "3200",
+      "1800",
+      "1560"
+    ],
+    "options_en": [
+      "1236",
+      "3200",
+      "1800",
+      "1560"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "पिता की 35 वर्ष की आयु में पुत्र का जन्म हुआ। कितने वर्षों बाद पिता की आयु पुत्र की आयु से 6 गुना होगी?",
+    "question_en": "A son was born when his father was 35 years old. After how many years will the father's age be 6 times the son's age?",
+    "options_hi": [
+      "37 वर्ष",
+      "7 वर्ष",
+      "9 वर्ष",
+      "12 वर्ष"
+    ],
+    "options_en": [
+      "37 years",
+      "7 years",
+      "9 years",
+      "12 years"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "हाथ या पैर की धमनी से होने वाले खतरनाक रक्तस्राव को रोकने के लिए जिस कसे हुए पट्टे/साधन का उपयोग किया जाता है उसे क्या कहते हैं?",
+    "question_en": "What is the tight bandage/device used to stop dangerous bleeding from an artery of the hand or leg called?",
+    "options_hi": [
+      "फोर-टेल बैंडेज",
+      "मेनी-टेल बैंडेज",
+      "टूर्निकेट",
+      "कैपेलिक"
+    ],
+    "options_en": [
+      "Four-tail bandage",
+      "Many-tail bandage",
+      "Tourniquet",
+      "Capelic"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "रक्तस्राव रोकने के लिए प्लाज्मा में मौजूद कौन-सा प्रोटीन जाल जैसी संरचना बनाकर रक्त का थक्का जमाने में मदद करता है?",
+    "question_en": "Which protein present in plasma forms a net-like structure and helps in blood clotting to stop bleeding?",
+    "options_hi": [
+      "श्वेत कण",
+      "हीमोग्लोबिन",
+      "रक्त कण",
+      "फाइब्रिनोजन"
+    ],
+    "options_en": [
+      "White cells",
+      "Haemoglobin",
+      "Blood cells",
+      "Fibrinogen"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "पुरुष प्रजनन तंत्र के मुख्य अंग 'वृषण' का आकार निम्न में से किससे मिलता-जुलता है?",
+    "question_en": "The shape of the main organ of the male reproductive system, the testis, resembles which of the following?",
+    "options_hi": [
+      "नलाकार जैसा",
+      "सेम/वाल के दाने जैसा",
+      "पिरामिड जैसा",
+      "अंडाकार जैसा"
+    ],
+    "options_en": [
+      "Cylindrical",
+      "Like a bean seed",
+      "Pyramid-shaped",
+      "Oval-shaped"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "जन्म के समय बच्चे की रीढ़ कुल कितनी हड्डियों से बनी होती है?",
+    "question_en": "At birth, the vertebral column of a child is made up of how many bones?",
+    "options_hi": [
+      "26",
+      "25",
+      "31",
+      "33"
+    ],
+    "options_en": [
+      "26",
+      "25",
+      "31",
+      "33"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "मानव शरीर में लौह तत्व के अवशोषण में सहायक और रक्त की गुणवत्ता सुधारने वाला मुख्य विटामिन कौन-सा है?",
+    "question_en": "Which main vitamin helps in iron absorption in the human body and improves the quality of blood?",
+    "options_hi": [
+      "विटामिन A",
+      "विटामिन B",
+      "विटामिन C",
+      "विटामिन D"
+    ],
+    "options_en": [
+      "Vitamin A",
+      "Vitamin B",
+      "Vitamin C",
+      "Vitamin D"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "एक प्राथमिक विद्यालय में सोमवार को 380 विद्यार्थी उपस्थित थे, जबकि मंगलवार को 323 विद्यार्थी उपस्थित थे। मंगलवार को विद्यार्थियों की संख्या में कितने प्रतिशत कमी हुई?",
+    "question_en": "In a primary school, 380 students were present on Monday and 323 students on Tuesday. What was the percentage decrease in students on Tuesday?",
+    "options_hi": [
+      "10%",
+      "19%",
+      "20%",
+      "15%"
+    ],
+    "options_en": [
+      "10%",
+      "19%",
+      "20%",
+      "15%"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the correct synonyms of the word \"Derision\"",
+    "options_hi": [],
+    "options_en": [
+      "Humiliation",
+      "Embarrassment",
+      "Ridicule",
+      "Condemnation"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "क्षेपक किसे कहते हैं?",
+    "question_en": "What are ventricles called?",
+    "options_hi": [
+      "हृदय के निचले कक्ष",
+      "हृदय के ऊपरी कक्ष",
+      "हृदय का दायां भाग",
+      "हृदय का बायां भाग"
+    ],
+    "options_en": [
+      "Lower chambers of the heart",
+      "Upper chambers of the heart",
+      "Right part of the heart",
+      "Left part of the heart"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "शरीर में एंटीजन-एंटीबॉडी प्रतिक्रिया द्वारा विभिन्न संक्रामक रोगों के निदान में उपयोग की जाने वाली विधि कौन-सी है?",
+    "question_en": "Which method is used to diagnose various infectious diseases through antigen-antibody reaction in the body?",
+    "options_hi": [
+      "विडाल टेस्ट",
+      "बायोप्सी",
+      "मांटू टेस्ट",
+      "एलाइजा टेस्ट"
+    ],
+    "options_en": [
+      "Widal test",
+      "Biopsy",
+      "Mantoux test",
+      "ELISA test"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "FIDE विश्व कप 2025 भारत में कहाँ आयोजित होगा?",
+    "question_en": "Where will the FIDE World Cup 2025 be held in India?",
+    "options_hi": [
+      "गोवा",
+      "ओडिशा",
+      "राजस्थान",
+      "हरियाणा"
+    ],
+    "options_en": [
+      "Goa",
+      "Odisha",
+      "Rajasthan",
+      "Haryana"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "कपोसी सारकोमा मुख्यतः किस रोग में देखा जाता है?",
+    "question_en": "Kaposi's sarcoma is mainly seen in which disease?",
+    "options_hi": [
+      "पोलियो",
+      "लेप्टोस्पायरोसिस",
+      "एड्स",
+      "दिए गए सभी"
+    ],
+    "options_en": [
+      "Polio",
+      "Leptospirosis",
+      "AIDS",
+      "All of the given"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "निम्न में से उत्प्रेक्षा अलंकार का उदाहरण कौन-सा है?",
+    "question_en": "Which of the following is an example of Utpreksha Alankar?",
+    "options_hi": [
+      "मानो बाप-बेटे की अलग ही दुनिया है।",
+      "मंजुकाकी तो मंजुकाकी ही थीं!",
+      "दोनों के मुख पर शोक के बादल छाए थे।",
+      "बेटे पानी की तरह पैसा खर्च करते हैं।"
+    ],
+    "options_en": [
+      "It is as if father and son have a separate world.",
+      "Manjukaki was indeed Manjukaki!",
+      "Clouds of grief covered both faces.",
+      "The sons spend money like water."
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "प्रसिद्ध ग़ज़ल गायक पंकज उधास का जन्म कहाँ हुआ था?",
+    "question_en": "Where was famous ghazal singer Pankaj Udhas born?",
+    "options_hi": [
+      "जूनागढ़",
+      "मांडवी",
+      "जेतपुर",
+      "अहमदाबाद"
+    ],
+    "options_en": [
+      "Junagadh",
+      "Mandvi",
+      "Jetpur",
+      "Ahmedabad"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "हृदय के किस कक्ष से शुद्ध रक्त शरीर के विभिन्न भागों में पहुँचाया जाता है?",
+    "question_en": "From which chamber of the heart is oxygenated blood supplied to different parts of the body?",
+    "options_hi": [
+      "बायां आलिंद",
+      "दायां आलिंद",
+      "बायां निलय",
+      "दायां निलय"
+    ],
+    "options_en": [
+      "Left atrium",
+      "Right atrium",
+      "Left ventricle",
+      "Right ventricle"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "कान्हा राष्ट्रीय उद्यान किस राज्य में स्थित है?",
+    "question_en": "Kanha National Park is located in which state?",
+    "options_hi": [
+      "मध्य प्रदेश",
+      "उत्तराखंड",
+      "उत्तर प्रदेश",
+      "झारखंड"
+    ],
+    "options_en": [
+      "Madhya Pradesh",
+      "Uttarakhand",
+      "Uttar Pradesh",
+      "Jharkhand"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "डिप्थीरिया शरीर के किस भाग को मुख्यतः सबसे अधिक प्रभावित करता है?",
+    "question_en": "Diphtheria mainly affects which part of the body the most?",
+    "options_hi": [
+      "यकृत",
+      "मस्तिष्क",
+      "फेफड़े",
+      "गला"
+    ],
+    "options_en": [
+      "Liver",
+      "Brain",
+      "Lungs",
+      "Throat"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "एस्कॉर्बिक एसिड कौन-सा विटामिन है?",
+    "question_en": "Ascorbic acid is which vitamin?",
+    "options_hi": [
+      "विटामिन A",
+      "विटामिन B",
+      "विटामिन C",
+      "विटामिन D"
+    ],
+    "options_en": [
+      "Vitamin A",
+      "Vitamin B",
+      "Vitamin C",
+      "Vitamin D"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "एबेट बनाने के लिए किस दवा का उपयोग किया जाता है?",
+    "question_en": "Which drug is used to make Abate?",
+    "options_hi": [
+      "अल्फा साइपरमेथ्रिन",
+      "D.D.T.",
+      "साइफेनोथ्रिन",
+      "टेमीफोस"
+    ],
+    "options_en": [
+      "Alpha cypermethrin",
+      "D.D.T.",
+      "Cyphenothrin",
+      "Temephos"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "विलोम शब्द का सही विकल्प चुनिए।",
+    "question_en": "Choose the correct antonym pair.",
+    "options_hi": [
+      "संयोग × उपयोग",
+      "साधक × आराधक",
+      "याचक × वाचक",
+      "जयंती × पुण्यतिथि"
+    ],
+    "options_en": [
+      "Sanyog × Upyog",
+      "Sadhak × Aradhak",
+      "Yachak × Vachak",
+      "Jayanti × Punyatithi"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "तीव्र एलर्जिक प्रतिक्रिया या एनाफिलेक्टिक शॉक के उपचार में प्राथमिक रूप से किस इंजेक्शन का उपयोग किया जाता है?",
+    "question_en": "Which injection is primarily used in the treatment of severe allergic reaction or anaphylactic shock?",
+    "options_hi": [
+      "इंजेक्शन रैनिटिडिन",
+      "इंजेक्शन D.N.S.",
+      "इंजेक्शन एविल",
+      "इंजेक्शन N.S."
+    ],
+    "options_en": [
+      "Injection Ranitidine",
+      "Injection D.N.S.",
+      "Injection Avil",
+      "Injection N.S."
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "'पूर्वादित्य तुम्हें पहले से ही कहता था।' रेखांकित कृदंत का प्रकार बताइए।",
+    "question_en": "'Purvaditya had been telling you already.' Identify the type of the underlined participle.",
+    "options_hi": [
+      "सामान्य कृदंत",
+      "भविष्य कृदंत",
+      "भूत कृदंत",
+      "वर्तमान कृदंत"
+    ],
+    "options_en": [
+      "General participle",
+      "Future participle",
+      "Past participle",
+      "Present participle"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "किस रोग के बैक्टीरिया छोटी आंत में जाकर तेजी से प्रजनन करते हैं?",
+    "question_en": "The bacteria of which disease enter the small intestine and multiply rapidly?",
+    "options_hi": [
+      "पीलिया",
+      "मलेरिया",
+      "क्षय रोग",
+      "हैजा"
+    ],
+    "options_en": [
+      "Jaundice",
+      "Malaria",
+      "Tuberculosis",
+      "Cholera"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "अंगूर में निम्न में से कौन-सा तत्व अधिक मात्रा में पाया जाता है?",
+    "question_en": "Which of the following is found in grapes in higher amount?",
+    "options_hi": [
+      "टार्टरिक एसिड",
+      "क्लोरोफिल",
+      "सल्फ्यूरिक एसिड",
+      "लोहा"
+    ],
+    "options_en": [
+      "Tartaric acid",
+      "Chlorophyll",
+      "Sulphuric acid",
+      "Iron"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "मानव शरीर की सबसे छोटी हड्डी कौन-सी है?",
+    "question_en": "Which is the smallest bone in the human body?",
+    "options_hi": [
+      "फीमर",
+      "स्टेप्स",
+      "टिबिया",
+      "अल्ना"
+    ],
+    "options_en": [
+      "Femur",
+      "Stapes",
+      "Tibia",
+      "Ulna"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा समानार्थी जोड़ा गलत है?",
+    "question_en": "Which of the following synonym groups is incorrect?",
+    "options_hi": [
+      "हाथी - गज - हस्ती",
+      "शार्दूल - महिषी - मर्कट",
+      "बैल - सुरभिसुत - आखला",
+      "भोरंग - वासुकी - सर्प"
+    ],
+    "options_en": [
+      "Elephant - Gaj - Hasti",
+      "Shardul - Mahishi - Markat",
+      "Bull - Surabhisut - Aakhlo",
+      "Bhorang - Vasuki - Serpent"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "हाइडेटिड रोग के सही निदान के लिए कौन-सी तकनीक और प्रयोगशाला जांच का उपयोग होता है?",
+    "question_en": "Which technique and laboratory investigation are used for accurate diagnosis of hydatid disease?",
+    "options_hi": [
+      "एक्स-रे द्वारा",
+      "सोनोग्राफी द्वारा",
+      "सीरम जांच द्वारा",
+      "दिए गए सभी"
+    ],
+    "options_en": [
+      "By X-ray",
+      "By sonography",
+      "By serum test",
+      "All of the given"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "418 + 82 - 115 + 32 का मान क्या है?",
+    "question_en": "What is the value of 418 + 82 - 115 + 32?",
+    "options_hi": [
+      "21",
+      "31",
+      "27",
+      "23"
+    ],
+    "options_en": [
+      "21",
+      "31",
+      "27",
+      "23"
+    ],
+    "correct": -1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "दी गई श्रेणी में कौन-सी संख्या गलत है? 27, 4, 16, 64, 5, 25, 125",
+    "question_en": "Which number is wrong in the given series? 27, 4, 16, 64, 5, 25, 125",
+    "options_hi": [
+      "3",
+      "10",
+      "27",
+      "4"
+    ],
+    "options_en": [
+      "3",
+      "10",
+      "27",
+      "4"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "बच्चे की रीढ़, खोपड़ी और मस्तिष्क में पाई जाने वाली गंभीर विकृति/बीमारी निम्न में से कौन-सी है?",
+    "question_en": "Which of the following is a serious defect/disease seen in a child's spinal cord, skull and brain?",
+    "options_hi": [
+      "क्लेफ्ट लिप",
+      "डाउन सिंड्रोम",
+      "न्यूरल ट्यूब डिफेक्ट",
+      "डेवलपमेंटल डिस्प्लेसिया"
+    ],
+    "options_en": [
+      "Cleft lip",
+      "Down syndrome",
+      "Neural tube defect",
+      "Developmental dysplasia"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "सबसे पहली बार गुजरात राज्य का 'गवर्नर हाउस' कहाँ बनाया गया था?",
+    "question_en": "Where was the first 'Governor House' of Gujarat state built?",
+    "options_hi": [
+      "मोती महल, अहमदाबाद",
+      "सिविल अस्पताल, अहमदाबाद",
+      "कांग्रेस भवन, भवन",
+      "गुजरात विद्यापीठ"
+    ],
+    "options_en": [
+      "Moti Mahal, Ahmedabad",
+      "Civil Hospital, Ahmedabad",
+      "Congress Bhavan, Bhavan",
+      "Gujarat Vidyapith"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "दिए गए लोक-शब्द का शिष्ट रूप विकल्पों में से खोजिए: फडक",
+    "question_en": "Find the standard form/meaning of the given colloquial word: Fadak",
+    "options_hi": [
+      "पहने हुए कपड़े का लटकता छोर",
+      "अत्यंत कठोर कपड़ा",
+      "सिर पर बांधा जाने वाला फालिया जैसा वस्त्र",
+      "नववधू के वस्त्रों की जोड़ी"
+    ],
+    "options_en": [
+      "Hanging end of worn cloth",
+      "Very stiff cloth",
+      "A turban-like cloth tied on the head",
+      "A pair of bride's garments"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "घ्राण कोशिकाएँ शरीर के किस अंग में होती हैं?",
+    "question_en": "Olfactory cells are located in which organ of the body?",
+    "options_hi": [
+      "आंख",
+      "जीभ",
+      "कान",
+      "नाक"
+    ],
+    "options_en": [
+      "Eye",
+      "Tongue",
+      "Ear",
+      "Nose"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "अटॉर्नी जनरल का कार्यकाल कितना होता है?",
+    "question_en": "What is the tenure of the Attorney General?",
+    "options_hi": [
+      "5 वर्ष",
+      "10 वर्ष",
+      "2 वर्ष",
+      "राष्ट्रपति की इच्छा तक"
+    ],
+    "options_en": [
+      "5 years",
+      "10 years",
+      "2 years",
+      "During the pleasure of the President"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "What is the one-word substitution for \"Amount of money demanded by kidnappers\"?",
+    "options_hi": [],
+    "options_en": [
+      "Donation",
+      "Honorarium",
+      "Ransom",
+      "Salary"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "एस्फिक्सिया (Asphyxia) क्या है?",
+    "question_en": "What is Asphyxia?",
+    "options_hi": [
+      "सांस लेने में कठिनाई",
+      "मल त्यागने में कठिनाई",
+      "खाने में कठिनाई",
+      "पेशाब करने में कठिनाई"
+    ],
+    "options_en": [
+      "Difficulty in breathing",
+      "Difficulty in passing stool",
+      "Difficulty in eating",
+      "Difficulty in urination"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "श्वसन और नाड़ी के बीच अनुपात क्या है?",
+    "question_en": "What is the ratio between respiration and pulse?",
+    "options_hi": [
+      "1:1",
+      "1:2",
+      "1:3",
+      "1:4"
+    ],
+    "options_en": [
+      "1:1",
+      "1:2",
+      "1:3",
+      "1:4"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "निमेश रमेश का पुत्र है। रमेश की बहन सरोज का पुत्र सुंदर और पुत्री हीना है। शांतिलाल सुंदर के मामा हैं। तो निमेश और सुंदर के बीच क्या संबंध है?",
+    "question_en": "Nimesh is the son of Ramesh. Ramesh's sister Saroj has a son Sundar and a daughter Hina. Shantilal is Sundar's maternal uncle. What is the relation between Nimesh and Sundar?",
+    "options_hi": [
+      "भतीजा",
+      "मामा का भाई",
+      "काका",
+      "मामा"
+    ],
+    "options_en": [
+      "Nephew",
+      "Maternal uncle's brother",
+      "Uncle",
+      "Maternal uncle"
+    ],
+    "correct": -1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "किसने 1857 के संघर्ष को भारत का प्रथम स्वतंत्रता संग्राम कहा?",
+    "question_en": "Who called the revolt of 1857 India's First War of Independence?",
+    "options_hi": [
+      "नाना साहेब",
+      "वीर सावरकर",
+      "डॉ. आर. सी. मजूमदार",
+      "डॉ. राजेंद्र प्रसाद"
+    ],
+    "options_en": [
+      "Nana Saheb",
+      "Veer Savarkar",
+      "Dr. R. C. Majumdar",
+      "Dr. Rajendra Prasad"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "जब राष्ट्रपति किसी विधेयक को बिना कोई निर्णय लिए लंबे समय तक अपने पास रखता है, तो उस शक्ति को क्या कहा जाता है?",
+    "question_en": "When the President keeps a bill pending for a long time without taking any decision, what is that power called?",
+    "options_hi": [
+      "सेंटर वीटो",
+      "पॉकेट वीटो",
+      "प्रेसिडेंशियल वीटो",
+      "स्पेंसर वीटो"
+    ],
+    "options_en": [
+      "Centre veto",
+      "Pocket veto",
+      "Presidential veto",
+      "Spencer's veto"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "साल्मोनेला टाइफी बैक्टीरिया किस रोग के लिए जिम्मेदार है?",
+    "question_en": "Salmonella typhi bacteria are responsible for which disease?",
+    "options_hi": [
+      "हैजा",
+      "चेचक",
+      "टाइफॉइड",
+      "मलेरिया"
+    ],
+    "options_en": [
+      "Cholera",
+      "Smallpox",
+      "Typhoid",
+      "Malaria"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "छाती का पिंजर कितनी हड्डियों का होता है?",
+    "question_en": "The rib cage consists of how many bones?",
+    "options_hi": [
+      "8",
+      "14",
+      "250",
+      "33"
+    ],
+    "options_en": [
+      "8",
+      "14",
+      "250",
+      "33"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "डायनासोर के अंडों के अवशेषों का स्थल रैयोली किस जिले में स्थित है?",
+    "question_en": "Raiyoli, the fossil site of dinosaur eggs, is located in which district?",
+    "options_hi": [
+      "तापी",
+      "सूरत",
+      "महीसागर",
+      "वडोदरा"
+    ],
+    "options_en": [
+      "Tapi",
+      "Surat",
+      "Mahisagar",
+      "Vadodara"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "निम्न में से एलिमेंट्री कैनाल का मुख्य अंग कौन-सा है?",
+    "question_en": "Which of the following is a main organ of the alimentary canal?",
+    "options_hi": [
+      "आमाशय",
+      "बड़ी आंत",
+      "अग्न्याशय",
+      "यकृत"
+    ],
+    "options_en": [
+      "Stomach",
+      "Large intestine",
+      "Pancreas",
+      "Liver"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "वयस्क मनुष्य के पाचन तंत्र में छोटी आंत की औसत लंबाई कितनी होती है?",
+    "question_en": "What is the average length of the small intestine in the digestive system of an adult human?",
+    "options_hi": [
+      "5 मीटर",
+      "6.5 मीटर",
+      "7.5 मीटर",
+      "10 मीटर"
+    ],
+    "options_en": [
+      "5 metres",
+      "6.5 metres",
+      "7.5 metres",
+      "10 metres"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "वर्तमान में पोलियो की कौन-सी वैक्सीन दी जाती है?",
+    "question_en": "Which polio vaccine is currently administered?",
+    "options_hi": [
+      "T-OPV",
+      "B-OPV",
+      "C-OPV",
+      "P-OPV"
+    ],
+    "options_en": [
+      "T-OPV",
+      "B-OPV",
+      "C-OPV",
+      "P-OPV"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "डॉक्टर की सलाह के बिना दर्द निवारक या सूजन कम करने के लिए उपयोग की जाने वाली किस दवा-समूह से पेट में अल्सर और हृदय संबंधी गंभीर दुष्प्रभाव हो सकते हैं?",
+    "question_en": "Without medical advice, which group of painkillers or anti-inflammatory drugs can cause gastric ulcer and serious heart-related side effects?",
+    "options_hi": [
+      "एंटी-हिस्टामाइन",
+      "विटामिन सप्लीमेंट्स",
+      "एंटी-सेप्टिक",
+      "कॉर्टिकोस्टेरॉयड्स"
+    ],
+    "options_en": [
+      "Antihistamines",
+      "Vitamin supplements",
+      "Antiseptics",
+      "Corticosteroids"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the correct antonym of the word \"Hasten\"",
+    "options_hi": [],
+    "options_en": [
+      "Promote",
+      "Hinder",
+      "Cooperate",
+      "Rush"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा अम्ल प्रोटीन में होता है?",
+    "question_en": "Which of the following acids is present in proteins?",
+    "options_hi": [
+      "फॉर्मिक एसिड",
+      "अमीनो एसिड",
+      "लैक्टिक एसिड",
+      "नाइट्रस एसिड"
+    ],
+    "options_en": [
+      "Formic acid",
+      "Amino acid",
+      "Lactic acid",
+      "Nitrous acid"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "किस रोग का समावेश मानसिक रोगों में नहीं होता है?",
+    "question_en": "Which disease is not included among mental diseases?",
+    "options_hi": [
+      "स्किजोफ्रेनिया",
+      "खेंच/दौरा",
+      "न्यूरोसिस",
+      "मेनिया"
+    ],
+    "options_en": [
+      "Schizophrenia",
+      "Convulsions",
+      "Neurosis",
+      "Mania"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "रीढ़ में स्थित अंगूठी जैसे हड्डियों को क्या कहते हैं?",
+    "question_en": "What are the ring-like bones present in the vertebral column called?",
+    "options_hi": [
+      "स्कंधमेखला",
+      "कशेरुकाएँ",
+      "मेखला",
+      "कूर्चा"
+    ],
+    "options_en": [
+      "Shoulder girdle",
+      "Vertebrae",
+      "Girdle",
+      "Cartilage"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "हाइपोकैलीमिया क्या है?",
+    "question_en": "What is hypokalaemia?",
+    "options_hi": [
+      "पोटैशियम की कमी",
+      "कैल्शियम की कमी",
+      "कैल्शियम में वृद्धि",
+      "सोडियम की कमी"
+    ],
+    "options_en": [
+      "Deficiency of potassium",
+      "Deficiency of calcium",
+      "Increase in calcium",
+      "Deficiency of sodium"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "सामासिक शब्द और उसकी पहचान दर्शाने वाला कौन-सा जोड़ा सही नहीं है?",
+    "question_en": "Which pair showing a compound word and its identification is not correct?",
+    "options_hi": [
+      "स्थानभ्रष्ट - पंचमी तत्पुरुष",
+      "चोमासुं - द्विगु",
+      "दुष्काल - अव्ययीभाव",
+      "वावाझोड़ुं - द्वंद्व"
+    ],
+    "options_en": [
+      "Sthanbhrasht - Panchami Tatpurush",
+      "Chomasu - Dvigu",
+      "Dushkal - Avyayibhav",
+      "Vavazhodu - Dvandva"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "फेफड़ों से ऑक्सीजनयुक्त रक्त हृदय के किस कक्ष में आता है?",
+    "question_en": "Oxygenated blood from the lungs enters which chamber of the heart?",
+    "options_hi": [
+      "दायां आलिंद",
+      "बायां आलिंद",
+      "दायां निलय",
+      "बायां निलय"
+    ],
+    "options_en": [
+      "Right atrium",
+      "Left atrium",
+      "Right ventricle",
+      "Left ventricle"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "रम्पल-लीड टेस्ट किसके निदान के लिए किया जाता है?",
+    "question_en": "Rumpel-Leede test is performed for diagnosis of which disease?",
+    "options_hi": [
+      "जापानी एन्सेफलाइटिस",
+      "चिकनगुनिया",
+      "[मूल पेपर से विकल्प C सत्यापित करें]",
+      "कोरोना"
+    ],
+    "options_en": [
+      "Japanese encephalitis",
+      "Chikungunya",
+      "[Verify option C from original paper]",
+      "Corona"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "हड्डियों और दांतों में मुख्यतः कौन-सा रासायनिक पदार्थ होता है?",
+    "question_en": "Which chemical substance is mainly present in bones and teeth?",
+    "options_hi": [
+      "कैल्शियम फॉस्फेट",
+      "कैल्शियम सल्फेट",
+      "कैल्शियम क्लोराइड",
+      "कैल्शियम बोरेट"
+    ],
+    "options_en": [
+      "Calcium phosphate",
+      "Calcium sulphate",
+      "Calcium chloride",
+      "Calcium borate"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "पिता की आयु 40 वर्ष है। बड़े पुत्र की आयु पिता से 18 वर्ष कम है। उससे छोटे पुत्र की आयु पिता से 21 वर्ष कम है। सबसे छोटे पुत्र की आयु बीच वाले पुत्र से 3 वर्ष कम है, तो सबसे छोटा पुत्र सबसे बड़े पुत्र से कितने वर्ष छोटा होगा?",
+    "question_en": "A father is 40 years old. The eldest son is 18 years younger than the father. The younger son is 21 years younger than the father. The youngest son is 3 years younger than the middle son. How many years younger is the youngest son than the eldest son?",
+    "options_hi": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "options_en": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "क्वाशिओरकर और मैरास्मस क्या हैं?",
+    "question_en": "What are kwashiorkor and marasmus?",
+    "options_hi": [
+      "विटामिन की कमी से होने वाले रोग",
+      "प्रोटीन और ऊर्जा की कमी से होने वाले रोग",
+      "वसा की कमी से होने वाले रोग",
+      "एंजाइमों के नाम हैं"
+    ],
+    "options_en": [
+      "Diseases due to vitamin deficiency",
+      "Diseases due to protein and energy deficiency",
+      "Diseases due to fat deficiency",
+      "Names of enzymes"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "पल्ली का मेला कब भरता है?",
+    "question_en": "When is the Palli fair held?",
+    "options_hi": [
+      "चैत्र सुद नवमी",
+      "आसो सुद नवमी",
+      "महा सुद नवमी",
+      "आसो सुद अष्टमी"
+    ],
+    "options_en": [
+      "Chaitra Sud Nom",
+      "Aaso Sud Nom",
+      "Maha Sud Nom",
+      "Aaso Sud Atham"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "'हम सब बहुत मिलजुल कर रहते थे' — रेखांकित पद की विभक्ति पहचानिए।",
+    "question_en": "'We all lived very harmoniously' — identify the case of the underlined word.",
+    "options_hi": [
+      "करण के अर्थ में तृतीया विभक्ति",
+      "कर्ता के अर्थ में प्रथमा विभक्ति",
+      "कर्म के अर्थ में द्वितीया विभक्ति",
+      "संबंध के अर्थ में षष्ठी विभक्ति"
+    ],
+    "options_en": [
+      "Instrumental sense of third case",
+      "Nominative sense of first case",
+      "Accusative sense of second case",
+      "Possessive sense of sixth case"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "सल्फर (खनिज लवण) मुख्यतः किस खाद्य पदार्थ/स्रोत से मिलता है?",
+    "question_en": "Sulphur (mineral salt) is mainly obtained from which food/source?",
+    "options_hi": [
+      "दही",
+      "प्याज",
+      "नमक",
+      "छाछ"
+    ],
+    "options_en": [
+      "Curd",
+      "Onion",
+      "Salt",
+      "Buttermilk"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "A.E.F.I. किट में कौन-सी दवा शामिल नहीं होती है?",
+    "question_en": "Which drug is not included in the A.E.F.I. kit?",
+    "options_hi": [
+      "एड्रेनालिन",
+      "हाइड्रोकॉर्टिसोन",
+      "पैरासिटामोल",
+      "जेंटामाइसिन"
+    ],
+    "options_en": [
+      "Adrenaline",
+      "Hydrocortisone",
+      "Paracetamol",
+      "Gentamicin"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "प्रोटोजोआ से होने वाला मुख्य रोग कौन-सा है?",
+    "question_en": "Which is a main disease caused by protozoa?",
+    "options_hi": [
+      "मरोड़/पेचिश",
+      "खसरा",
+      "क्षय रोग",
+      "दाद"
+    ],
+    "options_en": [
+      "Dysentery",
+      "Measles",
+      "Tuberculosis",
+      "Ringworm"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the correct synonyms of the word \"Prophylactic\"",
+    "options_hi": [],
+    "options_en": [
+      "Antagonistic",
+      "Toxic",
+      "Preventive",
+      "Purgative"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "एक वस्तु 20% लाभ लेकर बेची जाती है। यदि उसकी क्रय कीमत और विक्रय कीमत दोनों ₹150 कम होतीं, तो लाभ 5% अधिक मिलता। मूल कीमत कितनी होगी?",
+    "question_en": "An article is sold at 20% profit. If both its cost price and selling price were ₹150 less, the profit would be 5% more. What was the original cost price?",
+    "options_hi": [
+      "750",
+      "850",
+      "950",
+      "दिए गए में से कोई नहीं"
+    ],
+    "options_en": [
+      "750",
+      "850",
+      "950",
+      "None of the given"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "पेलाग्रा आहार के किस घटक की कमी से होने वाला रोग है?",
+    "question_en": "Pellagra is caused by deficiency of which dietary component?",
+    "options_hi": [
+      "प्रोटीन",
+      "वसा",
+      "खनिज लवण",
+      "विटामिन"
+    ],
+    "options_en": [
+      "Protein",
+      "Fat",
+      "Mineral salts",
+      "Vitamin"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "What is the one-word substitution for \"A person who is well known in an unfavourable way\"?",
+    "options_hi": [],
+    "options_en": [
+      "Notorious",
+      "Obscure",
+      "Conspicuous",
+      "Ethical"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 74,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the correct antonym of the word \"Affluent\"",
+    "options_hi": [],
+    "options_en": [
+      "Responsible",
+      "Inconsiderate",
+      "Unrealistic",
+      "Deprived"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 75,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "रक्त के जमने में निम्न में से कौन-सा घटक सबसे महत्वपूर्ण भूमिका निभाता है?",
+    "question_en": "Which of the following components plays the most important role in blood clotting?",
+    "options_hi": [
+      "लसिका कण",
+      "प्लेटलेट्स",
+      "श्वेत कण",
+      "रक्त कण"
+    ],
+    "options_en": [
+      "Lymphocytes",
+      "Platelets",
+      "White cells",
+      "Blood cells"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 76,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "कान से मवाद आने के कारण होने वाले धनुर्वात को क्या कहते हैं?",
+    "question_en": "What is tetanus caused due to pus discharge from the ear called?",
+    "options_hi": [
+      "नियोनेटल टेटनस",
+      "ENI टेटनस",
+      "ओटोजेनिक टेटनस",
+      "ऑप्टोजेनिक टेटनस"
+    ],
+    "options_en": [
+      "Neonatal tetanus",
+      "ENI tetanus",
+      "Otogenic tetanus",
+      "Optogenic tetanus"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 77,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "यदि किसी व्यक्ति ने अज्ञात प्रकार की कीटनाशक दवा पी ली हो, तो प्राथमिक उपचार के रूप में किस बात की विशेष सावधानी रखनी चाहिए?",
+    "question_en": "If a person has consumed an unknown type of pesticide, what precaution should be especially taken as first aid?",
+    "options_hi": [
+      "बहुत अधिक पानी पिलाना",
+      "उल्टी न कराना",
+      "रोगी को उल्टा सुला देना",
+      "तुरंत उल्टी कराना"
+    ],
+    "options_en": [
+      "Make him drink plenty of water",
+      "Do not induce vomiting",
+      "Make the patient sleep upside down",
+      "Induce vomiting immediately"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 78,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "शब्दसमूह के लिए एक विकल्प चुनिए: अर्ज करके मांगा हुआ",
+    "question_en": "Choose one word for the phrase: asked for by making a request",
+    "options_hi": [
+      "प्रावृष",
+      "राव",
+      "प्रार्थित",
+      "अजित"
+    ],
+    "options_en": [
+      "Pravrish",
+      "Raav",
+      "Prarthit",
+      "Ajit"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 79,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the correct antonym of the word \"Tactical\"",
+    "options_hi": [],
+    "options_en": [
+      "Unplanned",
+      "Uniform",
+      "Devious",
+      "Premeditated"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 80,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "इंसुलिन शरीर में किस ग्रंथि में उत्पन्न होता है?",
+    "question_en": "In which gland is insulin produced in the body?",
+    "options_hi": [
+      "पिट्यूटरी ग्रंथि",
+      "एड्रिनल ग्रंथि",
+      "थायरॉयड ग्रंथि",
+      "अग्न्याशय"
+    ],
+    "options_en": [
+      "Pituitary gland",
+      "Adrenal gland",
+      "Thyroid gland",
+      "Pancreas"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 81,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Choose the correct synonyms of the word \"Intrepid\"",
+    "options_hi": [],
+    "options_en": [
+      "Hesitant",
+      "Fearless",
+      "Extrovert",
+      "nervous"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 82,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "टी.बी. के किस प्रकार में बैक्टीरिया प्रथम और द्वितीय पंक्ति की अधिकांश दवाओं के प्रति प्रतिरोधक होते हैं, इसलिए उपचार सबसे कठिन हो जाता है?",
+    "question_en": "In which type of TB are bacteria resistant to most first-line and second-line drugs, making treatment the most difficult?",
+    "options_hi": [
+      "MDR",
+      "MDD",
+      "XDR",
+      "DDR"
+    ],
+    "options_en": [
+      "MDR",
+      "MDD",
+      "XDR",
+      "DDR"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 83,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "शरीर में होने वाले विभिन्न कार्यों का समन्वय मुख्यतः कौन-सा तंत्र करता है?",
+    "question_en": "Which system mainly coordinates the different functions occurring in the body?",
+    "options_hi": [
+      "रक्ताभिसरण तंत्र",
+      "तंत्रिका तंत्र",
+      "पाचन तंत्र",
+      "श्वसन तंत्र"
+    ],
+    "options_en": [
+      "Circulatory system",
+      "Nervous system",
+      "Digestive system",
+      "Respiratory system"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 84,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "टी.बी. के माइक्रोस्कोपिक निदान के लिए सामान्यतः कितने बलगम नमूनों की जांच की जाती है?",
+    "question_en": "For microscopic diagnosis of TB, how many sputum samples are generally examined?",
+    "options_hi": [
+      "चार",
+      "एक",
+      "दो",
+      "तीन"
+    ],
+    "options_en": [
+      "Four",
+      "One",
+      "Two",
+      "Three"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 85,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "दो ट्रेनों की लंबाई 185 मीटर और 215 मीटर है। उनकी गति क्रमशः 50 किमी/घंटा और 40 किमी/घंटा है। दोनों ट्रेनें विपरीत दिशा में समानांतर लाइन पर चलती हैं, तो वे एक-दूसरे को कितने समय में पार करेंगी?",
+    "question_en": "Two trains are 185 m and 215 m long. Their speeds are 50 km/h and 40 km/h respectively. They run in opposite directions on parallel lines. In how much time will they cross each other?",
+    "options_hi": [
+      "12 सेकंड",
+      "15 सेकंड",
+      "16 सेकंड",
+      "1 मिनट"
+    ],
+    "options_en": [
+      "12 seconds",
+      "15 seconds",
+      "16 seconds",
+      "1 minute"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 86,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "'एक दिन राजा और रानी झरोखे में बैठे थे।' रेखांकित संयोजक का प्रकार पहचानिए।",
+    "question_en": "'One day the king and queen were sitting at the window.' Identify the type of the underlined conjunction.",
+    "options_hi": [
+      "समुच्चयवाचक",
+      "विकल्पवाचक",
+      "पर्यायवाचक",
+      "विरोधवाचक"
+    ],
+    "options_en": [
+      "Copulative conjunction",
+      "Alternative conjunction",
+      "Synonymous conjunction",
+      "Adversative conjunction"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 87,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "छोटी आंत के पहले 10 से 12 इंच के भाग को क्या कहते हैं?",
+    "question_en": "What is the first 10 to 12 inches part of the small intestine called?",
+    "options_hi": [
+      "जेजुनम",
+      "एपिग्लॉटिस",
+      "आंत्रपुच्छ",
+      "ड्यूओडेनम"
+    ],
+    "options_en": [
+      "Jejunum",
+      "Epiglottis",
+      "Appendix",
+      "Duodenum"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 88,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "टी.बी. और कुष्ठ रोग दोनों के उपचार में उपयोग की जाने वाली दवा कौन-सी है?",
+    "question_en": "Which drug is used in the treatment of both TB and leprosy?",
+    "options_hi": [
+      "डैप्सोन",
+      "रिफैम्पिसिन",
+      "D.E.C.",
+      "स्ट्रेप्टोमाइसिन"
+    ],
+    "options_en": [
+      "Dapsone",
+      "Rifampicin",
+      "D.E.C.",
+      "Streptomycin"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 89,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "प्लेटलेट्स और श्वेत रक्त कणों (WBC) की संख्या में कमी मुख्यतः किस रोग में होती है?",
+    "question_en": "Decrease in the number of platelets and white blood cells (WBC) mainly occurs in which disease?",
+    "options_hi": [
+      "डेंगू",
+      "चिकनगुनिया",
+      "जापानी एन्सेफलाइटिस",
+      "स्वाइन फ्लू"
+    ],
+    "options_en": [
+      "Dengue",
+      "Chikungunya",
+      "Japanese encephalitis",
+      "Swine flu"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 90,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "TY21a प्रकार की वैक्सीन किस रोग में दी जाती है?",
+    "question_en": "TY21a type vaccine is given for which disease?",
+    "options_hi": [
+      "डिप्थीरिया",
+      "निमोनिया",
+      "टाइफॉइड",
+      "दिए गए में से कोई नहीं"
+    ],
+    "options_en": [
+      "Diphtheria",
+      "Pneumonia",
+      "Typhoid",
+      "None of the given"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 91,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "सग्धरा छंद का गण-बंधारण बताइए।",
+    "question_en": "State the gana structure of the Sagdhara metre.",
+    "options_hi": [
+      "ज स ज स य ल गा",
+      "म र भ न ययय",
+      "न स म र स ल गा",
+      "मसजस त त गा"
+    ],
+    "options_en": [
+      "Ja Sa Ja Sa Ya La Ga",
+      "Ma Ra Bha Na Yayaya",
+      "Na Sa Ma Ra Sa La Ga",
+      "Masajas Ta Ta Ga"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 92,
+    "subject": "General Studies",
+    "type": "english_only",
+    "question_hi": "",
+    "question_en": "Change the following sentence into Indirect Speech. Natasha said, \"I am looking at the picture.\"",
+    "options_hi": [],
+    "options_en": [
+      "Natasha said that I was looking at the picture.",
+      "Natasha said that I am looking at the picture.",
+      "Natasha said that she was looking at the picture.",
+      "Natasha says that she was looking at the picture."
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 93,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "बीसीजी वैक्सीन के लिए कौन-सा डायल्यूएंट प्रयोग किया जाता है?",
+    "question_en": "Which diluent is used for BCG vaccine?",
+    "options_hi": [
+      "डिस्टिल्ड वाटर",
+      "नॉर्मल सलाइन",
+      "बफर सॉल्यूशन",
+      "रिंगर लैक्टेट"
+    ],
+    "options_en": [
+      "Distilled water",
+      "Normal saline",
+      "Buffer solution",
+      "Ringer lactate"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 94,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "एंटी-पॉलीन्यूराइटिक विटामिन कौन-सा है?",
+    "question_en": "Which is the anti-polyneuritic vitamin?",
+    "options_hi": [
+      "विटामिन A",
+      "विटामिन B",
+      "विटामिन C",
+      "विटामिन D"
+    ],
+    "options_en": [
+      "Vitamin A",
+      "Vitamin B",
+      "Vitamin C",
+      "Vitamin D"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 95,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "हृदय को रक्त पहुँचाने वाली रक्तवाहिनी कौन-सी है?",
+    "question_en": "Which blood vessel supplies blood to the heart?",
+    "options_hi": [
+      "पल्मोनरी आर्टरी",
+      "कोरोनरी आर्टरी",
+      "मेनिंजियल आर्टरी",
+      "मेमरी आर्टरी"
+    ],
+    "options_en": [
+      "Pulmonary artery",
+      "Coronary artery",
+      "Meningeal artery",
+      "Mammary artery"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 96,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "हाल ही में ओडिशा का कौन-सा स्थान जैव-विविधता विरासत स्थल घोषित किया गया है?",
+    "question_en": "Which place in Odisha has recently been declared a Biodiversity Heritage Site?",
+    "options_hi": [
+      "कोटागढ़ वन",
+      "गुप्तेश्वर वन",
+      "देब्रीगढ़ वन",
+      "भितरकनिका वन"
+    ],
+    "options_en": [
+      "Kotagarh forest",
+      "Gupteswar forest",
+      "Debrigarh forest",
+      "Bhitarkanika forest"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 97,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "मलेरिया के निदान के लिए कौन-से स्मियर लिए जाते हैं?",
+    "question_en": "Which smears are taken for diagnosis of malaria?",
+    "options_hi": [
+      "थिक स्मियर",
+      "थिन स्मियर",
+      "(A) और (B) दोनों",
+      "दिए गए में से कोई नहीं"
+    ],
+    "options_en": [
+      "Thick smear",
+      "Thin smear",
+      "Both (A) and (B)",
+      "None of the given"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 98,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "मंकी फीवर के रूप में कौन-सा रोग जाना जाता है?",
+    "question_en": "Which disease is known as Monkey Fever?",
+    "options_hi": [
+      "मैरास्मस",
+      "क्वाशिओरकर",
+      "क्यासानूर फॉरेस्ट डिजीज",
+      "काला-अजार"
+    ],
+    "options_en": [
+      "Marasmus",
+      "Kwashiorkor",
+      "Kyasanur Forest Disease",
+      "Kala-azar"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 99,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "टी.बी. में लाल पेशाब आना किस दवा का दुष्प्रभाव है?",
+    "question_en": "Red urine in TB is a side effect of which drug?",
+    "options_hi": [
+      "आइसोनियाजिड",
+      "एथाम्बुटोल",
+      "रिफैम्पिसिन",
+      "स्ट्रेप्टोमाइसिन"
+    ],
+    "options_en": [
+      "Isoniazid",
+      "Ethambutol",
+      "Rifampicin",
+      "Streptomycin"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 100,
+    "subject": "General Studies",
+    "type": "bilingual",
+    "question_hi": "कुष्ठ रोग के कितने प्रकार हैं?",
+    "question_en": "How many types of leprosy are there?",
+    "options_hi": [
+      "एक",
+      "[मूल पेपर से विकल्प B सत्यापित करें]",
+      "तीन",
+      "चार"
+    ],
+    "options_en": [
+      "One",
+      "[Verify option B from original paper]",
+      "Three",
+      "Four"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const testId = "bmc-multi-purpose-health-worker-100q-set-b";
+const historyKey = "mock_attempt_history_" + testId;
+const durationSeconds = 120 * 60;
+let current = 0;
+let lang = "bi";
+let answers = Array(questions.length).fill(null);
+let visited = Array(questions.length).fill(false);
+let review = Array(questions.length).fill(false);
+let startedAt = null;
+let timerInterval = null;
+let remaining = durationSeconds;
+
+document.getElementById("totalQ").textContent = questions.length;
+document.getElementById("totalMarks").textContent = questions.length * marksPerQuestion;
+loadHistory();
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));
+}
+function startTest() {
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("examScreen").classList.remove("hidden");
+  document.getElementById("timerBox").classList.remove("hidden");
+  startedAt = Date.now();
+  visited[0] = true;
+  renderPalette();
+  renderQuestion();
+  timerInterval = setInterval(tick, 1000);
+}
+function tick() {
+  remaining--;
+  const h = String(Math.floor(remaining/3600)).padStart(2,'0');
+  const m = String(Math.floor((remaining%3600)/60)).padStart(2,'0');
+  const s = String(remaining%60).padStart(2,'0');
+  document.getElementById("timerBox").textContent = `${h}:${m}:${s}`;
+  if (remaining <= 0) submitTest(true);
+}
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll(".langbar button").forEach(b=>b.classList.remove("active"));
+  document.getElementById(l==='hi'?'btnHi':l==='en'?'btnEn':'btnBi').classList.add("active");
+  renderQuestion();
+}
+function textFor(q, field) {
+  return q[field] || "";
+}
+function renderQuestion() {
+  const q = questions[current];
+  visited[current] = true;
+  document.getElementById("qNo").textContent = current + 1;
+  document.getElementById("qTotal").textContent = questions.length;
+  document.getElementById("qType").textContent = q.type.replace("_", " ");
+  let qhtml = "";
+  if (q.type === "english_only") qhtml = esc(q.question_en);
+  else if (q.type === "hindi_only") qhtml = esc(q.question_hi);
+  else if (lang === "hi") qhtml = esc(q.question_hi);
+  else if (lang === "en") qhtml = esc(q.question_en);
+  else qhtml = `<div><b>Hindi:</b> ${esc(q.question_hi)}</div><div style="margin-top:8px"><b>English:</b> ${esc(q.question_en)}</div>`;
+  document.getElementById("questionText").innerHTML = qhtml;
+  document.getElementById("imageBox").innerHTML = q.image ? `<img src="${esc(q.image)}" alt="Question ${q.id} Image" class="question-image">` : "";
+  const opts = getOptions(q);
+  document.getElementById("optionsBox").innerHTML = opts.map((op,i)=>`
+    <div class="option ${answers[current]===i?'selected':''}" onclick="selectOption(${i})">
+      <span class="label">${String.fromCharCode(65+i)}</span>
+      <span>${op}</span>
+    </div>`).join("");
+  renderPalette();
+}
+function getOptions(q) {
+  let arr;
+  if (q.type === "english_only") arr = q.options_en;
+  else if (q.type === "hindi_only") arr = q.options_hi;
+  else if (lang === "hi") arr = q.options_hi;
+  else if (lang === "en") arr = q.options_en;
+  else arr = q.options_hi.map((x,i)=>`<b>${esc(x || "[Blank / Verify]")}</b><br><span>${esc(q.options_en[i] || "[Blank / Verify]")}</span>`);
+  return arr.map(x => typeof x === "string" && !x.includes("<b>") ? esc(x || "[Blank / Verify]") : x);
+}
+function selectOption(i) { answers[current] = i; renderQuestion(); }
+function saveNext() { if (current < questions.length-1) { current++; visited[current]=true; renderQuestion(); } }
+function prevQuestion() { if (current > 0) { current--; visited[current]=true; renderQuestion(); } }
+function markReview() { review[current] = !review[current]; renderQuestion(); }
+function clearResponse() { answers[current] = null; renderQuestion(); }
+function statusClass(i) {
+  if (!visited[i]) return "not-visited";
+  if (answers[i] !== null && review[i]) return "answered-review";
+  if (review[i]) return "review";
+  if (answers[i] !== null) return "answered";
+  return "not-answered";
+}
+function renderPalette() {
+  document.getElementById("palette").innerHTML = questions.map((q,i)=>`
+    <button class="pal-btn ${statusClass(i)} ${i===current?'current':''}" onclick="current=${i};visited[i]=true;renderQuestion();">${i+1}</button>
+  `).join("");
+}
+function hasAnswerKey() { return questions.every(q => q.correct !== null && q.correct !== undefined); }
+function isCancelled(q) { return q.correct === -1; }
+function submitTest(auto=false) {
+  if (!auto && !confirm("Submit test?")) return;
+  clearInterval(timerInterval);
+  const timeTaken = Math.floor((Date.now()-startedAt)/1000);
+  const attempted = answers.filter(a=>a!==null).length;
+  const unattempted = questions.length - attempted;
+  let correct = 0, wrong = 0, cancelled = 0, score = null, percent = null;
+  if (hasAnswerKey()) {
+    questions.forEach((q,i)=>{
+      if (isCancelled(q)) { cancelled++; correct++; return; }
+      if (answers[i] !== null) { if (answers[i] === q.correct) correct++; else wrong++; }
+    });
+    score = (correct*marksPerQuestion) - (wrong*negativeMarking);
+    percent = (score/(questions.length*marksPerQuestion))*100;
+  }
+  const record = {date:new Date().toLocaleString(), attempted, unattempted, correct, wrong, cancelled, score, percent, timeTaken};
+  const history = JSON.parse(localStorage.getItem(historyKey) || "[]");
+  history.unshift(record);
+  localStorage.setItem(historyKey, JSON.stringify(history.slice(0,10)));
+  showResult(record);
+}
+function fmtTime(sec) {
+  const h=Math.floor(sec/3600), m=Math.floor((sec%3600)/60), s=sec%60;
+  return `${h}h ${m}m ${s}s`;
+}
+function optTextForKey(q, idx) {
+  if (idx === -1) return "Cancelled / Bonus";
+  if (idx === null || idx === undefined) return "Not selected";
+  const arr = q.type === "english_only" ? q.options_en : q.options_hi;
+  return `${String.fromCharCode(65+idx)}. ${arr[idx] || "[Blank / Verify]"}`;
+}
+function showResult(r) {
+  document.getElementById("examScreen").classList.add("hidden");
+  document.getElementById("timerBox").classList.add("hidden");
+  const keyAvailable = hasAnswerKey();
+  document.getElementById("resultScreen").classList.remove("hidden");
+  document.getElementById("resultScreen").innerHTML = `
+    <h2>Result</h2>
+    <div class="result-grid">
+      <div class="result-box"><b>Total Questions</b><br>${questions.length}</div>
+      <div class="result-box"><b>Attempted</b><br>${r.attempted}</div>
+      <div class="result-box"><b>Not Attempted</b><br>${r.unattempted}</div>
+      <div class="result-box"><b>Correct</b><br>${keyAvailable?r.correct:"Answer key not provided"}</div>
+      <div class="result-box"><b>Wrong</b><br>${keyAvailable?r.wrong:"Answer key not provided"}</div>
+      <div class="result-box"><b>Cancelled / Bonus</b><br>${keyAvailable?(r.cancelled || 0):"Answer key not provided"}</div>
+      <div class="result-box"><b>Marks Obtained</b><br>${keyAvailable?r.score.toFixed(2):"Score cannot be calculated"}</div>
+      <div class="result-box"><b>Maximum Marks</b><br>${questions.length*marksPerQuestion}</div>
+      <div class="result-box"><b>Percentage</b><br>${keyAvailable?r.percent?.toFixed(2)+"%":"Score cannot be calculated"}</div>
+      <div class="result-box"><b>Time Taken</b><br>${fmtTime(r.timeTaken)}</div>
+    </div>
+    <p><b>Marking scheme:</b> +1 for correct answer, -0.25 for wrong answer, 0 for unattempted.</p>
+    ${keyAvailable ? '<p><b>Note:</b> Questions marked Cancelled / Bonus are awarded +1 automatically.</p>' : '<p><b>Answer key not provided, so score cannot be calculated.</b></p>'}
+    <h3>Answer Key / Review</h3>
+    ${questions.map((q,i)=>`<div class="key-item">
+      <b>Q${i+1}.</b> ${esc(q.question_hi || q.question_en)}<br>
+      <b>Your Answer:</b> ${esc(optTextForKey(q, answers[i]))}<br>
+      <b>Correct Answer:</b> ${q.correct===null?"Not Provided":esc(optTextForKey(q,q.correct))}<br>
+      <b>Explanation:</b> Explanation not provided.
+    </div>`).join("")}
+    <button class="primary" onclick="location.reload()">Restart</button>
+  `;
+}
+function loadHistory() {
+  const history = JSON.parse(localStorage.getItem(historyKey) || "[]");
+  if (!history.length) return;
+  document.getElementById("historyBox").innerHTML = `<h3>Attempt History for this test only</h3>
+  <table class="history-table"><tr><th>Date</th><th>Attempted</th><th>Not Attempted</th><th>Score</th><th>Time</th></tr>
+  ${history.map(h=>`<tr><td>${h.date}</td><td>${h.attempted}</td><td>${h.unattempted}</td><td>${h.score===null?'N/A':h.score}</td><td>${fmtTime(h.timeTaken)}</td></tr>`).join("")}</table>`;
+}
+</script>
+</body>
+</html>
