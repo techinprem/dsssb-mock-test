@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junior Health Inspector Grade II 2023 Mock Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,'Noto Sans Devanagari',sans-serif;background:#eef2f7;color:#111827}
+.header{background:#0f4c81;color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.header h1{font-size:18px;margin:0}
+.timer{background:#08365d;padding:8px 12px;border-radius:6px;font-weight:700}
+.container{max-width:1200px;margin:0 auto;padding:16px}
+.card{background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.08);padding:18px;margin-bottom:14px}
+.start-card{max-width:760px;margin:24px auto}
+.btn{border:none;border-radius:6px;padding:10px 14px;cursor:pointer;font-weight:700;background:#e5e7eb;color:#111827;margin:4px}
+.btn:hover{filter:brightness(.96)}
+.btn-primary{background:#0f4c81;color:white}
+.btn-success{background:#16a34a;color:white}
+.btn-warning{background:#f59e0b;color:white}
+.btn-danger{background:#dc2626;color:white}
+.btn-ghost{background:#f3f4f6;color:#111827;border:1px solid #d1d5db}
+.btn.active{outline:3px solid #facc15}
+.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px}
+.q-title{font-size:18px;line-height:1.55;margin:12px 0}
+.option{display:flex;gap:10px;align-items:flex-start;border:1px solid #d1d5db;border-radius:8px;padding:12px;margin:10px 0;cursor:pointer;background:#fff}
+.option:hover{background:#f8fafc}
+.option.selected{border-color:#0f4c81;background:#e8f2ff}
+.option input{margin-top:3px}
+.palette-card{height:calc(100vh - 110px);display:flex;flex-direction:column;position:sticky;top:12px}
+.palette-scroll{overflow-y:auto;padding-right:4px;border:1px solid #e5e7eb;border-radius:8px;padding:8px;flex:1;min-height:0}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.qbtn{height:38px;border:none;border-radius:8px;font-weight:700;cursor:pointer;background:#d1d5db;color:#111827}
+.qbtn.current{outline:3px solid #111827}
+.qbtn.not-visited{background:#d1d5db}
+.qbtn.not-answered{background:#ef4444;color:#fff}
+.qbtn.answered{background:#22c55e;color:#fff}
+.qbtn.review{background:#a855f7;color:#fff}
+.qbtn.answered-review{background:#2563eb;color:#fff}
+.legend{display:grid;grid-template-columns:1fr;gap:8px;font-size:13px;margin-top:10px}
+.legend span{display:inline-block;width:16px;height:16px;border-radius:4px;margin-right:6px;vertical-align:middle}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.stat{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px}
+.stat strong{display:block;font-size:22px;color:#0f4c81}
+.answer-item{border:1px solid #e5e7eb;border-radius:8px;margin:10px 0;padding:12px;background:#fff}
+.correct{color:#15803d;font-weight:700}
+.wrong{color:#dc2626;font-weight:700}
+.muted{color:#6b7280}
+.hidden{display:none!important}
+.lang-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.math{white-space:nowrap;font-family:"Times New Roman",serif}
+.frac{display:inline-block;vertical-align:middle;text-align:center;line-height:1.2;margin:0 4px}
+.frac .top{display:block;padding:0 4px 2px;border-bottom:1.5px solid currentColor}
+.frac .bottom{display:block;padding:2px 4px 0}
+sup,sub{line-height:0}
+.question-image{max-width:100%;height:auto;display:block;margin:12px 0;border:1px solid #ddd;border-radius:6px}
+.table-wrap{overflow-x:auto}
+@media(max-width:800px){
+  .exam-layout{grid-template-columns:1fr}
+  .palette-card{height:360px;position:static}
+  .header{align-items:flex-start}
+  .btn{width:auto;padding:10px 12px}
+  .action-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .action-row .btn{width:100%;margin:0}
+}
+</style>
+</head>
+<body>
+<div id="startScreen" class="container">
+  <div class="card start-card">
+    <h2>Junior Health Inspector Grade II 2023 Mock Test</h2>
+    <p><b>Total Questions:</b> 100</p>
+    <p><b>Total Marks:</b> 100</p>
+    <p><b>Time Duration:</b> 90 minutes</p>
+    <p><b>Marking Scheme:</b> +1 for correct answer, -0.25 for wrong answer</p>
+    <p><b>Language Mode:</b> Hindi / English only</p>
+    <button class="btn btn-primary" onclick="startTest()">Start Test</button>
+    <button class="btn btn-ghost" onclick="showHistory()">View Attempt History</button>
+    <div id="historyBox" class="hidden"></div>
+  </div>
+</div>
+
+<div id="examScreen" class="hidden">
+  <div class="header">
+    <h1>Junior Health Inspector Grade II 2023 Mock Test</h1>
+    <div class="timer" id="timer">90:00</div>
+  </div>
+  <div class="container exam-layout">
+    <main class="card">
+      <div class="lang-row">
+        <b>Language:</b>
+        <button id="btnHi" class="btn btn-primary active" onclick="setLanguage('hi')">Hindi</button>
+        <button id="btnEn" class="btn btn-primary" onclick="setLanguage('en')">English</button>
+      </div>
+      <div class="muted" id="qMeta"></div>
+      <div class="q-title" id="questionText"></div>
+      <div id="imageBox"></div>
+      <div id="optionsBox"></div>
+      <div class="action-row">
+        <button class="btn btn-ghost" onclick="previousQuestion()">Previous</button>
+        <button class="btn btn-success" onclick="saveNext()">Save & Next</button>
+        <button class="btn btn-warning" onclick="markForReview()">Mark for Review</button>
+        <button class="btn btn-ghost" onclick="clearResponse()">Clear Response</button>
+        <button class="btn btn-danger" onclick="submitTest()">Submit Test</button>
+      </div>
+    </main>
+    <aside class="card palette-card">
+      <h3>Question Palette</h3>
+      <div class="palette-scroll"><div class="palette" id="palette"></div></div>
+      <div class="legend">
+        <div><span style="background:#d1d5db"></span>Not Visited</div>
+        <div><span style="background:#ef4444"></span>Not Answered</div>
+        <div><span style="background:#22c55e"></span>Answered</div>
+        <div><span style="background:#a855f7"></span>Marked for Review</div>
+        <div><span style="background:#2563eb"></span>Answered & Marked for Review</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div id="resultScreen" class="container hidden">
+  <div class="card">
+    <h2>Result</h2>
+    <div class="result-grid" id="resultStats"></div>
+    <button class="btn btn-primary" onclick="location.reload()">Restart</button>
+  </div>
+  <div class="card">
+    <h2>Answer Key</h2>
+    <div id="answerKey"></div>
+  </div>
+</div>
+
+<script>
+const testId = "junior-health-inspector-grade-ii-2023";
+const historyKey = "mock_attempt_history_" + testId;
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const totalTimeSeconds = 90 * 60;
+const questions = [
+  {
+    "id": 1,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The temporary structure that provide oxygenation to fetal blood and remove waste products from fetus which is in direct contact with endometrium of Uterus.",
+    "question_hi": "वह अस्थायी संरचना जो भ्रूण के रक्त को ऑक्सीजन प्रदान करती है और भ्रूण से अपशिष्ट पदार्थों को हटाती है, तथा जो गर्भाशय के एंडोमेट्रियम के सीधे संपर्क में रहती है।",
+    "options_en": [
+      "Placenta",
+      "Umbilical cord",
+      "Fallopian tube",
+      "Amniotic Sac"
+    ],
+    "options_hi": [
+      "प्लेसेंटा",
+      "अम्बिलिकल कॉर्ड",
+      "फैलोपियन ट्यूब",
+      "एम्नियोटिक सैक"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 2,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The area where interchange of gases take place in lungs",
+    "question_hi": "फेफड़ों में गैसों का आदान-प्रदान किस क्षेत्र में होता है?",
+    "options_en": [
+      "Vestibule",
+      "Infundibulum",
+      "Capillary network of alveoli",
+      "Terminal bronchioles"
+    ],
+    "options_hi": [
+      "वेस्टिब्यूल",
+      "इन्फंडिबुलम",
+      "एल्वियोली का केशिका जाल",
+      "टर्मिनल ब्रोंकिओल्स"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The mineral salt that is essential for coagulation of blood",
+    "question_hi": "रक्त के थक्के बनने के लिए आवश्यक खनिज लवण कौन-सा है?",
+    "options_en": [
+      "Sodium",
+      "Potassium",
+      "Phosphorus",
+      "Calcium"
+    ],
+    "options_hi": [
+      "सोडियम",
+      "पोटैशियम",
+      "फॉस्फोरस",
+      "कैल्शियम"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 4,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Bone forming cells that secretes collagen and other constituents of bone tissue",
+    "question_hi": "हड्डी बनाने वाली वे कोशिकाएँ जो कोलेजन तथा अस्थि ऊतक के अन्य घटकों का स्राव करती हैं",
+    "options_en": [
+      "Chondroblasts",
+      "Osteoblasts",
+      "Osteoclasts",
+      "Osteocytes"
+    ],
+    "options_hi": [
+      "कॉन्ड्रोब्लास्ट्स",
+      "ऑस्टियोब्लास्ट्स",
+      "ऑस्टियोक्लास्ट्स",
+      "ऑस्टियोसाइट्स"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The lobe in the brain where the nerve impulse from sensory receptors in tongue are conducted along glossopharyngeal, facial nerves are reached",
+    "question_hi": "मस्तिष्क का वह लोब जहाँ जीभ के संवेदी रिसेप्टर्स से ग्लोसोफैरिंजियल और फेशियल नसों के माध्यम से आने वाले तंत्रिका आवेग पहुँचते हैं",
+    "options_en": [
+      "Parietal",
+      "Temporal",
+      "Frontal",
+      "Occipital"
+    ],
+    "options_hi": [
+      "पैराइटल",
+      "टेम्पोरल",
+      "फ्रंटल",
+      "ऑक्सिपिटल"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The cardiovascular centre is located in",
+    "question_hi": "हृदयवाहिनी केंद्र कहाँ स्थित होता है?",
+    "options_en": [
+      "Pons",
+      "Cerebellum",
+      "Mid brain",
+      "Medulla Oblongata"
+    ],
+    "options_hi": [
+      "पॉन्स",
+      "सेरिबेलम",
+      "मिड ब्रेन",
+      "मेडुला ऑब्लोंगाटा"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 7,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The Oculo-motor nerve that arise from nuclei of cerebral aqueduct supplies the following except",
+    "question_hi": "सेरेब्रल एक्वेडक्ट के न्यूक्लियाई से निकलने वाली ओकुलो-मोटर नस निम्नलिखित को आपूर्ति करती है, सिवाय",
+    "options_en": [
+      "Six extrinsic muscles",
+      "Ciliary muscles",
+      "Muscles of iris",
+      "Lateral rectus muscle"
+    ],
+    "options_hi": [
+      "छह बाह्य मांसपेशियाँ",
+      "सिलियरी मांसपेशियाँ",
+      "आईरिस की मांसपेशियाँ",
+      "लेटरल रेक्टस मांसपेशी"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 8,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The condition in adults resulting from excess of growth hormone secretion after ossification of bone is completed and results in thickening of soft tissues",
+    "question_hi": "वयस्कों में हड्डी का अस्थीकरण पूरा होने के बाद ग्रोथ हार्मोन के अधिक स्राव से होने वाली स्थिति, जिससे मुलायम ऊतकों का मोटा होना होता है",
+    "options_en": [
+      "Cretinism",
+      "Myxoedema",
+      "Acromegaly",
+      "Gigantism"
+    ],
+    "options_hi": [
+      "क्रेटिनिज़्म",
+      "मिक्सीडेमा",
+      "एक्रोमेगली",
+      "जायगैंटिज़्म"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 9,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The hormone that is produced by over which is similar to luteinising hormone that keeps corpus luteum intact and helps to secrete Oestrogen and Progesterone",
+    "question_hi": "वह हार्मोन जो ओवरी द्वारा उत्पन्न होता है और ल्यूटिनाइजिंग हार्मोन के समान होता है, जो कॉर्पस ल्यूटियम को सुरक्षित रखता है तथा एस्ट्रोजन और प्रोजेस्टेरोन के स्राव में सहायता करता है",
+    "options_en": [
+      "HCG",
+      "FSH",
+      "Prolactin",
+      "None of these"
+    ],
+    "options_hi": [
+      "HCG",
+      "FSH",
+      "प्रोलैक्टिन",
+      "इनमें से कोई नहीं"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 10,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The inter vertebral discs are formed by",
+    "question_hi": "इंटरवर्टेब्रल डिस्क किससे बनी होती हैं?",
+    "options_en": [
+      "Elastic cartilages",
+      "Fibro cartilages",
+      "Hyaline cartilage",
+      "Both elastic and fibro cartilage"
+    ],
+    "options_hi": [
+      "इलास्टिक कार्टिलेज",
+      "फाइब्रो कार्टिलेज",
+      "हायलिन कार्टिलेज",
+      "इलास्टिक और फाइब्रो कार्टिलेज दोनों"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 11,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following are not the advantages of oral route?<br>I. It is a safe, convenient and economical route<br>II. Self medication is possible<br>III. Withdrawal of drug is possible<br>IV. Absorption is rapid and quick",
+    "question_hi": "निम्नलिखित में से कौन-सा/से मौखिक मार्ग के लाभ नहीं हैं?<br>I. यह सुरक्षित, सुविधाजनक और किफायती मार्ग है<br>II. स्व-औषधि लेना संभव है<br>III. दवा को वापस लेना संभव है<br>IV. अवशोषण तेज और शीघ्र होता है",
+    "options_en": [
+      "Only I and III",
+      "Only II and IV",
+      "Only III",
+      "Only IV"
+    ],
+    "options_hi": [
+      "केवल I और III",
+      "केवल II और IV",
+      "केवल III",
+      "केवल IV"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 12,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following route is chosen for sensitivity testing?",
+    "question_hi": "संवेदनशीलता परीक्षण के लिए निम्नलिखित में से कौन-सा मार्ग चुना जाता है?",
+    "options_en": [
+      "Intramuscular",
+      "Subcutaneous",
+      "Intradermal",
+      "Intravenous"
+    ],
+    "options_hi": [
+      "इंट्रामस्क्युलर",
+      "सबक्यूटेनियस",
+      "इंट्राडर्मल",
+      "इंट्रावेनस"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 13,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Rubbing the drug on the skin",
+    "question_hi": "दवा को त्वचा पर रगड़ना कहलाता है",
+    "options_en": [
+      "Iontophoresis",
+      "Inunction",
+      "Jet injection",
+      "Adhesive units"
+    ],
+    "options_hi": [
+      "आयनटोफोरेसिस",
+      "इनंक्शन",
+      "जेट इंजेक्शन",
+      "एडहेसिव यूनिट्स"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 14,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Heavy metals like arsenic and mercury are excreted through which organ",
+    "question_hi": "आर्सेनिक और मरकरी जैसी भारी धातुएँ किस अंग के माध्यम से उत्सर्जित होती हैं?",
+    "options_en": [
+      "Lungs",
+      "Intestine",
+      "Skin",
+      "Bile"
+    ],
+    "options_hi": [
+      "फेफड़े",
+      "आंत",
+      "त्वचा",
+      "पित्त"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 15,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Unusual resistance to normal therapeutic dose of a drug",
+    "question_hi": "किसी दवा की सामान्य चिकित्सीय खुराक के प्रति असामान्य प्रतिरोध कहलाता है",
+    "options_en": [
+      "Cumulation",
+      "Tolerance",
+      "Synergism",
+      "Antagonism"
+    ],
+    "options_hi": [
+      "क्यूम्युलेशन",
+      "टॉलरेंस",
+      "सिनर्जिज़्म",
+      "एंटागोनिज़्म"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Who developed vaccine for Rabies?",
+    "question_hi": "रेबीज का टीका किसने विकसित किया?",
+    "options_en": [
+      "Joseph Lister",
+      "Robert Koch",
+      "Edward Jenner",
+      "Louis Pasteur"
+    ],
+    "options_hi": [
+      "जोसेफ लिस्टर",
+      "रॉबर्ट कोच",
+      "एडवर्ड जेनर",
+      "लुई पाश्चर"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 17,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "In bacteria extra nuclear genetic elements consisting of DNA are called",
+    "question_hi": "बैक्टीरिया में DNA से बने अतिरिक्त-नाभिकीय आनुवंशिक तत्व क्या कहलाते हैं?",
+    "options_en": [
+      "Chromosomes",
+      "Plasmids",
+      "Nucleus",
+      "Nucleic acid"
+    ],
+    "options_hi": [
+      "क्रोमोसोम",
+      "प्लास्मिड",
+      "न्यूक्लियस",
+      "न्यूक्लिक एसिड"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 18,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "A bacterium which requires much higher levels of carbon dioxide for growth are said to be",
+    "question_hi": "वृद्धि के लिए कार्बन डाइऑक्साइड के बहुत अधिक स्तर की आवश्यकता वाले जीवाणु को कहा जाता है",
+    "options_en": [
+      "Micro aerophilic",
+      "Capnophilic",
+      "Mesophilic",
+      "Thermophilic"
+    ],
+    "options_hi": [
+      "माइक्रोएरोफिलिक",
+      "कैप्नोफिलिक",
+      "मेसोफिलिक",
+      "थर्मोफिलिक"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 19,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Staining method for demonstrating acid fast bacilli is",
+    "question_hi": "एसिड फास्ट बैसिली को प्रदर्शित करने की स्टेनिंग विधि है",
+    "options_en": [
+      "Gram Stain",
+      "Ziehl-Neelsen stain",
+      "Albert's Stain",
+      "Ponder's Stain"
+    ],
+    "options_hi": [
+      "ग्राम स्टेन",
+      "ज़ीहल-नील्सन स्टेन",
+      "अल्बर्ट्स स्टेन",
+      "पॉन्डर्स स्टेन"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which method does not belongs to sterilisation below 100 degree Celsius?",
+    "question_hi": "कौन-सी विधि 100 डिग्री सेल्सियस से कम तापमान पर नसबंदी से संबंधित नहीं है?",
+    "options_en": [
+      "Holder's method of pasteurisation",
+      "Flash method of pasteurisation",
+      "Tyndallisation",
+      "Inspissation"
+    ],
+    "options_hi": [
+      "पाश्चुरीकरण की होल्डर विधि",
+      "पाश्चुरीकरण की फ्लैश विधि",
+      "टिंडलाइजेशन",
+      "इंस्पिसेशन"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 21,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "ABC in emergency care - B stands for",
+    "question_hi": "आपातकालीन देखभाल में ABC में B का अर्थ है",
+    "options_en": [
+      "Bleeding",
+      "Brain death",
+      "Breathing",
+      "Blood pressure"
+    ],
+    "options_hi": [
+      "रक्तस्राव",
+      "ब्रेन डेथ",
+      "श्वसन",
+      "रक्तचाप"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 22,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Primary way air enters and leaves the respiratory system",
+    "question_hi": "श्वसन तंत्र में वायु के प्रवेश और बाहर निकलने का मुख्य मार्ग है",
+    "options_en": [
+      "Mouth",
+      "Nose",
+      "Larynx",
+      "Pharynx"
+    ],
+    "options_hi": [
+      "मुख",
+      "नाक",
+      "लैरिंक्स",
+      "फैरिंक्स"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Condition in which the lung do not get sufficient supply of air for breathing",
+    "question_hi": "वह स्थिति जिसमें फेफड़ों को साँस लेने के लिए पर्याप्त वायु की आपूर्ति नहीं मिलती",
+    "options_en": [
+      "Choking",
+      "Hiccups",
+      "Asphyxia",
+      "Winding"
+    ],
+    "options_hi": [
+      "चोकिंग",
+      "हिचकी",
+      "एस्फिक्सिया",
+      "वाइंडिंग"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 24,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Sudden involuntary and painful contraction of a muscle or group of muscles is called",
+    "question_hi": "किसी मांसपेशी या मांसपेशियों के समूह का अचानक, अनैच्छिक और दर्दनाक संकुचन कहलाता है",
+    "options_en": [
+      "Strain",
+      "Cramp",
+      "Sprain",
+      "Dislocation"
+    ],
+    "options_hi": [
+      "स्ट्रेन",
+      "क्रैम्प",
+      "स्प्रेन",
+      "डिसलोकेशन"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "In which type wound the soft tissues beneath the skin are damaged but the skin is not broken",
+    "question_hi": "किस प्रकार के घाव में त्वचा के नीचे के मुलायम ऊतक क्षतिग्रस्त होते हैं लेकिन त्वचा फटी नहीं होती?",
+    "options_en": [
+      "Incised wound",
+      "Punctured wound",
+      "Bruises",
+      "Abrasion"
+    ],
+    "options_hi": [
+      "चीरा घाव",
+      "भेदी घाव",
+      "नील/चोट",
+      "घर्षण"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 26,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Paleness of skin and mucous membrane either as a result of diminished circulating red blood cells or diminished blood supply is called",
+    "question_hi": "परिसंचारी लाल रक्त कोशिकाओं की कमी या रक्त आपूर्ति की कमी के कारण त्वचा और श्लेष्म झिल्ली का पीला पड़ना कहलाता है",
+    "options_en": [
+      "Ulcer",
+      "Swelling",
+      "Pallor",
+      "Rashes"
+    ],
+    "options_hi": [
+      "अल्सर",
+      "सूजन",
+      "पैलर",
+      "चकत्ते"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 27,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Vomiting of blood is called",
+    "question_hi": "रक्त की उल्टी को कहा जाता है",
+    "options_en": [
+      "Epistaxis",
+      "Haematemesis",
+      "Haemoptysis",
+      "None of the above"
+    ],
+    "options_hi": [
+      "एपिस्टैक्सिस",
+      "हीमैटेमेसिस",
+      "हीमोप्टाइसिस",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Excessive Urination at night",
+    "question_hi": "रात में अत्यधिक मूत्रत्याग कहलाता है",
+    "options_en": [
+      "Dysurea",
+      "Anuria",
+      "Nocturia",
+      "Pneumaturia"
+    ],
+    "options_hi": [
+      "डिस्यूरिया",
+      "एनूरिया",
+      "नॉक्टूरिया",
+      "न्यूमेटूरिया"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 29,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Pain while swallowing is called",
+    "question_hi": "निगलते समय दर्द को कहा जाता है",
+    "options_en": [
+      "Dyspnoea",
+      "Dysphagia",
+      "Dyspepsia",
+      "Odynophagia"
+    ],
+    "options_hi": [
+      "डिस्प्निया",
+      "डिस्फेजिया",
+      "डिस्पेप्सिया",
+      "ओडिनोफेजिया"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 30,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Discharge from the ear",
+    "question_hi": "कान से स्राव होना कहलाता है",
+    "options_en": [
+      "Otalgia",
+      "Otorrhoea",
+      "Deafness",
+      "Tinnitus"
+    ],
+    "options_hi": [
+      "ओटैल्जिया",
+      "ओटोरोहिया",
+      "बहरापन",
+      "टिनिटस"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 31,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which among the following produce a heat stable endotoxin?",
+    "question_hi": "निम्नलिखित में से कौन ऊष्मा-स्थिर एंडोटॉक्सिन उत्पन्न करता है?",
+    "options_en": [
+      "Salmonella",
+      "Staphylococcal",
+      "Clostridium botulinum",
+      "None"
+    ],
+    "options_hi": [
+      "साल्मोनेला",
+      "स्टैफिलोकोकल",
+      "क्लोस्ट्रीडियम बोटुलिनम",
+      "कोई नहीं"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 32,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following shows clinical signs in less than 10 per cent of infected individuals?",
+    "question_hi": "निम्नलिखित में से किसमें संक्रमित व्यक्तियों के 10 प्रतिशत से कम में नैदानिक लक्षण दिखाई देते हैं?",
+    "options_en": [
+      "Amoeabiasis",
+      "Typhoid",
+      "Ascariasis",
+      "Hook worm"
+    ],
+    "options_hi": [
+      "अमीबायसिस",
+      "टाइफॉइड",
+      "एस्कारियासिस",
+      "हुक वर्म"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 33,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following statement is not appropriate about low osmolarity ORS?",
+    "question_hi": "लो ऑस्मोलैरिटी ORS के बारे में निम्नलिखित में से कौन-सा कथन उपयुक्त नहीं है?",
+    "options_en": [
+      "Stool output is decreased by 20 per cent",
+      "Vomiting is reduced by 30 per cent",
+      "Need for unscheduled IV therapy is reduced by 33 per cent",
+      "Expenditure is reduced by 50 per cent"
+    ],
+    "options_hi": [
+      "मल की मात्रा 20 प्रतिशत घट जाती है",
+      "उल्टी 30 प्रतिशत कम हो जाती है",
+      "अनियोजित IV थेरेपी की आवश्यकता 33 प्रतिशत कम हो जाती है",
+      "खर्च 50 प्रतिशत कम हो जाता है"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 34,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Immunoglobulin is not advisable for",
+    "question_hi": "इम्युनोग्लोबुलिन किसके लिए सलाह योग्य नहीं है?",
+    "options_en": [
+      "Mumps",
+      "Rabies",
+      "Measles",
+      "Varicella zoster"
+    ],
+    "options_hi": [
+      "मम्प्स",
+      "रेबीज",
+      "मीजल्स",
+      "वैरिसेला ज़ोस्टर"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 35,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following is caused by corona virus?",
+    "question_hi": "निम्नलिखित में से कौन-सा कोरोना वायरस से होता है?",
+    "options_en": [
+      "Influenza",
+      "Nipah",
+      "SARS",
+      "All"
+    ],
+    "options_hi": [
+      "इन्फ्लुएंजा",
+      "निपाह",
+      "SARS",
+      "सभी"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 36,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Zeil-Neelsen staining is used for detecting",
+    "question_hi": "ज़ील-नील्सन स्टेनिंग का उपयोग किसकी पहचान के लिए किया जाता है?",
+    "options_en": [
+      "HIV",
+      "Leprosy",
+      "TB",
+      "Typhoid"
+    ],
+    "options_hi": [
+      "HIV",
+      "लेप्रोसी",
+      "TB",
+      "टाइफॉइड"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 37,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Salk vaccine is a",
+    "question_hi": "साल्क वैक्सीन एक है",
+    "options_en": [
+      "Killed vaccine",
+      "Live attenuated vaccine",
+      "Recombinant vaccine",
+      "Polysaccharide vaccine"
+    ],
+    "options_hi": [
+      "किल्ड वैक्सीन",
+      "लाइव एटेन्यूएटेड वैक्सीन",
+      "रिकॉम्बिनेंट वैक्सीन",
+      "पॉलीसैकराइड वैक्सीन"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 38,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following is widely prevalent in India?",
+    "question_hi": "निम्नलिखित में से कौन-सा भारत में व्यापक रूप से प्रचलित है?",
+    "options_en": [
+      "Syphilis",
+      "Chancroid",
+      "Human pappiloma virus",
+      "Gonorrhoea"
+    ],
+    "options_hi": [
+      "सिफिलिस",
+      "चैनक्रॉइड",
+      "ह्यूमन पैपिलोमा वायरस",
+      "गोनोरिया"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 39,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following is an important tool of community empowerment and participation?",
+    "question_hi": "निम्नलिखित में से कौन सामुदायिक सशक्तिकरण और भागीदारी का एक महत्वपूर्ण साधन है?",
+    "options_en": [
+      "RKS",
+      "VHSNC",
+      "JSY",
+      "JSSK"
+    ],
+    "options_hi": [
+      "RKS",
+      "VHSNC",
+      "JSY",
+      "JSSK"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 40,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Responsible officer for the presumptive diagnosis under IDSP",
+    "question_hi": "IDSP के अंतर्गत संभावित निदान के लिए जिम्मेदार अधिकारी",
+    "options_en": [
+      "Lab technician",
+      "Jr. Public Health Nurse",
+      "Medical Officer",
+      "Jr. Health inspector"
+    ],
+    "options_hi": [
+      "लैब तकनीशियन",
+      "जूनियर पब्लिक हेल्थ नर्स",
+      "मेडिकल ऑफिसर",
+      "जूनियर हेल्थ इंस्पेक्टर"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 41,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which one of the following disease is not Notifiable in India?",
+    "question_hi": "निम्नलिखित में से कौन-सा रोग भारत में नोटिफायबल नहीं है?",
+    "options_en": [
+      "Plague",
+      "Cholera",
+      "Mumps",
+      "Measles"
+    ],
+    "options_hi": [
+      "प्लेग",
+      "कॉलरा",
+      "मम्प्स",
+      "मीजल्स"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 42,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Mortality rate is defined by",
+    "question_hi": "मृत्यु दर को परिभाषित किया जाता है",
+    "options_en": [
+      "Number of death per 100 population",
+      "Rate per 1000 live birth",
+      "Number of death per 1000 population",
+      "None of these"
+    ],
+    "options_hi": [
+      "प्रति 100 जनसंख्या मृत्यु की संख्या",
+      "प्रति 1000 जीवित जन्म दर",
+      "प्रति 1000 जनसंख्या मृत्यु की संख्या",
+      "इनमें से कोई नहीं"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 43,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The ALMA ATMA declaration in 1978 stressed the need for",
+    "question_hi": "1978 की ALMA ATMA घोषणा में किस आवश्यकता पर बल दिया गया था?",
+    "options_en": [
+      "Health for all by the year 2020",
+      "Health for all by the year 2000",
+      "Health for all by the year 1998",
+      "None of these"
+    ],
+    "options_hi": [
+      "वर्ष 2020 तक सभी के लिए स्वास्थ्य",
+      "वर्ष 2000 तक सभी के लिए स्वास्थ्य",
+      "वर्ष 1998 तक सभी के लिए स्वास्थ्य",
+      "इनमें से कोई नहीं"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 44,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Name the first chairman of \"Health Surey and Development Committee\" which was constituted by the Government of India (Under British rule) in 1943",
+    "question_hi": "1943 में भारत सरकार (ब्रिटिश शासन के अधीन) द्वारा गठित \"Health Surey and Development Committee\" के पहले अध्यक्ष का नाम बताइए",
+    "options_en": [
+      "Sir Joseph Daniel",
+      "Mudoliar",
+      "Sir Joseph Bhore",
+      "Mukherji"
+    ],
+    "options_hi": [
+      "सर जोसेफ डेनियल",
+      "मुदोलियार",
+      "सर जोसेफ भोर",
+      "मुखर्जी"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 45,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Planning Commission is now known as",
+    "question_hi": "योजना आयोग को अब किस नाम से जाना जाता है?",
+    "options_en": [
+      "Nithi Nirman",
+      "Nithi Ayog",
+      "Prime Minister Yojana",
+      "Planning Rosgar board"
+    ],
+    "options_hi": [
+      "निथि निर्माण",
+      "निथि आयोग",
+      "प्रधानमंत्री योजना",
+      "प्लानिंग रोजगार बोर्ड"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 46,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "What do you mean by Gross Reproductive rate?",
+    "question_hi": "ग्रॉस रिप्रोडक्टिव रेट से आपका क्या अभिप्राय है?",
+    "options_en": [
+      "Average number of girl that will be born by woman in her life",
+      "Average number of girls that will be produced by woman considering some will die",
+      "Number of death of woman from puerperal causes per 1000 live birth",
+      "Number of infant deaths under one year of age per 1000 live birth in one year"
+    ],
+    "options_hi": [
+      "एक महिला के जीवन में जन्म लेने वाली लड़कियों की औसत संख्या",
+      "महिला द्वारा उत्पन्न की जाने वाली लड़कियों की औसत संख्या, यह मानते हुए कि कुछ की मृत्यु हो जाएगी",
+      "प्रति 1000 जीवित जन्मों पर प्रसूति संबंधी कारणों से महिलाओं की मृत्यु की संख्या",
+      "एक वर्ष में प्रति 1000 जीवित जन्मों पर एक वर्ष से कम आयु के शिशुओं की मृत्यु की संख्या"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 47,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "EC Register contains details of",
+    "question_hi": "EC रजिस्टर में किसका विवरण होता है?",
+    "options_en": [
+      "Couple under the age group of 15 to 45 years",
+      "The details of mother and child",
+      "The details of adolescent age group",
+      "The details of married woman"
+    ],
+    "options_hi": [
+      "15 से 45 वर्ष आयु समूह के दंपति",
+      "माँ और बच्चे का विवरण",
+      "किशोर आयु समूह का विवरण",
+      "विवाहित महिला का विवरण"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 48,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following activity is done in Hospitals?",
+    "question_hi": "निम्नलिखित में से कौन-सी गतिविधि अस्पतालों में की जाती है?",
+    "options_en": [
+      "Active surveillance",
+      "Passive Surveillance",
+      "Mass survey",
+      "Rapid fever survey"
+    ],
+    "options_hi": [
+      "सक्रिय निगरानी",
+      "निष्क्रिय निगरानी",
+      "सामूहिक सर्वेक्षण",
+      "त्वरित बुखार सर्वेक्षण"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 49,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which are the three registers among the given four that are common for JHI and JPHN?<br>1. General Information Register<br>2. Family Health Survey and followup with an index<br>3. Community education register<br>4. Individual register for National Health Programme",
+    "question_hi": "दिए गए चार में से कौन-से तीन रजिस्टर JHI और JPHN के लिए सामान्य हैं?<br>1. सामान्य सूचना रजिस्टर<br>2. इंडेक्स सहित परिवार स्वास्थ्य सर्वेक्षण और फॉलोअप<br>3. सामुदायिक शिक्षा रजिस्टर<br>4. राष्ट्रीय स्वास्थ्य कार्यक्रम के लिए व्यक्तिगत रजिस्टर",
+    "options_en": [
+      "1, 2, 3",
+      "1, 2, 4",
+      "1, 3, 4",
+      "2, 3, 4"
+    ],
+    "options_hi": [
+      "1, 2, 3",
+      "1, 2, 4",
+      "1, 3, 4",
+      "2, 3, 4"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 50,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Breteau index is meant by",
+    "question_hi": "ब्रेटो इंडेक्स का अर्थ है",
+    "options_en": [
+      "Number of positive containers per 100 houses visited",
+      "Percentage of water holding containers infected with larvae",
+      "Percentage of houses inspected with larvae",
+      "None of these"
+    ],
+    "options_hi": [
+      "जाँचे गए प्रति 100 घरों पर पॉजिटिव कंटेनरों की संख्या",
+      "लार्वा से संक्रमित जल-धारण कंटेनरों का प्रतिशत",
+      "लार्वा वाले निरीक्षित घरों का प्रतिशत",
+      "इनमें से कोई नहीं"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 51,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following metal at concentration of 0.2 ppm in water forms black precipitate in water?",
+    "question_hi": "निम्नलिखित में से कौन-सी धातु पानी में 0.2 ppm की सांद्रता पर काला अवक्षेप बनाती है?",
+    "options_en": [
+      "Manganese",
+      "Iron",
+      "Copper",
+      "Aluminium"
+    ],
+    "options_hi": [
+      "मैंगनीज",
+      "लोहा",
+      "तांबा",
+      "एल्यूमिनियम"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 52,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Ozone is a",
+    "question_hi": "ओजोन एक है",
+    "options_en": [
+      "Primary air pollutant",
+      "Secondary air pollutant",
+      "Tertiary air pollutant",
+      "All the above"
+    ],
+    "options_hi": [
+      "प्राथमिक वायु प्रदूषक",
+      "द्वितीयक वायु प्रदूषक",
+      "तृतीयक वायु प्रदूषक",
+      "उपरोक्त सभी"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 53,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Permanent loss of hearing may occur in the exposure of noise in above the range of",
+    "question_hi": "ध्वनि के किस स्तर से अधिक संपर्क में रहने पर सुनने की स्थायी हानि हो सकती है?",
+    "options_en": [
+      "150 dB",
+      "140 dB",
+      "160 dB",
+      "95 dB"
+    ],
+    "options_hi": [
+      "150 dB",
+      "140 dB",
+      "160 dB",
+      "95 dB"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 54,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "World environmental health day theme for 2021",
+    "question_hi": "विश्व पर्यावरण स्वास्थ्य दिवस 2021 की थीम",
+    "options_en": [
+      "Prioritizing environmental health for healthier communities in the global recovery",
+      "Children are our future, let's protect their environmental health",
+      "Let's work towards a safe environment for the betterment of our society",
+      "A key public health intervention in disease pandemic prevention"
+    ],
+    "options_hi": [
+      "वैश्विक पुनर्प्राप्ति में स्वस्थ समुदायों के लिए पर्यावरणीय स्वास्थ्य को प्राथमिकता देना",
+      "बच्चे हमारा भविष्य हैं, आइए उनके पर्यावरणीय स्वास्थ्य की रक्षा करें",
+      "आइए समाज की बेहतरी के लिए सुरक्षित पर्यावरण की दिशा में कार्य करें",
+      "रोग महामारी रोकथाम में एक प्रमुख सार्वजनिक स्वास्थ्य हस्तक्षेप"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 55,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following pattern is adopted for solid waste management?",
+    "question_hi": "ठोस अपशिष्ट प्रबंधन के लिए निम्नलिखित में से कौन-सा क्रम अपनाया जाता है?",
+    "options_en": [
+      "Collection - storage - distribution",
+      "Storage - filtration - disposal",
+      "Storage - collection - disposal",
+      "All the above"
+    ],
+    "options_hi": [
+      "संग्रह - भंडारण - वितरण",
+      "भंडारण - निस्यंदन - निपटान",
+      "भंडारण - संग्रह - निपटान",
+      "उपरोक्त सभी"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 56,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The most effective measure to break the disease cycle is",
+    "question_hi": "रोग चक्र को तोड़ने का सबसे प्रभावी उपाय है",
+    "options_en": [
+      "Protection of water source",
+      "Protection of food",
+      "Personal hygiene",
+      "Segregation of faeces"
+    ],
+    "options_hi": [
+      "जल स्रोत की सुरक्षा",
+      "भोजन की सुरक्षा",
+      "व्यक्तिगत स्वच्छता",
+      "मल का पृथक्करण"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 57,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Sleeping sickness transmitted by",
+    "question_hi": "स्लीपिंग सिकनेस किसके द्वारा फैलती है?",
+    "options_en": [
+      "Tsetse fly",
+      "Mosquito",
+      "Sand fly",
+      "House fly"
+    ],
+    "options_hi": [
+      "ट्से-ट्से मक्खी",
+      "मच्छर",
+      "सैंड फ्लाई",
+      "घरेलू मक्खी"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 58,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following normally fly very short distance?",
+    "question_hi": "निम्नलिखित में से कौन सामान्यतः बहुत कम दूरी तक उड़ता है?",
+    "options_en": [
+      "Aedes mosquito",
+      "House fly",
+      "Sand fly",
+      "Culex mosquito"
+    ],
+    "options_hi": [
+      "एडीज मच्छर",
+      "घरेलू मक्खी",
+      "सैंड फ्लाई",
+      "क्यूलेक्स मच्छर"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 59,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following rodenticide is too dangerous for use?",
+    "question_hi": "निम्नलिखित में से कौन-सा रोडेंटिसाइड उपयोग के लिए अत्यधिक खतरनाक है?",
+    "options_en": [
+      "Thallium sulphate",
+      "Sodium fluoroacetate",
+      "Red squill",
+      "All the above"
+    ],
+    "options_hi": [
+      "थैलियम सल्फेट",
+      "सोडियम फ्लुओरोएसीटेट",
+      "रेड स्क्विल",
+      "उपरोक्त सभी"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 60,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Intermediate host of dracunculiasis",
+    "question_hi": "ड्रैकन्कुलियासिस का मध्यवर्ती होस्ट",
+    "options_en": [
+      "Man",
+      "Pig",
+      "Cyclops",
+      "None of the above"
+    ],
+    "options_hi": [
+      "मनुष्य",
+      "सूअर",
+      "साइक्लोप्स",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 61,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "IEC Stands for",
+    "question_hi": "IEC का पूर्ण रूप है",
+    "options_en": [
+      "Information Entertainment Communication",
+      "Information Education Counselling",
+      "Information Education Communication",
+      "Integrity Empathy Considerative"
+    ],
+    "options_hi": [
+      "इन्फॉर्मेशन एंटरटेनमेंट कम्युनिकेशन",
+      "इन्फॉर्मेशन एजुकेशन काउंसलिंग",
+      "इन्फॉर्मेशन एजुकेशन कम्युनिकेशन",
+      "इंटीग्रिटी एम्पैथी कंसिडरेटिव"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 62,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following is not a function of health communication?",
+    "question_hi": "निम्नलिखित में से कौन-सा स्वास्थ्य संचार का कार्य नहीं है?",
+    "options_en": [
+      "Information",
+      "Motivation",
+      "Counselling",
+      "Propaganda"
+    ],
+    "options_hi": [
+      "सूचना",
+      "प्रेरणा",
+      "परामर्श",
+      "प्रोपेगेंडा"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 63,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Power point presentation is",
+    "question_hi": "पावर पॉइंट प्रेजेंटेशन है",
+    "options_en": [
+      "Non-Projected aid",
+      "Projected Aid",
+      "Mid Media",
+      "None of these"
+    ],
+    "options_hi": [
+      "नॉन-प्रोजेक्टेड एड",
+      "प्रोजेक्टेड एड",
+      "मिड मीडिया",
+      "इनमें से कोई नहीं"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 64,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "'Letters to Editor' is an example of which component of communication",
+    "question_hi": "'Letters to Editor' संचार के किस घटक का उदाहरण है?",
+    "options_en": [
+      "Message",
+      "Feedback",
+      "Channel",
+      "Source"
+    ],
+    "options_hi": [
+      "संदेश",
+      "फीडबैक",
+      "चैनल",
+      "स्रोत"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 65,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Micro Teaching is introduced by",
+    "question_hi": "माइक्रो टीचिंग की शुरुआत किसने की?",
+    "options_en": [
+      "Dwight W allen",
+      "Socrates",
+      "John Dewey",
+      "David Ausbel"
+    ],
+    "options_hi": [
+      "ड्वाइट डब्ल्यू. एलन",
+      "सुकरात",
+      "जॉन डेवी",
+      "डेविड ऑसुबेल"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 66,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Expansion of DISHA",
+    "question_hi": "DISHA का विस्तार है",
+    "options_en": [
+      "Direct Information Service on Health Awareness",
+      "Direct Intervention System For Health Awareness",
+      "District Information Service on Health Activities",
+      "Direct Intervention Service for Health Action"
+    ],
+    "options_hi": [
+      "डायरेक्ट इन्फॉर्मेशन सर्विस ऑन हेल्थ अवेयरनेस",
+      "डायरेक्ट इंटरवेंशन सिस्टम फॉर हेल्थ अवेयरनेस",
+      "डिस्ट्रिक्ट इन्फॉर्मेशन सर्विस ऑन हेल्थ एक्टिविटीज",
+      "डायरेक्ट इंटरवेंशन सर्विस फॉर हेल्थ एक्शन"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 67,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following come under cognitive domain of health education?",
+    "question_hi": "निम्नलिखित में से कौन स्वास्थ्य शिक्षा के संज्ञानात्मक क्षेत्र के अंतर्गत आता है?",
+    "options_en": [
+      "Knowledge",
+      "Attitude",
+      "Skill",
+      "Aptitude"
+    ],
+    "options_hi": [
+      "ज्ञान",
+      "रवैया",
+      "कौशल",
+      "अभिक्षमता"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 68,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "World Health Day is observed on",
+    "question_hi": "विश्व स्वास्थ्य दिवस कब मनाया जाता है?",
+    "options_en": [
+      "April 17",
+      "July 11",
+      "December 1",
+      "April 7"
+    ],
+    "options_hi": [
+      "17 अप्रैल",
+      "11 जुलाई",
+      "1 दिसंबर",
+      "7 अप्रैल"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 69,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Communication without words",
+    "question_hi": "शब्दों के बिना संचार कहलाता है",
+    "options_en": [
+      "Verbal Communication",
+      "Non - Verbal Communication",
+      "Horizontal Communication",
+      "Informal Communication"
+    ],
+    "options_hi": [
+      "मौखिक संचार",
+      "गैर-मौखिक संचार",
+      "क्षैतिज संचार",
+      "अनौपचारिक संचार"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 70,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Most widely used reading material",
+    "question_hi": "सबसे अधिक उपयोग की जाने वाली पठन सामग्री",
+    "options_en": [
+      "Magazine",
+      "Books",
+      "News paper",
+      "Weekly"
+    ],
+    "options_hi": [
+      "पत्रिका",
+      "पुस्तकें",
+      "समाचार पत्र",
+      "साप्ताहिक"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 71,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Proper and effective purchase system is the basic principle of ________ management.",
+    "question_hi": "उचित और प्रभावी खरीद प्रणाली ________ प्रबंधन का मूल सिद्धांत है।",
+    "options_en": [
+      "Money",
+      "Personal",
+      "Material",
+      "Time management"
+    ],
+    "options_hi": [
+      "धन",
+      "व्यक्तिगत",
+      "सामग्री",
+      "समय प्रबंधन"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 72,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Administrative theory of management put forwarded by",
+    "question_hi": "प्रबंधन का प्रशासनिक सिद्धांत किसके द्वारा प्रतिपादित किया गया?",
+    "options_en": [
+      "Dr. Eugen Fama",
+      "F.W. Taylor",
+      "Henry Fayol",
+      "Catherine bridge"
+    ],
+    "options_hi": [
+      "डॉ. यूजीन फामा",
+      "एफ. डब्ल्यू. टेलर",
+      "हेनरी फेयोल",
+      "कैथरीन ब्रिज"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 73,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The concept of 'brain storming' explained by",
+    "question_hi": "'ब्रेन स्टॉर्मिंग' की अवधारणा किसने समझाई?",
+    "options_en": [
+      "Osborn",
+      "Terman",
+      "Yung",
+      "Freud"
+    ],
+    "options_hi": [
+      "ऑसबॉर्न",
+      "टर्मन",
+      "युंग",
+      "फ्रॉयड"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 74,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "_________ type of leadership encourage and promotes participation, team work and motivation of subordinates.",
+    "question_hi": "_________ प्रकार का नेतृत्व अधीनस्थों की भागीदारी, टीम वर्क और प्रेरणा को प्रोत्साहित और बढ़ावा देता है।",
+    "options_en": [
+      "Autocratic",
+      "Laissez faire",
+      "Democratic",
+      "All of the above"
+    ],
+    "options_hi": [
+      "निरंकुश",
+      "लेसेज़-फेयर",
+      "लोकतांत्रिक",
+      "उपरोक्त सभी"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 75,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The most basic management principle is",
+    "question_hi": "सबसे मूलभूत प्रबंधन सिद्धांत है",
+    "options_en": [
+      "Communication",
+      "Coordinating",
+      "Planning",
+      "Organizing"
+    ],
+    "options_hi": [
+      "संचार",
+      "समन्वय",
+      "योजना बनाना",
+      "संगठन"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 76,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "'Personnel Mangement' is skillful use of",
+    "question_hi": "'Personnel Mangement' किसका कुशल उपयोग है?",
+    "options_en": [
+      "Economical resources",
+      "Material resources",
+      "Time resources",
+      "Human resources"
+    ],
+    "options_hi": [
+      "आर्थिक संसाधन",
+      "सामग्री संसाधन",
+      "समय संसाधन",
+      "मानव संसाधन"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 77,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Government of India has established \"NITI Aayog\" on",
+    "question_hi": "भारत सरकार ने \"NITI Aayog\" की स्थापना कब की?",
+    "options_en": [
+      "2013",
+      "2015",
+      "2016",
+      "2017"
+    ],
+    "options_hi": [
+      "2013",
+      "2015",
+      "2016",
+      "2017"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 78,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "\"The executive organ of a grama sabha\" is",
+    "question_hi": "\"ग्राम सभा का कार्यकारी अंग\" है",
+    "options_en": [
+      "Grama Panchayath",
+      "Panchayath Samiti",
+      "Zilla parishad",
+      "Nyaya panchayath"
+    ],
+    "options_hi": [
+      "ग्राम पंचायत",
+      "पंचायत समिति",
+      "जिला परिषद",
+      "न्याय पंचायत"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 79,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The Community development programme in India was launched on",
+    "question_hi": "भारत में सामुदायिक विकास कार्यक्रम कब शुरू किया गया था?",
+    "options_en": [
+      "October 1954",
+      "October 1956",
+      "October 1950",
+      "October 1952"
+    ],
+    "options_hi": [
+      "अक्टूबर 1954",
+      "अक्टूबर 1956",
+      "अक्टूबर 1950",
+      "अक्टूबर 1952"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 80,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Expand \"HTST\" method of pasteurization of milk",
+    "question_hi": "दूध के पाश्चुरीकरण की \"HTST\" विधि का विस्तार करें",
+    "options_en": [
+      "Holder Technique and Short time method",
+      "High Temperature and Short time method",
+      "High Temperature and Short term method",
+      "High Time and Short time method"
+    ],
+    "options_hi": [
+      "होल्डर तकनीक और शॉर्ट टाइम विधि",
+      "हाई टेम्परेचर एंड शॉर्ट टाइम मेथड",
+      "हाई टेम्परेचर एंड शॉर्ट टर्म मेथड",
+      "हाई टाइम एंड शॉर्ट टाइम मेथड"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 81,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Two factor theory of intelligence proposed by",
+    "question_hi": "बुद्धि का द्वि-कारक सिद्धांत किसने प्रस्तावित किया?",
+    "options_en": [
+      "Freud",
+      "Maslow",
+      "Spearman",
+      "Erickson"
+    ],
+    "options_hi": [
+      "फ्रॉयड",
+      "मास्लो",
+      "स्पीयरमैन",
+      "एरिक्सन"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 82,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "The major mental illnesses is called as",
+    "question_hi": "प्रमुख मानसिक रोगों को कहा जाता है",
+    "options_en": [
+      "Neurosis",
+      "Psychoses",
+      "Psychoneurosis",
+      "None of these"
+    ],
+    "options_hi": [
+      "न्यूरोसिस",
+      "साइकोसिस",
+      "साइकोन्यूरोसिस",
+      "इनमें से कोई नहीं"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 83,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Bipolar affective disorder is",
+    "question_hi": "बाइपोलर अफेक्टिव डिसऑर्डर है",
+    "options_en": [
+      "Mood disorder",
+      "Personality disorder",
+      "Organic disorder",
+      "Somatoform disorder"
+    ],
+    "options_hi": [
+      "मूड डिसऑर्डर",
+      "पर्सनैलिटी डिसऑर्डर",
+      "ऑर्गेनिक डिसऑर्डर",
+      "सोमैटोफॉर्म डिसऑर्डर"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 84,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "\"Classical Conditioning theory of learning\" put forward by",
+    "question_hi": "\"सीखने का क्लासिकल कंडीशनिंग सिद्धांत\" किसने प्रतिपादित किया?",
+    "options_en": [
+      "Skewnner",
+      "Pavlov",
+      "Thorndike",
+      "Berne"
+    ],
+    "options_hi": [
+      "स्क्यूनर",
+      "पावलॉव",
+      "थॉर्नडाइक",
+      "बर्न"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 85,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "In ____________ defense mechanism \"People resort to their childhood practices\".",
+    "question_hi": "____________ रक्षा-तंत्र में \"लोग अपने बचपन के व्यवहारों का सहारा लेते हैं\"।",
+    "options_en": [
+      "Repression",
+      "Withdrawal",
+      "Displacement",
+      "Regression"
+    ],
+    "options_hi": [
+      "रिप्रेशन",
+      "विथड्रॉल",
+      "डिस्प्लेसमेंट",
+      "रिग्रेशन"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 86,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Primary Agents of socialization are",
+    "question_hi": "समाजीकरण के प्राथमिक एजेंट हैं",
+    "options_en": [
+      "Family",
+      "School",
+      "Peer group",
+      "All of the above"
+    ],
+    "options_hi": [
+      "परिवार",
+      "विद्यालय",
+      "सहकर्मी समूह",
+      "उपरोक्त सभी"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 87,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "\"Elementary Family\" is also known as",
+    "question_hi": "\"Elementary Family\" को किस नाम से भी जाना जाता है?",
+    "options_en": [
+      "Joint family",
+      "Extended family",
+      "Nuclear family",
+      "None of these"
+    ],
+    "options_hi": [
+      "संयुक्त परिवार",
+      "विस्तारित परिवार",
+      "एकल/न्यूक्लियर परिवार",
+      "इनमें से कोई नहीं"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 88,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "\"Primary group\" is a significant concept of",
+    "question_hi": "\"Primary group\" किसकी महत्वपूर्ण अवधारणा है?",
+    "options_en": [
+      "Sigmund Freud",
+      "Adler",
+      "C.H. Cooley",
+      "Ogburn"
+    ],
+    "options_hi": [
+      "सिगमंड फ्रॉयड",
+      "एडलर",
+      "सी. एच. कूली",
+      "ऑगबर्न"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 89,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "On the basis of ________ family can be classified into matriarchal family and patriarchal family.",
+    "question_hi": "________ के आधार पर परिवार को मातृसत्तात्मक परिवार और पितृसत्तात्मक परिवार में वर्गीकृत किया जा सकता है।",
+    "options_en": [
+      "descent",
+      "authority",
+      "residence",
+      "size"
+    ],
+    "options_hi": [
+      "वंश",
+      "अधिकार",
+      "निवास",
+      "आकार"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 90,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "In Psychology \"Self Theory\" proposed by?",
+    "question_hi": "मनोविज्ञान में \"Self Theory\" किसने प्रस्तावित की?",
+    "options_en": [
+      "Carl Roger",
+      "Piaget",
+      "Sigmund Freud",
+      "Simmel"
+    ],
+    "options_hi": [
+      "कार्ल रोजर",
+      "पियाजे",
+      "सिगमंड फ्रॉयड",
+      "सिमेल"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 91,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Choose the correct Statement:<br>I. Cardiovascular diseases are the most common cause of death among chronic diseases in the world.<br>II. Cancers are the most common cause of death among chronic diseases in the world<br>III. Every year more persons die due to non communicable diseases when compared to communicable diseases",
+    "question_hi": "सही कथन चुनिए:<br>I. विश्व में दीर्घकालिक रोगों में मृत्यु का सबसे सामान्य कारण हृदयवाहिनी रोग हैं।<br>II. विश्व में दीर्घकालिक रोगों में मृत्यु का सबसे सामान्य कारण कैंसर हैं।<br>III. हर वर्ष संक्रामक रोगों की तुलना में असंक्रामक रोगों से अधिक व्यक्तियों की मृत्यु होती है।",
+    "options_en": [
+      "I and II incorrect, III correct",
+      "II and III correct, I is incorrect",
+      "I and III incorrect, II is correct",
+      "I and III correct, II is incorrect"
+    ],
+    "options_hi": [
+      "I और II गलत, III सही",
+      "II और III सही, I गलत",
+      "I और III गलत, II सही",
+      "I और III सही, II गलत"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 92,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Choose the right option:<br>I. Lack of physical activity can lead to breast cancer, colon cancer and depression.<br>II. World Health organization recommends a minimum of 30 minutes of moderate physical activity every week.<br>III. Dancing cannot be considered as a type of physical activity.",
+    "question_hi": "सही विकल्प चुनिए:<br>I. शारीरिक गतिविधि की कमी से स्तन कैंसर, कोलन कैंसर और अवसाद हो सकता है।<br>II. विश्व स्वास्थ्य संगठन हर सप्ताह कम से कम 30 मिनट मध्यम शारीरिक गतिविधि की सिफारिश करता है।<br>III. नृत्य को शारीरिक गतिविधि का एक प्रकार नहीं माना जा सकता।",
+    "options_en": [
+      "I and II correct, III incorrect",
+      "II and III correct, I incorrect",
+      "I correct, II and III incorrect",
+      "I and III incorrect, II correct"
+    ],
+    "options_hi": [
+      "I और II सही, III गलत",
+      "II और III सही, I गलत",
+      "I सही, II और III गलत",
+      "I और III गलत, II सही"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 93,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Choose the correct Statement:",
+    "question_hi": "सही कथन चुनिए:",
+    "options_en": [
+      "Harmful use of alcohol can lead to cardiovascular diseases and cancers",
+      "Tobacco use are not associated with cardiovascular diseases",
+      "Most chronic diseases have a short incubation period",
+      "Infections can never lead to chronic diseases like cancers"
+    ],
+    "options_hi": [
+      "शराब का हानिकारक उपयोग हृदयवाहिनी रोगों और कैंसर का कारण बन सकता है",
+      "तंबाकू का उपयोग हृदयवाहिनी रोगों से संबंधित नहीं है",
+      "अधिकांश दीर्घकालिक रोगों की ऊष्मायन अवधि छोटी होती है",
+      "संक्रमण कभी भी कैंसर जैसे दीर्घकालिक रोगों का कारण नहीं बन सकते"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 94,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Waste types that can be incinerated is",
+    "question_hi": "किस प्रकार के अपशिष्ट को incinerate किया जा सकता है?",
+    "options_en": [
+      "Large amount of reactive chemical waste",
+      "Pressurised gas containers",
+      "Used Syringes, needles and swabs",
+      "Broken thermometers and sphygmomanometers"
+    ],
+    "options_hi": [
+      "अधिक मात्रा में प्रतिक्रियाशील रासायनिक अपशिष्ट",
+      "दबावयुक्त गैस कंटेनर",
+      "प्रयुक्त सिरिंज, सुइयाँ और स्वैब",
+      "टूटे थर्मामीटर और स्फिग्मोमैनोमीटर"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 95,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Choose the incorrect statement related to WHO Global action plan for the prevention and control of NCD:",
+    "question_hi": "NCD की रोकथाम और नियंत्रण के लिए WHO ग्लोबल एक्शन प्लान से संबंधित गलत कथन चुनिए:",
+    "options_en": [
+      "It aimed to bring down the risk of premature death due to major NCD by 25% by the year 2025.",
+      "It aimed at a 100% relative reduction in the prevalence of raise blood pressure.",
+      "It aimed at a 10% relative reduction in the prevalence of insufficient physical activity.",
+      "At least 10% relative reduction in the harmful use of alcohol"
+    ],
+    "options_hi": [
+      "इसका लक्ष्य वर्ष 2025 तक प्रमुख NCD के कारण समयपूर्व मृत्यु के जोखिम को 25% तक कम करना था।",
+      "इसका लक्ष्य बढ़े हुए रक्तचाप की व्यापकता में 100% सापेक्ष कमी लाना था।",
+      "इसका लक्ष्य अपर्याप्त शारीरिक गतिविधि की व्यापकता में 10% सापेक्ष कमी लाना था।",
+      "शराब के हानिकारक उपयोग में कम से कम 10% सापेक्ष कमी"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 96,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Choose the incorrect statement regarding heart diseases:<br>I. Sudden death is specifically due to coronary heart disease<br>II. Myocardial infarction is specifically due to coronary heart disease",
+    "question_hi": "हृदय रोगों के संबंध में गलत कथन चुनिए:<br>I. अचानक मृत्यु विशेष रूप से कोरोनरी हृदय रोग के कारण होती है<br>II. मायोकार्डियल इन्फार्क्शन विशेष रूप से कोरोनरी हृदय रोग के कारण होता है",
+    "options_en": [
+      "I and II incorrect",
+      "I incorrect and II correct",
+      "I correct II incorrect",
+      "Both correct"
+    ],
+    "options_hi": [
+      "I और II गलत",
+      "I गलत और II सही",
+      "I सही II गलत",
+      "दोनों सही"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 97,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Pick the correct statement regarding health problems of the elderly:",
+    "question_hi": "वृद्ध व्यक्तियों की स्वास्थ्य समस्याओं के संबंध में सही कथन चुनिए:",
+    "options_en": [
+      "Neurological problems like Alzhemer's disease are the most common problems in elderly persons",
+      "Old age pension for persons about 60 years is the same as that for 85 years",
+      "Surgical correction of cataract improves the quality of life considerably",
+      "Physical activity has no significant health benefits in the elderly"
+    ],
+    "options_hi": [
+      "अल्जाइमर रोग जैसी न्यूरोलॉजिकल समस्याएँ वृद्ध व्यक्तियों में सबसे सामान्य समस्याएँ हैं",
+      "लगभग 60 वर्ष के व्यक्तियों के लिए वृद्धावस्था पेंशन 85 वर्ष वालों के समान है",
+      "मोतियाबिंद का शल्य सुधार जीवन की गुणवत्ता में काफी सुधार करता है",
+      "वृद्धों में शारीरिक गतिविधि के कोई महत्वपूर्ण स्वास्थ्य लाभ नहीं हैं"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 98,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Choose the correct statement regarding Cholesterol:<br>I. Regular physical activity increases HDL cholesterol<br>II. Higher levels of LDL Cholesterol is associated with higher risk of coronary heart disease<br>III. Higher levels of HDL Cholesterol protects from myocardial infarction",
+    "question_hi": "कोलेस्ट्रॉल के संबंध में सही कथन चुनिए:<br>I. नियमित शारीरिक गतिविधि HDL कोलेस्ट्रॉल बढ़ाती है<br>II. LDL कोलेस्ट्रॉल का उच्च स्तर कोरोनरी हृदय रोग के अधिक जोखिम से संबंधित है<br>III. HDL कोलेस्ट्रॉल का उच्च स्तर मायोकार्डियल इन्फार्क्शन से सुरक्षा करता है",
+    "options_en": [
+      "All are correct",
+      "II and III correct, I incorrect",
+      "I and II correct, III incorrect",
+      "I and III correct, II incorrect"
+    ],
+    "options_hi": [
+      "सभी सही हैं",
+      "II और III सही, I गलत",
+      "I और II सही, III गलत",
+      "I और III सही, II गलत"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 99,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Which of the following does not come under the population strategy to prevent coronary heart disease?",
+    "question_hi": "कोरोनरी हृदय रोग की रोकथाम के लिए जनसंख्या रणनीति के अंतर्गत निम्नलिखित में से क्या नहीं आता?",
+    "options_en": [
+      "Reduction of dietary salt intake to less than 5 grams per day",
+      "Increasing the consumption of vegetables, whole grains, fruits and legumes",
+      "Encouraging children to take up regular physical activity",
+      "Revascularisation procedures to reduce mortality"
+    ],
+    "options_hi": [
+      "आहार में नमक का सेवन प्रति दिन 5 ग्राम से कम करना",
+      "सब्जियों, साबुत अनाज, फलों और दालों का सेवन बढ़ाना",
+      "बच्चों को नियमित शारीरिक गतिविधि अपनाने के लिए प्रोत्साहित करना",
+      "मृत्यु दर कम करने के लिए रिवास्कुलराइजेशन प्रक्रियाएँ"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 100,
+    "subject": "Health Services",
+    "type": "dual_language",
+    "question_en": "Choose the correct Statement:<br>I. Normal blood pressure is defined as a value of systolic BP less than 120 and diastolic BP less than 80 mm of Hg.<br>II. WHO recommends to check BP in supine position rather than sitting position.<br>III. Secondary hypertension is the most common type of hypertension",
+    "question_hi": "सही कथन चुनिए:<br>I. सामान्य रक्तचाप को सिस्टोलिक BP 120 से कम और डायस्टोलिक BP 80 mm of Hg से कम मान के रूप में परिभाषित किया जाता है।<br>II. WHO BP को बैठी हुई स्थिति के बजाय सुपाइन स्थिति में जाँचने की सिफारिश करता है।<br>III. सेकेंडरी हाइपरटेंशन हाइपरटेंशन का सबसे सामान्य प्रकार है।",
+    "options_en": [
+      "All are incorrect",
+      "I and II are correct III incorrect",
+      "II and III incorrect I correct",
+      "I and III correct II incorrect"
+    ],
+    "options_hi": [
+      "सभी गलत हैं",
+      "I और II सही हैं, III गलत",
+      "II और III गलत, I सही",
+      "I और III सही, II गलत"
+    ],
+    "correct": 2
+  }
+];
+
+let current = 0;
+let lang = "hi";
+let answers = Array(questions.length).fill(null);
+let visited = Array(questions.length).fill(false);
+let review = Array(questions.length).fill(false);
+let remaining = totalTimeSeconds;
+let timerInterval = null;
+let startedAt = null;
+
+function startTest(){
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("examScreen").classList.remove("hidden");
+  startedAt = Date.now();
+  visited[0] = true;
+  renderPalette();
+  renderQuestion();
+  startTimer();
+}
+
+function startTimer(){
+  updateTimer();
+  timerInterval = setInterval(() => {
+    remaining--;
+    updateTimer();
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      submitTest(true);
+    }
+  }, 1000);
+}
+
+function updateTimer(){
+  const m = Math.floor(Math.max(remaining,0)/60).toString().padStart(2,'0');
+  const s = (Math.max(remaining,0)%60).toString().padStart(2,'0');
+  document.getElementById("timer").textContent = m + ":" + s;
+}
+
+function setLanguage(l){
+  lang = l;
+  document.getElementById("btnHi").classList.toggle("active", l==="hi");
+  document.getElementById("btnEn").classList.toggle("active", l==="en");
+  renderQuestion();
+}
+
+function getQText(q){
+  if(q.type === "hindi_only") return q.question_hi;
+  if(q.type === "english_only") return q.question_en;
+  return lang === "hi" ? q.question_hi : q.question_en;
+}
+
+function getOptions(q){
+  if(q.type === "hindi_only") return q.options_hi;
+  if(q.type === "english_only") return q.options_en;
+  return lang === "hi" ? q.options_hi : q.options_en;
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  visited[current] = true;
+  document.getElementById("qMeta").innerHTML = "Question " + q.id + " of " + questions.length + " | " + q.subject;
+  document.getElementById("questionText").innerHTML = getQText(q);
+  document.getElementById("imageBox").innerHTML = q.image ? '<img src="' + q.image + '" alt="Question ' + q.id + ' Image" class="question-image">' : "";
+  const opts = getOptions(q);
+  document.getElementById("optionsBox").innerHTML = opts.map((op, idx) => `
+    <label class="option ${answers[current]===idx ? 'selected' : ''}">
+      <input type="radio" name="opt" ${answers[current]===idx ? 'checked' : ''} onchange="selectOption(${idx})">
+      <span><b>${String.fromCharCode(65+idx)}.</b> ${op}</span>
+    </label>
+  `).join("");
+  renderPalette();
+}
+
+function selectOption(idx){
+  answers[current] = idx;
+  renderQuestion();
+}
+
+function statusClass(i){
+  if(!visited[i]) return "not-visited";
+  if(review[i] && answers[i] !== null) return "answered-review";
+  if(review[i]) return "review";
+  if(answers[i] !== null) return "answered";
+  return "not-answered";
+}
+
+function renderPalette(){
+  document.getElementById("palette").innerHTML = questions.map((q,i) => 
+    `<button class="qbtn ${statusClass(i)} ${i===current?'current':''}" onclick="goToQuestion(${i})">${q.id}</button>`
+  ).join("");
+}
+
+function goToQuestion(i){
+  current = i;
+  visited[current] = true;
+  renderQuestion();
+}
+
+function previousQuestion(){
+  if(current > 0) {
+    current--;
+    visited[current] = true;
+    renderQuestion();
+  }
+}
+
+function saveNext(){
+  if(current < questions.length - 1) {
+    current++;
+    visited[current] = true;
+    renderQuestion();
+  } else {
+    renderPalette();
+  }
+}
+
+function markForReview(){
+  review[current] = true;
+  if(current < questions.length - 1) {
+    current++;
+    visited[current] = true;
+  }
+  renderQuestion();
+}
+
+function clearResponse(){
+  answers[current] = null;
+  review[current] = false;
+  renderQuestion();
+}
+
+function submitTest(auto=false){
+  if(!auto && !confirm("Are you sure you want to submit the test?")) return;
+  clearInterval(timerInterval);
+  const timeTaken = totalTimeSeconds - remaining;
+  let attempted=0, correct=0, wrong=0, unattempted=0;
+  questions.forEach((q,i)=>{
+    if(answers[i] === null) unattempted++;
+    else {
+      attempted++;
+      if(q.correct !== null && answers[i] === q.correct) correct++;
+      else wrong++;
+    }
+  });
+  const score = (correct * marksPerQuestion) - (wrong * negativeMarking);
+  const maxMarks = questions.length * marksPerQuestion;
+  const percentage = (score / maxMarks) * 100;
+  const result = {
+    date: new Date().toLocaleString(),
+    attempted, unattempted, correct, wrong,
+    score: Number(score.toFixed(2)),
+    maxMarks,
+    percentage: Number(percentage.toFixed(2)),
+    timeTaken
+  };
+  saveHistory(result);
+  showResult(result);
+}
+
+function fmtTime(sec){
+  const m = Math.floor(sec/60);
+  const s = sec%60;
+  return m + "m " + s + "s";
+}
+
+function showResult(r){
+  document.getElementById("examScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.remove("hidden");
+  document.getElementById("resultStats").innerHTML = `
+    <div class="stat"><span>Total Questions</span><strong>${questions.length}</strong></div>
+    <div class="stat"><span>Attempted</span><strong>${r.attempted}</strong></div>
+    <div class="stat"><span>Not Attempted</span><strong>${r.unattempted}</strong></div>
+    <div class="stat"><span>Correct</span><strong>${r.correct}</strong></div>
+    <div class="stat"><span>Wrong</span><strong>${r.wrong}</strong></div>
+    <div class="stat"><span>Marks Obtained</span><strong>${r.score}</strong></div>
+    <div class="stat"><span>Maximum Marks</span><strong>${r.maxMarks}</strong></div>
+    <div class="stat"><span>Percentage</span><strong>${r.percentage}%</strong></div>
+    <div class="stat"><span>Time Taken</span><strong>${fmtTime(r.timeTaken)}</strong></div>
+    <div class="stat"><span>Marking Scheme</span><strong>+1 / -0.25</strong></div>
+  `;
+  renderAnswerKey();
+}
+
+function renderAnswerKey(){
+  document.getElementById("answerKey").innerHTML = questions.map((q,i)=>{
+    const optsHi = q.options_hi || q.options_en;
+    const optsEn = q.options_en || q.options_hi;
+    const selected = answers[i];
+    const selectedTextHi = selected === null ? "Not Attempted" : optsHi[selected];
+    const selectedTextEn = selected === null ? "Not Attempted" : optsEn[selected];
+    const correctTextHi = q.correct === null ? "Not Provided" : optsHi[q.correct];
+    const correctTextEn = q.correct === null ? "Not Provided" : optsEn[q.correct];
+    const cls = selected === null ? "muted" : (selected === q.correct ? "correct" : "wrong");
+    return `<div class="answer-item">
+      <b>Q${q.id}.</b> <span class="${cls}">${selected === null ? "Not Attempted" : (selected === q.correct ? "Correct" : "Wrong")}</span>
+      <div><b>Correct Answer:</b> (${q.correct === null ? "-" : String.fromCharCode(65+q.correct)}) ${lang === "hi" ? correctTextHi : correctTextEn}</div>
+      <div><b>Your Answer:</b> ${selected === null ? "Not Attempted" : "(" + String.fromCharCode(65+selected) + ") " + (lang === "hi" ? selectedTextHi : selectedTextEn)}</div>
+      <div class="muted"><b>Explanation:</b> Explanation not provided.</div>
+    </div>`;
+  }).join("");
+}
+
+function saveHistory(result){
+  const old = JSON.parse(localStorage.getItem(historyKey) || "[]");
+  old.unshift(result);
+  localStorage.setItem(historyKey, JSON.stringify(old.slice(0,20)));
+}
+
+function showHistory(){
+  const box = document.getElementById("historyBox");
+  const old = JSON.parse(localStorage.getItem(historyKey) || "[]");
+  box.classList.toggle("hidden");
+  if(old.length === 0) {
+    box.innerHTML = "<p class='muted'>No attempt history found for this test.</p>";
+    return;
+  }
+  box.innerHTML = "<h3>Attempt History</h3>" + old.map((r,idx)=>`
+    <div class="answer-item">
+      <b>${idx+1}. ${r.date}</b><br>
+      Score: ${r.score}/${r.maxMarks} | Percentage: ${r.percentage}% | Correct: ${r.correct} | Wrong: ${r.wrong} | Time: ${fmtTime(r.timeTaken)}
+    </div>
+  `).join("");
+}
+</script>
+</body>
+</html>
