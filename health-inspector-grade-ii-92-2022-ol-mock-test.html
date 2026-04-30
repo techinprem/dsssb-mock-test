@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Inspector Grade II 92/2022 Mock Test</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef2f7;color:#17202a}.hidden{display:none!important}
+.header{background:#0b3d91;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.header h1{font-size:18px;margin:0}.timer{font-size:18px;font-weight:700;background:#092b66;padding:8px 12px;border-radius:8px}
+.container{max-width:1200px;margin:0 auto;padding:16px}.card{background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.08);padding:18px;margin-bottom:16px}
+.start-card{max-width:760px;margin:30px auto}.start-card h2{margin-top:0;color:#0b3d91}.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.info{background:#f6f8fb;border:1px solid #e4e8ef;border-radius:8px;padding:10px}
+.btn{border:none;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:700;margin:4px;background:#e9eef7;color:#17202a}.btn:hover{filter:brightness(.97)}.primary{background:#0b3d91;color:#fff}.success{background:#138a36;color:#fff}.danger{background:#c62828;color:#fff}.warning{background:#f9a825;color:#111}.light{background:#fff;border:1px solid #d2d7e1}
+.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px}.question-top{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #e4e8ef;padding-bottom:10px;margin-bottom:12px}.qno{font-weight:800;color:#0b3d91}.langbar{text-align:right}.langbar .active{background:#0b3d91;color:#fff}
+.question-text{font-size:18px;line-height:1.55;margin:14px 0;white-space:normal}.bilingual-block{display:grid;grid-template-columns:1fr;gap:10px}.lang-label{font-size:12px;font-weight:800;color:#0b3d91;text-transform:uppercase;margin-bottom:4px}.lang-panel{padding:10px;border:1px solid #e4e8ef;background:#fbfcff;border-radius:8px}
+.options{display:grid;gap:10px}.option{border:1.5px solid #d6dce8;border-radius:10px;padding:12px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start}.option:hover{background:#f4f8ff}.option.selected{border-color:#0b3d91;background:#eaf2ff}.opt-label{font-weight:800;color:#0b3d91;min-width:24px}
+.actions{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:18px}.side{position:sticky;top:10px;height:calc(100vh - 20px);display:flex;flex-direction:column}.legend{display:grid;grid-template-columns:1fr;gap:6px;font-size:13px;margin-bottom:10px}.legend span{display:inline-block;width:16px;height:16px;border-radius:4px;margin-right:6px;vertical-align:middle}.palette-wrap{border:1px solid #e4e8ef;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-height:0}.palette-title{padding:10px;background:#f3f6fb;font-weight:800}.palette{padding:10px;overflow-y:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-height:420px}.palbtn{height:38px;border:none;border-radius:8px;font-weight:800;cursor:pointer}.not-visited{background:#d7dce5;color:#111}.not-answered{background:#e53935;color:#fff}.answered{background:#43a047;color:#fff}.review{background:#8e24aa;color:#fff}.answered-review{background:#1e88e5;color:#fff}.current{outline:3px solid #111}
+.result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.result-box{background:#f6f8fb;border:1px solid #e4e8ef;border-radius:10px;padding:12px;text-align:center}.result-box b{display:block;font-size:22px;color:#0b3d91;margin-top:6px}
+.review-item{border:1px solid #e4e8ef;border-radius:10px;margin:12px 0;padding:12px;background:#fff}.correct-text{color:#138a36;font-weight:800}.wrong-text{color:#c62828;font-weight:800}.muted{color:#65738a}.home-link{color:#fff;text-decoration:none;background:#092b66;padding:8px 10px;border-radius:8px;font-weight:700}
+.math{white-space:nowrap;font-family:"Times New Roman",serif}.frac{display:inline-block;vertical-align:middle;text-align:center;line-height:1.2;margin:0 4px}.frac .top{display:block;padding:0 4px 2px;border-bottom:1.5px solid currentColor}.frac .bottom{display:block;padding:2px 4px 0}sup,sub{line-height:0}.question-image{max-width:100%;height:auto;display:block;margin:12px 0;border:1px solid #ddd;border-radius:6px}
+@media(max-width:850px){.exam-layout{grid-template-columns:1fr}.side{position:relative;height:auto}.palette{max-height:190px;grid-template-columns:repeat(8,1fr)}.info-grid,.result-grid{grid-template-columns:1fr 1fr}.header h1{font-size:15px}.question-text{font-size:16px}}
+@media(max-width:520px){.palette{grid-template-columns:repeat(5,1fr)}.result-grid{grid-template-columns:1fr}.btn{width:100%;margin:4px 0}.actions>div{width:100%}.option{padding:10px}.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <a class="home-link" href="index.html">Home</a>
+  <h1>Health Inspector Grade II (92/2022/OL) Mock Test</h1>
+  <div id="timer" class="timer hidden">00:00:00</div>
+</div>
+
+<div class="container">
+  <section id="startScreen" class="card start-card">
+    <h2>Health Inspector Grade II (SR for ST only)</h2>
+    <div class="info-grid">
+      <div class="info"><b>Question Paper Code:</b><br>92/2022/OL</div>
+      <div class="info"><b>Category Code:</b><br>480/2021</div>
+      <div class="info"><b>Total Questions:</b><br><span id="totalQStart"></span></div>
+      <div class="info"><b>Total Marks:</b><br><span id="totalMarksStart"></span></div>
+      <div class="info"><b>Time Duration:</b><br>120 minutes</div>
+      <div class="info"><b>Marking Scheme:</b><br>+1 correct, -0.25 wrong</div>
+    </div>
+    <p class="muted">Language can be changed during the test: Hindi / English / Bilingual.</p>
+    <button class="btn primary" onclick="startTest()">Start Test</button>
+    <div id="historyBox" style="margin-top:18px"></div>
+  </section>
+
+  <section id="examScreen" class="hidden">
+    <div class="exam-layout">
+      <main class="card">
+        <div class="question-top">
+          <div class="qno" id="qNumber">Question 1</div>
+          <div class="langbar">
+            <button class="btn light" id="lang_hi" onclick="setLanguage('hi')">Hindi</button>
+            <button class="btn light" id="lang_en" onclick="setLanguage('en')">English</button>
+            <button class="btn light active" id="lang_bi" onclick="setLanguage('bi')">Bilingual</button>
+          </div>
+        </div>
+        <div id="questionText" class="question-text"></div>
+        <div id="imageBox"></div>
+        <div id="optionsBox" class="options"></div>
+        <div class="actions">
+          <div>
+            <button class="btn light" onclick="prevQuestion()">Previous</button>
+            <button class="btn warning" onclick="markForReview()">Mark for Review</button>
+            <button class="btn light" onclick="clearResponse()">Clear Response</button>
+          </div>
+          <div>
+            <button class="btn primary" onclick="saveNext()">Save & Next</button>
+            <button class="btn danger" onclick="confirmSubmit()">Submit Test</button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="side card">
+        <div class="legend">
+          <div><span class="not-visited"></span>Not Visited</div>
+          <div><span class="not-answered"></span>Not Answered</div>
+          <div><span class="answered"></span>Answered</div>
+          <div><span class="review"></span>Marked for Review</div>
+          <div><span class="answered-review"></span>Answered & Marked for Review</div>
+        </div>
+        <div class="palette-wrap">
+          <div class="palette-title">Question Palette</div>
+          <div id="palette" class="palette"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="card hidden">
+    <h2>Result</h2>
+    <div id="resultSummary" class="result-grid"></div>
+    <div style="margin-top:16px">
+      <button class="btn primary" onclick="location.reload()">Restart Test</button>
+      <button class="btn light" onclick="window.print()">Print Result</button>
+    </div>
+    <h3>Answer Key & Review</h3>
+    <div id="answerReview"></div>
+  </section>
+</div>
+
+<script>
+const testId = "health-inspector-grade-ii-92-2022-ol";
+const historyKey = "mock_attempt_history_" + testId;
+const marksPerQuestion = 1;
+const negativeMarking = 0.25;
+const testDurationMinutes = 120;
+
+const questions = [
+  {
+    "id": 1,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "पहली पसली स्टर्नम (sternum) से किस स्थान पर जुड़ी होती है?",
+    "question_en": "The 1st rib is attached to the sternum at",
+    "options_hi": [
+      "स्टर्नम का शरीर (Body of sternum)",
+      "जाइफिस्टर्नम (Xiphisternum)",
+      "मैन्यूब्रियम (Manubrium)",
+      "लुडविग का कोण (Angle of Ludwig)"
+    ],
+    "options_en": [
+      "Body of sternum",
+      "Xiphisternum",
+      "Manubrium",
+      "Angle of ludwig"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "एरिथ्रोसाइट्स (RBCs) का हीमोलाइसिस reticulo-endothelial cells द्वारा निम्नलिखित स्थानों पर किया जाता है, सिवाय",
+    "question_en": "The hemolysis of erythrocyte are carried out by reticulo endothelial cells in the following sites except",
+    "options_hi": [
+      "अस्थि मज्जा",
+      "यकृत",
+      "प्लीहा",
+      "गुर्दा"
+    ],
+    "options_en": [
+      "Bone marrow",
+      "Liver",
+      "Spleen",
+      "Kidney"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "बाएँ वेंट्रिकल के संकुचन के कारण धमनी की दीवार में महसूस होने वाली फैलाव और लंबाई बढ़ने की तरंग कहलाती है",
+    "question_en": "The wave of distention and elongation felt in arterial wall due to contraction of left ventricle",
+    "options_hi": [
+      "रक्तचाप",
+      "नाड़ी",
+      "स्ट्रोक वॉल्यूम",
+      "कार्डियक आउटपुट"
+    ],
+    "options_en": [
+      "Blood pressure",
+      "Pulse",
+      "Stroke volume",
+      "Cardiac output"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "वह तंत्रिका जो वक्षीय और उदर गुहा को अलग करने वाली गुंबदाकार पेशीय संरचना डायाफ्राम को आपूर्ति करती है",
+    "question_en": "The nerve that supplies the dome shaped muscular structure that separates thoracic and abdominal cavity, diaphragm",
+    "options_hi": [
+      "वेगस",
+      "ट्रॉक्लियर नर्व",
+      "फ्रेनिक नर्व",
+      "ग्लोसोफैरिन्जियल नर्व"
+    ],
+    "options_en": [
+      "Vagus",
+      "Trochlear nerve",
+      "Phrenic nerve",
+      "Glosso pharyngeal nerve"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "वह प्लाज्मा प्रोटीन जो यकृत में संश्लेषित होता है और रक्त के थक्के जमने के लिए आवश्यक है",
+    "question_en": "The plasma protein that is synthesised in liver and is essential for blood coagulation",
+    "options_hi": [
+      "एल्ब्यूमिन",
+      "ग्लोब्युलिन",
+      "फाइब्रिनोजन",
+      "थ्रोम्बिन"
+    ],
+    "options_en": [
+      "Albumin",
+      "Globulin",
+      "Fibrinogen",
+      "Thrombin"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "2 पैराइटल और ऑक्सिपिटल हड्डियों के जंक्शन पर स्थित posterior fontanelle किस आयु में बंद होता है?<br>i) जन्म के तुरंत बाद<br>ii) 12 – 18 महीने<br>iii) जन्म के 2 – 3 महीनों के भीतर<br>iv) 24 – 36 सप्ताह",
+    "question_en": "At which age does the posterior fontanelle that lies at the junction of 2 parietal and occipital bones are closed ?<br>i) Soon after birth<br>ii) 12 – 18 months<br>iii) Within 2 – 3 months for birth<br>iv) 24 – 36 weeks",
+    "options_hi": [
+      "ii और iii",
+      "ii और iv",
+      "i और iii",
+      "केवल i"
+    ],
+    "options_en": [
+      "ii and iii",
+      "ii and iv",
+      "i and iii",
+      "i only"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "फेफड़ों में अंदर और बाहर ले जाई जा सकने वाली वायु की अधिकतम मात्रा",
+    "question_en": "The maximum volume of air which can be moved in and out of lungs",
+    "options_hi": [
+      "टाइडल वॉल्यूम",
+      "इंस्पिरेटरी रिजर्व वॉल्यूम",
+      "एक्सपिरेटरी रिजर्व वॉल्यूम",
+      "वाइटल कैपेसिटी"
+    ],
+    "options_en": [
+      "Tidal volume",
+      "Inspiratory reserve volume",
+      "Expiratory reserve volume",
+      "Vital capacity"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "पैर की सबसे बड़ी हड्डी जो पीछे स्थित होकर एड़ी बनाती है",
+    "question_en": "The largest bone of foot that lies at the back forming heel.",
+    "options_hi": [
+      "नेविक्युलर",
+      "टेलस",
+      "कैल्केनियम",
+      "क्यूबॉयड"
+    ],
+    "options_en": [
+      "Navicular",
+      "Talus",
+      "Calcaneum",
+      "Cuboid"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "सबमैंडिबुलर ग्रंथि की वह नलिका जो frenulum linguae के पास मुख के तल में खुलती है",
+    "question_en": "The duct of submandibular gland which opens into the floor of mouth, near frenulum linguae",
+    "options_hi": [
+      "व्हार्टन डक्ट",
+      "स्टेनसेन डक्ट",
+      "एम्पुला ऑफ वाटर",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Wharton's duct",
+      "Stensen's duct",
+      "Ampulla of vater",
+      "None of these"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "वे कोशिकाएँ जो mucus secreting glands की तरह कार्य करती हैं और columnar cells से lined ग्रंथियों व ducts की दीवारों में स्थित होती हैं",
+    "question_en": "The cells that act as mucus secreting glands which lie in the walls of glands and ducts lined by columnar cells",
+    "options_hi": [
+      "माइसनर कॉर्पसकल्स",
+      "गॉल्जी बॉडीज",
+      "गॉब्लेट कोशिकाएँ",
+      "ब्रूनर ग्रंथि"
+    ],
+    "options_en": [
+      "Meissner's corpuscles",
+      "Golgi bodies",
+      "Goblet cells",
+      "Brunner's gland"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "1 वर्ष से 6 वर्ष तक के बच्चों में Vitamin A prophylaxis की खुराक",
+    "question_en": "Dose of vitamins a prophylaxis in 1 year to 6 year children",
+    "options_hi": [
+      "1,00,000 IU",
+      "2,00,000 IU",
+      "3,00,000 IU",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "1,00,000 IU",
+      "2,00,000 IU",
+      "3,00,000 IU",
+      "None of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "ज्वार खाने वाली जनसंख्या में पेलाग्रा किस कारण होता है?",
+    "question_en": "Pellagra in jowar eating population is due to",
+    "options_hi": [
+      "बाउंड फॉर्म में नियासिन",
+      "ट्रिप्टोफैन की कमी",
+      "ल्यूसीन की अधिकता",
+      "दूध और दुग्ध उत्पादों का अधिक सेवन"
+    ],
+    "options_en": [
+      "Niacin in bound form",
+      "Deficiency of Tryptophan",
+      "Excess of Leucine",
+      "High consumption of milk and milk products"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "समुदाय में आयरन की कमी का पता लगाने के लिए सर्वोत्तम परीक्षण",
+    "question_en": "Best test to detect the iron deficiency in community",
+    "options_hi": [
+      "सीरम ट्रांसफेरिन",
+      "सीरम फेरिटिन",
+      "सीरम आयरन",
+      "हीमोग्लोबिन"
+    ],
+    "options_en": [
+      "Serum transferrin",
+      "Serum ferritin",
+      "Serum iron",
+      "Haemoglobin"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "अंडे में किसकी कमी होती है?",
+    "question_en": "Egg is poor in",
+    "options_hi": [
+      "प्रोटीन",
+      "कार्बोहाइड्रेट और विटामिन C",
+      "कैल्शियम और आयरन",
+      "वसा"
+    ],
+    "options_en": [
+      "Proteins",
+      "Carbohydrates and vitamin C",
+      "Calcium and iron",
+      "Fats"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "BOAA किसके लिए उत्तरदायी toxin है?",
+    "question_en": "BOAA is the toxin responsible for",
+    "options_hi": [
+      "एपिडेमिक ड्रॉप्सी",
+      "न्यूरोलैथिरिज्म",
+      "एंडेमिक एसाइटिस",
+      "फ्लोरोसिस"
+    ],
+    "options_en": [
+      "Epidemic dropsy",
+      "Neurolathyrism",
+      "Endemic ascitis",
+      "Fluorosis"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "चबाने और चखने की क्रिया कहलाती है",
+    "question_en": "The act of chewing and testing is called",
+    "options_hi": [
+      "मूत्रत्याग",
+      "मास्टिकेशन",
+      "पाचन",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "Micturition",
+      "Mastication",
+      "Digestion",
+      "None of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Periodontal disease को किस नाम से भी जाना जाता है?",
+    "question_en": "Periodontal disease also known as",
+    "options_hi": [
+      "पायरिया",
+      "हैलिटोसिस",
+      "रूसी",
+      "दंत क्षय"
+    ],
+    "options_en": [
+      "Pyorrhoea",
+      "Halitosis",
+      "Dandruff",
+      "Dental caries"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "डेंचर (dentures) के बारे में निम्न में से कौन-सा कथन सही नहीं है?",
+    "question_en": "Which of the following is not a correct statement about dentures ?",
+    "options_hi": [
+      "कृत्रिम दाँत",
+      "सभी डेंचर रात में निकाल देने चाहिए",
+      "डेंचर को उबलते पानी में रखें या उस पर उबलता पानी डालें",
+      "भोजन के बाद डेंचर निकालकर अच्छी तरह ब्रश करना चाहिए"
+    ],
+    "options_en": [
+      "False teeth",
+      "All dentures must be removed at night",
+      "Place the dentures in boiling water or run boiling water",
+      "Dentures should be removed after meals and thoroughly brushed"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "विश्व में अंधेपन का मुख्य कारण",
+    "question_en": "Main cause of blindness in the world",
+    "options_hi": [
+      "रिफ्रैक्शन",
+      "मोतियाबिंद",
+      "ग्लूकोमा",
+      "कंजंक्टिवाइटिस"
+    ],
+    "options_en": [
+      "Refraction",
+      "Cataract",
+      "Glaucoma",
+      "Conjunctivitis"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Podiatric medicine किससे संबंधित है?",
+    "question_en": "Podiatric medicine related to",
+    "options_hi": [
+      "हाथों की देखभाल",
+      "त्वचा की देखभाल",
+      "पैरों की देखभाल",
+      "बालों की देखभाल"
+    ],
+    "options_en": [
+      "Care of hand",
+      "Care of skin",
+      "Care of feet",
+      "Care of hair"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "febrile convulsion के संबंध में निम्न में से कौन-सा कथन गलत है?",
+    "question_en": "Which among the following regarding febrile convulsion is false ?",
+    "options_hi": [
+      "हवा की अच्छी आपूर्ति सुनिश्चित करें",
+      "वायुमार्ग खुला रखें",
+      "अंगों की गतिविधियों को नियंत्रित करने की कोशिश करें",
+      "बच्चे का तापमान मॉनिटर करें"
+    ],
+    "options_en": [
+      "Ensure good supply of air",
+      "Keep airway open",
+      "Try to control movement of limbs",
+      "Monitor temperature of child"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "हवा और थूक के साथ मिला हुआ चमकीले लाल रंग का रक्त खाँसकर निकलना कहलाता है",
+    "question_en": "Coughing out of blood which is bright red in colour mixed with air and sputum",
+    "options_hi": [
+      "एपिस्टैक्सिस",
+      "हीमोप्टाइसिस",
+      "मेलेना",
+      "हीमेट्यूरिया"
+    ],
+    "options_en": [
+      "Epistaxis",
+      "Haemoptysis",
+      "Malena",
+      "Haematuria"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "पसली टूटने वाले पीड़ित के लिए कौन-सी स्थिति अधिक आरामदायक होगी?",
+    "question_en": "The position which will be more comfortable to a victim with fractured rib",
+    "options_hi": [
+      "सेमी फाउलर स्थिति",
+      "प्रोन स्थिति",
+      "सुपाइन स्थिति",
+      "रिकवरी स्थिति"
+    ],
+    "options_en": [
+      "Semi fowler's position",
+      "Prone position",
+      "Supine position",
+      "Recovery position"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "जब कोई आंतरिक अंग मांसपेशी या ऊतक के कमजोर स्थान में बने छिद्र या फटने से बाहर की ओर धकेलता है, तो उसे कहा जाता है",
+    "question_en": "When an internal organ pushes through an opening or tear through a weak spot in the muscle or tissue, it is called",
+    "options_hi": [
+      "बवासीर",
+      "हर्निया",
+      "हिचकी",
+      "कब्ज"
+    ],
+    "options_en": [
+      "Haemorrhoids",
+      "Hernia",
+      "Hiccups",
+      "Constipation"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "वह फ्रैक्चर जिसमें हड्डी अधूरे calcification के कारण टूटती या मुड़ती है",
+    "question_en": "The fracture in which bone is broken or bent due to incomplete calcification of bone",
+    "options_hi": [
+      "ग्रीन स्टिक",
+      "कमिन्यूटेड",
+      "डिप्रेस्ड",
+      "क्लोज्ड"
+    ],
+    "options_en": [
+      "Green stick",
+      "Comminuted",
+      "Depressed",
+      "Closed"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "नाक से खून आने पर दी जाने वाली प्राथमिक चिकित्सा",
+    "question_en": "The first aid that can be given if there is bleeding from nose",
+    "options_hi": [
+      "उसे नाक साफ करने को कहें",
+      "रोगी को सिर आगे झुकाकर बैठने दें",
+      "उसे सपाट लिटा दें",
+      "उसे गर्म पेय दें"
+    ],
+    "options_en": [
+      "Ask him to blow the nose",
+      "Let the patient sit up with head bent forward",
+      "Make him lie down flat",
+      "Give him hot drinks"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "हकलाना किससे संबंधित disability है?",
+    "question_en": "Stuttering is a disability associated with",
+    "options_hi": [
+      "श्रवण",
+      "दृष्टि",
+      "वाणी",
+      "गतिविधि"
+    ],
+    "options_en": [
+      "Hearing",
+      "Vision",
+      "Speech",
+      "Movement"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "IMD का विस्तार कीजिए",
+    "question_en": "Expand IMD",
+    "options_hi": [
+      "International Meterological Department",
+      "Indian Monitory Department",
+      "Indian Monitory Depot",
+      "Indian Meterological Department"
+    ],
+    "options_en": [
+      "International Meterological Department",
+      "Indian Monitory Department",
+      "Indian Monitory Depot",
+      "Indian Meterological Department"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "किसी गतिविधि को करने की क्षमता की कमी को दर्शाने वाला शब्द",
+    "question_en": "The term denoting lack of ability to perform an activity",
+    "options_hi": [
+      "डिसएबिलिटी",
+      "इम्पेयरमेंट",
+      "हैंडिकैप",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Disability",
+      "Impairment",
+      "Handicap",
+      "None of these"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "वह rehabilitation जो गरिमा और आत्मविश्वास की पुनर्स्थापना को दर्शाता है",
+    "question_en": "The type of rehabilitation that signifies restoration of dignity and confidence",
+    "options_hi": [
+      "सामाजिक पुनर्वास",
+      "व्यावसायिक पुनर्वास",
+      "चिकित्सीय पुनर्वास",
+      "मनोवैज्ञानिक पुनर्वास"
+    ],
+    "options_en": [
+      "Social rehabilitation",
+      "Vocational rehabilitation",
+      "Medical Rehabilitation",
+      "Psychological rehabilitation"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "गलत कथन चुनिए",
+    "question_en": "Choose the incorrect statement",
+    "options_hi": [
+      "National Filaria Control Program 1965 से संचालित है",
+      "भारत सरकार ने National AIDS Control Program 1992 में शुरू किया",
+      "NMEP भारत में 1958 में शुरू किया गया",
+      "National Leprosy Control Program 1955 से संचालित है"
+    ],
+    "options_en": [
+      "The National Filaria Control Program has been in operation since 1965",
+      "Government of India launched National Aids Control Program in 1992",
+      "NMEP was launched in India in 1958",
+      "National Leprosy Control Program has been in operation since 1955"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "सही कथन चुनिए",
+    "question_en": "Choose the correct statement",
+    "options_hi": [
+      "blindness control program का नया नाम National Programme for the Control of Blindness and Visual Impairment है",
+      "इसे WHO sponsored programme के रूप में शुरू किया गया था",
+      "Vision 2020 Blindness Control Programme से संबंधित नहीं है",
+      "Refractive errors सामान्य होने के कारण blindness control programme से बाहर रखे गए हैं"
+    ],
+    "options_en": [
+      "The new name for blindness control program is National Programme for the control of Blindness and Visual Impairment",
+      "It was launched as a WHO sponsored programme",
+      "Vision 2020 is not associated with Blindness Control Programme",
+      "Refractive errors being common are excluded in the blindness control programme"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Eye donation fortnight कब मनाया जाता है?",
+    "question_en": "When is the eye donation fortnight observed ?",
+    "options_hi": [
+      "15 जुलाई से 28 जुलाई",
+      "25 अगस्त से 8 सितंबर",
+      "5 जून से 18 जून",
+      "1 सितंबर से 13 सितंबर"
+    ],
+    "options_en": [
+      "15 July to 28 July",
+      "25 August to 8 September",
+      "5 June to 18 June",
+      "1 September to 13 September"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "गलत कथन चुनिए",
+    "question_en": "Choose the incorrect statement",
+    "options_hi": [
+      "1 दिसंबर को World AIDS Day मनाया जाता है",
+      "8 अक्टूबर को World Palliative Day मनाया जाता है",
+      "14 सितंबर को World Diabetes Day मनाया जाता है",
+      "World Heart Day 29 सितंबर को मनाया जाता है"
+    ],
+    "options_en": [
+      "December 1 is observed as World Aids Day",
+      "October 8 is observed as World Palliative Day",
+      "September 14 is observed as World Diabetes Day",
+      "World Heart Day is observed on September 29"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Nikshay\" किस National Health Programme से संबंधित है?",
+    "question_en": "\"Nikshay\" is associated with which National Health Programme ?",
+    "options_hi": [
+      "RNTCP",
+      "NLEP",
+      "NMHP",
+      "NPCB"
+    ],
+    "options_en": [
+      "RNTCP",
+      "NLEP",
+      "NMHP",
+      "NPCB"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "सही विकल्प चुनिए।<br>I. चिकनगुनिया ticks के काटने से फैलता है।<br>II. पोलियोमायलाइटिस fecal-oral route से फैलता है।<br>III. PCV vaccine Mission Indradhanush Programme का हिस्सा नहीं था।",
+    "question_en": "Choose the correct option.<br>I. Chikungunya is transmitted by the bites of ticks.<br>II. Poliomyelitis spreads through the fecal oral route.<br>III. PCV vaccine was not a part of Mission Indradanush Programme.",
+    "options_hi": [
+      "I और II सही हैं, III गलत है",
+      "II और III सही हैं, I गलत है",
+      "सभी सही हैं",
+      "I और III सही हैं, II गलत है"
+    ],
+    "options_en": [
+      "I and II are correct, III incorrect",
+      "II and III correct, I incorrect",
+      "All are correct",
+      "I and III correct, II incorrect"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "सही विकल्प चुनिए।<br>I. Measles vaccine पहली बार 9 महीने में दी जाती है।<br>II. Rotavirus vaccine intramuscularly दी जाती है।<br>III. Immunization के लिए ice packs तैयार करने हेतु ice lined refrigerators का उपयोग किया जाता है।",
+    "question_en": "Choose the correct option.<br>I. Measles vaccine is first given at 9 months.<br>II. Rotavirus vaccine is given Intramuscularly.<br>III. Ice lined refrigerators are used to prepare ice packs for the purpose of immunization.",
+    "options_hi": [
+      "I और II सही हैं, III गलत है",
+      "II और III गलत हैं, I सही है",
+      "सभी सही हैं",
+      "I और III सही हैं, II गलत है"
+    ],
+    "options_en": [
+      "I and II are correct, III incorrect",
+      "II and III incorrect, I correct",
+      "All are correct",
+      "I and III correct, II incorrect"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "सही विकल्प चुनिए।<br>I. IDSP 2004 में शुरू किया गया।<br>II. जिला स्तर पर District Surveillance Officer IDSP का incharge होता है।<br>III. IDSP के अंतर्गत reporting के लिए online web applications उपलब्ध हैं।",
+    "question_en": "Choose the correct option.<br>I. IDSP was launched in 2004.<br>II. The District Surveillance Officer is incharge of IDSP in district level.<br>III. Online web applications are available for reporting under IDSP.",
+    "options_hi": [
+      "I और II सही, III गलत",
+      "II और III सही, I गलत",
+      "सभी सही हैं",
+      "I और III सही, II गलत"
+    ],
+    "options_en": [
+      "I and II correct III, incorrect",
+      "II and III correct, I incorrect",
+      "All are correct",
+      "I and III correct, II incorrect"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "सही विकल्प चुनिए।<br>I. Synthetic pyrethroids vector borne diseases की chemoprophylaxis में व्यापक रूप से उपयोग किए जाते हैं।<br>II. Artemisinin AIDS के उपचार में उपयोग होता है।<br>III. Ofloxacin और Minocycline leprosy treatment में उपयोग होते हैं।",
+    "question_en": "Choose the correct option.<br>I. Synthetic pyrethroids are widely used in the chemoprophylaxis of vector borne diseases.<br>II. Artemisinin is used in the treatment of AIDS.<br>III. Ofloxacin and Minocycline are used in Leprosy treatment.",
+    "options_hi": [
+      "I और III सही हैं, II गलत है",
+      "II और III सही हैं, I गलत है",
+      "सभी गलत हैं",
+      "I और II गलत हैं, III सही है"
+    ],
+    "options_en": [
+      "I and III are correct, II incorrect",
+      "II and III correct, I incorrect",
+      "All are incorrect",
+      "I and II incorrect, III correct"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "सही विकल्प चुनिए।<br>I. Rabies में combined active and passive immunization उपयोग होता है।<br>II. Diphtheria में combined active and passive immunization उपयोग होता है।<br>III. Tetanus में combined active and passive immunization उपयोग होता है।",
+    "question_en": "Choose the correct option.<br>I. Combined active and passive immunization is used in Rabies.<br>II. Combined active and passive immunization is used in Diphtheria.<br>III. Combined active and passive immunization is used in Tetanus.",
+    "options_hi": [
+      "I और III सही, II गलत",
+      "II और III सही, I गलत",
+      "सभी सही हैं",
+      "I और II सही, III गलत"
+    ],
+    "options_en": [
+      "I and III correct, II incorrect",
+      "II and III correct, I incorrect",
+      "All are correct",
+      "I and II correct, III incorrect"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "e-health survey के माध्यम से family health register किस महीने में updated किया जाता है?",
+    "question_en": "In which month is family health register updated through e-health survey ?",
+    "options_hi": [
+      "जून-जुलाई",
+      "मार्च-अप्रैल",
+      "जनवरी-फरवरी",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "June-July",
+      "March-April",
+      "January-February",
+      "None of the above"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा Junior Health Inspector का कर्तव्य नहीं है?",
+    "question_en": "Which of the following is NOT a duty of a Junior Health Inspector ?",
+    "options_hi": [
+      "वार्ड स्तर की वार्षिक health status report तैयार करना",
+      "non-communicable diseases control programme की planning और execution",
+      "public health violations की higher authorities को reporting",
+      "उपरोक्त सभी"
+    ],
+    "options_en": [
+      "Preparation of ward level annual health status report",
+      "Planning and execution of non-communicable diseases control programme",
+      "Reporting of public health violations to the higher authorities",
+      "All the above"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा कथन गलत है?",
+    "question_en": "Which of the following statement is WRONG ?",
+    "options_hi": [
+      "JHI को field work पर जाने से पहले sub centre में attendance register mark करना चाहिए",
+      "JHI को कार्य समय के दौरान field diary रखनी चाहिए",
+      "उपरोक्त में से कोई नहीं",
+      "1 और 2 दोनों"
+    ],
+    "options_en": [
+      "JHI should mark attendance register in a sub centre before going to the field work",
+      "JHI should keep the field diary during his work hours",
+      "None of the above",
+      "Both 1 and 2"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Clinic register किसके द्वारा maintain किया जाता है?<br>i. JHI<br>ii. JPHN<br>iii. HI<br>iv. PHN",
+    "question_en": "Clinic register is maintained by<br>i. JHI<br>ii. JPHN<br>iii. HI<br>iv. PHN",
+    "options_hi": [
+      "केवल ii और iv",
+      "केवल i और iii",
+      "केवल i और ii",
+      "i, ii, iii और iv"
+    ],
+    "options_en": [
+      "ii and iv only",
+      "i and iii only",
+      "i and ii only",
+      "i, ii, iii and iv"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा population explosion का कारण है?<br>i. निरक्षरता<br>ii. मृत्यु दर में कमी<br>iii. अंधविश्वास<br>iv. गरीबी",
+    "question_en": "Which of the following is a cause of population explosion ?<br>i. Illiteracy<br>ii. Decreased death rate<br>iii. Superstition<br>iv. Poverty",
+    "options_hi": [
+      "केवल i और ii",
+      "केवल i",
+      "केवल i, ii और iii",
+      "i, ii, iii और iv"
+    ],
+    "options_en": [
+      "i and ii only",
+      "i only",
+      "i, ii and iii only",
+      "i, ii, iii and iv"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Demographic cycle में Germany की स्थिति",
+    "question_en": "The position of Germany in demographic cycle",
+    "options_hi": [
+      "Declining",
+      "Late expanding",
+      "Low stationary",
+      "Early expanding"
+    ],
+    "options_en": [
+      "Declining",
+      "Late expanding",
+      "Low stationary",
+      "Early expanding"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "“Population which produces maximum economic welfare” — यह किसने कहा?",
+    "question_en": "Population which produces maximum economic welfare – Who said this ?",
+    "options_hi": [
+      "कार्ल मार्क्स",
+      "थॉमस माल्थस",
+      "रॉबिन्स",
+      "कार-सॉन्डर्स"
+    ],
+    "options_en": [
+      "Karl Marx",
+      "Thomas Malthus",
+      "Robbins",
+      "Carr-Saunders"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Family planning की 'Occlusive' method<br>i. Male condom<br>ii. Female condom<br>iii. Diaphragm<br>iv. Mala-D",
+    "question_en": "'Occlusive' method of family planning<br>i. Male condom<br>ii. Female condom<br>iii. Diaphragm<br>iv. Mala-D",
+    "options_hi": [
+      "केवल iv",
+      "केवल i और ii",
+      "केवल i, ii और iii",
+      "i, ii, iii और iv"
+    ],
+    "options_en": [
+      "iv only",
+      "i and ii only",
+      "i, ii and iii only",
+      "i, ii, iii and iv"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Hormonal FP method<br>i. Vaginal sponge<br>ii. Vaginal ring<br>iii. NET-EN<br>iv. Mala-N",
+    "question_en": "Hormonal FP method<br>i. Vaginal sponge<br>ii. Vaginal ring<br>iii. NET-EN<br>iv. Mala-N",
+    "options_hi": [
+      "केवल iii और iv",
+      "केवल i और ii",
+      "केवल ii, iii और iv",
+      "i, ii, iii और iv"
+    ],
+    "options_en": [
+      "iii and iv only",
+      "i and ii only",
+      "ii, iii and iv only",
+      "i, ii, iii and iv"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Emergency contraceptive pills की सबसे निचली service location",
+    "question_en": "Lowermost service location of emergency contraceptive pills",
+    "options_hi": [
+      "घर",
+      "सब-सेंटर",
+      "CHC",
+      "PHC"
+    ],
+    "options_en": [
+      "Home",
+      "Sub centre",
+      "CHC",
+      "PHC"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Aluminium hydroxide का formation मुख्य रूप से कहाँ होता है?",
+    "question_en": "Formation of aluminium hydroxide happens mainly in",
+    "options_hi": [
+      "Coagulation chamber",
+      "Mixing chamber",
+      "Flocculation chamber",
+      "Sedimentation chamber"
+    ],
+    "options_en": [
+      "Coagulation chamber",
+      "Mixing chamber",
+      "Flocculation chamber",
+      "Sedimentation chamber"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "1 ग्राम chlorine tablet कितने पानी को disinfect करती है?",
+    "question_en": "1 gram of chlorine tablet disinfects",
+    "options_hi": [
+      "20 लीटर पानी",
+      "10 लीटर पानी",
+      "30 लीटर पानी",
+      "40 लीटर पानी"
+    ],
+    "options_en": [
+      "20 liters of water",
+      "10 liters of water",
+      "30 liters of water",
+      "40 liters of water"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा TRUE statement है?<br>i. Ozone एक primary air pollutant है।<br>ii. Contaminated dust एक secondary air pollutant है।<br>iii. Particulate air pollutants primary या secondary air pollutant हो सकते हैं।<br>iv. Gaseous air pollutants सीधे brain को प्रभावित करते हैं।",
+    "question_en": "Which of the following is a TRUE statement ?<br>i. Ozone is a primary air pollutant.<br>ii. Contaminated dust is a secondary air pollutant.<br>iii. Particulate air pollutants are either primary or secondary air pollutant.<br>iv. Gaseous air pollutants directly affects the brain.",
+    "options_hi": [
+      "केवल i",
+      "केवल ii और iv",
+      "केवल iii",
+      "केवल iii और iv"
+    ],
+    "options_en": [
+      "Only i",
+      "Only ii and iv",
+      "Only iii",
+      "Only iii and iv"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा radiation indicator स्वास्थ्य के लिए संभावित खतरे की degree को व्यक्त करता है?",
+    "question_en": "Which of the following radiation indicator express the degree of potential danger to health ?",
+    "options_hi": [
+      "रॉन्टजन",
+      "रेम",
+      "रैड",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "Rontgen",
+      "Rem",
+      "Rad",
+      "None of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "World Water Day 2021 की theme",
+    "question_en": "Theme of World Water Day 2021",
+    "options_hi": [
+      "Valuing water",
+      "Water and Climate change",
+      "Leaving no one behind",
+      "Build a fairer healthier world"
+    ],
+    "options_en": [
+      "Valuing water",
+      "Water and Climate change",
+      "Leaving no one behind",
+      "Build a fairer healthier world"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Oroya fever किससे transmit होता है?",
+    "question_en": "Oroya fever is transmitted by",
+    "options_hi": [
+      "घर की मक्खी",
+      "चूहे का पिस्सू",
+      "Trombiculid mite",
+      "सैंड फ्लाई"
+    ],
+    "options_en": [
+      "House fly",
+      "Rat flea",
+      "Trombiculid mite",
+      "Sand fly"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Arthropod-borne disease के transmission के बारे में निम्न में से कौन-सा कथन TRUE है?<br>i. Scabies mechanical transmission है।<br>ii. Trachoma biological transmission है।<br>iii. Malaria cyclo-propagative transmission का उदाहरण है।<br>iv. Rat fleas में plague bacilli propagative transmission है।",
+    "question_en": "Which of the following statement is TRUE about the transmission of arthropod-borne disease ?<br>i. Scabies is a mechanical transmission.<br>ii. Trachoma is a biological transmission.<br>iii. Malaria is an example of cyclo-propagative transmission.<br>iv. Plague bacilli in rat fleas is a propagative transmission.",
+    "options_hi": [
+      "i और ii",
+      "केवल i",
+      "iii और iv",
+      "केवल iii"
+    ],
+    "options_en": [
+      "i and ii",
+      "i only",
+      "iii and iv",
+      "iii only"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "किस mosquito की syphon tube broad और short होती है?",
+    "question_en": "Which mosquitoes' syphon tube is broad and short ?",
+    "options_hi": [
+      "Anopheles",
+      "Aedes",
+      "Culex",
+      "Mansonia"
+    ],
+    "options_en": [
+      "Anopheles",
+      "Aedes",
+      "Culex",
+      "Mansonia"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा repellent है?",
+    "question_en": "Which one is a repellent ?",
+    "options_hi": [
+      "Benzyl benzoate",
+      "Lindane",
+      "Malathion",
+      "Pyrethrum"
+    ],
+    "options_en": [
+      "Benzyl benzoate",
+      "Lindane",
+      "Malathion",
+      "Pyrethrum"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "KFD किससे transmitted होता है?",
+    "question_en": "KFD is transmitted by",
+    "options_hi": [
+      "Ticks",
+      "Mites",
+      "Mosquitoes",
+      "Sandflies"
+    ],
+    "options_en": [
+      "Ticks",
+      "Mites",
+      "Mosquitoes",
+      "Sandflies"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Posters\" _________ aids का उदाहरण हैं।",
+    "question_en": "\"Posters\" are an example of _________ aids.",
+    "options_hi": [
+      "3D- AIDS",
+      "Activity aids",
+      "Projected aids",
+      "Graphic aids"
+    ],
+    "options_en": [
+      "3D- AIDS",
+      "Activity aids",
+      "Projected aids",
+      "Graphic aids"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Community involvement and inter-sectoral co-ordination\" health education process का ________ approach है।",
+    "question_en": "\"Community involvement and inter-sectoral co-ordination\" are the ________ approach of health education process.",
+    "options_hi": [
+      "Regulatory",
+      "Service",
+      "Primary health care",
+      "Educational"
+    ],
+    "options_en": [
+      "Regulatory",
+      "Service",
+      "Primary health care",
+      "Educational"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "______________ एक \"Scaled down teaching encounter\" है।",
+    "question_en": "______________ is a \"Scaled down teaching encounter\".",
+    "options_hi": [
+      "Brainstorming",
+      "Micro teaching",
+      "Group discussion",
+      "Symposium"
+    ],
+    "options_en": [
+      "Brainstorming",
+      "Micro teaching",
+      "Group discussion",
+      "Symposium"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Communication\" शब्द _________ शब्द \"Communis\" से बना है, जिसका अर्थ \"sharing or common\" है।",
+    "question_en": "\"Communication\" is the word derived from _________ word \"Communis\" which means \"sharing or common\".",
+    "options_hi": [
+      "French",
+      "Greek",
+      "Latin",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "French",
+      "Greek",
+      "Latin",
+      "None of these"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Gestures\" क्या हैं?",
+    "question_en": "\"Gestures\" are",
+    "options_hi": [
+      "Verbal communication",
+      "Tele communication",
+      "Mass media",
+      "Non-verbal communication"
+    ],
+    "options_en": [
+      "Verbal communication",
+      "Tele communication",
+      "Mass media",
+      "Non-verbal communication"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "____________ communication में \"knowledge is imposed and learning process is authoritative\" होता है।",
+    "question_en": "In ____________ communication \"knowledge is imposed and learning process is authoritative\".",
+    "options_hi": [
+      "Two way",
+      "Inter personal",
+      "One way",
+      "Visual communication"
+    ],
+    "options_en": [
+      "Two way",
+      "Inter personal",
+      "One way",
+      "Visual communication"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Back to basics\" संदेश किससे संबंधित है?",
+    "question_en": "\"Back to basics\" is the message that related with",
+    "options_hi": [
+      "Covid-19",
+      "Nipah fever",
+      "Zika",
+      "Typhus fever"
+    ],
+    "options_en": [
+      "Covid-19",
+      "Nipah fever",
+      "Zika",
+      "Typhus fever"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "'Role play or socio drama' health communication में _____________ approach है।",
+    "question_en": "'Role play or socio drama' is the _____________ approach in health communication.",
+    "options_hi": [
+      "Group approach",
+      "Mass approach",
+      "Individual approach",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Group approach",
+      "Mass approach",
+      "Individual approach",
+      "None of these"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "International Union for Health Education का headquarters कहाँ स्थित है?",
+    "question_en": "The Head Quarters of International Union for Health Education situated at",
+    "options_hi": [
+      "नई दिल्ली",
+      "पेरिस",
+      "बेंगलुरु",
+      "जिनेवा"
+    ],
+    "options_en": [
+      "New Delhi",
+      "Paris",
+      "Bangalore",
+      "Geneva"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "World Mental Health Day कब मनाया जाता है?",
+    "question_en": "World Mental Health Day observed on",
+    "options_hi": [
+      "1 दिसंबर",
+      "11 जुलाई",
+      "10 अक्टूबर",
+      "14 नवंबर"
+    ],
+    "options_en": [
+      "December – 1",
+      "July – 11",
+      "October – 10",
+      "November – 14"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "भारत में Panchayati Raj के जनक",
+    "question_en": "The father of Panchayati Raj in India",
+    "options_hi": [
+      "पंडित जवाहरलाल नेहरू",
+      "बलवंत राय मेहता",
+      "GVK Rao",
+      "VKRV Rao"
+    ],
+    "options_en": [
+      "Pandit Jawaharlal Nehru",
+      "Balwat Rai Mehta",
+      "GVK Rao",
+      "VKRV Rao"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Zilla Parishad के बारे में निम्न में से कौन-सा false है?",
+    "question_en": "Which of the following is false about Zilla Parishad ?",
+    "options_hi": [
+      "Panchayat और Block Samitis के बीच link के रूप में कार्य करती है",
+      "यह Panchayati System का judicial component है",
+      "Panchayati Raj System के working पर State Government को advice देती है",
+      "Block Samitis के budget को approve करती है"
+    ],
+    "options_en": [
+      "Acts as a link between Panchayat and Block Samitis",
+      "It is a judicial component of Panchayati System",
+      "Advices State Government on the working of the Panchayati Raj System",
+      "Approves the budget of the Block Samitis"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "जिला स्तर पर planning के लिए Zila Parishad responsible होनी चाहिए — यह किससे संबंधित सही विकल्प है?",
+    "question_en": "Which of the following is correct about Zila Parishad should be responsible for Planning at district level ?",
+    "options_hi": [
+      "सिंघवी समिति",
+      "अशोक मेहता समिति",
+      "बलवंत राय मेहता समिति",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "Singhvi Committee",
+      "Ashok Mehta Committee",
+      "Balwant Rai Mehta Committee",
+      "None of the above"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 74,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Money management के basic steps में क्या शामिल नहीं है?",
+    "question_en": "Basic steps of money management not includes",
+    "options_hi": [
+      "Budget बनाना",
+      "Saving goals set करना",
+      "Consistency",
+      "अपने debts track करना"
+    ],
+    "options_en": [
+      "Create budget",
+      "Set saving goals",
+      "Consistency",
+      "Trackle yours debts"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 75,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "यदि nuisance किसी structural character की defect से उत्पन्न होती है, तो nuisance को abate करने के लिए responsible person कौन है?",
+    "question_en": "The nuisance arises from any defect of a structural character the responsible person to abate the nuisance is",
+    "options_hi": [
+      "Premises का owner",
+      "Informer",
+      "Anganwadi worker",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "Owner of the premises",
+      "Informer",
+      "Anganwadi worker",
+      "None of the above"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 76,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "निम्न में से कौन-सा infectious disease नहीं है?",
+    "question_en": "Which of the following is not an infectious disease ?",
+    "options_hi": [
+      "Ophthalmia",
+      "Rabies",
+      "Diabetes mellitus",
+      "Cerebro spinal fever"
+    ],
+    "options_en": [
+      "Ophthalmia",
+      "Rabies",
+      "Diabetes mellitus",
+      "Cerebro spinal fever"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 77,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Travancore Cochin Public Health Act 1955 के अनुसार राज्य के भीतर कोई river, inland, navigation, lake या water way किस रूप में termed है?",
+    "question_en": "According to Travancore Cochin Public Health Act 1955 any river, inland, navigation, lake or water way being with in the state in termed as",
+    "options_hi": [
+      "Water course",
+      "Canal boat",
+      "Canal",
+      "Channel"
+    ],
+    "options_en": [
+      "Water course",
+      "Canal boat",
+      "Canal",
+      "Channel"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 78,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "मानव निवास के लिए पूर्णतः या मुख्यतः उपयोग या adapted की गई constructed building कहलाती है",
+    "question_en": "Building constucted used or adapted to be used wholly or principally for human habitation is known as",
+    "options_hi": [
+      "Slaughter house",
+      "Dwelling house",
+      "Aviary",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "Slaughter house",
+      "Dwelling house",
+      "Aviary",
+      "None of the above"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 79,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "कोई organism, chemical condition या circumstances जो injury या illness का कारण बन सकते हैं, कहलाते हैं",
+    "question_en": "Any organism, chemical condition or circumstances that may cause injury or illness is",
+    "options_hi": [
+      "Infection",
+      "Pandemic",
+      "Accident",
+      "Health hazard"
+    ],
+    "options_en": [
+      "Infection",
+      "Pandemic",
+      "Accident",
+      "Health hazard"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 80,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Sewage, excreta, dung, putrid और purifying substances तथा public health के लिए danger causing अन्य substances कहलाते हैं",
+    "question_en": "Sewage, excreta, dung putrid and purifying substances and all other substances causing danger to public health is known as",
+    "options_hi": [
+      "Waste",
+      "Biomedical waste",
+      "Filth",
+      "उपरोक्त में से कोई नहीं"
+    ],
+    "options_en": [
+      "Waste",
+      "Biomedical waste",
+      "Filth",
+      "None of the above"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 81,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "25 से कम IQ को क्या कहा जाता है?",
+    "question_en": "IQ below 25 called as",
+    "options_hi": [
+      "Imbecile",
+      "Idiot",
+      "Dull",
+      "Border line"
+    ],
+    "options_en": [
+      "Imbecile",
+      "Idiot",
+      "Dull",
+      "Border line"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 82,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Defense Mechanism\" की concept किसने दी?",
+    "question_en": "The concept of \"Defense Mechanism\" put forward by",
+    "options_hi": [
+      "Abraham Maslow",
+      "Sigmund Freud",
+      "Carl Roger",
+      "Carl Jung"
+    ],
+    "options_en": [
+      "Abraham Maslow",
+      "Sigmund Freud",
+      "Carl Roger",
+      "Carl Jung"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 83,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Hierarchy needs theory\" में biological needs के ऊपर कौन-सी needs होती हैं?",
+    "question_en": "In \"hierarchy needs theory\", the needs above biological needs are",
+    "options_hi": [
+      "Safety needs",
+      "Self esteem",
+      "Love needs",
+      "Self actualisation"
+    ],
+    "options_en": [
+      "Safety needs",
+      "Self esteem",
+      "Love needs",
+      "Self actualisation"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 84,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Personality की psycho social theory को explain करने वाले psychologist",
+    "question_en": "The psychologist who explained psycho social theory of personality",
+    "options_hi": [
+      "Freud",
+      "Adler",
+      "Erickson",
+      "Bruner"
+    ],
+    "options_en": [
+      "Freud",
+      "Adler",
+      "Erickson",
+      "Bruner"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 85,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "व्यवहार में कोई अपेक्षाकृत permanent change कहलाता है",
+    "question_en": "Any relative permanent change in behaviour is",
+    "options_hi": [
+      "Intelligence",
+      "Motivation",
+      "Emotion",
+      "Learning"
+    ],
+    "options_en": [
+      "Intelligence",
+      "Motivation",
+      "Emotion",
+      "Learning"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 86,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "\"Fear of darkness\" कहलाता है",
+    "question_en": "\"Fear of darkness\" is",
+    "options_hi": [
+      "Nyctophobia",
+      "Gamophobia",
+      "Dipsophobia",
+      "Gynophobia"
+    ],
+    "options_en": [
+      "Nyctophobia",
+      "Gamophobia",
+      "Dipsophobia",
+      "Gynophobia"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 87,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Personality की Psycho analytic theory में 'Ego' __________ principle पर आधारित होता है।",
+    "question_en": "In Psycho analytic theory of personality, 'Ego' is based on __________ principle.",
+    "options_hi": [
+      "Reality",
+      "Pleasure",
+      "Morality",
+      "इनमें से कोई नहीं"
+    ],
+    "options_en": [
+      "Reality",
+      "Pleasure",
+      "Morality",
+      "None of these"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 88,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "POSCO Act कब force में आया?",
+    "question_en": "POSCO Act came into force on",
+    "options_hi": [
+      "2016",
+      "2015",
+      "2014",
+      "2012"
+    ],
+    "options_en": [
+      "2016",
+      "2015",
+      "2014",
+      "2012"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 89,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Socialisation की second stage है",
+    "question_en": "The second stage of socialisation is",
+    "options_hi": [
+      "Oral stage",
+      "Adolescence",
+      "Anal stage",
+      "Oedipal stage"
+    ],
+    "options_en": [
+      "Oral stage",
+      "Adolescence",
+      "Anal stage",
+      "Oedipal stage"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 90,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Marriage का ______ form जिसमें एक पुरुष एक से अधिक महिलाओं से marriage करता है।",
+    "question_en": "______ form of marriage in which one man marries with more than one woman.",
+    "options_hi": [
+      "Polygyny",
+      "Monogamy",
+      "Polygamy",
+      "Polyandry"
+    ],
+    "options_en": [
+      "Polygyny",
+      "Monogamy",
+      "Polygamy",
+      "Polyandry"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 91,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Obesity के health effects के संबंध में सही statement चुनिए।<br>I. Breast और colon cancers का slight risk होता है।<br>II. Osteoarthritis जैसी bone और joint problems का कोई risk नहीं होता।<br>III. Obese individuals में sleep apnea का risk होता है।",
+    "question_en": "Choose the right statement regarding health effects of obesity ?<br>I. There is slight risk of breast and colon cancers.<br>II. There is no risk of bone and joint problems such as osteoarthritis.<br>III. Obese individuals are at risk of sleep apnea.",
+    "options_hi": [
+      "I और III सही, II गलत",
+      "I और II सही, III गलत",
+      "सभी सही हैं",
+      "II और III सही, I गलत"
+    ],
+    "options_en": [
+      "I and III correct, II incorrect",
+      "I and II correct, III incorrect",
+      "All are correct",
+      "II and III correct, I incorrect"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 92,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Coronary heart disease के risk factors के संबंध में सही statement चुनिए",
+    "question_en": "Choose the correct statement regarding the risk factors of coronary heart disease",
+    "options_hi": [
+      "Females में risk अधिक होता है",
+      "Smoking बंद करने से coronary heart diseases से death का risk घटता है",
+      "Coronary heart diseases का risk प्रतिदिन पी गई cigarettes की संख्या से संबंधित नहीं है",
+      "Cholesterol level बढ़ने से coronary heart disease का risk घटता है"
+    ],
+    "options_en": [
+      "Females are at higher risk",
+      "The risk of death from coronary heart diseases decreases with cessation of smoking",
+      "The risk of coronary heart diseases has nothing to do with the number of cigarettes smoked each day",
+      "Risk of coronary heart disease decreases with rise in cholesterol level"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 93,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Diabetes के संबंध में सही statement चुनिए।<br>I. Type 1 diabetes सामान्यतः elderly persons में देखी जाती है।<br>II. Pancreas की beta cells का complete destruction Type 2 diabetes में देखा जाता है।<br>III. Type 1 diabetes diabetes का सबसे common type है।",
+    "question_en": "Choose the correct statement regarding Diabetes ?<br>I. Type 1 diabetes is commonly seen in elderly persons.<br>II. Complete destruction of beta cells of pancreas is seen in Type 2 diabetes.<br>III. Type 1 diabetes is the most common type of diabetes.",
+    "options_hi": [
+      "I और II सही, III गलत",
+      "सभी गलत हैं",
+      "II और III गलत, I सही",
+      "I और III गलत, II सही"
+    ],
+    "options_en": [
+      "I and II correct, III incorrect",
+      "All are incorrect",
+      "II and III incorrect, I correct",
+      "I and III incorrect, II correct"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 94,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Body weight के संबंध में सही statement चुनिए।<br>I. Broca's index के अनुसार 1.65 meters height वाले व्यक्ति का ideal body weight 65 kg होना चाहिए।<br>II. Body mass index 22 normal है।",
+    "question_en": "Choose the correct statement regarding body weight.<br>I. Ideal body weight of a person whose height is 1.65 meters according to Broca's index should be 65 kg.<br>II. Body mass index of 22 is normal.",
+    "options_hi": [
+      "दोनों सही",
+      "I सही II गलत",
+      "II सही I गलत",
+      "दोनों गलत"
+    ],
+    "options_en": [
+      "Both correct",
+      "I correct II incorrect",
+      "II correct I incorrect",
+      "Both incorrect"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 95,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Palliative care programme के संबंध में सही statement चुनिए।<br>I. Palliative care केवल terminally ill patients के लिए है।<br>II. Palliative Management Committee में Panchayath President की कोई भूमिका नहीं है।<br>III. Village Palliative home care team द्वारा हर महीने कम से कम 8 palliative home care visits complete की जानी चाहिए।",
+    "question_en": "Pick the correct statement regarding Palliative care programme.<br>I. Palliative care is meant for terminally ill patients only.<br>II. Panchayath President has no role in Palliative Management Committee.<br>III. A minimum of 8 palliative home care visit should be completed every month by the village Palliative home care team.",
+    "options_hi": [
+      "I और II गलत, III सही",
+      "II और III गलत, I सही",
+      "I और III गलत, II सही",
+      "सभी गलत"
+    ],
+    "options_en": [
+      "I and II incorrect, III correct",
+      "II and III incorrect, I correct",
+      "I and III incorrect, II correct",
+      "All incorrect"
+    ],
+    "correct": 3,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 96,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Covid hospital में bio medical waste management से संबंधित सही statement चुनिए।<br>I. Used masks को yellow bags में dispose करना चाहिए।<br>II. Hospital में सभी surfaces clean करने के लिए 0.1% sodium hypochlorite solution को main disinfectant के रूप में use करना चाहिए।<br>III. Hospital wards में dusting और sweeping के स्थान पर wet mopping करना चाहिए।",
+    "question_en": "Choose the correct statement related to bio medical waste management in a Covid hospital.<br>I. Masks used should be disposed in yellow bags.<br>II. 0.1% sodium hypochlorite solution should be used as the main disinfectant to clean all surfaces in the hospital.<br>III. Wet mopping should be done instead of dusting and sweeping in hospital wards.",
+    "options_hi": [
+      "I और III सही, II गलत",
+      "II और III सही, I गलत",
+      "I और II सही, III गलत",
+      "सभी गलत"
+    ],
+    "options_en": [
+      "I and III correct, II incorrect",
+      "II and III correct, I incorrect",
+      "I and II correct, III incorrect",
+      "All incorrect"
+    ],
+    "correct": 0,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 97,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "NCDs को control करने के लिए WHO's Global action plan से संबंधित incorrect option चुनिए",
+    "question_en": "Choose the incorrect option related to WHO's Global action plan against controlling NCDs",
+    "options_hi": [
+      "इसका लक्ष्य cardiovascular diseases, cancer, diabetes और chronic respiratory diseases से संबंधित mortality को 25% तक reduce करना है",
+      "इसने member countries के लिए 2013 से 2020 के दौरान लागू करने हेतु guidelines और roadmap जारी किया",
+      "इसका लक्ष्य केवल एक behavioral change अर्थात tobacco smoking था",
+      "इसका लक्ष्य population के mean sodium और salt intake में 10% relative reduction था"
+    ],
+    "options_en": [
+      "It aims to reduce the mortality associated with cardiovascular diseases, cancer, diabetes and chronic respiratory diseases by 25%",
+      "It issued guidelines and a roadmap for member countries to be implemented during 2013 to 2020",
+      "It aimed at only one behavioral change i.e tobacco smoking",
+      "It aimed at a 10% relative reduction in the mean population intake of sodium and slat"
+    ],
+    "correct": 2,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 98,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "Biomedical waste से संबंधित right statement चुनिए।<br>I. Genotoxic waste के उदाहरणों में cancer chemotherapy drugs शामिल हैं।<br>II. Chemical waste में unused disinfectants, laboratory reagents शामिल हैं।<br>III. Scalpels, infusion sets infectious waste के examples हैं।",
+    "question_en": "Pick the right statement related to biomedical waste.<br>I. Examples of genotoxic waste include cancer chemotherapy drugs.<br>II. Chemical waste includes unused disinfectants, laboratory reagents.<br>III. Scalpels, infusion sets are examples of infectious waste.",
+    "options_hi": [
+      "I और II सही, III गलत",
+      "सभी सही",
+      "II और III सही, I गलत",
+      "I और III सही, II गलत"
+    ],
+    "options_en": [
+      "I and II correct, III incorrect",
+      "All correct",
+      "II and III correct, I incorrect",
+      "I and III correct, II incorrect"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 99,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "महिलाओं में breast cancer का risk factor निम्न में से कौन-सा नहीं है?",
+    "question_en": "Which of the following is not a risk factor of breast cancer in women ?",
+    "options_hi": [
+      "35 वर्ष से अधिक आयु",
+      "Late menarche और early menopause",
+      "Breast cancer का family history",
+      "High fat diet और obesity"
+    ],
+    "options_en": [
+      "Age above 35 years",
+      "Late menarche and early menopause",
+      "Family history of beast cancer",
+      "High fat diet and obesity"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  },
+  {
+    "id": 100,
+    "subject": "Health Inspector",
+    "type": "bilingual",
+    "question_hi": "गलत statement चुनिए।",
+    "question_en": "Choose the incorrect statement.",
+    "options_hi": [
+      "Tobacco smoke के सबसे noxious components tar, carbon monoxide और nicotine हैं",
+      "Bidi smokers की तुलना में cigarette smokers में lung cancers का risk अधिक होता है",
+      "Non-smokers की तुलना में smokers में lung cancer विकसित होने का risk 10 गुना अधिक होता है",
+      "Cigarette smoked की length के साथ lung cancer का risk बढ़ता है"
+    ],
+    "options_en": [
+      "The most noxious components of tobacco smoke are tar, carbon monoxide and nicotine",
+      "Cigarette smokers are at higher risk of lung cancers when compared to Bidi smokers",
+      "Smokers have 10 times higher risk of developing lung cancer when compared to non smokers",
+      "The risk of lung cancer increases with the length of cigarette smoked"
+    ],
+    "correct": 1,
+    "explanation_hi": "",
+    "explanation_en": "",
+    "image": ""
+  }
+];
+
+let current = 0;
+let language = "bi";
+let answers = Array(questions.length).fill(null);
+let marked = Array(questions.length).fill(false);
+let visited = Array(questions.length).fill(false);
+let startTime = null;
+let timerInterval = null;
+let remainingSeconds = testDurationMinutes * 60;
+
+document.getElementById("totalQStart").textContent = questions.length;
+document.getElementById("totalMarksStart").textContent = questions.length * marksPerQuestion;
+renderHistory();
+
+function startTest(){
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("examScreen").classList.remove("hidden");
+  document.getElementById("timer").classList.remove("hidden");
+  startTime = new Date();
+  visited[0] = true;
+  buildPalette();
+  renderQuestion();
+  startTimer();
+}
+function startTimer(){
+  updateTimer();
+  timerInterval = setInterval(()=>{
+    remainingSeconds--;
+    updateTimer();
+    if(remainingSeconds <= 0){
+      clearInterval(timerInterval);
+      submitTest();
+    }
+  },1000);
+}
+function updateTimer(){
+  let s = Math.max(0, remainingSeconds);
+  const h = String(Math.floor(s/3600)).padStart(2,"0");
+  const m = String(Math.floor((s%3600)/60)).padStart(2,"0");
+  const sec = String(s%60).padStart(2,"0");
+  document.getElementById("timer").textContent = `${h}:${m}:${sec}`;
+}
+function setLanguage(lang){
+  language = lang;
+  ["hi","en","bi"].forEach(l=>document.getElementById("lang_"+l).classList.toggle("active", l===lang));
+  renderQuestion();
+}
+function qText(q){
+  if(q.type === "hindi_only") return panel("Hindi", q.question_hi);
+  if(q.type === "english_only") return panel("English", q.question_en);
+  if(language === "hi") return panel("Hindi", q.question_hi);
+  if(language === "en") return panel("English", q.question_en);
+  return `<div class="bilingual-block">${panel("Hindi", q.question_hi)}${panel("English", q.question_en)}</div>`;
+}
+function panel(label, text){
+  return `<div class="lang-panel"><div class="lang-label">${label}</div>${text}</div>`;
+}
+function optContent(q, i){
+  if(q.type === "hindi_only" || language === "hi") return q.options_hi[i];
+  if(q.type === "english_only" || language === "en") return q.options_en[i];
+  return `<div><div><b>हिंदी:</b> ${q.options_hi[i]}</div><div><b>English:</b> ${q.options_en[i]}</div></div>`;
+}
+function renderQuestion(){
+  const q = questions[current];
+  visited[current] = true;
+  document.getElementById("qNumber").textContent = `Question ${q.id} of ${questions.length}`;
+  document.getElementById("questionText").innerHTML = qText(q);
+  document.getElementById("imageBox").innerHTML = q.image ? `<img src="${q.image}" alt="Question ${q.id} Image" class="question-image">` : "";
+  const letters = ["A","B","C","D"];
+  document.getElementById("optionsBox").innerHTML = q.options_en.map((_,i)=>`
+    <div class="option ${answers[current]===i?'selected':''}" onclick="selectOption(${i})">
+      <div class="opt-label">${letters[i]}.</div>
+      <div>${optContent(q,i)}</div>
+    </div>`).join("");
+  buildPalette();
+}
+function selectOption(i){ answers[current] = i; renderQuestion(); }
+function saveNext(){ if(current < questions.length-1){ current++; visited[current]=true; renderQuestion(); } else { buildPalette(); } }
+function prevQuestion(){ if(current>0){ current--; visited[current]=true; renderQuestion(); } }
+function markForReview(){ marked[current] = !marked[current]; if(current < questions.length-1){ current++; visited[current]=true; } renderQuestion(); }
+function clearResponse(){ answers[current] = null; renderQuestion(); }
+function buildPalette(){
+  const box = document.getElementById("palette");
+  box.innerHTML = questions.map((q,i)=>{
+    let cls = "not-visited";
+    if(visited[i] && answers[i] === null) cls = "not-answered";
+    if(answers[i] !== null) cls = "answered";
+    if(marked[i] && answers[i] === null) cls = "review";
+    if(marked[i] && answers[i] !== null) cls = "answered-review";
+    if(i===current) cls += " current";
+    return `<button class="palbtn ${cls}" onclick="goTo(${i})">${q.id}</button>`;
+  }).join("");
+}
+function goTo(i){ current=i; visited[i]=true; renderQuestion(); }
+function confirmSubmit(){ if(confirm("Submit test now?")) submitTest(); }
+function submitTest(){
+  clearInterval(timerInterval);
+  let correct=0, wrong=0, attempted=0, unattempted=0;
+  questions.forEach((q,i)=>{
+    if(answers[i] === null){ unattempted++; }
+    else{
+      attempted++;
+      if(answers[i] === q.correct) correct++;
+      else wrong++;
+    }
+  });
+  const score = (correct * marksPerQuestion) - (wrong * negativeMarking);
+  const maxMarks = questions.length * marksPerQuestion;
+  const percentage = maxMarks ? (score / maxMarks * 100) : 0;
+  const timeTakenSeconds = testDurationMinutes*60 - remainingSeconds;
+  const attempt = {date:new Date().toLocaleString(), total:questions.length, attempted, unattempted, correct, wrong, score:Number(score.toFixed(2)), maxMarks, percentage:Number(percentage.toFixed(2)), timeTaken:formatTime(timeTakenSeconds)};
+  saveHistory(attempt);
+  showResult(attempt);
+}
+function formatTime(s){
+  s=Math.max(0,s);
+  const h=Math.floor(s/3600), m=Math.floor((s%3600)/60), sec=s%60;
+  return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+}
+function showResult(r){
+  document.getElementById("examScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.remove("hidden");
+  document.getElementById("timer").classList.add("hidden");
+  const items = [
+    ["Total Questions", r.total],["Attempted", r.attempted],["Not Attempted", r.unattempted],["Correct", r.correct],
+    ["Wrong", r.wrong],["Marks Obtained", r.score],["Maximum Marks", r.maxMarks],["Percentage", r.percentage+"%"],["Time Taken", r.timeTaken],["Marking", "+1 / -0.25"]
+  ];
+  document.getElementById("resultSummary").innerHTML = items.map(x=>`<div class="result-box">${x[0]}<b>${x[1]}</b></div>`).join("");
+  renderReview();
+}
+function renderReview(){
+  const letters = ["A","B","C","D"];
+  document.getElementById("answerReview").innerHTML = questions.map((q,i)=>{
+    const ua = answers[i];
+    const ca = q.correct;
+    const status = ua===null ? `<span class="muted">Not Attempted</span>` : (ua===ca ? `<span class="correct-text">Correct</span>` : `<span class="wrong-text">Wrong</span>`);
+    return `<div class="review-item">
+      <b>Q${q.id}.</b> ${q.question_en}<br><br>
+      <b>हिंदी:</b> ${q.question_hi}<br>
+      <p>${status}</p>
+      <p><b>Your Answer:</b> ${ua===null ? "Not Attempted" : letters[ua]+". "+q.options_en[ua]}</p>
+      <p><b>Correct Answer:</b> <span class="correct-text">${letters[ca]}. ${q.options_en[ca]}</span></p>
+      <p class="muted"><b>Explanation:</b> Explanation not provided.</p>
+    </div>`;
+  }).join("");
+}
+function saveHistory(attempt){
+  const old = JSON.parse(localStorage.getItem(historyKey) || "[]");
+  old.unshift(attempt);
+  localStorage.setItem(historyKey, JSON.stringify(old.slice(0,10)));
+}
+function renderHistory(){
+  const box = document.getElementById("historyBox");
+  const old = JSON.parse(localStorage.getItem(historyKey) || "[]");
+  if(!old.length){ box.innerHTML = ""; return; }
+  box.innerHTML = `<h3>Attempt History</h3><div style="overflow:auto"><table border="1" cellpadding="8" cellspacing="0" style="width:100%;border-collapse:collapse;background:#fff">
+  <tr><th>Date</th><th>Score</th><th>Correct</th><th>Wrong</th><th>Attempted</th><th>Time</th></tr>
+  ${old.map(a=>`<tr><td>${a.date}</td><td>${a.score}/${a.maxMarks}</td><td>${a.correct}</td><td>${a.wrong}</td><td>${a.attempted}</td><td>${a.timeTaken}</td></tr>`).join("")}
+  </table></div>`;
+}
+</script>
+</body>
+</html>
