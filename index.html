@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sanitary Inspector Mock Test</title>
+
+  <title>Sanitary Inspector Mock Test Portal</title>
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: Arial, "Noto Sans Devanagari", sans-serif;
       background: #f3f6fb;
       color: #111827;
+      line-height: 1.5;
     }
 
     header {
-      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      background: linear-gradient(135deg, #0f766e, #2563eb);
       color: white;
-      padding: 12px 10px;
+      padding: 18px 10px 22px;
       text-align: center;
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 5px 18px rgba(15, 23, 42, 0.24);
       overflow: visible;
     }
 
@@ -30,32 +35,180 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      max-width: 100%;
       text-decoration: none;
-      overflow: visible;
+      margin-bottom: 8px;
     }
 
     .site-logo img {
       width: 100%;
       max-width: 520px;
       height: auto;
-      max-height: 120px;
+      max-height: 110px;
       object-fit: contain;
       display: block;
     }
 
+    .header-subtitle {
+      font-size: 15px;
+      opacity: 0.95;
+      font-weight: 600;
+    }
+
     .container {
-      max-width: 1100px;
-      margin: 24px auto;
+      max-width: 1150px;
+      margin: 18px auto 24px;
       padding: 0 14px;
     }
 
+    .note-box {
+      background: #fff7ed;
+      border-left: 5px solid #f97316;
+      margin: 18px 0;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 15px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    .section-title {
+      text-align: center;
+      background: white;
+      padding: 16px 14px;
+      border-radius: 16px;
+      margin: 18px 0 12px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    .section-title h1 {
+      color: #0f766e;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .section-title p {
+      color: #475569;
+      font-size: 14px;
+    }
+
+    .quote {
+      text-align: center;
+      font-weight: 800;
+      color: #dc2626;
+      margin: 12px 0 18px;
+      font-size: 18px;
+    }
+
+    .important-box {
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #7f1d1d;
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      font-size: 15px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    }
+
+    .link-section,
+    .dashboard,
     .search-box {
       background: white;
-      padding: 16px;
-      border-radius: 12px;
+      padding: 18px;
+      border-radius: 16px;
+      margin: 18px 0;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    .link-section h2,
+    .dashboard h2 {
+      text-align: center;
+      color: #0f766e;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .link-btn {
+      display: block;
+      text-decoration: none;
+      background: #2563eb;
+      color: white;
+      padding: 11px 12px;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.2s;
+      font-size: 14px;
+    }
+
+    .link-btn:hover {
+      background: #1e40af;
+      transform: translateY(-2px);
+    }
+
+    .green-btn {
+      background: #16a34a;
+    }
+
+    .green-btn:hover {
+      background: #15803d;
+    }
+
+    .red-btn {
+      background: #dc2626;
+    }
+
+    .red-btn:hover {
+      background: #991b1b;
+    }
+
+    .purple-btn {
+      background: #7c3aed;
+    }
+
+    .purple-btn:hover {
+      background: #5b21b6;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
       margin-bottom: 18px;
+    }
+
+    .stat-card {
+      background: #eff6ff;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #bfdbfe;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 25px;
+      color: #2563eb;
+      margin-bottom: 3px;
+    }
+
+    .stat-card span {
+      color: #475569;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
     input {
@@ -69,12 +222,13 @@
 
     input:focus {
       border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
     }
 
     .category-section {
       margin-bottom: 16px;
       background: white;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid #e5e7eb;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
       overflow: hidden;
@@ -83,7 +237,7 @@
     .category-title {
       margin: 0;
       padding: 16px;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
       color: white;
       font-size: 20px;
       cursor: pointer;
@@ -95,12 +249,12 @@
     }
 
     .category-title:hover {
-      background: #1e293b;
+      background: linear-gradient(135deg, #111827, #1e40af);
     }
 
     .category-count {
       font-size: 13px;
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.20);
       padding: 5px 9px;
       border-radius: 999px;
       white-space: nowrap;
@@ -109,6 +263,8 @@
     .category-arrow {
       font-size: 18px;
       transition: transform 0.2s;
+      display: inline-block;
+      margin-left: 6px;
     }
 
     .category-section.open .category-arrow {
@@ -118,6 +274,7 @@
     .category-content {
       display: none;
       padding: 16px;
+      background: #ffffff;
     }
 
     .category-section.open .category-content {
@@ -131,9 +288,9 @@
     }
 
     .card {
-      background: #ffffff;
+      background: #f9fafb;
       border-radius: 14px;
-      padding: 18px;
+      padding: 17px;
       border: 1px solid #e5e7eb;
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
       transition: 0.2s;
@@ -144,11 +301,22 @@
       box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
     }
 
-    .card h2 {
-      margin: 0 0 14px;
+    .card h3 {
+      margin: 0 0 12px;
       font-size: 18px;
       line-height: 1.35;
       color: #0f172a;
+    }
+
+    .card-tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
 
     .button-row {
@@ -169,6 +337,8 @@
       font-size: 14px;
       border: none;
       cursor: pointer;
+      flex: 1;
+      min-width: 110px;
     }
 
     .btn:hover {
@@ -190,6 +360,7 @@
       border-radius: 12px;
       color: #475569;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
     }
 
     .modal-bg {
@@ -217,7 +388,7 @@
     }
 
     .modal-header {
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
       color: white;
       padding: 16px;
       display: flex;
@@ -278,8 +449,6 @@
       line-height: 1.5;
     }
 
-
-    /* Test attempt mode from index page - Home button inside header, no overlap */
     .test-frame-wrap {
       display: none;
       position: fixed;
@@ -365,7 +534,23 @@
       overflow: hidden;
     }
 
+    footer {
+      text-align: center;
+      padding: 24px 12px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
     @media (max-width: 768px) {
+      header {
+        padding: 12px 8px 18px;
+      }
+
+      .site-logo img {
+        max-width: 95vw;
+        max-height: 90px;
+      }
+
       .test-frame-header {
         min-height: 56px;
         padding: 8px;
@@ -385,28 +570,22 @@
       .test-frame-title {
         display: none;
       }
-    }
 
-
-    footer {
-      text-align: center;
-      padding: 24px 12px;
-      color: #64748b;
-      font-size: 13px;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 10px 8px;
+      .section-title h1 {
+        font-size: 21px;
       }
 
-      .site-logo img {
-        max-width: 95vw;
-        max-height: 90px;
+      .link-section h2,
+      .dashboard h2 {
+        font-size: 20px;
       }
     }
 
     @media (max-width: 520px) {
+      .container {
+        padding: 0 10px;
+      }
+
       .result-grid {
         grid-template-columns: 1fr;
       }
@@ -416,8 +595,16 @@
         padding: 14px;
       }
 
-      .card h2 {
+      .card h3 {
         font-size: 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
 
@@ -436,15 +623,72 @@
     <a href="index.html" class="site-logo" aria-label="Go to homepage">
       <img src="images/logo.png" alt="Sanitary Inspector Mock Test Logo">
     </a>
+    <div class="header-subtitle">
+      Free Online Mock Tests | Previous Year Papers | Bilingual Practice
+    </div>
   </header>
 
   <main class="container">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search test name..." onkeyup="filterTests()" />
+
+    <div class="note-box">
+      ℹ️ <b>Note:</b> सभी mock tests exam pattern के अनुसार बनाए गए हैं।
+      Correct Answer = +1 और Wrong Answer = -0.25 रहेगा।
     </div>
 
-    <div id="status" class="status">Loading tests...</div>
-    <div id="testGrid"></div>
+    <div class="section-title">
+      <h1>📘 Sanitary Inspector Real-Time Mock Portal</h1>
+      <p>आपके सभी uploaded HTML tests automatically नीचे show होंगे।</p>
+    </div>
+
+    <div class="quote">
+      Focus Today, Win Tomorrow
+    </div>
+
+    <div class="important-box">
+      ⚠️ <b>Important:</b> Telegram browser में mock test open न करें।
+      हमेशा Chrome या mobile browser में open करें।
+    </div>
+
+    <div class="link-section">
+      <h2>🔗 Important Links</h2>
+      <div class="btn-grid">
+        <a href="index.html" class="link-btn">Home</a>
+        <a href="#" class="link-btn green-btn">Join Telegram Group</a>
+        <a href="#" class="link-btn purple-btn">Free PDF Notes</a>
+        <a href="#" class="link-btn red-btn">Share Answer Key/PDF</a>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <h2>📊 Exam Dashboard - Pro Version</h2>
+
+      <div class="stats">
+        <div class="stat-card">
+          <strong id="totalTests">0</strong>
+          <span>Total Tests</span>
+        </div>
+
+        <div class="stat-card">
+          <strong id="showingTests">0</strong>
+          <span>Showing Tests</span>
+        </div>
+
+        <div class="stat-card">
+          <strong>2</strong>
+          <span>Categories</span>
+        </div>
+      </div>
+
+      <div class="search-box">
+        <div class="search-row">
+          <input type="text" id="searchInput" placeholder="Search test name..." onkeyup="filterTests()" />
+        </div>
+      </div>
+
+      <div id="status" class="status">Loading tests...</div>
+      <div id="testGrid"></div>
+    </div>
+
   </main>
 
   <div id="resultModalBg" class="modal-bg" onclick="closeResultModal(event)">
@@ -457,7 +701,6 @@
     </div>
   </div>
 
-
   <div id="testFrameWrap" class="test-frame-wrap">
     <div class="test-frame-header">
       <button class="home-test-btn" onclick="goHomeFromTest()">🏠 Home</button>
@@ -468,7 +711,6 @@
     </div>
     <iframe id="testFrame" class="test-frame" title="Mock Test"></iframe>
   </div>
-
 
   <footer>
     © Tech In Prem | Online Mock Test Portal
@@ -613,6 +855,7 @@
 
       for (const key of directKeys) {
         const value = localStorage.getItem(key);
+
         if (value) {
           try {
             return normalizeResult(JSON.parse(value));
@@ -696,8 +939,11 @@
 
         assignTestNumbers();
 
+        document.getElementById("totalTests").innerText = allTests.length;
+
         if (allTests.length === 0) {
           status.innerHTML = "Abhi koi test file upload nahi hai.";
+          document.getElementById("showingTests").innerText = "0";
           return;
         }
 
@@ -730,6 +976,9 @@
     function renderTests(tests) {
       const grid = document.getElementById("testGrid");
       const searchValue = document.getElementById("searchInput").value.trim();
+
+      document.getElementById("showingTests").innerText = tests.length;
+
       grid.innerHTML = "";
 
       const categories = [
@@ -758,6 +1007,7 @@
               <span class="category-arrow">▼</span>
             </span>
           </h2>
+
           <div class="category-content">
             <div class="grid"></div>
           </div>
@@ -772,7 +1022,9 @@
           const savedResult = findSavedResult(test.fileName);
 
           card.innerHTML = `
-            <h2>${test.title}</h2>
+            <span class="card-tag">${test.category}</span>
+            <h3>${test.title}</h3>
+
             <div class="button-row">
               <button class="btn" onclick='openTestFrame(${JSON.stringify(test.url)}, ${JSON.stringify(test.title)})'>Start Test</button>
               <button class="btn result-btn" onclick='showResultModal(${JSON.stringify(test.title)}, ${JSON.stringify(savedResult)})'>Result</button>
@@ -795,12 +1047,13 @@
 
       if (!result) {
         document.getElementById("resultModalBody").innerHTML = `
-          <div class="status" style="box-shadow:none;">
+          <div class="status" style="box-shadow:none;border:none;">
             Abhi is test ka result saved nahi mila.<br><br>
             Pehle test attempt karke submit karo. Agar submit ke baad bhi result nahi dikhe,
             to us test page me result save code properly work nahi kar raha.
           </div>
         `;
+
         document.getElementById("resultModalBg").classList.add("show");
         return;
       }
@@ -811,30 +1064,37 @@
             <small>Total Questions</small>
             <strong>${result.totalQuestions}</strong>
           </div>
+
           <div class="result-box">
             <small>Attempted</small>
             <strong>${result.attempted}</strong>
           </div>
+
           <div class="result-box">
             <small>Correct</small>
             <strong>${result.correct}</strong>
           </div>
+
           <div class="result-box">
             <small>Wrong</small>
             <strong>${result.wrong}</strong>
           </div>
+
           <div class="result-box">
             <small>Not Attempted</small>
             <strong>${result.notAttempted}</strong>
           </div>
+
           <div class="result-box">
             <small>Negative Marks</small>
             <strong>${result.negative}</strong>
           </div>
+
           <div class="result-box">
             <small>Final Marks</small>
             <strong>${result.marks} / ${result.maxMarks}</strong>
           </div>
+
           <div class="result-box">
             <small>Percentage</small>
             <strong>${result.percentage}</strong>
@@ -873,7 +1133,6 @@
       renderTests(filtered);
     }
 
-
     function openTestFrame(testUrl, testTitle) {
       const wrap = document.getElementById("testFrameWrap");
       const frame = document.getElementById("testFrame");
@@ -905,6 +1164,7 @@
       if (!location.hash.startsWith("#test=")) {
         const wrap = document.getElementById("testFrameWrap");
         const frame = document.getElementById("testFrame");
+
         wrap.classList.remove("show");
         document.body.classList.remove("test-open");
         frame.src = "";
@@ -930,9 +1190,9 @@
       }
     }
 
-
     loadTests();
     openTestFromHashIfNeeded();
   </script>
+
 </body>
 </html>
